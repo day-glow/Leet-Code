@@ -32,34 +32,28 @@ const topK = (arr, k) => {
   // declare object container to store words
   const wordFrequencies = {};
 
-  arr.forEach((word) => {
-
-  });
-
   // iterate over input array
-  for (let i = 0; i < arr.length; i++) {
+  arr.forEach((word) => {
     // compare individual element to obj
-    let word = arr[i];
     // if obj contains word
-    if (wordsContainer[word]) {
+    if (wordFrequencies[word]) {
       // increment value by one
-      wordsContainer[word] += 1;
+      wordFrequencies[word] += 1;
     } else {
       // if obj does not contain word,
       // add word to obj and set value to one.
-      wordsContainer[word] = 1;
+      wordFrequencies[word] = 1;
     }
-  }
+  });
 
-  const unsortedResults = Object.keys(wordsContainer); // ["the", "day", "is", "sunny"] -> ["the", "is", "sunny", "day"]
+  const unsortedResults = Object.keys(wordFrequencies); // ["the", "day", "is", "sunny"] -> ["the", "is", "sunny", "day"]
 
-  const results = unsortedResults.sort((a, b) => wordsContainer[b] - wordsContainer[a]);
+  let results = unsortedResults.sort((a, b) => wordFrequencies[b] - wordFrequencies[a]);
 
   //return first k elements if k < results length
   if (results.length > k) {
-    results = results.slice(0, k)
+    results = results.slice(0, k);
   }
-
   // return results array
   return results;
 }
