@@ -56,7 +56,6 @@ SC -
 Result -
 Runtime: 112 ms, faster than 52.96% of JavaScript online submissions for Two Sum.
 Memory Usage: 48.1 MB, less than 7.70% of JavaScript online submissions for Two Sum.
-*/
 
 const twoSum = (nums, target) => {
   // declare hash table
@@ -78,4 +77,31 @@ const twoSum = (nums, target) => {
   // if no match
   return [];
 }
+*/
 
+/*
+OPTIMIZED APPROACH:
+Refractored
+TC - O(n) - Hash Table, key look up
+SC -
+
+Result -
+Runtime: 116 ms, faster than 51.38% of JavaScript online submissions for Two Sum.
+Memory Usage: 48.2 MB, less than 6.71% of JavaScript online submissions for Two Sum.
+
+*/
+
+const twoSum = (nums, target) => {
+  // declare hash table
+  const map = {};
+  // iterate over array
+  for (let i = 0; i < nums.length; i++) {
+    // check if sum difference exists in map hash table
+    if (target - nums[i] in map) {
+      // if true, return the index of second term and current i value
+      return [map[target - nums[i]], i];
+    }
+    // add key value to map
+    map[nums[i]] = i;
+  }
+}
