@@ -52,5 +52,30 @@ const twoSum = (nums, target) => {
 OPTIMIZED APPROACH:
 TC - O(n) - Hash Table, key look up
 SC -
+
+Result -
+Runtime: 112 ms, faster than 52.96% of JavaScript online submissions for Two Sum.
+Memory Usage: 48.1 MB, less than 7.70% of JavaScript online submissions for Two Sum.
 */
+
+const twoSum = (nums, target) => {
+  // declare hash table
+  const map = {};
+
+  // iterate over array
+  for (let i = 0; i < nums.length; i++) {
+    // declare variable for "second" term
+    const secondTerm = target - nums[i];
+    // check if second term exists in map hash table
+    if (secondTerm in map) {
+      // if true, return the index of second term and current i value
+      return [map[secondTerm], i];
+    }
+    // add key value to map
+    map[nums[i]] = i;
+  }
+
+  // if no match
+  return [];
+}
 
