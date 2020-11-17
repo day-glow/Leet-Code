@@ -22,6 +22,11 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 */
 
+/*
+NAIVE APPROACH:
+TC - O(n2) - exponential (2 nested for loops)
+SC - ??? - array
+
 const twoSum = (nums, target) => {
   // declare results variable
   const results = [];
@@ -41,3 +46,11 @@ const twoSum = (nums, target) => {
   // return results
   return results;
 };
+*/
+
+/*
+OPTIMIZED APPROACH:
+TC - O(n) - Hash Table, key look up
+SC -
+*/
+
