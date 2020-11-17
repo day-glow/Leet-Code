@@ -21,3 +21,23 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1].
  ec- input arr length = 0, neg nums,
 
 */
+
+const twoSum = (nums, target) => {
+  // declare results variable
+  const results = [];
+
+  // iterate over nums
+  for (let i = 0; i < nums.length; i++) {
+    // declare first num variable
+    let first = nums[i];
+    // use recursion to check sum of second value, to target
+    for (let j = i + 1; j < nums.length; j++) {
+      if (first + nums[j] === target) {
+        // once found sum match, push indices to results
+        results.push(i, j);
+      }
+    }
+  }
+  // return results
+  return results;
+};
