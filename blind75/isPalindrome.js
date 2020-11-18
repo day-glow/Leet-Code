@@ -24,10 +24,11 @@ viz -
 -remove punctuation
 -length/2 = center
 
+
+1st Pass:
 Result:
 Runtime: 92 ms, faster than 80.35% of JavaScript online submissions for Valid Palindrome.
 Memory Usage: 41.5 MB, less than 62.74% of JavaScript online submissions for Valid Palindrome.
-*/
 
 const isPalindrome = (str) => {
   // convert str into same case, remove punctuation, remove spaces
@@ -47,6 +48,37 @@ const isPalindrome = (str) => {
 };
 
 
+Removed fluff:
+const isPalindrome = str => {
+  const str2 = str.toUpperCase().replace(/[^A-Z0-9]/gi, "");
+  for (let i = 0; i < str2.length / 2; i++) {
+    if (str2[i] !== str2[str2.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+};
+*/
 
+/*
+OPTIMIZED Two-pointer solution:
 
+*/
 
+const isPalindrome = str => {
+  if (str === "") { return true; }
+
+  const alphanum = str.toLowerCase().replace(/^a-z0-9/gi, "");
+
+  let head = 0;
+  let tail = alphanum.length - 1;
+
+  while (head < tail) {
+    if (alphanum[head] !== alphanum[tail]) {
+      return false;
+    }
+    head++;
+    tail--;
+  }
+  return true;
+};
