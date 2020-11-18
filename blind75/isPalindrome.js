@@ -62,7 +62,9 @@ const isPalindrome = str => {
 
 /*
 OPTIMIZED Two-pointer solution:
-
+Result:
+Runtime: 84 ms, faster than 97.07% of JavaScript online submissions for Valid Palindrome.
+Memory Usage: 40.9 MB, less than 83.90% of JavaScript online submissions for Valid Palindrome.
 */
 
 const isPalindrome = str => {
@@ -80,5 +82,6 @@ const isPalindrome = str => {
     head++;
     tail--;
   }
+
   return true;
 };
