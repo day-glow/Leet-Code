@@ -12,7 +12,7 @@ g- determine if a string contains the same letters forward, as backward from cen
 i- word/phrase (string)
 o- boolean
 se- n/a
-c- not case sensitive, any limit to string length?
+c- not case sensitive, any limit to string length?, string contains letters/nums/other?
    TC - naive O(n) - linear
 ec- spaces, punctuation, casing
    palindrome is odd/even length
@@ -25,6 +25,19 @@ viz -
 -length/2 = center
 */
 
+const isPalindrome = (str) => {
+  // convert str into same case, remove punctuation
+
+  // find half way point
+
+  // iterate over str
+
+    // compare first elem to last until reaching middle
+
+    // if not a match, return false
+
+  // return true
+};
 
 
 
