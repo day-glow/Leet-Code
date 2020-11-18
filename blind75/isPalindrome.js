@@ -12,7 +12,7 @@ g- determine if a string contains the same letters forward, as backward from cen
 i- word/phrase (string)
 o- boolean
 se- n/a
-c- not case sensitive, any limit to string length?, string contains letters/nums/other?
+c- not case sensitive, any limit to string length?, string contains letters/nums/other? which punctuation input str, only going to account for normal (could use regX if googled)
    TC - naive O(n) - linear
 ec- spaces, punctuation, casing
    palindrome is odd/even length
@@ -26,17 +26,20 @@ viz -
 */
 
 const isPalindrome = (str) => {
-  // convert str into same case, remove punctuation
-
+  // convert str into same case, remove punctuation, remove spaces
+  const string = str.toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ").join("");
   // find half way point
-
+  const len = Math.floor(string.length / 2);
   // iterate over str
-
+  for (let i = 0; i < len; i += 1) {
     // compare first elem to last until reaching middle
-
-    // if not a match, return false
-
+    if (string[i] !== string[-i]) {
+      // if not a match, return false
+      return false;
+    }
+  }
   // return true
+  return true;
 };
 
 
