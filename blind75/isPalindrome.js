@@ -23,17 +23,21 @@ viz -
 -change string to same case
 -remove punctuation
 -length/2 = center
+
+Result:
+Runtime: 92 ms, faster than 80.35% of JavaScript online submissions for Valid Palindrome.
+Memory Usage: 41.5 MB, less than 62.74% of JavaScript online submissions for Valid Palindrome.
 */
 
 const isPalindrome = (str) => {
   // convert str into same case, remove punctuation, remove spaces
-  const string = str.toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").split(" ").join("");
+  const string = str.toUpperCase().replace(/[^a-zA-Z0-9 ]+/g, '').replace('/ {2,}/',' ').split(" ").join("");
   // find half way point
   const len = Math.floor(string.length / 2);
   // iterate over str
   for (let i = 0; i < len; i += 1) {
     // compare first elem to last until reaching middle
-    if (string[i] !== string[-i]) {
+    if (string[i] !== string[string.length - 1 - i]) {
       // if not a match, return false
       return false;
     }
@@ -41,6 +45,8 @@ const isPalindrome = (str) => {
   // return true
   return true;
 };
+
+
 
 
 
