@@ -17,4 +17,27 @@ Example 3:
 
 Input: nums = [1]
 Output: 1
+
+ Hash table/math
+
+ TC-O(n)
+ SC-O(n)
 */
+
+const singleNumber = arr => {
+  let numbers = {};
+  let individualNums = 0;
+  let totalSum = 0;
+  arr.forEach(num => {
+    if(numbers[num]) {
+      numbers[num] += 1;
+      totalSum += num;
+    } else {
+      numbers[num] = 1;
+      individualNums += num;
+      totalSum += num;
+    }
+  })
+  const singleValue = individualNums * 2 - totalSum;
+  return singleValue;
+};
