@@ -24,7 +24,7 @@ Output: 1
  SC-O(n)
 */
 
-//math solution:
+//math solution slightly more optimized than hash map solution:
 const singleNumber = arr => {
   let numbers = {};
   let individualNums = 0;
@@ -44,6 +44,8 @@ const singleNumber = arr => {
 };
 
 //hash map solution:
+//TC-O(n)
+//SC-O(n)
 const singleNumber = arr => {
   let numbers = {};
   arr.forEach(num => {
@@ -61,3 +63,4 @@ const singleNumber = arr => {
   }
 }
 
+//there is a bitwise solution
