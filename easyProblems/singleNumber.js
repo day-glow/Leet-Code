@@ -24,6 +24,7 @@ Output: 1
  SC-O(n)
 */
 
+//math solution:
 const singleNumber = arr => {
   let numbers = {};
   let individualNums = 0;
@@ -41,3 +42,22 @@ const singleNumber = arr => {
   const singleValue = individualNums * 2 - totalSum;
   return singleValue;
 };
+
+//hash map solution:
+const singleNumber = arr => {
+  let numbers = {};
+  arr.forEach(num => {
+    if(numbers[num]) {
+      numbers[num] += 1;
+    } else {
+      numbers[num] = 1;
+    }
+  })
+
+  for (let n in numbers) {
+    if (numbers[n] === 1) {
+      return n;
+    }
+  }
+}
+
