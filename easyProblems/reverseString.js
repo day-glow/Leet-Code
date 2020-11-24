@@ -25,3 +25,15 @@ const reverseString = array => {
  SC-O(1)
  */
 
+const reverseString = array => {
+  let leftPointer = 0;
+  let rightPointer = array.length - 1;
+
+  while (leftPointer < rightPointer) {
+    let tempLetter = array[leftPointer];
+    array[leftPointer] = array[rightPointer];
+    array[rightPointer] = tempLetter;
+    leftPointer++;
+    rightPointer--;
+  }
+};
