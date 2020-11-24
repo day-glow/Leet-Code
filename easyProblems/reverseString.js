@@ -9,3 +9,19 @@ Example 1:
 Input: ["h","e","l","l","o"]
 Output: ["o","l","l","e","h"]
 */
+
+/*
+SIMPLE:
+
+const reverseString = array => {
+  return array.reverse();
+};
+*/
+
+/*
+ OPTIMIZED:
+ Two Pointers Approach, Iteration
+ TC-O(N), technically O(1/2 * n) but iterates over each letter so O(N)
+ SC-O(1)
+ */
+
