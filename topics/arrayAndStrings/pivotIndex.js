@@ -15,3 +15,16 @@ The sum of the numbers to the left of index 3 (nums[3] = 6) is equal to the sum 
 Also, 3 is the first index where this occurs.
 */
 
+const pivotIndex = nums => {
+  const sum = nums.reduce((a, b) => a + b, 0);
+
+  let currSum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if ((sum - nums[i]) / 2 === currSum) {
+      return i;
+    }
+    currSum += nums[i];
+  }
+
+  return -1;
+};
