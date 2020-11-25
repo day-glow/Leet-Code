@@ -18,3 +18,27 @@ Example 1:
 Input: logs = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
 Output: ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
 */
+
+const reorderLogFiles = (logs) => {
+  const digitLogs = [];
+  const letterLogs = [];
+
+  //helper functions
+  const body = s => s.slice(s.indexOf(' ') + 1); // get the body after identifier
+  // if body same then compare identifier
+  const compare = (a, b) => {
+    const n = body(a).localeCompare(body(b));
+    if (n !== 0) return n;
+    return a.localeCompare(b);
+  };
+
+
+  for (let log of logs) {
+    if(log.split(" ")[1].charAt(0) >= '0' && log.split(" ")[1].charAt(0) <= '9'){
+            digitLogs.push(log);
+        } else {
+            letterLogs.push(log);
+        }
+  }
+  return letterLogs.sort(compare).concat(digitLogs.sort((a, b) => a - b));
+};
