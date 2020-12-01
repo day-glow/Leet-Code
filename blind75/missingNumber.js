@@ -23,6 +23,8 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
  ec- if no "missing" in range, then next increment +1 is the missing num, if arr only contains 0 & no n
 */
 
+/*
+NAIVE SOLUTION:
 const missingNumber = (nums) => {
   //declare missingNum variable
   let missingNum = 0;
@@ -68,4 +70,22 @@ const findRangeSum = (largestNum) => {
   }
   //return sum
   return sum;
+}
+*/
+
+//OPTIMIZED SOLUTION:
+
+const missingNumber = nums => {
+  //declare expected total
+  let expectedSum = nums.length;
+  //declare actual total
+  let actualSum = 0;
+
+  //for loop to add to each total
+  for (let i = 0; i < nums.length; i++) {
+    expectedSum += i;
+    actualSum += nums[i];
+  }
+  //return expected minus the actual
+  return expectedSum - actualSum;
 }
