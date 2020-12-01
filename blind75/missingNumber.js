@@ -73,7 +73,9 @@ const findRangeSum = (largestNum) => {
 }
 */
 
-//OPTIMIZED SOLUTION:
+//OPTIMIZED SOLUTION (similar to Gauss' formula):
+//TC-O(n) one forloop
+//SC-O(1), no additional space needed.
 
 const missingNumber = nums => {
   //declare expected total
