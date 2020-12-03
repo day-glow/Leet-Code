@@ -29,7 +29,7 @@ Output: false
  console.log(actual === expected);
 
 */
-
+/*
 //NAIVE (Sort) Solution:
 const isAnagram = (s, t) => {
   //ec check lengths
@@ -41,4 +41,11 @@ const isAnagram = (s, t) => {
   const sortedT = t.split('').sort().join();
 
   return sortedS === sortedT;
+};
+*/
+
+//Consolidated:
+const isAnagram = (s, t) => {
+  if (s.length !== t.length) return false;
+  return (s.split('').sort().join() === t.split('').sort().join());
 };
