@@ -44,7 +44,10 @@ const outputB = isValid(stringB);
 console.log(assert(outputB === false));
 */
 
-
+/*
+TC- O(n) linear to taverse string, .push and .pop O(1)
+SC- O(n) stack may end up with all left parens in stack
+*/
 const validParens = {
   "(": ")",
   "[": "]",
