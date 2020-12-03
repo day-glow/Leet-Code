@@ -27,4 +27,21 @@ Example 5:
 
 Input: s = "{[]}"
 Output: true
+
+
+brut force: iterate over string and find left then match right, if not a match return
+ TC-O(n)
+
+ opt: hash map to store matches?  SC-O(1)
+
+const stringA = "()[]{}";
+const stringB = "([)]";
+
+const outputA = isValid(stringA);
+console.log(assert(outputA === true));
+
+const outputB = isValid(stringB);
+console.log(assert(outputB === false));
 */
+
+
