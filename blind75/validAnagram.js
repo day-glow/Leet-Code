@@ -52,8 +52,32 @@ const isAnagram = (s, t) => {
 
 /*
 OPTIMIZED SOLUTION:
-hash table - obj
+hash map - obj
 TC- O(n)
 SC- O(n)
 */
 
+const isAnagram = (s, t) => {
+  if (s.length !== t.length) return false;
+  const map = {};
+
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]]) {
+      map[s[i]]++;
+    } else {
+      map[s[i]] = 1;
+    }
+
+    if (map[t[i]]) {
+      map[t[i]]--;
+    } else {
+      map[t[i]] = -1;
+    }
+  }
+
+  for (let keys in map) {
+    if (map[keys] !== 0) return false;
+  }
+
+  return true;
+};
