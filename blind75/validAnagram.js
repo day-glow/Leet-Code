@@ -29,3 +29,16 @@ Output: false
  console.log(actual === expected);
 
 */
+
+//NAIVE (Sort) Solution:
+const isAnagram = (s, t) => {
+  //ec check lengths
+  if (s.length !== t.length) {
+    return false;
+  }
+  //sort
+  const sortedS = s.split('').sort().join();
+  const sortedT = t.split('').sort().join();
+
+  return sortedS === sortedT;
+};
