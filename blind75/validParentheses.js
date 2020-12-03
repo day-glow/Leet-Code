@@ -45,3 +45,28 @@ console.log(assert(outputB === false));
 */
 
 
+const validParens = {
+  "(": ")",
+  "[": "]",
+  "{": "}",
+}
+
+const isValid = s => {
+  if (s.length < 1) return false;
+
+  let parenStack = [];
+
+  for (let i = 0; i < s.length; i += 1) {
+    currParen = s[i];
+    if (validParens[currParen]) {
+      parenStack.push(currParen);
+    }  else {
+      let last = parenStack.pop();
+      if (currParen !== validParens[last]) {
+        return false;
+      }
+    }
+  }
+
+  return (parenStack.length === 0);
+};
