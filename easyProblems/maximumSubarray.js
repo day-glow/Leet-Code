@@ -22,7 +22,15 @@ Example 4:
 
 Input: nums = [-1]
 Output: -1
+
+ g-sub array with largest sum
+ i-array of nums
+ o-array of nums
+ c-O(n) greedy approach, optimize w/ divide&conquer (math approach)
+ e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
+
+//NAIVE APPROACH (GREEDY):
 
 
 
