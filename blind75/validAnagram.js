@@ -45,7 +45,15 @@ const isAnagram = (s, t) => {
 */
 
 //Consolidated:
-const isAnagram = (s, t) => {
-  if (s.length !== t.length) return false;
-  return (s.split('').sort().join() === t.split('').sort().join());
-};
+// const isAnagram = (s, t) => {
+//   if (s.length !== t.length) return false;
+//   return (s.split('').sort().join() === t.split('').sort().join());
+// };
+
+/*
+OPTIMIZED SOLUTION:
+hash table - obj
+TC- O(n)
+SC- O(n)
+*/
+
