@@ -31,6 +31,26 @@ Output: -1
 */
 
 //NAIVE APPROACH (GREEDY):
+const maxSubArray = nums => {
+  //declare sum variable
+  let maxSum = nums[0];
+  const n = nums.length;
+  let currSum = nums[0];
 
+  if (n <= 1) {
+    return currSum;
+  }
+
+  //iterate over arr
+  for (let i = 1; i < nums.length; i++) {
+    //add elem to temp sum
+    currSum = Math.max(nums[i], currSum + nums[i]);
+    //if temp sum is greater than sum, replace
+    maxSum = Math.max(maxSum, currSum);
+  }
+
+  //return sum
+  return maxSum;
+};
 
 
