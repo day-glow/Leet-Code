@@ -29,3 +29,14 @@ const rotate = (nums, k) => {
     k--;
   }
 };
+
+//optional long slice approach, if expecting a return array
+const rotate = (nums, k) => {
+  let endToFront = nums.slice(nums.length - k);
+  let front = nums.slice(0, nums.length - k);
+  nums = endToFront.concat(front);
+};
+
+const rotate = (nums, k) => {
+  return nums.slice(nums.length - k).concat(nums.slice(0, nums.length - k));
+};
