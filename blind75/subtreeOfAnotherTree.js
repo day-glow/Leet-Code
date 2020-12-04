@@ -22,3 +22,16 @@ Given tree t:
 TC-O(n) or worse case O(n*m) must traverse both trees fully
 SC-O(n)
 */
+
+//helper function to check the current node
+const isTheSame = (s, t) => {
+  if (!s || !t) return !s && !t;
+  if (s.val !== t.val) return false;
+  return isTheSame(s.left, t.left) && isTheSame(s.right, t.right);
+}
+
+//actual solution
+const isSubtree = (s, t) => {
+  if (!s) return !t;
+  return isTheSame(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+};
