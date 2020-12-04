@@ -20,15 +20,24 @@ rotate 3 steps to the right: [5,6,7,1,2,3,4]
 
  TC- O(1)
  SC- O(1)
-*/
 
-const rotate = (nums, k) => {
+ const rotate = (nums, k) => {
   while (k > 0) {
     let rotateElem = nums.pop();
     nums.unshift(rotateElem);
     k--;
   }
 };
+ */
+
+
+//OPTIMIZED:
+const rotate = (nums, k) => {
+  while (k > 0) {
+    nums.unshift(nums.pop());
+    k--;
+  }
+ };
 
 //optional long slice approach, if expecting a return array
 const rotate = (nums, k) => {
