@@ -22,7 +22,35 @@ Example 4:
 
 Input: nums = [-1]
 Output: -1
+
+ g-sub array with largest sum
+ i-array of nums
+ o-array of nums
+ c-O(n) greedy approach, optimize w/ divide&conquer (math approach)
+ e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
 
+//OPTIMIZED APPROACH (GREEDY):
+const maxSubArray = nums => {
+  //declare sum variable
+  let maxSum = nums[0];
+  const n = nums.length;
+  let currSum = nums[0];
+
+  if (n <= 1) {
+    return currSum;
+  }
+
+  //iterate over arr
+  for (let i = 1; i < nums.length; i++) {
+    //add elem to temp sum
+    currSum = Math.max(nums[i], currSum + nums[i]);
+    //if temp sum is greater than sum, replace
+    maxSum = Math.max(maxSum, currSum);
+  }
+
+  //return sum
+  return maxSum;
+};
 
 
