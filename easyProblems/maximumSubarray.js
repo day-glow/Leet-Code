@@ -30,7 +30,7 @@ Output: -1
  e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
 
-//NAIVE APPROACH (GREEDY):
+//OPTIMIZED APPROACH (GREEDY):
 const maxSubArray = nums => {
   //declare sum variable
   let maxSum = nums[0];
