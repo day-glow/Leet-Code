@@ -14,6 +14,7 @@ Explanation: The LCA of nodes 2 and 8 is 6.
 TC-O(n)
 SC-O(n)
 */
+//recusive
 const lowestCommonAncestor = (root, p, q) => {
   if (p.val > root.val && q.val > root.val) {
     return lowestCommonAncestor(root.right, p, q);
@@ -24,3 +25,18 @@ const lowestCommonAncestor = (root, p, q) => {
   }
 };
 
+//iterative (TC-O(n)/SC-O(1))
+const lowestCommonAncestor = (root, p, q) => {
+  let node = root;
+
+  while (node !== null) {
+    if (p.val > node.val && q.val > node.val) {
+      node = node.right;
+    } else if (p.val < node.val && q.val < node.val) {
+      node = node.left;
+    } else {
+      return node;
+    }
+  }
+  return null
+};
