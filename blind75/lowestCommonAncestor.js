@@ -7,4 +7,20 @@ Example 1:
 Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
 Output: 6
 Explanation: The LCA of nodes 2 and 8 is 6.
+
+//use recursion to check children (left is lesser, right is greater)
+
+//BST, use recursion
+TC-O(n)
+SC-O(n)
 */
+const lowestCommonAncestor = (root, p, q) => {
+  if (p.val > root.val && q.val > root.val) {
+    return lowestCommonAncestor(root.right, p, q);
+  } else if (p.val < root.val && q.val < root.val) {
+    return lowestCommonAncestor(root.left, p, q);
+  } else {
+    return root;
+  }
+};
+
