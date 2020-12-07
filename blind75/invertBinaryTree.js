@@ -41,3 +41,14 @@ var invertTree = function(root) {
 
   return root;
 };
+
+//OPTIMIZED RECURSION:
+const invertTree = root => {
+  if (!root) return root;
+  [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  return root;
+};
+
+//DFT
+
+//BFS
