@@ -18,4 +18,13 @@ Output:
  / \   / \
 9   6 3   1
 
+ invert, meaning left and right children swap
+ use recursion or iteration
+
+ if null, return
+ if left and right, use temp value to swap
+ if only one side exists, swap?
+
+ TC-O(n)
+ SC-O(n)
 */
