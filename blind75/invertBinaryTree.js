@@ -50,5 +50,29 @@ const invertTree = root => {
 };
 
 //DFT
+const invertTree = root => {
+  let stack = [root];
+
+  while (stack.length) {
+    const n = stack.pop();
+    if (n !== null) {
+      [n.left, n.right] = [n.right, n.left];
+      stack.push(n.left, n.right);
+    }
+  }
+  return root;
+};
 
 //BFS
+const invertTree = root => {
+  let queue = [root];
+
+  while (queue.length) {
+    const n = queue.shift();
+    if (n !== null) {
+      [n.left, n.right] = [n.right, n.left];
+      queue.push(n.left, n.right);
+    }
+  }
+  return root;
+};
