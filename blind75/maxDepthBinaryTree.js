@@ -12,6 +12,7 @@ Output: 3
  SC- O(n)
 */
 
+//RECURSION:
 const maxDepth = (root) => {
   if (root === null) {
     return 0;
@@ -20,4 +21,10 @@ const maxDepth = (root) => {
     let rightDepth = maxDepth(root.right);
     return 1 + Math.max(leftDepth, rightDepth);
   }
+};
+
+//RECURSION Reduced:
+const maxDepth = root => {
+  if (!root) return 0;
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 };
