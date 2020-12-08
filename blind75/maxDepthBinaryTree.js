@@ -11,3 +11,13 @@ Output: 3
  TC- O(n)
  SC- O(n)
 */
+
+const maxDepth = (root) => {
+  if (root === null) {
+    return 0;
+  } else {
+    let leftDepth = maxDepth(root.left);
+    let rightDepth = maxDepth(root.right);
+    return 1 + Math.max(leftDepth, rightDepth);
+  }
+};
