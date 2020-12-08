@@ -6,4 +6,8 @@ A binary tree's maximum depth is the number of nodes along the longest path from
 Example 1:
 Input: root = [3,9,20,null,null,15,7]
 Output: 3
+
+ use recursive DFS to find max depth (return + 1)
+ TC- O(n)
+ SC- O(n)
 */
