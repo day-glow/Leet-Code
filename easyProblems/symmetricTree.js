@@ -25,3 +25,14 @@ solve w/
 recursion
 iterative
 */
+
+//RECURSION, DFS:
+//helper function
+const isMirror = (p, q) => {
+  if (!p && !q) return true;
+  if (!p || !q || p.val !== q.val) return false;
+  return isMirror(p.right, q.left) && isMirror(p.left, q.right);
+};
+const isSymmetric = root => {
+  return isMirror(root, root);
+};
