@@ -17,4 +17,11 @@ But the following [1,2,2,null,3,null,3] is not:
   2   2
    \   \
    3    3
+
+TC- O(n)
+SC- O(n)
+
+solve w/
+recursion
+iterative
 */
