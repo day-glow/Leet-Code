@@ -12,7 +12,7 @@ Output: 3
  SC- O(n)
 */
 
-//RECURSION:
+//RECURSION, DFS:
 const maxDepth = (root) => {
   if (root === null) {
     return 0;
@@ -27,4 +27,18 @@ const maxDepth = (root) => {
 const maxDepth = root => {
   if (!root) return 0;
   return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+};
+
+//ITERATIVE, BFS:
+const maxDepth = root => {
+  if (!root) return 0;
+  //create arr queue
+  //declare depth
+  //while loop, queue exists
+    //increase depth count
+    //for loop for the length of the queue
+      //declare node and shift off "first in queue"
+      //if cond for left and right, push the current node's left and rights
+
+  return depth;
 };
