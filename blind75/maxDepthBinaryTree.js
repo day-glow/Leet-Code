@@ -32,13 +32,25 @@ const maxDepth = root => {
 //ITERATIVE, BFS:
 const maxDepth = root => {
   if (!root) return 0;
-  //create arr queue
+  //create queue
+  let queue = [root];
   //declare depth
+  let depth = 0;
+
   //while loop, queue exists
-    //increase depth count
+  while (queue.length > 0) {
+    let count = queue.length;
     //for loop for the length of the queue
+    for (let i = 0; i < count; i++) {
       //declare node and shift off "first in queue"
+      let node = queue.shift();
       //if cond for left and right, push the current node's left and rights
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    //increase depth count
+    depth++;
+  }
 
   return depth;
 };
