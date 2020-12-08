@@ -36,3 +36,24 @@ const isMirror = (p, q) => {
 const isSymmetric = root => {
   return isMirror(root, root);
 };
+
+//ITERATIVE:
+//helper:
+const isSymmetric = root => {
+  let queue = [];
+  queue.push(root);
+  queue.push(root);
+
+  while (queue.length > 0) {
+    let node1 = queue.shift();
+    let node2 = queue.shift();
+
+    if (!node1 && !node2) continue;
+    if (!node1 || !node2 || node1.val !== node2.val) return false;
+    queue.push(node1.left);
+    queue.push(node2.right);
+    queue.push(node1.right);
+    queue.push(node2.left);
+  }
+  return true;
+};
