@@ -13,4 +13,6 @@ Input:     1         1
 
 Output: true
 
+TC-O(n)
+SC-O(n)
 */
