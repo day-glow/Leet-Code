@@ -22,3 +22,24 @@ const reverseList = head => {
 
   return node;
 };
+
+//ITERATIVE:
+//TC-O(n)
+//SC-O(1)
+//iterative, intuitively reassign node's and next's with temp variables
+const reverseList = head => {
+  let prev = null; //null
+  let current = head; //1
+
+  while (current !== null) {
+    let tempNext = current.next; //2
+
+    //reassign head -> null
+    current.next = prev;
+
+    //reassign pointers
+    prev = current;
+    current = tempNext;
+  }
+  return prev;
+};
