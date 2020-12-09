@@ -10,9 +10,17 @@ Input: [3,2,3,1,2,4,5,5,6] and k = 4
 Output: 4
 */
 
-//TC-O(logn)
+//TC-O(nlogn)
 //SC-O(1)
 //sort approach:
-const findKthLargest = (nums, k) => {
-  return nums.sort((a, b) => b - a)[k - 1];
-};
+const findKthLargest = (nums, k) => nums.sort((a, b) => b - a)[k - 1];
+
+//HEAP approach:
+//TC-O(nlogk)
+//SC-O(k)
+
+
+
+//Quickselect Approach:
+//TC-O(n)-O(n^2)
+//SC-O(1)
