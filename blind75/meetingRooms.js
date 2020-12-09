@@ -10,7 +10,7 @@ Input: intervals = [[7,10],[2,4]]
 Output: true
 */
 
-//TC-O(n2)
+//TC-O(nlogn)
 //SC-O(1)
 //sort by start time, ascending
 //comparing ending with next starting
