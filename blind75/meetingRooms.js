@@ -22,3 +22,8 @@ const canAttendMeetings = intervals => {
   }
   return true;
 };
+
+//BRUTE FORCE:
+//TC-O(n^2)
+//SC-O(1)
+//solve with nested loops and overlap conditions for each pair's vals
