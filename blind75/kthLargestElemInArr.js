@@ -21,6 +21,42 @@ const findKthLargest = (nums, k) => nums.sort((a, b) => b - a)[k - 1];
 
 
 
-//Quickselect Approach:
+//Quickselect Approach (w/ random pivot):
 //TC-O(n)-O(n^2)
 //SC-O(1)
+
+var findKthLargest = function(nums, k) {
+  const finalIdx = nums.length - k;
+  let left = 0;
+  let right = nums.length-1;
+
+  while(left <= right) {
+      const pivot = Math.floor(Math.random() * (right - left + 1)) + left;
+      const pivotIdx = pivotHelper(pivot, left, right);
+      if(pivotIdx === finalIdx) return nums[finalIdx];
+
+      if(pivotIdx < finalIdx) left = pivotIdx + 1;
+      else right = pivotIdx - 1;
+  }
+
+  const pivotHelper = (pivot, start, end) => {
+      swap(pivot, end);
+
+      let i = start;
+      let j = start;
+
+      while(j < end) {
+          if(nums[j] <= nums[end]) {
+              swap(i, j);
+              i++;
+          }
+          j++;
+      }
+      swap(i, end);
+      return i;
+  }
+
+  const swap = (i, j) => {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+  }
+};
