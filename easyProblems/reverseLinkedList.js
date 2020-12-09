@@ -9,3 +9,16 @@ Follow up:
 
 A linked list can be reversed either iteratively or recursively. Could you implement both?
 */
+
+//TC-O(n)
+//SC-O(n)
+//RECURSION:
+const reverseList = head => {
+  if (head === null || head.next === null) return head;
+
+  let node = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+
+  return node;
+};
