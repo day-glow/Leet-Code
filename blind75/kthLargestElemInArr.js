@@ -9,3 +9,13 @@ Example 2:
 Input: [3,2,3,1,2,4,5,5,6] and k = 4
 Output: 4
 */
+
+//TC-O(logn)
+//SC-O(1)
+//sort approach:
+const findKthLargest = (nums, k) => {
+  //sort
+  nums.sort((a, b) => b - a);
+  //return k-1 position
+  return nums[k - 1];
+};
