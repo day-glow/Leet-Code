@@ -14,8 +14,5 @@ Output: 4
 //SC-O(1)
 //sort approach:
 const findKthLargest = (nums, k) => {
-  //sort
-  nums.sort((a, b) => b - a);
-  //return k-1 position
-  return nums[k - 1];
+  return nums.sort((a, b) => b - a)[k - 1];
 };
