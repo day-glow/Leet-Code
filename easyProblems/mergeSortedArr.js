@@ -60,3 +60,28 @@ const merge = (nums1, m, nums2, n) => {
     (nums1[p1] === undefined || nums1[p1] > nums2[p2]) ? (nums1.splice(p1, 0, nums2[p2++]), m++) : p1++;
   }
 };
+
+//TC-O(m+n)
+//SC-O(1)
+//3 pointers (replace from the end):
+const merge = (nums1, m, nums2, n) => {
+  nums1.splice(m, nums1.length - m);
+
+  //pointers start at ends
+  let p1 = m - 1;
+  let p2 = n - 1;
+  let p = m + n - 1;
+
+  while (p2 >= 0) {
+    //compare larger values to replace at the end
+    if (nums1[p1] > nums2[p2]) {
+      nums1[p] = nums1[p1];
+      p1--;
+      p--;
+    } else {
+      nums1[p] = nums2[p2];
+      p2--;
+      p--;
+    }
+  }
+};
