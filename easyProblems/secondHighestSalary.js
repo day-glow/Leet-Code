@@ -17,3 +17,10 @@ For example, given the above Employee table, the query should return 200 as the 
 | 200                 |
 +---------------------+
 */
+
+//TC-2 queries
+//SC-O(1)
+SELECT
+  (SELECT MAX(Salary) FROM Employee
+  WHERE Salary NOT IN (SELECT MAX(Salary) FROM Employee ))
+  AS SecondHighestSalary;
