@@ -13,3 +13,6 @@ Output: ""
 Explanation: There is no common prefix among the input strings.
 */
 
+//TC-O(n^2)
+//SC-O(1)
+//nested loops:
