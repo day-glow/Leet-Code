@@ -52,3 +52,11 @@ const merge = (nums1, m, nums2, n) => {
     p1++;
   }
 };
+//Refractored:
+const merge = (nums1, m, nums2, n) => {
+  nums1.splice(m, nums1.length - m);
+  let p1 = 0, p2 = 0;
+  while (p1 < m || p2 < n) {
+    (nums1[p1] === undefined || nums1[p1] > nums2[p2]) ? (nums1.splice(p1, 0, nums2[p2++]), m++) : p1++;
+  }
+};
