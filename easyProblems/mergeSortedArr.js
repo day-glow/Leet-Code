@@ -89,8 +89,6 @@ const merge = (nums1, m, nums2, n) => {
 //REFRACTORED 3pointers:
 //3 pointers (replace from the end):
 const merge = (nums1, m, nums2, n) => {
-  nums1.splice(m, nums1.length - m);
-
   let p1 = m - 1;
   let p2 = n - 1;
   let p = m + n - 1;
