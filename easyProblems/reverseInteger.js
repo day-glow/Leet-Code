@@ -17,18 +17,15 @@ Output: 321
 const reverse = (x) => {
   let isPos = true;
   let result = 0;
-
   if (x < 0) {
     x *= -1;
     isPos = false;
   }
-
   while (x > 0) {
     let endNum = x % 10;
     x = Math.floor(x / 10);
     result = (result * 10) + endNum;
   }
-
   if (result > Math.pow(2, 31) - 1) return 0;
   return (isPos) ? result : -result;
 };
