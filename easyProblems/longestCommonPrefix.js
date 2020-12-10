@@ -34,10 +34,16 @@ const longestCommonPrefix = strs => {
 
 //recursion (divide & conquer):
 const longestCommonPrefix = strs => {
-  if (!strs || strs.length === 0) return '';
+  //iterate over each letter in each word
+  if (!strs || strs.length === 0 || strs[0].length === 0) return '';
 
+  const getLongestPrefix = (word, arr) => {
+    if (!word) return '';
+    if (arr.every(element => element.startsWith(word))) return word;
+    return getLongestPrefix(word.slice(0, word.length - 1), arr);
+  }
 
-  return ;
+  return getLongestPrefix(strs[0], strs.slice(1));
 };
 
 //TC-O(logn)
