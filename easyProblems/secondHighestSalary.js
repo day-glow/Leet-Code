@@ -24,3 +24,22 @@ SELECT
   (SELECT MAX(Salary) FROM Employee
   WHERE Salary NOT IN (SELECT MAX(Salary) FROM Employee ))
   AS SecondHighestSalary;
+
+//USING DESC, LIMIT AND OFFSET:
+SELECT
+    (SELECT DISTINCT
+            Salary
+        FROM
+            Employee
+        ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1) AS SecondHighestSalary
+;
+
+//USING Table with NULL clause:
+SELECT
+    IFNULL(
+      (SELECT DISTINCT Salary
+       FROM Employee
+       ORDER BY Salary DESC
+        LIMIT 1 OFFSET 1),
+    NULL) AS SecondHighestSalary;
