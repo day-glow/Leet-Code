@@ -18,7 +18,6 @@ Output: [1,2,2,3,5,6]
 //TC-O(m+n)
 //SC-O(m+n) when creating new arr
 //SC-O(m) if merging in place and altering original
-
 const merge = (nums1, m, nums2, n) => {
   //splice the first m or n off each list
   nums1.splice(m, nums1.length - m);
@@ -37,5 +36,19 @@ const merge = (nums1, m, nums2, n) => {
     } else {
       p1++;
     }
+  }
+};
+
+//REFACTORED:
+const merge = (nums1, m, nums2, n) => {
+  nums1.splice(m, nums1.length - m);
+  let p1 = 0;
+  let p2 = 0;
+  while (p1 < m || p2 < n) {
+    if (nums1[p1] === undefined || nums1[p1] > nums2[p2]) {
+      nums1.splice(p1, 0, nums2[p2++]);
+      m++;
+    }
+    p1++;
   }
 };
