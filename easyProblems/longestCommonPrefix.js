@@ -16,3 +16,17 @@ Explanation: There is no common prefix among the input strings.
 //TC-O(n^2)
 //SC-O(1)
 //nested loops:
+const longestCommonPrefix = strs => {
+  //iterate over each letter in each word
+
+  for (let p = 0; p < strs[0].length; p++) {
+    for (let i = 1; i < strs.length; i++) {
+      let letter = strs[0][p];
+      if (strs[i][p] !== letter) {
+        return p === 0 ? '' : strs[0].slice(0, p);
+      }
+    }
+  }
+
+  return strs[0];
+};
