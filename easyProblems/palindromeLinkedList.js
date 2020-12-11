@@ -11,9 +11,18 @@ Output: true
 */
 
 /*
-//repeats node values (could check center out, 2 pointers)
+//repeats node values (LL one directional)
 //could keep an obj store of seen values
-//could do start and end towards middle (2 pointers)
+//stack, LIFO
 //TC-O(n)
-//SC-O(1)
+//SC-O(n)
 */
+
+const isPalindrome = head => {
+  const stack = [];
+   while(head && head.val !== null) {
+        stack.push(head.val);
+        head = head.next;
+    }
+    return stack.every((e, i) => e === stack[stack.length - i - 1]);
+};
