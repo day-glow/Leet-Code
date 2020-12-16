@@ -29,18 +29,16 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 const countSubstrings = s => {
   let count = 0;
 
-  for (let i = 0; i < s.length; i++) {
-    isPalindrome(s, i, i);
-    isPalindrome(s, i, i + 1);
-  }
-
-  const isPalindrome = (s, low, high) => {
-    while (low >= 0 && high <= s.length && s[low] === s[high]) {
+  const isPalindrome = (low, high) => {
+    while (low >= 0 && high <= s.length && s[low--] === s[high++]) {
       count++;
-      low--;
-      high++;
     }
   };
+
+  for (let i = 0; i < s.length; i++) {
+    isPalindrome(i, i);
+    isPalindrome(i, i + 1);
+  }
 
   return count;
 };
