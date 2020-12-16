@@ -16,3 +16,9 @@ Input: "aaa"
 Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 */
+
+//options:
+//recursion, dfs
+  //branches, tree
+//iteration, bfs
+//brut force, nested loops
