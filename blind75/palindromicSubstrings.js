@@ -22,3 +22,8 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
   //branches, tree
 //iteration, bfs
 //brut force, nested loops
+
+//using loop and helper
+//TC-O(n^2)
+//SC-O(1)
+
