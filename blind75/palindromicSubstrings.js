@@ -42,3 +42,39 @@ const countSubstrings = s => {
 
   return count;
 };
+
+//RECURSION:
+const isPalindrome = s => {
+  if (s === '') return false;
+  let left = 0;
+  let right = s.length - 1;
+  while (left < right) {
+    if (s[left] !== s[right]) return false;
+    left++;
+    right--;
+  }
+  return true;
+};
+
+const countSubstrings = s => {
+  let count = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    //do something per char
+    const traverse = (temp, idx) => {
+      //helper for each char
+      if (isPalindrome(temp)) {
+        count++;
+      }
+      if (idx >= s.length) { return; }
+      temp += s[idx];
+      traverse(temp, idx + 1);
+    };
+
+    traverse('', i);
+
+  }
+
+
+  return count;
+};
