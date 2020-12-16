@@ -18,3 +18,6 @@ Example 4:
 Input: s = "ac"
 Output: "a"
 */
+
+//TC-O(n^2)
+//SC-O(1)
