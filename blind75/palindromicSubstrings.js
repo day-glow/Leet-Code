@@ -23,7 +23,24 @@ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 //iteration, bfs
 //brut force, nested loops
 
-//using loop and helper
+//using loop and helper, singles and center to out method
 //TC-O(n^2)
 //SC-O(1)
+const countSubstrings = s => {
+  let count = 0;
 
+  for (let i = 0; i < s.length; i++) {
+    isPalindrome(s, i, i);
+    isPalindrome(s, i, i + 1);
+  }
+
+  const isPalindrome = (s, low, high) => {
+    while (low >= 0 && high <= s.length && s[low] === s[high]) {
+      count++;
+      low--;
+      high++;
+    }
+  };
+
+  return count;
+};
