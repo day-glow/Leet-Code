@@ -27,14 +27,15 @@ Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
 find min
 use binary search?
 use pivot?
+3 pointer?
 TC-
-  best
-  avg
-  worst
+  best- O(logn)
+  avg- O(nlogn)
+  worst- O(n)
 SC-
-  best
-  avg
-  worst
+  best-O(1)
+  avg-O(1)
+  worst-O(1)
 */
 
 const findMin = nums => {
