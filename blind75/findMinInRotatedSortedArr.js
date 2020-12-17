@@ -25,6 +25,7 @@ Explanation: The original array was [11,13,15,17] and it was rotated 4 times.
 
 /*
 find min
+brut force (rotate until the next number is greater than sub 0 position) O(n) time
 use binary search?
 use pivot?
 3 pointer?
@@ -38,6 +39,37 @@ SC-
   worst-O(1)
 */
 
+//3 pointers
 const findMin = nums => {
+  //edge cases
+  if (nums.length < 1) return null;
+  if (nums.length === 1) return nums[0];
+  if (nums.length === 2) return Math.min(nums[0], nums[1]);
 
+  //declare variables
+  let left = 0;
+  let mid = Math.floor(nums.length / 2);
+  let right = nums.length - 1;
+
+
+  //compare
+  while (!(nums[left] < nums[mid] && nums[mid] < nums[right] && nums[left] < nums[right])) {
+    if (nums[left] < nums[mid] && nums[mid] < nums[right] && nums[left] < nums[right]) {
+      break;
+    } else if (nums[left] < nums[mid] && nums[mid] > nums[right] && nums[left] > nums[right]) {
+      left = mid;
+      mid = left + Math.floor((right - left) / 2);
+    } else if (nums[left] > nums[mid]) {
+      right = mid;
+      mid = left + Math.floor((mid - left) / 2);
+    } else if (left === mid && nums[left] > nums[right]) {
+      left = right;
+      break;
+    }
+  }
+
+  //double check
+  if (left === 0 || left === nums.length - 1 || nums[left] < nums[left + 1] && nums[left] < nums[left - 1]) {
+    return nums[left];
+  }
 };
