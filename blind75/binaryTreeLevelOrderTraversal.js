@@ -28,7 +28,6 @@ SC-
   avg- O(n)
   worst- O(n)
 */
-
 const levelOrder = root => {
   if (root === null) return [];
   let result = [];
@@ -50,5 +49,23 @@ const levelOrder = root => {
     }
     result.push(level);
   }
+  return result;
+};
+
+//Recursion approach, dfs, dfs
+var levelOrder = function(root) {
+  const result = [];
+
+  function traverse(node, level) {
+      if(!node) return;
+
+      if(!result[level]) result[level] = [node.val];
+      else result[level].push(node.val);
+
+      traverse(node.left, level+1);
+      traverse(node.right, level+1);
+  }
+
+  traverse(root, 0);
   return result;
 };
