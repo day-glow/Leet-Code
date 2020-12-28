@@ -10,3 +10,17 @@ Input: digits = [1,2,3]
 Output: [1,2,4]
 Explanation: The array represents the integer 123.
 */
+
+/*
+Brute force
+*/
+const plusOne = digits => {
+
+};
+
+/*
+.split .join approach
+*/
+const plusOne = digits => {
+
+};
