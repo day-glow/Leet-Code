@@ -11,3 +11,12 @@ Input:
 
 Output:  [1,2,4,7,5,3,6,8,9]
 */
+
+/*
+nested loops, iterate over every num and add to result arr
+TC- O(n)
+SC- O(n)
+*/
+const findDiagonalOrder = matrix => {
+
+};
