@@ -52,20 +52,30 @@ const levelOrder = root => {
   return result;
 };
 
+/*
 //Recursion approach, dfs, dfs
-var levelOrder = function(root) {
-  const result = [];
+TC-
+  best- O(n)
+  avg- O(n)
+  worst- O(n)
+SC-
+  best- O(n)
+  avg- O(n)
+  worst- O(n)
+*/
+const levelOrder = root => {
+  let result = [];
 
-  function traverse(node, level) {
-      if(!node) return;
-
-      if(!result[level]) result[level] = [node.val];
-      else result[level].push(node.val);
-
-      traverse(node.left, level+1);
-      traverse(node.right, level+1);
-  }
-
-  traverse(root, 0);
+  const traversal = (node, level) => {
+    if (!node) return;
+    if (!result[level]) {
+      result.push([node.val]);
+    } else {
+      result[level].push(node.val);
+    }
+    if (node.left) traversal(node.left, level + 1);
+    if (node.right) traversal(node.right, level + 1);
+  };
+  traversal(root, 0);
   return result;
 };
