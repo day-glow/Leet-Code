@@ -31,3 +31,15 @@ O(n)
 SC-
 O(1)
 */
+const dominantIndex = nums => {
+  if (!nums.length) return -1;
+  if (nums.length === 1) return 0;
+  const isSorted = nums.slice(0).sort((a, b) => a - b);
+  const largest = isSorted[isSorted.length - 1];
+  const secondLargest = isSorted[isSorted.length - 2];
+  if (largest >= secondLargest * 2) {
+    return nums.indexOf(largest);
+  }
+
+  return -1;
+};
