@@ -20,3 +20,14 @@ Note:
 nums will have a length in the range [1, 50].
 Every nums[i] will be an integer in the range [0, 99].
 */
+
+/*
+Sort native Method
+TC-
+O(1) - if already sorted
+O(n) - sort method
+O(n)
+
+SC-
+O(1)
+*/
