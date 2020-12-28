@@ -44,7 +44,14 @@ const dominantIndex = nums => {
   return -1;
 };
 
+/*
 //Linear Scan Approach
+TC-
+O(n)
+
+SC-
+O(1)
+*/
 const dominantIndex = nums => {
   let largestNum = nums[0];
   let secondLargestNum = 0;
