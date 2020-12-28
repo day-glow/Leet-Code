@@ -12,10 +12,35 @@ Explanation: The array represents the integer 123.
 */
 
 /*
-Brute force
+Recursion, carry over:
+TC-
+O(1)
+O(n)
+O(n)
+
+SC-
+O(1)
 */
 const plusOne = digits => {
 
+  const carryOver = (digits, elemFromEnd) => {
+    if (digits[digits.length - elemFromEnd] === undefined) {
+      digits.unshift(1);
+    } else if (digits[digits.length - elemFromEnd] < 9) {
+      digits[digits.length - elemFromEnd] = digits[digits.length - elemFromEnd] + 1;
+    } else if (digits[digits.length - elemFromEnd] === 9) {
+      digits[digits.length - elemFromEnd] = 0;
+      carryOver(digits, elemFromEnd + 1);
+    }
+  };
+
+  if (digits[digits.length - 1] < 9) {
+    digits[digits.length - 1] = digits[digits.length - 1] + 1;
+  } else if (digits[digits.length - 1] === 9) {
+    digits[digits.length - 1] = 0;
+    carryOver(digits, 2);
+  }
+  return digits;
 };
 
 /*
