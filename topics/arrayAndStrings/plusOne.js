@@ -11,6 +11,22 @@ Output: [1,2,4]
 Explanation: The array represents the integer 123.
 */
 
+//Brut force (simple for loop):
+//TC-O(n)
+//SC-O(n)
+const plusOne = digits => {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    digits[i]++;
+    if (digits[i] > 9) {
+      digits[i] = 0;
+    } else {
+      return digits;
+    }
+  }
+  digits.unshift(1);
+  return digits;
+};
+
 /*
 Recursion, carry over:
 TC-
