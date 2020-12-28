@@ -43,3 +43,21 @@ const dominantIndex = nums => {
 
   return -1;
 };
+
+//Linear Scan Approach
+const dominantIndex = nums => {
+  let largestNum = nums[0];
+  let secondLargestNum = 0;
+  let largestIdx = 0;
+  for (let i = 1; i < nums.length; i++) {
+    let curr = nums[i];
+    if (curr > largestNum) {
+      largestIdx = i;
+      secondLargestNum = largestNum;
+      largestNum = curr;
+    } else if (curr > secondLargestNum) {
+      secondLargestNum = curr;
+    }
+  }
+  return (largestNum >= secondLargestNum * 2) ? largestIdx : -1;
+};
