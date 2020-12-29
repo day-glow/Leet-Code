@@ -11,7 +11,9 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 */
 
 /*
-Multiple loops for each col or row, then increase only one m or n at end of each
+Multiple loops for each directional flow
+TC-O(n)
+SC-O(1)
 */
 const spiralOrder = matrix => {
   let result = [];
