@@ -18,3 +18,8 @@ Example 3:
 Input: haystack = "", needle = ""
 Output: 0
 */
+
+/*
+TC- O(n2)
+SC- O(1)
+*/
