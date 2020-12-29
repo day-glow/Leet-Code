@@ -23,3 +23,20 @@ Output: 0
 TC- O(n2)
 SC- O(1)
 */
+const strStr = (haystack, needle) => {
+  if (!needle.length) return 0;
+  let haystackP1 = 0;
+  let haystackP2 = 0;
+  let needleIdx = 0;
+  while (haystack.length - haystackP1 >= needle.length - needleIdx) {
+
+    if (haystack[haystackP2++] === needle[needleIdx++]) {
+    } else {
+      haystackP1++;
+      haystackP2 = haystackP1;
+      needleIdx = 0;
+    }
+    if (needleIdx === needle.length) return haystackP1;
+  }
+  return -1
+};
