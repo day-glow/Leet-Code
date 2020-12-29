@@ -41,3 +41,21 @@ const generate = numRows => {
 
   return triangle;
 };
+
+//Really smart approach with nested for loops
+//OPTIMIZED:
+//TC-O(rows2)
+//SC-O(rows2)
+
+const generate = numRows => {
+  let pascal = [];
+  for (let i = 0; i < numRows; i++) {
+      pascal[i] = [];
+      pascal[i][0] = 1;
+      for (let j = 1; j < i; j++) {
+          pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j]
+      }
+      pascal[i][i] = 1;
+  }
+  return pascal;
+};
