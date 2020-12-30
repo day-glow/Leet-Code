@@ -8,21 +8,21 @@ Explanation: The first two digits or the last three digits are consecutive 1s.
   The maximum number of consecutive 1s is 3.
 */
 
+/*
+TC- O(n)
+SC- O(1)
+*/
 const findMaxConsecutiveOnes = nums => {
   let maxCount = 0;
   let currCount = 0;
-
   for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === 1) {
+    if (nums[i]) {
       currCount++;
-    } else if (nums[i] === 0) {
-      if (currCount >= maxCount) {
-        maxCount = currCount;
-      }
+    } else {
+      if (currCount >= maxCount) maxCount = currCount;
       currCount = 0;
     }
-    if (currCount + nums.length - 1 < maxCount && nums[i] === 0) break;
+    if (currCount + nums.length - 1 < maxCount && !nums[i]) break;
   }
-  if (currCount > maxCount) return currCount;
-  return maxCount;
+  return currCount > maxCount ? currCount : maxCount;
 };
