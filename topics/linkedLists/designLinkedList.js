@@ -25,3 +25,15 @@ const MyLinkedList = () => {
   this.tail = null;
   this.size = 0;
 };
+
+//Get the value of the index-th node in the linked list. If the index is invalid, return -1.
+MyLinkedList.prototype.get = index => {
+  if (!this.size || this.size - 1 < index || index < 0) return -1;
+  let currNode = this.head;
+
+  for (let i = 0; i < index; i++) {
+    currNode = currNode.next;
+  };
+
+  return currNode;
+};
