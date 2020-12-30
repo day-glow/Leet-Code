@@ -26,3 +26,16 @@ const detectCycle = head => {
   }
   return null;
 };
+
+//retraverse LL with 2-pointers going same speed
+const detectCyclePos = (head, intersection) => {
+  let p1 = head;
+  let p2 = intersection;
+
+  while (p1 !== p2) {
+    p1 = p1.next;
+    p2 = p2.next;
+  }
+  return p1;
+};
+
