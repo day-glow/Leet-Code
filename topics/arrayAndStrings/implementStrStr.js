@@ -20,7 +20,9 @@ Output: 0
 */
 
 /*
-TC- O(n2)
+TC-
+O((n-l)l) worse
+O(n) best
 SC- O(1)
 */
 const strStr = (haystack, needle) => {
