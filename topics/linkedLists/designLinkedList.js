@@ -18,3 +18,10 @@ const node = (val) = {
   this.val = val;
   this.next = null;
 };
+
+//construct LL
+const MyLinkedList = () => {
+  this.head = null;
+  this.tail = null;
+  this.size = 0;
+};
