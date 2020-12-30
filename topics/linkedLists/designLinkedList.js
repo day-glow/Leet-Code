@@ -52,3 +52,18 @@ MyLinkedList.prototype.addAtHead = function(val) {
   this.size++;
   return this;
 };
+
+//Append a node of value val to the last element of the linked list.
+MyLinkedList.prototype.addAtTail = function(val) {
+  let newNode = new Node(val);
+
+  if (!this.tail && !this.head) {
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    this.tail.next = newNode;
+    this.tail = newNode;
+  }
+  this.size++;
+  return this;
+};
