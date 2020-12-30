@@ -32,3 +32,21 @@ const getIntersectionNode = (headA, headB) => {
   }
   return null;
 };
+
+//Two Pointers
+//TC- O(m+n)
+//SC- O(1)
+const getIntersectionNode = (headA, headB) => {
+  if (!headA || !headB) return null;
+
+  let nodeA = headA;
+  let nodeB = headB;
+
+  while (nodeA !== nodeB) {
+    nodeA = nodeA ? nodeA.next : headB;
+    nodeB = nodeB ? nodeB.next : headA;
+    if (!nodeA && !nodeB) return null;
+  }
+
+  return nodeA;
+};
