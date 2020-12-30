@@ -27,3 +27,12 @@ const findMaxConsecutiveOnes = nums => {
   }
   return Math.max(maxCount, currCount);
 };
+
+//different approach (still slower with sort method)
+const findMaxConsecutiveOnes = nums => {
+  let numsStr = nums.join('');
+  let onesArr = numsStr.split('0');
+  let lengthsArr = onesArr.map(elem => elem.length);
+  lengthsArr.sort((a, b) => a - b);
+  return lengthsArr[lengthsArr.length - 1];
+};
