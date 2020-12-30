@@ -13,3 +13,8 @@ void addAtIndex(int index, int val) Add a node of value val before the indexth n
 void deleteAtIndex(int index) Delete the indexth node in the linked list, if the index is valid.
 */
 
+//construct single node
+const node = (val) = {
+  this.val = val;
+  this.next = null;
+};
