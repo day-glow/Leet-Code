@@ -13,3 +13,22 @@ Input: numbers = [2,7,11,15], target = 9
 Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 */
+
+const twoSum = (numbers, target) => {
+  let p1 = 0;
+  let p2 = numbers.length - 1;
+
+  while (p1 !== p2) {
+    if (numbers[p1] + numbers[p2] === target) {
+      if (p1 < p2) {
+        return [p1 + 1, p2 + 1];
+      } else {
+        return [p2 + 1, p1 + 1];
+      }
+    } else if (numbers[p1] + numbers[p2] > target) {
+      p2--;
+    } else if (numbers[p1] + numbers[p2] < target) {
+      p1++;
+    }
+  }
+};
