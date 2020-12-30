@@ -42,6 +42,19 @@ SC-
   worst-
 */
 
-const nameOfProblem = inputs => {
+const removeElement = (nums, val) => {
+  if (!nums.length) return [];
+  let p1 = 0;
+  let p2 = nums.length;
 
+  while (p1 < p2) {
+    if (nums[p1] === val) {
+      p2--;
+      nums[p1] = nums[p2];
+
+    } else {
+      p1++;
+    }
+  }
+  return p2;
 };
