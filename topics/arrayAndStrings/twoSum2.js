@@ -14,6 +14,18 @@ Output: [1,2]
 Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.
 */
 
+/*
+2-ppointers APPROACH:
+TC-
+  best- O(1)
+  avg-O(n)
+  worst-O(n)
+SC-
+  best-O(1)
+  avg-O(1)
+  worst-O(1)
+*/
+
 const twoSum = (numbers, target) => {
   let p1 = 0;
   let p2 = numbers.length - 1;
