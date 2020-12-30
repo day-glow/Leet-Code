@@ -8,6 +8,8 @@ Output: 2
 Explanation: the subarray [4,3] has the minimal length under the problem constraint.
 */
 
+//TC- O(n)
+//SC- O(1)
 const minSubArrayLen = (s, nums) => {
   let min;
   let p1 = 0;
