@@ -15,14 +15,15 @@ SC- O(1)
 const findMaxConsecutiveOnes = nums => {
   let maxCount = 0;
   let currCount = 0;
+
   for (let i = 0; i < nums.length; i++) {
     if (nums[i]) {
       currCount++;
     } else {
-      if (currCount >= maxCount) maxCount = currCount;
+      maxCount = Math.max(maxCount, currCount);
       currCount = 0;
     }
     if (currCount + nums.length - 1 < maxCount && !nums[i]) break;
   }
-  return currCount > maxCount ? currCount : maxCount;
+  return Math.max(maxCount, currCount);
 };
