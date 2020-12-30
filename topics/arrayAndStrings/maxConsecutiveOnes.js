@@ -36,3 +36,14 @@ const findMaxConsecutiveOnes = nums => {
   lengthsArr.sort((a, b) => a - b);
   return lengthsArr[lengthsArr.length - 1];
 };
+
+//slightly better
+const findMaxConsecutiveOnes = nums => {
+  let numsStr = nums.join('');
+  let onesArr = numsStr.split('0');
+  let lengthsArr = onesArr.map(elem => elem.length);
+  return Math.max(...lengthsArr);
+};
+
+//reduced to one line (but not most efficent)
+const findMaxConsecutiveOnes = nums => Math.max(...nums.join('').split('0').map(elem => elem.length));
