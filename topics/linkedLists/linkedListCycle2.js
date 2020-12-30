@@ -10,3 +10,19 @@ Input: head = [3,2,0,-4], pos = 1
 Output: tail connects to node index 1
 Explanation: There is a cycle in the linked list, where tail connects to the second node.
 */
+
+//start with determining if LL has cycle w/ 2-pointer (fast&slow) approach
+const detectCycle = head => {
+  let p1 = head;
+  let p2 = head;
+
+  while (p2 && p2.next && p2.next.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+    if (p1 === p2) {
+      //has intersection (has cycle)
+      return detectCyclePos(head, p2);
+    }
+  }
+  return null;
+};
