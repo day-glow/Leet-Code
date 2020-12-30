@@ -22,6 +22,5 @@ const minSubArrayLen = (s, nums) => {
       p1++;
     }
   }
-
   return (min !== undefined) ? min : 0;
 };
