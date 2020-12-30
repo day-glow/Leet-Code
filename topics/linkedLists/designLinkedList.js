@@ -37,3 +37,18 @@ MyLinkedList.prototype.get = index => {
 
   return currNode;
 };
+
+//Add a node of value val before the head. After the insertion, the new node will be the new head.
+MyLinkedList.prototype.addAtHead = function(val) {
+  let newNode = new Node(val);
+
+  if (!this.head) {
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    newNode.next = this.head;
+    this.head = newNode;
+  }
+  this.size++;
+  return this;
+};
