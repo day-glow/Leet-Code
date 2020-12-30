@@ -11,6 +11,11 @@ Output: tail connects to node index 1
 Explanation: There is a cycle in the linked list, where tail connects to the second node.
 */
 
+/*
+TC-O(2n)
+SC-O(1)
+*/
+
 //start with determining if LL has cycle w/ 2-pointer (fast&slow) approach
 const detectCycle = head => {
   let p1 = head;
