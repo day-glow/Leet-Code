@@ -14,20 +14,20 @@ void deleteAtIndex(int index) Delete the indexth node in the linked list, if the
 */
 
 //construct single node
-const node = (val) = {
+var Node = function(val) {
   this.val = val;
   this.next = null;
 };
 
 //construct LL
-const MyLinkedList = () => {
+var MyLinkedList = function() {
   this.head = null;
   this.tail = null;
   this.size = 0;
 };
 
 //Get the value of the index-th node in the linked list. If the index is invalid, return -1.
-MyLinkedList.prototype.get = index => {
+MyLinkedList.prototype.get = function(index) {
   if (!this.size || this.size - 1 < index || index < 0) return -1;
   let currNode = this.head;
 
@@ -35,7 +35,7 @@ MyLinkedList.prototype.get = index => {
     currNode = currNode.next;
   };
 
-  return currNode;
+  return currNode.val;
 };
 
 //Add a node of value val before the head. After the insertion, the new node will be the new head.
@@ -84,5 +84,27 @@ MyLinkedList.prototype.addAtIndex = function(index, val) {
   currNode.next = newNode;
   newNode.next = temp;
   this.size++;
+  return this;
+};
+
+// Delete the index-th node in the linked list, if the index is valid.
+MyLinkedList.prototype.deleteAtIndex = function(index) {
+  if (this.size - 1 < index || index < 0) return;
+  if (index === 0) {
+    this.head = this.head.next;
+    this.size--;
+    return this;
+  }
+
+  let currNode = this.head;
+  for (let i = 0; i < index - 1; i++) {
+    currNode = currNode.next;
+  }
+  currNode.next = currNode.next.next ? currNode.next.next : null;
+  if (!currNode.next) {
+    this.tail = currNode;
+  }
+
+  this.size--;
   return this;
 };
