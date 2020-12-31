@@ -21,3 +21,33 @@ Two Pointers, one pass approach
 TC-O(L)
 SC-O(1)
 */
+var Node = function(val) {
+  this.val = val;
+  this.next = null;
+};
+//1,2,3,4,5
+//remove 4
+//node with node.next.next.next equals null is the target
+//reassign target.next to target.next.next (deleting nth from end node)
+const removeNthFromEnd = (head, n) => {
+  if (!head.next && n > 0) return null;
+  let tempNode = new Node();
+  tempNode.next = head;
+  let p1 = tempNode;
+  let p2 = p1;
+
+  for (let i = 0; i <= n; i++) {
+    p2 = p2.next;
+  }
+
+  while (p2) {
+    p1 = p1.next;
+    p2 = p2.next;
+  }
+  if (!p2) {
+    //if (p1 === head) return head.next;
+    p1.next = p1.next.next;
+  }
+
+  return tempNode.next;
+};
