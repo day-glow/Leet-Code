@@ -16,3 +16,8 @@ Input: head = [1,2], n = 1
 Output: [1]
 */
 
+/*
+Two Pointers, one pass approach
+TC-O(L)
+SC-O(1)
+*/
