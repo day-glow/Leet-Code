@@ -12,6 +12,11 @@ Output: -1
 Explanation: 2 does not exist in nums so return -1
 */
 
+/*
+TC- O(log n)
+SC- O(1)
+*/
+
 const search = (nums, target) => {
 
   let p;
