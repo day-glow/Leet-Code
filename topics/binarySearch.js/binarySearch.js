@@ -11,3 +11,23 @@ Input: nums = [-1,0,3,5,9,12], target = 2
 Output: -1
 Explanation: 2 does not exist in nums so return -1
 */
+
+const search = (nums, target) => {
+
+  let p;
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l <= r) {
+    p = Math.floor((r - l) / 2) + l;
+    if (nums[p] === target) {
+      return p;
+    }
+    if (nums[p] > target) {
+      r = p - 1;
+    } else {
+      l = p + 1;
+    }
+  }
+  return -1;
+};
