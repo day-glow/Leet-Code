@@ -19,7 +19,8 @@ const mySqrt = num => {
 };
 
 //going manual math approach
-//TC-
+//TC-O(logn)
+//SC-O(1)
 const mySqrt = num => {
   if (num === 1 || !num) return num;
   if (num < 0) return NaN;
@@ -38,4 +39,33 @@ const mySqrt = num => {
     }
   }
   return right;
+};
+
+//java Newton's method
+class Solution {
+  public int mySqrt(int x) {
+    if (x < 2) return x;
+
+    double x0 = x;
+    double x1 = (x0 + x / x0) / 2.0;
+    while (Math.abs(x0 - x1) >= 1) {
+      x0 = x1;
+      x1 = (x0 + x / x0) / 2.0;
+    }
+
+    return (int)x1;
+  }
+}
+
+//Newton's Method, same TC/SC but fewer iterations, (don't really understand)
+const mySqrt = num => {
+  if (num < 2) return num;
+
+  let x = num;
+  let x1 = Math.floor((x + num / x) / 2);
+  while (Math.abs(x - x1) >= 1) {
+    x = x1;
+    x1 = Math.floor((x + num / x) / 2);
+  }
+  return x1;
 };
