@@ -17,3 +17,25 @@ Explanation: The square root of 8 is 2.82842..., and since the decimal part is t
 const mySqrt = num => {
   return Math.floor(Math.sqrt(num));
 };
+
+//going manual math approach
+//TC-
+const mySqrt = num => {
+  if (num === 1 || !num) return num;
+  if (num < 0) return NaN;
+
+  let p;
+  let left = 2;
+  let right = Math.floor(num / 2);
+  while (left <= right) {
+    p = left + Math.floor((right - left) / 2);
+    if (p * p < num) {
+      left = p + 1;
+    } else if (p * p > num) {
+      right = p - 1;
+    } else {
+      return p;
+    }
+  }
+  return right;
+};
