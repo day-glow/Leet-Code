@@ -30,7 +30,7 @@ Output: 2
 */
 
 //Binary Search
-//TC-O(logn)
+//TC-O(log2n)
 //SC-O(1)
 const guessNumber = n => {
   let left = 0;
