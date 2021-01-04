@@ -19,6 +19,8 @@ Output: -1
 */
 
 //binary search with checks for left < target < right values
+//TC-O(log n)
+//SC-O(1)
 const search = (nums, target) => {
   let left = 0;
   let right = nums.length - 1;
