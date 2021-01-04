@@ -29,6 +29,21 @@ Input: n = 2, pick = 2
 Output: 2
 */
 
+//Binary Search
+//TC-O(logn)
+//SC-O(1)
 const guessNumber = n => {
+  let left = 0;
+  let right = n;
 
+  while (left <= right) {
+    let pivot = Math.floor((right - left) / 2) + left;
+    if (!guess(pivot)) return pivot;
+    if (guess(pivot) === 1) {
+      left = pivot + 1;
+    } else if (guess(pivot) === -1) {
+      right = pivot - 1;
+    }
+  }
+  return -1;
 };
