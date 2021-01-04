@@ -23,6 +23,8 @@ Output: 1
 */
 
 //BINARY SEARCH TEMPLATE 2
+//TC-O(logn)
+//SC-O(1)
 const solution = (isBadVersion) => {
   /**
    * @param {integer} n Total versions
