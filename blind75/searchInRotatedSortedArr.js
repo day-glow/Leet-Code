@@ -18,6 +18,7 @@ Input: nums = [1], target = 0
 Output: -1
 */
 
+//ONE_PASS BINARY SEARCH
 //binary search with checks for left < target < right values
 //TC-O(log n)
 //SC-O(1)
