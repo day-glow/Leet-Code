@@ -28,3 +28,7 @@ Example 4:
 Input: n = 2, pick = 2
 Output: 2
 */
+
+const guessNumber = n => {
+
+};
