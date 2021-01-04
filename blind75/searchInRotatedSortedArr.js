@@ -17,3 +17,31 @@ Example 3:
 Input: nums = [1], target = 0
 Output: -1
 */
+
+//binary search with checks for left < target < right values
+const search = (nums, target) => {
+  let left = 0;
+  let right = nums.length - 1;
+
+  while (left <= right) {
+    let pivot = Math.floor((right - left) / 2) + left;
+    if (nums[pivot] === target) return pivot;
+    if (nums[left] === target) return left;
+    if (nums[right] === target) return right;
+    if (nums[pivot] >= nums[left]) {
+      if (nums[left] <= target && target < nums[pivot]) {
+        right = pivot - 1;
+      } else {
+        left = pivot + 1;
+      }
+    } else {
+      if (nums[pivot] < target && target <= nums[right]) {
+        left = pivot + 1;
+      } else {
+        right = pivot - 1;
+      }
+    }
+  }
+
+  return -1;
+};
