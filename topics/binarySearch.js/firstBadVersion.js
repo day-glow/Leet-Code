@@ -21,3 +21,28 @@ Example 2:
 Input: n = 1, bad = 1
 Output: 1
 */
+
+//BINARY SEARCH TEMPLATE 2
+const solution = (isBadVersion) => {
+  /**
+   * @param {integer} n Total versions
+   * @return {integer} The first bad version
+   */
+  return function(n) {
+    if (n <= 1 && !isBadVersion(n)) return -1;
+    if (n <= 1 && isBadVersion(n)) return n;
+
+    let left = 1;
+    let right = n;
+
+    while (left < right) {
+      let pivot = Math.floor((right - left) / 2) + left;
+      if (!isBadVersion(pivot)) {
+        left = pivot + 1;
+      } else {
+        right = pivot;
+      }
+    }
+    return left;
+  };
+};
