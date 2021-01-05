@@ -16,7 +16,8 @@ Output: 5
 Explanation: Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.
 */
 
-
+//TC-O(logn)
+//SC-O(1)
 const findPeakElement = nums => {
   if (nums.length < 1) return -1;
 
