@@ -18,6 +18,10 @@ Input: nums = [], target = 0
 Output: [-1,-1]
 */
 
+//binary search two part, 2 sub array sides
+/*TC-O(logn)
+SC-O(1)
+*/
 const searchRange = (nums, target) => {
   let left = 0;
   let right = nums.length - 1;
@@ -44,4 +48,36 @@ const searchRange = (nums, target) => {
   //if target was found
   let end = nums[left] === target ? left : left - 1;
   return [start, end];
+};
+
+//binary search, middle out
+/*TC-
+worst- O(n)
+avg- O(logn)
+best- O(logn)
+SC-O(1)
+*/
+const searchRange = (nums, target) => {
+  let left = 0;
+  let right = nums.length - 1;
+  if (!nums.length || target === null || nums[left] > target) return [-1, -1];
+
+  while (left <= right) {
+    let pivot = Math.floor((right - left) / 2) + left;
+    if (nums[pivot] === target) {
+      left = pivot;
+      right = pivot;
+      break;
+    } else if (nums[pivot] > target) {
+      right = pivot - 1;
+    } else {
+      left = pivot + 1;
+    }
+  }
+
+  if (left > right) return [-1, -1];
+
+  while (nums[right + 1] === target) right++;
+  while (nums[left - 1] === target) left--;
+  return [left, right];
 };
