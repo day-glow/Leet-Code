@@ -19,20 +19,31 @@ Output: 4
 */
 
 const closestValue = (root, target) => {
-  if (!root || target === null) return null;
-  if (root.val === target) return root.val;
-
   let node = root;
   let closest = root.val;
 
   while (node) {
     if (Math.abs(node.val - target) < 0.5) return node.val;
     if (Math.abs(node.val - target) <= Math.abs(closest - target)) closest = node.val;
-    if (node.val < target && node.right) {
+    if (node.val < target) {
       node = node.right;
-    } else if (node.val > target && node.left) {
+    } else {
       node = node.left;
     }
+  }
+  return closest;
+};
+
+//binary search using ternary
+const closestValue = (root, target) => {
+  let val;
+  let closest = root.val;
+  let node = root;
+  while (node) {
+    val = node.val;
+    closest = (Math.abs(val - target) < Math.abs(closest - target)) ? val : closest;
+    node = target < val ? node.left : node.right;
+
   }
   return closest;
 };
