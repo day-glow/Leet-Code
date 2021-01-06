@@ -30,3 +30,45 @@ Example 5:
 Input: N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]]
 Output: 3
 */
+
+//N = num of players
+//fails if each player is listed as A in trust
+//fails if each player does not trust town judge, listed at least once as B
+
+//are elems in sorted order?
+
+const findJudge = (N, trust) => {
+  if (N === 1 && trust.length < 1) return N;
+  //hash map? potential everybody and potential judge
+  let everybody = [];
+  let judge = {
+  };
+
+  let townJudge;
+  //check length
+
+  //check A's
+  trust.forEach(peoplesTrust => {
+    if (!everybody.includes(peoplesTrust[0])) everybody.push(peoplesTrust[0]);
+    if (!judge[peoplesTrust[1]]) {
+      judge[peoplesTrust[1]] = 1;
+    } else {
+      judge[peoplesTrust[1]] += 1;
+    }
+  })
+
+  if (everybody.length >= N) return -1;
+
+  //check B's
+  for (let potentialJudge in judge) {
+    if (judge[potentialJudge] === N - 1 && !everybody.includes(potentialJudge)) {
+      if (!townJudge) {
+        townJudge = potentialJudge;
+      } else {
+        return -1;
+      }
+    };
+  }
+
+  return townJudge ? townJudge : -1;
+};
