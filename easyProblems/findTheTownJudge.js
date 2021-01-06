@@ -118,3 +118,21 @@ const findJudge = (N, trust) => {
   }
   return -1;
 };
+
+//OPTIMIZED SET ARRAY length for GRAPH:
+const findJudge = (N, trust) => {
+  if (N === 1 && trust.length < 1) return N;
+  if (trust.length < N - 1) return -1;
+
+  let trustCount = new Array(N + 1).fill(0);
+
+  trust.forEach(peoplesTrust => {
+    trustCount[peoplesTrust[0]]--;
+    trustCount[peoplesTrust[1]]++;
+  })
+
+  for (let i = 1; i <= N; i++) {
+    if (trustCount[i] === N - 1) return i;
+  }
+  return -1;
+};
