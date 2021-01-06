@@ -16,36 +16,9 @@ Output: -1
 Explanation: There is no celebrity.
 */
 
-
-//BRUTE FORCE
-//TC-O(n2)
-//SC-O(n)
-var solution = function(knows) {
-  /**
-   * @param {integer} n Total people
-   * @return {integer} The celebrity
-   */
-  return function(n) {
-    let whoKnowsWho = new Array(n).fill(0);
-    for (let person = 0; person < n; person++) {
-      for (let possibleCeleb = 0; possibleCeleb < n; possibleCeleb++) {
-        if (person === possibleCeleb) {
-          continue;
-        } else if (knows(person, possibleCeleb)) {
-          whoKnowsWho[possibleCeleb] += 1;
-        } else {
-          whoKnowsWho[possibleCeleb] -= 1;
-        }
-      }
-    }
-    for (let i = 0; i < whoKnowsWho.length; i++) {
-      if (whoKnowsWho[i] === n - 1) return i;
-    }
-    return -1;
-  };
-};
-
 //OPTIMIZED cancel out candidates approach
+//O(2n)
+//O(1)
 var solution = function(knows) {
 
   return function(n) {
@@ -60,6 +33,21 @@ var solution = function(knows) {
       if (possibleCeleb !== partyGoer) {
         if (knows(possibleCeleb, partyGoer) || !knows(partyGoer, possibleCeleb)) return -1;
       }
+    }
+    return possibleCeleb;
+  };
+};
+
+//Refractored
+var solution = function(knows) {
+
+  return function(n) {
+    let possibleCeleb = 0;
+    for (let partyGoer = 0; partyGoer < n; partyGoer++) {
+      if (possibleCeleb !== partyGoer && knows(possibleCeleb, partyGoer)) possibleCeleb = partyGoer;
+    }
+    for (let partyGoer = 0; partyGoer < n; partyGoer++) {
+      if (possibleCeleb !== partyGoer && knows(possibleCeleb, partyGoer) || !knows(partyGoer, possibleCeleb)) return -1;
     }
     return possibleCeleb;
   };
