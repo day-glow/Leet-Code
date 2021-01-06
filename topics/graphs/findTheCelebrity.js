@@ -15,3 +15,31 @@ Input: graph = [[1,0,1],[1,1,0],[0,1,1]]
 Output: -1
 Explanation: There is no celebrity.
 */
+
+
+//BRUTE FORCE
+var solution = function(knows) {
+  /**
+   * @param {integer} n Total people
+   * @return {integer} The celebrity
+   */
+  return function(n) {
+    let whoKnowsWho = new Array(n).fill(0);
+    for (let person = 0; person < n; person++) {
+      for (let possibleCeleb = 0; possibleCeleb < n; possibleCeleb++) {
+        if (person === possibleCeleb) {
+          continue;
+        } else if (knows(person, possibleCeleb)) {
+          whoKnowsWho[possibleCeleb] += 1;
+        } else {
+          whoKnowsWho[possibleCeleb] -= 1;
+        }
+      }
+    }
+    for (let i = 0; i < whoKnowsWho.length; i++) {
+      if (whoKnowsWho[i] === n - 1) return i;
+    }
+    return -1;
+  };
+};
+
