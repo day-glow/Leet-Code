@@ -18,6 +18,8 @@ Explanation: There is no celebrity.
 
 
 //BRUTE FORCE
+//TC-O(n2)
+//SC-O(n)
 var solution = function(knows) {
   /**
    * @param {integer} n Total people
