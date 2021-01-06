@@ -17,3 +17,22 @@ Input: root = [4,2,5,1,3], target = 3.714286
 
 Output: 4
 */
+
+const closestValue = (root, target) => {
+  if (!root || target === null) return null;
+  if (root.val === target) return root.val;
+
+  let node = root;
+  let closest = root.val;
+
+  while (node) {
+    if (Math.abs(node.val - target) < 0.5) return node.val;
+    if (Math.abs(node.val - target) <= Math.abs(closest - target)) closest = node.val;
+    if (node.val < target && node.right) {
+      node = node.right;
+    } else if (node.val > target && node.left) {
+      node = node.left;
+    }
+  }
+  return closest;
+};
