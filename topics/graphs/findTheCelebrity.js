@@ -45,3 +45,23 @@ var solution = function(knows) {
   };
 };
 
+//OPTIMIZED cancel out candidates approach
+var solution = function(knows) {
+
+  return function(n) {
+    let possibleCeleb = 0;
+    for (let partyGoer = 0; partyGoer < n; partyGoer++) {
+      if (possibleCeleb !== partyGoer) {
+        if (knows(possibleCeleb, partyGoer)) possibleCeleb = partyGoer;
+      }
+    }
+    //double check
+    for (let partyGoer = 0; partyGoer < n; partyGoer++) {
+      if (possibleCeleb !== partyGoer) {
+        if (knows(possibleCeleb, partyGoer) || !knows(partyGoer, possibleCeleb)) return -1;
+      }
+    }
+    return possibleCeleb;
+  };
+};
+
