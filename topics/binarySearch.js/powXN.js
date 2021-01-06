@@ -18,6 +18,20 @@ Explanation: 2-2 = 1/22 = 1/4 = 0.25
 //brute force for loop (only useful for small n ints, otherwise way to slow)
 //recursion
 //binary search? based on the number of recursive calls and multiplers
+
+
+//brute force for loop (only useful for small n ints, otherwise way to slow)
 const myPow = (x, n) => {
 
+  let N = n;
+  if (N < 0) {
+    x = 1 / x;
+    N = -N;
+  }
+  let curr = 1;
+  for (let i = 0; i < N; i++) {
+    curr = curr * x;
+  }
+  return curr;
 };
+
