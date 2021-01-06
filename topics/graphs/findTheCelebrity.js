@@ -39,8 +39,7 @@ var solution = function(knows) {
 };
 
 //Refractored
-var solution = function(knows) {
-
+const solution = knows => {
   return function(n) {
     let possibleCeleb = 0;
     for (let partyGoer = 0; partyGoer < n; partyGoer++) {
@@ -52,4 +51,3 @@ var solution = function(knows) {
     return possibleCeleb;
   };
 };
-
