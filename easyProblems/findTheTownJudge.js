@@ -72,3 +72,31 @@ const findJudge = (N, trust) => {
 
   return townJudge ? townJudge : -1;
 };
+
+//OPTIMIZED SINGLE ARRAY
+const findJudge = (N, trust) => {
+  if (N === 1 && trust.length < 1) return N;
+  if (trust.length < N - 1) return -1;
+
+  //everybody will be represented by cooresponding indices
+  let trustCount = [];
+
+  trust.forEach(peoplesTrust => {
+    if (trustCount[peoplesTrust[0]]) {
+      trustCount[peoplesTrust[0]]--;
+    } else {
+      trustCount[peoplesTrust[0]] = -1;
+    }
+    if (trustCount[peoplesTrust[1]]) {
+      trustCount[peoplesTrust[1]]++;
+    } else {
+      trustCount[peoplesTrust[1]] = 1;
+    }
+
+  })
+
+  for (let i = 1; i <= N; i++) {
+    if (trustCount[i] === N - 1) return i;
+  }
+  return -1;
+};
