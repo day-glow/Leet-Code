@@ -35,3 +35,25 @@ const myPow = (x, n) => {
   return curr;
 };
 
+//fast power algo iterative, optimized from brute force
+//like binary
+//O(logn)
+//O(1)
+const myPow = (x, n) => {
+  let N = n;
+  if (N < 0) {
+    x = (1 / x);
+    N = -N;
+  }
+
+  let ans = 1;
+  let currProd = x;
+  for (let i = N; i > 0; i = Math.floor(i / 2)) {
+    if ((i % 2) === 1) {
+      ans = ans * currProd;
+    }
+    currProd = currProd * currProd;
+  }
+
+  return ans;
+};
