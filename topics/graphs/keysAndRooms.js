@@ -41,16 +41,21 @@ dfs
 obj
 */
 
+//stack
 const canVisitAllRooms = rooms => {
   let unlockedRooms = new Array(rooms.length).fill(0);
   unlockedRooms[0] = 1;
+  let currentKeys = [0];
 
-  for (let room = 0; room < rooms.length; room++) {
-    if (unlockedRooms[room] === 1 && rooms[room].length) {
-      rooms[room].forEach(key => {
-        if (!unlockedRooms[key]) unlockedRooms[key] = 1;
-      })
-    }
+  while (currentKeys.length) {
+    let currRoom = currentKeys.shift();
+    rooms[currRoom].forEach(key => {
+      if (!unlockedRooms[key]) {
+        currentKeys.push(key);
+        unlockedRooms[key] = 1;
+      }
+    })
+
   }
 
   return unlockedRooms.includes(0) ? false : true;
