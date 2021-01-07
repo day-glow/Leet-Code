@@ -27,6 +27,10 @@ Return:
 ]
 */
 
+//naive & brute force approach
+//TC-O(n)
+//SC-O(1)
+//works for few conditions and words, but easily gets lengthy if more conditions are added (i.e. alien dictionary, decryption code)
 var fizzBuzz = function(n) {
   let output = [];
   for (let i = 1; i <= n; i++) {
