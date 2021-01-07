@@ -46,3 +46,7 @@ var fizzBuzz = function(n) {
   }
   return output;
 };
+
+//hashMap approach (best for more conditions)
+//TC-O(n)
+//SC-O(1)
