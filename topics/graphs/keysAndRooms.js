@@ -42,6 +42,8 @@ obj
 */
 
 //stack
+//TC-O(n+e)
+//SC-O(n)
 const canVisitAllRooms = rooms => {
   let unlockedRooms = new Array(rooms.length).fill(0);
   unlockedRooms[0] = 1;
