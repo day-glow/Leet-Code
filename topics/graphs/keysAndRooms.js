@@ -40,3 +40,18 @@ brute force loops
 dfs
 obj
 */
+
+const canVisitAllRooms = rooms => {
+  let unlockedRooms = new Array(rooms.length).fill(0);
+  unlockedRooms[0] = 1;
+
+  for (let room = 0; room < rooms.length; room++) {
+    if (unlockedRooms[room] === 1 && rooms[room].length) {
+      rooms[room].forEach(key => {
+        if (!unlockedRooms[key]) unlockedRooms[key] = 1;
+      })
+    }
+  }
+
+  return unlockedRooms.includes(0) ? false : true;
+};
