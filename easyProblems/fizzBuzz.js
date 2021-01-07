@@ -50,3 +50,22 @@ var fizzBuzz = function(n) {
 //hashMap approach (best for more conditions)
 //TC-O(n)
 //SC-O(1)
+const fizzBuzz = n => {
+  let output = [];
+  let fizzBuzzKey = new Map();
+  fizzBuzzKey.set(3, 'Fizz');
+  fizzBuzzKey.set(5, 'Buzz');
+
+  for (let i = 1; i <= n; i++) {
+    let str = '';
+    for (let key of fizzBuzzKey.keys()) {
+      if (i % key === 0) {
+        str += fizzBuzzKey.get(key);
+      }
+    }
+    if (str === '') str = String(i);
+    output.push(str);
+
+  }
+  return output;
+};
