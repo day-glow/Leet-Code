@@ -34,4 +34,9 @@ key room[i][j] = v, opens room with num v
 all rooms locked except room '0'
 rooms bi-directional
 return boolean
+
+//Approaches
+brute force loops
+dfs
+obj
 */
