@@ -23,3 +23,15 @@ Input: [[1,3],[3,0,1],[2],[0]]
 Output: false
 Explanation: We can't enter the room with number 2.
 */
+
+/*
+SUMMARY:
+room = i
+listOfKeys = rooms[i]
+eachKey = rooms[i][j]
+N = rooms.length
+key room[i][j] = v, opens room with num v
+all rooms locked except room '0'
+rooms bi-directional
+return boolean
+*/
