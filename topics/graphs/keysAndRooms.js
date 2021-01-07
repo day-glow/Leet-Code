@@ -41,7 +41,7 @@ dfs
 obj
 */
 
-//stack
+//DFS, stack
 //TC-O(n+e)
 //SC-O(n)
 const canVisitAllRooms = rooms => {
