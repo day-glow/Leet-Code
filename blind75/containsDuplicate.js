@@ -15,3 +15,12 @@ Example 3:
 Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
+
+const containsDuplicate = nums => {
+  let seen = new Map();
+  let hasDup = false;
+  nums.forEach(num => {
+    seen.has(num) ? hasDup = true : seen.set(num);
+  })
+  return hasDup;
+};
