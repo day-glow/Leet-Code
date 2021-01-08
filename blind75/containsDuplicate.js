@@ -16,6 +16,9 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
 
+//Hash Map Approach
+//TC- O(n)
+//SC- O(n)
 const containsDuplicate = nums => {
   let seen = new Map();
   let hasDup = false;
