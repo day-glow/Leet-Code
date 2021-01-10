@@ -20,6 +20,8 @@ Output: []
 */
 
 //hash Map()
+//TC-O(n2)
+//O(n)
 const threeSum = nums => {
   if (nums.length < 3) return [];
   let triplets = [];
