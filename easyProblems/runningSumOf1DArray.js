@@ -31,6 +31,14 @@ const runningSum = nums => {
   return runSum;
 };
 
+//inplace less optimized
+const runningSum = nums => {
+  for (let i = 0; i < nums.length; i++) {
+    nums[i] = nums[i - 1] !== undefined ? nums[i - 1] + nums[i] : nums[i];
+  }
+  return nums;
+};
+
 //inplace
 const runningSum = nums => {
   let sum = 0;
