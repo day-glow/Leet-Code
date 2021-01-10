@@ -19,20 +19,4 @@ Input: nums = [0]
 Output: []
 */
 
-/**
- * @param {number[]} nums
- * @return {number[][]}
-
- g- find any combinations of 3 elements that sum 0
- i- arr of nums
- o- nested arr, each inner arr contains 3 elements that sum to 0
- se- n/a
- c-
-   TC-O(n2)
-   SC-O(n)
- ec- only use a number as many times as input, no duplicate triplets
-
- //use recursion (tree, rps solution), nested loops
-
- OR use .sort() and two pointer solution
- */
+//hash Map()
