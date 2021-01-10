@@ -48,3 +48,9 @@ const runningSum = nums => {
   }
   return nums;
 };
+
+//using .reduce (accumulator)
+const runningSum = nums => {
+  nums.reduce((a,c,i,arr) => arr[i] += a)
+  return nums
+};
