@@ -20,3 +20,30 @@ Output: []
 */
 
 //hash Map()
+const threeSum = nums => {
+  if (nums.length < 3) return [];
+  let triplets = [];
+
+  nums = nums.sort((a, b) => a - b);
+  for (let i = 0; i < nums.length; ++i) {
+    if (i === 0 || nums[i - 1] !== nums[i]) {
+      twoSum(nums, i, triplets);
+    }
+  }
+  return triplets;
+};
+
+const twoSum = (nums, i, triplets) => {
+  let seenNums = new Map();
+
+  for (let j = i + 1; j < nums.length; ++j) {
+    let complement = -nums[i] - nums[j];
+    if (seenNums.has(complement)) {
+      triplets.push([nums[i], nums[j], complement]);
+      while(j + 1 < nums.length && nums[j] === nums[j + 1]) {
+        ++j;
+      }
+    }
+    seenNums.set(nums[j]);
+  }
+}
