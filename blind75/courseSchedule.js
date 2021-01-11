@@ -66,3 +66,50 @@ const canFinish = (numCourses, prerequisites) => {
     if ()
   }
 };
+
+//hash map and hash set
+const canFinish = (numCourses, prerequisites) => {
+  //step 1: make adjList in hash map
+  let adjList = new Map();
+  let seen = new Set();
+  let visiting = new Set();
+
+  for (let [course, prereq] of prerequisites) {
+    if (adjList.has(course)) {
+      let prev = adjList.get(course);
+      prev.push(prereq);
+      adjList.set(course, prev);
+    } else {
+      adjList.set(course, [prereq]);
+    }
+  }
+
+  //helper
+  const hasCycle = course => {
+    visiting.add(course);
+    let edges = adjList.get(course);
+    if (edges) {
+      for (let prereq of edges) {
+        if (seen.has(prereq)) continue;
+        if (visiting.has(prereq)) return true;
+        if (hasCycle(prereq)) return true;
+      }
+    }
+    visiting.delete(course);
+    seen.add(course);
+    return false;
+  }
+
+  //check each course for cycles
+  for (let [course, prereq] of adjList) {
+    if (hasCycle(course)) {
+      //cycle found, not all courses can be finished
+      return false;
+    }
+  }
+
+  //no cycles found, all course can be finished...
+  //(do we have to check for islands? no, b/c this is prereq, if no prereq, then can take class)
+  return true;
+};
+
