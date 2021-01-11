@@ -12,3 +12,26 @@ Output: false
 Note: you can assume that no duplicate edges will appear in edges. Since all edges are undirected, [0,1] is the same as [1,0] and thus will not appear together in edges.
 */
 
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {boolean}
+
+ ex1: true
+            0
+        /   |   \
+       1    2    3
+     /
+    4
+
+ex2: false, cycle detected
+
+            0
+          /
+        1
+      / | \
+    2   |  4
+  /     |
+3-------|
+
+*/
