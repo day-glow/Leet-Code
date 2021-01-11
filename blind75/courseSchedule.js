@@ -29,3 +29,6 @@ You may assume that there are no duplicate edges in the input prerequisites.
 1 <= numCourses <= 10^5
 */
 
+//build graph data structure (adjList)
+//check each node for cycles in dependencies
+//perform backtracking (breadcrumb path, aka flag visited & if node appears again, there is a cycle)
