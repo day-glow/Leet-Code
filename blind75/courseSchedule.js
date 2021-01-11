@@ -32,3 +32,22 @@ You may assume that there are no duplicate edges in the input prerequisites.
 //build graph data structure (adjList)
 //check each node for cycles in dependencies
 //perform backtracking (breadcrumb path, aka flag visited & if node appears again, there is a cycle)
+
+/*
+numCourses = 5, prereqs = [[1,0],[2,1],[3,2],[4,3],[4,2],[4,1],[4,0]]
+adjList = [
+  [],
+  [0],
+  [1],
+  [2],
+  [3,2,1,0],
+]
+
+hashMap = {
+  0: [],
+  1: [0],
+  2: [1],
+  3: [2],
+  4: [3,2,1,0],
+}
+*/
