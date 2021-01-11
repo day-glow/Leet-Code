@@ -91,6 +91,7 @@ Memory Usage: 48.2 MB, less than 6.71% of JavaScript online submissions for Two 
 
 */
 
+//object not hash map/set
 const twoSum = (nums, target) => {
   // declare hash table
   const map = {};
@@ -103,5 +104,17 @@ const twoSum = (nums, target) => {
     }
     // add key value to map
     map[nums[i]] = i;
+  }
+}
+
+
+//Hash Map Approach:
+const twoSum = (nums, target) => {
+  const numbers = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (numbers.has(target - nums[i])) {
+      return [numbers.get(target - nums[i]), i];
+    }
+    numbers.set(nums[i], i);
   }
 }
