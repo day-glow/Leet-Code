@@ -51,3 +51,18 @@ hashMap = {
   4: [3,2,1,0],
 }
 */
+
+//possible adjList approach...
+const canFinish = (numCourses, prerequisites) => {
+  //step 1: make adjList
+  let adjList = new Array(numCourses - 1).fill([]);
+  for (let i = 0; i < prerequisites.length; i++) {
+    let edge = prerequisites[i];
+    adjList[edge[0]].push(edge[1]);
+  };
+
+  //step 2: iterate over adjList
+  for (let i = 0; i < adjList.length; i++) {
+    if ()
+  }
+};
