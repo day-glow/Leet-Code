@@ -90,7 +90,7 @@ while (queue is not empty) {
 }
 */
 
-//OPTIMIZEZD BFS (queue up all gates then search)
+//OMTIMIZED BFS Approach (add gates to queue first)
 //TC-O(m*n)
 //SC-worst O(m*n)
 const GATE = 0;
