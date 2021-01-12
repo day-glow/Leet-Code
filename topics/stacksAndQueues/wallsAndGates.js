@@ -22,3 +22,29 @@ Example 4:
 Input: rooms = [[0]]
 Output: [[0]]
 */
+
+//find shortest path per square
+//BFS
+//adj matrix, fill in where INF exists (fill distance)
+
+/*
+rooms = [
+  [2147483647,-1,0,2147483647],
+  [2147483647,2147483647,2147483647,-1],
+  [2147483647,-1,2147483647,-1],
+  [0,-1,2147483647,2147483647]
+]
+output = [
+  [3,-1,0,1],
+  [2,2,1,-1],
+  [1,-1,2,-1],
+  [0,-1,3,4]
+]
+
+//iterate over input matrix,
+//if INF exists, add to queue
+  //search for nearest gate (BFS, checking neighbors closest to further) & count
+  //swap count for elem
+  //move to next queue item
+//return matrix
+*/
