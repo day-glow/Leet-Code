@@ -40,24 +40,33 @@ ex2: false, cycle detected
 //goal is to determine if seen group contains all n nodes (no dups&no islands)
 const validTree = (n, edges) => {
 
-  const check = currNode => {
-    //set up seen stack to organize nodes (no dups)
-    let stack = [];
-    let seen = new Set();
-    stack.push(currNode);
-    seen.add(currNode);
+  let adjList = new Array(n);
 
-    while (stack.length > 0) {
-      let node = stack.pop();
-      if (adjList.has(node)) {
-        let neighbors = adjList.get(node);
-        for (let neighbor of neighbors) {
-          if (seen.has(neighbor)) continue;
-          stack.push(neighbor);
-          seen.add(neighbor);
-        }
+  for (let edge of edges) {
+    adjList[edge[0]] ? adjList[edge[0]].push(edge[1]) : adjList[edge[0]] = [edge[1]];
+    adjList[edge[1]] ? adjList[edge[1]].push(edge[0]) : adjList[edge[1]] = [edge[0]];
+
+  }
+
+  let parent = new Map();
+  parent.set(0, -1);
+
+   //set up seen stack to organize nodes (no dups)
+  let stack = [];
+  stack.push(0);
+
+  while (stack.length > 0) {
+    let node = stack.pop();
+    if (adjList[node] && adjList[node].length > 0) {
+      let neighbors = adjList[node];
+      for (let neighbor of neighbors) {
+        if (parent.get(node) === neighbor) continue;
+        if (parent.has(neighbor)) return false;
+        stack.push(neighbor);
+        parent.set(neighbor, node);
       }
     }
-    return seen.size() === n;
   }
+  return parent.size === n;
 };
+
