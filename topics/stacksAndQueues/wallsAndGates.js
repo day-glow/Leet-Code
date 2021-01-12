@@ -130,6 +130,42 @@ const wallsAndGates = rooms => {
       queue.push([neighborRow, neighborCol]);
     }
   }
-
-  return rooms;
+  //return rooms;
 };
+
+//Recursive approach, DFS (starting with gates)
+const GATE = 0;
+const WALL = -1;
+const EMPTY_ROOM = 2147483647;
+
+const wallsAndGates = rooms => {
+
+  const checkDist = (row, col, count) => {
+    if (row < 0 || col < 0 || row >= rooms.length || col >= rooms[0].length) return;
+
+    if (rooms[row][col] === WALL) return;
+    if (rooms[row][col] === GATE && count !== 0) return;
+    if (rooms[row][col] < count) return;
+    if (rooms[row][col] > count) rooms[row][col] = count;
+
+    count++;
+
+    checkDist(row - 1, col, count);
+    checkDist(row + 1, col, count);
+    checkDist(row, col - 1, count);
+    checkDist(row, col + 1, count);
+
+  };
+
+  if (!rooms.length || !rooms) return;
+  for (let row = 0; row < rooms.length; row++) {
+    for (let col = 0; col < rooms[0].length; col++){
+      if (rooms[row][col] === GATE) {
+        checkDist(row, col, 0);
+      }
+    }
+  }
+
+};
+
+
