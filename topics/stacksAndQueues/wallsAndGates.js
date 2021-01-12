@@ -91,6 +91,8 @@ while (queue is not empty) {
 */
 
 //OPTIMIZEZD BFS (queue up all gates then search)
+//TC-O(m*n)
+//SC-worst O(m*n)
 const GATE = 0;
 const WALL = -1;
 const EMPTY_ROOM = 2147483647;
