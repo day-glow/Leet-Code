@@ -48,3 +48,86 @@ output = [
   //move to next queue item
 //return matrix
 */
+
+//find shortest path per square
+//BFS
+//adj matrix, fill in where INF exists (fill distance)
+
+/*
+rooms = [
+  [2147483647,-1,0,2147483647],
+  [2147483647,2147483647,2147483647,-1],
+  [2147483647,-1,2147483647,-1],
+  [0,-1,2147483647,2147483647]
+]
+output = [
+  [3,-1,0,1],
+  [2,2,1,-1],
+  [1,-1,2,-1],
+  [0,-1,3,4]
+]
+
+//iterate over input matrix,
+//if INF exists, add to queue
+  //search for nearest gate (BFS, checking neighbors closest to further) & count
+  //swap count for elem
+  //move to next queue item
+//return matrix
+
+BFS:
+while (queue is not empty) {
+    step = step + 1;
+    // iterate the nodes which are already in the queue
+    int size = queue.size();
+    for (int i = 0; i < size; ++i) {
+        Node cur = the first node in queue;
+        return step if cur is target;
+        for (Node next : the neighbors of cur) {
+            add next to queue;
+        }
+        remove the first node from queue;
+    }
+}
+*/
+
+const wallsAndGates = rooms => {
+
+  //helper
+  const checkDist = (row, col) => {
+    let currNode = rooms[row][col];
+    let queue = [currNode];
+    let step = 0;
+
+    while (queue.length > 0) {
+      step += 1;
+      let size = queue.length;
+      for (let i = 0; i < size; i++) {
+        let pos = queue.shift();
+        if (pos === -1) return step;
+        if (pos === 0) {
+          continue;
+        }
+        if (pos === 2147483647) {
+          if (rooms[row][col + 1]) queue.push(rooms[row][col + 1]);
+          if (rooms[row][col - 1]) queue.push(rooms[row][col - 1]);
+          if (rooms[row - 1][col]) queue.push(rooms[row - 1][col]);
+          if (rooms[row + 1][col]) queue.push(rooms[row + 1][col]);
+        }
+        if (currNode > 0 && currNode < 2147483647) {
+          return step + currNode;
+        }
+      }
+    }
+    return -1;
+  };
+
+  for (let row = 0; row < rooms.length; row++) {
+    for (let col = 0; col < rooms[0].length; col++){
+      if (rooms[row][col] === 2147483647) {
+        rooms[row][col] = checkDist(row, col);
+      }
+    }
+  }
+
+  return rooms;
+};
