@@ -90,42 +90,42 @@ while (queue is not empty) {
 }
 */
 
+//OPTIMIZEZD BFS (queue up all gates then search)
+const GATE = 0;
+const WALL = -1;
+const EMPTY_ROOM = 2147483647;
+const NEIGHBORS = [
+  [0,1],
+  [0,-1],
+  [-1,0],
+  [1,0],
+];
+
+const isInbound = (matrix, i, j) => {
+  return i >= 0 && j >= 0 && i < matrix.length && j < matrix[0].length;
+};
+
 const wallsAndGates = rooms => {
+  if (!rooms || rooms.length === 0) return;
 
-  //helper
-  const checkDist = (row, col) => {
-    let currNode = rooms[row][col];
-    let queue = [currNode];
-    let step = 0;
-
-    while (queue.length > 0) {
-      step += 1;
-      let size = queue.length;
-      for (let i = 0; i < size; i++) {
-        let pos = queue.shift();
-        if (pos === -1) return step;
-        if (pos === 0) {
-          continue;
-        }
-        if (pos === 2147483647) {
-          if (rooms[row][col + 1]) queue.push(rooms[row][col + 1]);
-          if (rooms[row][col - 1]) queue.push(rooms[row][col - 1]);
-          if (rooms[row - 1][col]) queue.push(rooms[row - 1][col]);
-          if (rooms[row + 1][col]) queue.push(rooms[row + 1][col]);
-        }
-        if (currNode > 0 && currNode < 2147483647) {
-          return step + currNode;
-        }
-      }
-    }
-    return -1;
-  };
+  let queue = [];
 
   for (let row = 0; row < rooms.length; row++) {
     for (let col = 0; col < rooms[0].length; col++){
-      if (rooms[row][col] === 2147483647) {
-        rooms[row][col] = checkDist(row, col);
+      if (rooms[row][col] === GATE) queue.push([row, col]);
+    }
+  }
+
+  while (queue.length) {
+    const [gateRow, gateCol] = queue.shift();
+    for (let [neighborX, neighborY] of NEIGHBORS) {
+      let neighborRow = gateRow + neighborX;
+      let neighborCol = gateCol + neighborY;
+      if (!isInbound(rooms, neighborRow, neighborCol) || rooms[neighborRow][neighborCol] !== EMPTY_ROOM) {
+        continue;
       }
+      rooms[neighborRow][neighborCol] = rooms[gateRow][gateCol] + 1;
+      queue.push([neighborRow, neighborCol]);
     }
   }
 
