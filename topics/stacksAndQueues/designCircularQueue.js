@@ -32,3 +32,45 @@ myCircularQueue.deQueue();  // return True
 myCircularQueue.enQueue(4); // return True
 myCircularQueue.Rear();     // return 4
 */
+
+//Array Approach
+var MyCircularQueue = function(k) {
+  this.queue = [];
+  this.length = 0;
+  this.size = k;
+  this.head = -1;
+  this.tail = -1;
+};
+
+MyCircularQueue.prototype.enQueue = function(value) {
+  if (this.length >= this.size) return false;
+  this.tail = (++this.tail) % this.size;
+  this.queue[this.tail] = value;
+  this.length++;
+  if (this.head === -1) this.head = 0;
+  return true;
+};
+
+MyCircularQueue.prototype.deQueue = function() {
+  if (this.length === 0) return false;
+  this.queue[this.head] = [];
+  this.head = (++this.head) % this.size;
+  this.length--;
+  return true;
+};
+
+MyCircularQueue.prototype.Front = function() {
+  return !this.isEmpty() ? this.queue[this.head] : -1;
+};
+
+MyCircularQueue.prototype.Rear = function() {
+  return !this.isEmpty() ? this.queue[this.tail] : -1;
+};
+
+MyCircularQueue.prototype.isEmpty = function() {
+  return this.length === 0;
+};
+
+MyCircularQueue.prototype.isFull = function() {
+  return this.length === this.size;
+};
