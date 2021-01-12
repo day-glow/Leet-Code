@@ -36,52 +36,28 @@ ex2: false, cycle detected
 
 */
 
-//reused Courses strategy for Hash Map()/Hash Set() w/ hasCycle()
-//doesn't work (doesn't account for bidirectional)
+//stack
+//goal is to determine if seen group contains all n nodes (no dups&no islands)
 const validTree = (n, edges) => {
-  let graph = new Map();
-  let seen = new Set();
-  let visiting = new Set();
 
-  for (let [node1, node2] of edges) {
-    if (graph.has(node1)) {
-      let edge = graph.get(node1);
-      edge.push(node2);
-      graph.set(node1, edge);
-    } else {
-      graph.set(node1, [node2]);
-    }
-    if (graph.has(node2)) {
-      let edge = graph.get(node2);
-      edge.push(node1);
-      graph.set(node2, edge);
-    } else {
-      graph.set(node2, [node1]);
-    }
-  }
+  const check = currNode => {
+    //set up seen stack to organize nodes (no dups)
+    let stack = [];
+    let seen = new Set();
+    stack.push(currNode);
+    seen.add(currNode);
 
-  //goal, travel from currNode to leaf without a cycle (seeing same node twice)
-  //DFS? branch to branch
-  const hasCycle = (currNode) => {
-
-    visiting.add(currNode);
-    let edges = graph.get(currNode);
-    if (edges) {
-      for (let node of edges) {
-        if (seen.has(node)) continue;
-        if (visiting.has(node)) return true;
-        if (hasCycle(node)) return true;
+    while (stack.length > 0) {
+      let node = stack.pop();
+      if (adjList.has(node)) {
+        let neighbors = adjList.get(node);
+        for (let neighbor of neighbors) {
+          if (seen.has(neighbor)) continue;
+          stack.push(neighbor);
+          seen.add(neighbor);
+        }
       }
     }
-
-    visiting.delete(currNode);
-    seen.add(currNode);
-    return false;
+    return seen.size() === n;
   }
-
-  for (let [node, connections] of graph) {
-    if (hasCycle(node)) return false;
-  }
-
-  return true;
 };
