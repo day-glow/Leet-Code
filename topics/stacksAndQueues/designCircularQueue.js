@@ -34,6 +34,8 @@ myCircularQueue.Rear();     // return 4
 */
 
 //Array Approach
+//TC-O(1)
+//SC-O(n)
 var MyCircularQueue = function(k) {
   this.queue = [];
   this.length = 0;
