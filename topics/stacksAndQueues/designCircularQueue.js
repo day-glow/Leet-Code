@@ -76,3 +76,8 @@ MyCircularQueue.prototype.isEmpty = function() {
 MyCircularQueue.prototype.isFull = function() {
   return this.length === this.size;
 };
+
+//Singley LL approach ()
+//Time complexity: \mathcal{O}(1)O(1) for each method in our circular queue.
+//Space Complexity: The upper bound of the memory consumption for our circular queue would be \mathcal{O}(N)O(N), same as the Array approach. However, it should be more memory efficient as we discussed in the intuition section.
+//**Different than a fixed size Array, a linked list could be more memory efficient, since it does not pre-allocate memory for unused capacity.
