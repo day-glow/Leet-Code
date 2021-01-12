@@ -21,5 +21,24 @@ movingAverage.next(3); // return 4.66667 = (1 + 10 + 3) / 3
 movingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3
 */
 
+//Array Approach
 //TC-O(1)
 //SC-O(n)
+var MovingAverage = function(size) {
+  this.avgGroup = [];
+  this.maxSize = size;
+  this.headIdx = 0;
+  this.runSum = 0;
+};
+
+MovingAverage.prototype.next = function(val) {
+  if (this.avgGroup.length >= this.maxSize) {
+    this.avgGroup[this.avgGroup.length] = val;
+    this.runSum = this.runSum - this.avgGroup[this.headIdx++] + val;
+    return this.runSum / this.maxSize;
+  }
+
+  this.avgGroup[this.avgGroup.length] = val;
+  this.runSum += val;
+  return this.runSum / this.avgGroup.length;
+};
