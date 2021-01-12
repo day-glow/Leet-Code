@@ -21,7 +21,7 @@ movingAverage.next(3); // return 4.66667 = (1 + 10 + 3) / 3
 movingAverage.next(5); // return 6.0 = (10 + 3 + 5) / 3
 */
 
-//Array Approach
+//Double Ended Queue Array Approach
 //TC-O(1)
 //SC-O(n)
 var MovingAverage = function(size) {
@@ -42,3 +42,6 @@ MovingAverage.prototype.next = function(val) {
   this.runSum += val;
   return this.runSum / this.avgGroup.length;
 };
+
+//Circular Queue Approach
+//same TC/SC but saves on space, keeping a set queue size and discarding elements
