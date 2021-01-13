@@ -17,10 +17,12 @@ Explanation: 13 = 4 + 9.
 //BFS
 //check "neighbors" and dups for sum total
 //n = target
-//similar to 2Sum/3Sum
-  //make a perf squares map, check all perf squares less than n (target sum)
+//similar to 2Sum/3Sum, checking remainder of current values
+  //make a perf squares map/set, check all perf squares less than n (target sum)
 
-//queue & Set() approach
+//queue & Set() approach using Greedy & BFS
+//TC-O(n^h/2)
+//SC-O(sqrt(n)^h)
 var numSquares = function(n) {
   let queue = new Set();
   let fewestNums = 0;
