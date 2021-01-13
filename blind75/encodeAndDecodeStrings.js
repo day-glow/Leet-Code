@@ -27,3 +27,17 @@ The string may contain any possible characters out of 256 valid ascii characters
 Do not use class member/global/static variables to store states. Your encode and decode algorithms should be stateless.
 Do not rely on any library method such as eval or serialize methods. You should implement your own encode/decode algorithm.
 */
+
+//native javascript approach
+//TC- O(n)
+//SC- O(1)
+var encode = function(strs) {
+  if (!strs.length || !strs || !strs[0].length) return strs;
+  return strs.join('**-1');
+};
+//TC- O(n)
+//SC- O(n)
+var decode = function(s) {
+  if (!s || !s.length || !s[0].length) return s;
+  return s.split('**-1');
+};
