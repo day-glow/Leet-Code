@@ -57,3 +57,18 @@ const isValidBST = root => {
   return true;
 };
 
+//recursive approach
+const isValidBST = root => {
+  //if (!root.val || !root) return true;
+  let prev = null;
+
+  const checkVals = node => {
+    if (!node) return true;
+    if (!checkVals(node.left)) return false;
+    if (prev !== null && node.val <= prev) return false;
+    prev = node.val;
+    return checkVals(node.right);
+  };
+
+  return checkVals(root);
+};
