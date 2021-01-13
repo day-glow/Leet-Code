@@ -58,6 +58,8 @@ const isValidBST = root => {
 };
 
 //recursive approach
+ //TC-O(n)
+ //SC-O(n)
 const isValidBST = root => {
   //if (!root.val || !root) return true;
   let prev = null;
