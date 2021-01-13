@@ -33,6 +33,10 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * @param {TreeNode} root
  * @return {boolean}
  */
+
+ //inorder iterative tree traversal
+ //TC-O(n)
+ //SC-O(n)
 const isValidBST = root => {
   if (root.val === null || !root) return;
   let stack = [];
