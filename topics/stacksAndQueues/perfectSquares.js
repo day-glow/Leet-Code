@@ -12,3 +12,10 @@ Input: n = 13
 Output: 2
 Explanation: 13 = 4 + 9.
 */
+
+//find shortest path
+//BFS
+//check "neighbors" and dups for sum total
+//n = target
+//similar to 2Sum/3Sum
+  //make a perf squares map, check all perf squares less than n (target sum)
