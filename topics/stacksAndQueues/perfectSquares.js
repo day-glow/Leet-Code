@@ -20,31 +20,37 @@ Explanation: 13 = 4 + 9.
 //similar to 2Sum/3Sum
   //make a perf squares map, check all perf squares less than n (target sum)
 
+//queue & Set() approach
 var numSquares = function(n) {
-  let queue = [];
+  let queue = new Set();
   let fewestNums = 0;
   let perfectSquares = new Set();
 
   //find closest perfect square to n (target sum)
-  for (let i = n; i > 0; i--) {
-    if (Math.sqrt(i) % 2 === 0 || Math.sqrt(i) % 2 === 1) {
-      perfectSquares.add(i);
-      if (n - i === 0) return fewestNums + 1;
-      if (perfectSquares.has(n - i)) return fewestNums + 2;
-      queue.push(i);
-    }
+  for (let i = 1; i * i <= n; i++) {
+    perfectSquares.add(i * i);
   }
+
+  queue.add(n);
+
   //then check self & neighbors
-  while (queue.length) {
-    let size = queue.length;
-    for (let i = 0; i < size; i++) {
-      let curr = queue.shift();
-      if (n - curr === 0) return fewestNums + 1;
-      if (perfectSquares.has(curr)) return fewestNums + 2;
-      queue.push(n - curr);
-    }
+  while (queue.size) {
     fewestNums++;
+    let nextLevel = new Set();
+
+    for (let remainder of queue) {
+      for (let square of perfectSquares) {
+        if (remainder === square) {
+          return fewestNums;
+        } else if (remainder < square) {
+          break;
+        } else {
+          nextLevel.add(remainder - square);
+        }
+      }
+    }
+    queue = nextLevel;
   }
-  //if sq root % 2 = 0, it is a perfect square
   return fewestNums;
 };
+
