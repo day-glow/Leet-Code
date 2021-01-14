@@ -16,13 +16,12 @@ SC-O(n)
 */
 //recusive
 const lowestCommonAncestor = (root, p, q) => {
-  if (p.val > root.val && q.val > root.val) {
-    return lowestCommonAncestor(root.right, p, q);
-  } else if (p.val < root.val && q.val < root.val) {
-    return lowestCommonAncestor(root.left, p, q);
-  } else {
-    return root;
-  }
+  if (!root || root === p || root === q) return root;
+  let leftBranch = lowestCommonAncestor(root.left, p, q);
+  let rightBranch = lowestCommonAncestor(root.right, p, q);
+  if (!leftBranch) return rightBranch;
+  if (!rightBranch) return leftBranch;
+  return root;
 };
 
 //iterative (TC-O(n)/SC-O(1))
@@ -30,13 +29,7 @@ const lowestCommonAncestor = (root, p, q) => {
   let node = root;
 
   while (node !== null) {
-    if (p.val > node.val && q.val > node.val) {
-      node = node.right;
-    } else if (p.val < node.val && q.val < node.val) {
-      node = node.left;
-    } else {
-      return node;
-    }
+
   }
-  return null
+  return node;
 };
