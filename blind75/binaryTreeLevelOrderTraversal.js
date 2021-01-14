@@ -16,6 +16,32 @@ return its level order traversal as:
 ]
 */
 
+//revisited 1/14/2021
+//BFS (by level)
+//TC-O(n)
+//SC-O(n)
+const levelOrder = root => {
+  if (!root) return [];
+  let queue = [];
+  let levelOrder = [];
+
+  queue.push(root);
+  while (queue.length) {
+    let level = []
+    let currNodes = queue;
+    queue = [];
+    for (let node of currNodes) {
+      if (node !== null) {
+        level.push(node.val);
+        queue.push(node.left);
+        queue.push(node.right);
+      }
+    }
+    if (level.length) levelOrder.push(level);
+  }
+  return levelOrder;
+};
+
 /*
 //bfs, iteration, queue
 Queue APPROACH:
