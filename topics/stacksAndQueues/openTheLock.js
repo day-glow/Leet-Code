@@ -31,3 +31,24 @@ Example 4:
 Input: deadends = ["0000"], target = "8888"
 Output: -1
 */
+
+/**
+ * @param {string[]} deadends
+ * @param {string} target
+ * @return {number}
+
+ //BFS (shortest path), check neighbor branches until finding target
+
+ start = [0,0,0,0];
+ curr = [];
+ queue = [];
+ next_queue = [];
+ //add branches to next queue
+ turns = 0;
+
+//deadlocked if any digit is blocked (-1 and +1)
+
+//iterative, brute force
+//can check each digit(wheel) to shortest path to target
+then add to turns
+*/
