@@ -22,3 +22,28 @@ Explanation: The first three characters "app" match, and the second string is sh
 //hash map and nested loops
 //TC-O(content)
 //SC-O(1)
+const isAlienSorted = (words, order) => {
+  let alphabet = new Map();
+  for (let i = 0; i < order.length; i++) {
+    if (!alphabet.has(order[i])) {
+      alphabet.set(order[i], i);
+    }
+  }
+
+  for (let i = 0; i < words.length - 1; i++) {
+    let w1 = words[i];
+    let w2 = words[i + 1];
+    let flag = false;
+    for (let j = 0; j < Math.min(w1.length, w2.length); j++) {
+      if (w1[j] !== w2[j]) {
+        if (alphabet.get(w1[j]) > alphabet.get(w2[j])) return false;
+        flag = true;
+        break;
+      }
+
+    }
+    if (!flag && w1.length > w2.length) return false;
+  }
+
+  return true;
+};
