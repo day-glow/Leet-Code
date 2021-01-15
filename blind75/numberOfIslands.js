@@ -38,3 +38,50 @@ Output: 3
 //how do we mark elems as seen? if connected island, not all neighbors will be 0's
 //visited coordinates or flag on elem as visited to not over count islands
 //continue to next unseen land 1 and continue checking.
+
+const checkDir = [
+  [0, 1],
+  [0, -1],
+  [1, 0],
+  [-1, 0],
+];
+
+const isInbounds = (grid, x, y) => {
+  return (x >= 0 && x <= grid.length && y >= 0 && y <= grid[0].length);
+};
+
+const numIslands = grid => {
+  if (!grid || !grid.length) return 0;
+  let islands = 0;
+  let queue = [];
+
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === "1") {
+
+        islands++;
+        grid[i][j] = "0";
+        queue.push([i, j]);
+        while (queue.length) {
+          let [currX, currY] = queue.shift();
+
+          for (let [neighborX, neighborY] of checkDir) {
+            let neighborRow = currX + neighborX;
+            let neighborCol = currY + neighborY;
+            if (neighborRow > grid.length - 1) {
+              neighborRow--;
+            }
+            if (!isInbounds(grid, neighborRow, neighborCol)) continue;
+            if (grid[neighborRow][neighborCol] === "1") {
+              queue.push([neighborRow, neighborCol]);
+              grid[neighborRow][neighborCol] = "0";
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return islands;
+};
+
