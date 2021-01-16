@@ -53,3 +53,76 @@ Output: -1
 then add to turns
 */
 
+  //add deadends, full nums
+  //build a queue
+  //hash set for seen
+  //while(queue)
+  //find neighbors, add to queue and seen, check all for target and dead
+
+  const dirs = [
+    [-1,0,0,0],
+    [1,0,0,0],
+    [0,-1,0,0],
+    [0,1,0,0],
+    [0,0,-1,0],
+    [0,0,1,0],
+    [0,0,0,-1],
+    [0,0,0,1],
+  ];
+
+  const getNeighbors = (combo) => {
+    let [a,b,c,d] = combo.split('');
+    let neighbors = [];
+
+    const inbounds = (x, y) => {
+      if (Number(x) + y === -1) return 9;
+      if (Number(x) + y === 10) return 0;
+      return Number(x) + y;
+    };
+
+    for (let [w,x,y,z] of dirs) {
+      let w1 = inbounds(a, w);
+      let w2 = inbounds(b, x);;
+      let w3 = inbounds(c, y);;
+      let w4 = inbounds(d, z);;
+
+      let neighbor = [w1, w2, w3, w4];
+      neighbors.push(neighbor.join('').toString());
+    }
+    return neighbors;
+  };
+
+  const openLock = (deadends, target) => {
+    if (target === "0000") return 0;
+    let turns = 0;
+    let queue = [];
+    let visited = new Set();
+
+    let dead = new Set();
+    deadends.forEach(deadend => dead.add(deadend));
+
+    queue.push("0000");
+    visited.add("0000");
+
+    while (queue.length) {
+      let size = queue.length;
+      turns++;
+      for (let i = 0; i < size; i++) {
+        let curr = queue.shift();
+        if (curr === target) {
+          return turns;
+        } else if (!dead.has(curr)) {
+          let currNeighbors = getNeighbors(curr);
+          for (let neighbor of currNeighbors) {
+            if (neighbor === target) {
+              return turns;
+            } if (!visited.has(neighbor)) {
+               visited.add(neighbor);
+               queue.push(neighbor);
+            }
+          }
+        }
+      }
+    }
+    return -1;
+  };
