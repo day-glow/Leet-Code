@@ -25,6 +25,8 @@ minStack.top();    // return 0
 minStack.getMin(); // return -2
 */
 
+//O(1)
+//O(n)
 /**
  * initialize your data structure here.
  */
