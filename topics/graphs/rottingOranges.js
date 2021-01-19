@@ -37,7 +37,7 @@ Explanation: Since there are already no fresh oranges at minute 0, the answer is
 //iterate over grid and add rotten coord to queue
 
 TC-O(n)
-SC-O(1)
+SC-O(n)
 */
 
 //helper func get inbounds neighbors (directionally adjacent oranges)
