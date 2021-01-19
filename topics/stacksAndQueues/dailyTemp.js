@@ -8,6 +8,8 @@ Note: The length of temperatures will be in the range [1, 30000]. Each temperatu
 
 //LIFO - stack
 //previous stack just holds index (can easily look up val in T array)
+//TC-O(n)
+//SC-O(n)
 const dailyTemperatures = T => {
   let daysToWait = [];
   let prevHigh = [];
