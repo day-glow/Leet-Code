@@ -19,3 +19,32 @@ Example 4:
 Input: matrix = [[1,2],[3,4]]
 Output: [[3,1],[4,2]]
 */
+
+/*
+matix1: [
+  [1,2,3],
+  [4,5,6],
+  [7,8,9],
+];
+output: [
+  [7,4,1],
+  [8,5,2],
+  [9,6,3],
+];
+
+*/
+
+//Approach 3 : Rotate four rectangles in one single loop
+const rotate = matrix => {
+  let n = matrix.length;
+  for (let i = 0; i < Math.floor((n + 1) / 2); i++) {
+    for (let j = 0; j < Math.floor(n / 2); j++) {
+      let temp = matrix[n - 1 - j][i];
+      matrix[n - 1 - j][i] = matrix[n - 1 - i][n - 1 - j];
+      matrix[n - 1 - i][n - 1 - j] = matrix[j][n - 1 - i];
+      matrix[j][n - 1 - i] = matrix[i][j];
+      matrix[i][j] = temp;
+    }
+  }
+};
+
