@@ -15,3 +15,26 @@ Example 3:
 Input: strs = ["a"]
 Output: [["a"]]
 */
+
+//sorted hashmap approach
+const groupAnagrams = strs => {
+  let anagrams = [];
+  let map = new Map();
+
+  //sorted map
+  for (let word of strs) {
+    let sortedWord = word.split('').sort((a, b) => a.localeCompare(b)).join('');
+    if (map.has(sortedWord)) {
+
+      let prev = map.get(sortedWord);
+      prev.push(word);
+      map.set(sortedWord, prev);
+    } else {
+      map.set(sortedWord, [word]);
+    }
+  }
+  for (let [key, value] of map) {
+    anagrams.push(value);
+  }
+  return anagrams;
+};
