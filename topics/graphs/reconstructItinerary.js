@@ -99,6 +99,8 @@ const findItinerary = tickets => {
 */
 
 //partially working (can't solve for starting airports that lexically come first but don't complete itinerary)
+//[["JFK","NRT"],["JFK","ATL"],["NRT","JFK"]]
+//need to find all possible DFS brnachs and return the one that works first
 const findItinerary = tickets => {
   let flights = new Map();
   let itinerary = [];
