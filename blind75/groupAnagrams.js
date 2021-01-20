@@ -17,6 +17,8 @@ Output: [["a"]]
 */
 
 //sorted hashmap approach
+//TC-O(nKlogK) -sorting algo KlogK
+//SC-O(nK)
 const groupAnagrams = strs => {
   let anagrams = [];
   let map = new Map();
