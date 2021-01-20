@@ -96,6 +96,40 @@ const findItinerary = tickets => {
   }
   return itinerary;
 };
-
-
 */
+
+//partially working (can't solve for starting airports that lexically come first but don't complete itinerary)
+const findItinerary = tickets => {
+  let flights = new Map();
+  let itinerary = [];
+
+  for (let [from, to] of tickets) {
+    if (!flights.has(from)) {
+      flights.set(from, [to]);
+    } else {
+      let temp = flights.get(from);
+      temp.push(to);
+      temp.sort((a, b) => a.localeCompare(b, 'en', {ignorePunctuation: true}));
+      flights.set(from, temp);
+    }
+  }
+
+  itinerary.push("JFK");
+  while (itinerary.length < tickets.length + 1) {
+    let curr = itinerary[itinerary.length - 1];
+    if (flights.has(curr)) {
+      let next = flights.get(curr);
+      if (next.length === 1) {
+        itinerary.push(next[0]);
+        flights.delete(curr);
+      } else if (next.length > 1) {
+
+        let dest = next.shift();
+        itinerary.push(dest);
+        flights.set(curr, next);
+      }
+
+    }
+  }
+  return itinerary;
+};
