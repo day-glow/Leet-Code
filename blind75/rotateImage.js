@@ -35,6 +35,8 @@ output: [
 */
 
 //Approach 3 : Rotate four rectangles in one single loop
+//TC-O(n^2) - nested loops
+//SC-O(1)
 const rotate = matrix => {
   let n = matrix.length;
   for (let i = 0; i < Math.floor((n + 1) / 2); i++) {
