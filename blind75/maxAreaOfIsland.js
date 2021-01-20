@@ -25,6 +25,8 @@ Given the above grid, return 0.
 */
 
 //BFS approach
+//TC-O(n*m)
+//SC-O(n*m)
 const getNeighbors = (grid, x, y) => {
   let neighbors = [];
 
