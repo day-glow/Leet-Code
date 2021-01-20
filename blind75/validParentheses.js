@@ -73,3 +73,35 @@ const isValid = s => {
 
   return (parenStack.length === 0);
 };
+
+//OPTIMIZED
+const isValid = s => {
+  const validParens = new Map();
+  validParens.set('(', ')');
+  validParens.set('{', '}');
+  validParens.set('[', ']');
+
+  let stack = [];
+  for (let i = 0; i < s.length; i++) {
+    if (stack.length && validParens.get(stack[stack.length - 1]) === s[i]) {
+      stack.pop();
+    } else {
+      stack.push(s[i]);
+    }
+  }
+  return !stack.length;
+};
+
+//REFACTORED:
+const isValid = s => {
+  const validParens = new Map();
+  validParens.set('(', ')');
+  validParens.set('{', '}');
+  validParens.set('[', ']');
+
+  let stack = [];
+  for (let paren of s) {
+    (stack.length && validParens.get(stack[stack.length - 1]) === paren) ? stack.pop() : stack.push(paren);
+  }
+  return !stack.length;
+};
