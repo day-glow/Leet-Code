@@ -40,3 +40,20 @@ const lengthOfLongestSubstring = s => {
   }
   return longest;
 };
+
+//Hash Set (save letters and indices)
+const lengthOfLongestSubstring = s => {
+  let longest = 0;
+  let map = new Map();
+
+  for (let i = 0, j = 0; j < s.length; j++) {
+    if (map.has(s[j])) {
+      i = Math.max(map.get(s[j]), i);
+    }
+    longest = Math.max(longest, j - i + 1);
+    map.set(s[j], j + 1);
+  }
+
+  return longest;
+};
+
