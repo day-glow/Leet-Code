@@ -19,6 +19,8 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 */
 
 //Hash Set
+//TC-O(n)
+//SC-O(n)
 const lengthOfLongestSubstring = s => {
   let longest = 0;
   let letters = new Set();
