@@ -20,7 +20,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 
 //Hash Set
 //TC-O(n)
-//SC-O(n)
+//SC-O(k)
 const lengthOfLongestSubstring = s => {
   let longest = 0;
   let letters = new Set();
@@ -42,6 +42,8 @@ const lengthOfLongestSubstring = s => {
 };
 
 //Hash Set (save letters and indices)
+//TC-O(n)
+//SC-O(min(m,n))
 const lengthOfLongestSubstring = s => {
   let longest = 0;
   let map = new Map();
