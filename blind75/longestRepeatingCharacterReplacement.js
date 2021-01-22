@@ -18,3 +18,27 @@ Output: 4
 Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA".
 The substring "BBBB" has the longest repeating letters, which is 4.
 */
+
+//for loop sliding 2 pointers
+const characterReplacement = (s, k) => {
+  let longest = 0;
+  let mostFreq = 0;
+  let letters = new Map();
+
+  for (let p1 = 0, p2 = 0; p2 < s.length; p2++) {
+    let curr = s[p2];
+    if (letters.has(curr)) {
+      letters.set(curr, letters.get(curr) + 1);
+    } else {
+      letters.set(curr, 1);
+    }
+    mostFreq = Math.max(letters.get(curr), mostFreq);
+
+    while (p2 - p1 + 1 - mostFreq > k) {
+      letters.set(s[p1], letters.get(s[p1]) - 1);
+      p1++;
+    }
+    longest = Math.max(p2 - p1 + 1, longest);
+  }
+  return longest;
+};
