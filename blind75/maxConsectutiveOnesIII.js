@@ -36,3 +36,20 @@ const longestOnes = (A, K) => {
 
   return p2 - p1;
 };
+
+//refactored slightly
+const longestOnes = (A, K) => {
+  let p1 = 0;
+  let p2 = 0;
+
+  while (p2 < A.length) {
+    if (!A[p2]) K--;
+    if (K < 0) {
+      if (!A[p1]) K++;
+      p1++;
+    }
+    p2++;
+  }
+
+  return p2 - p1;
+};
