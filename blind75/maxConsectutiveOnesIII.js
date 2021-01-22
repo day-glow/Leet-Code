@@ -19,6 +19,8 @@ Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.
 */
 
 //never shrinking sliding window approach
+//TC-O(n)
+//SC-O(1)
 const longestOnes = (A, K) => {
   let p1 = 0;
   let p2 = 0;
