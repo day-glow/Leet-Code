@@ -13,6 +13,8 @@ The length of input array is a positive integer and will not exceed 10,000
 */
 
 //standard catepillar sliding window, keeping invalid bounds
+//TC-O(n)
+//SC-O(1)
 const findMaxConsecutiveOnes = nums => {
   let longest = 0;
   let p1 = 0;
@@ -35,6 +37,8 @@ const findMaxConsecutiveOnes = nums => {
 //never shrinking sliding window once it hits it's max
 //(just digging k into a negative)
 //k can be any count(flip count) with this approach
+//TC-O(n) (slightly better than above, saves one variable comparision)
+//SC-O(1) (slightly better than above, saves one variable)
 const findMaxConsecutiveOnes = nums => {
   let p1 = 0;
   let p2 = 0;
