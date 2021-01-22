@@ -31,3 +31,23 @@ const findMaxConsecutiveOnes = nums => {
   }
   return longest;
 };
+
+//never shrinking sliding window once it hits it's max
+//(just digging k into a negative)
+//k can be any count(flip count) with this approach
+const findMaxConsecutiveOnes = nums => {
+  let p1 = 0;
+  let p2 = 0;
+  let k = 1;
+
+  while (p2 < nums.length) {
+    let curr = nums[p2];
+    if (curr === 0) k--;
+    if (k < 0) {
+      if (nums[p1] === 0) k++;
+      p1++;
+    }
+    p2++;
+  }
+  return p2 - p1;
+};
