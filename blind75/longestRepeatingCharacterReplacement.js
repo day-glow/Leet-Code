@@ -42,3 +42,27 @@ const characterReplacement = (s, k) => {
   }
   return longest;
 };
+
+//while loop & two pointers approach
+const characterReplacement = (s, k) => {
+  let p1 = 0;
+  let p2 = 0;
+  let longest = 0;
+  let letters = new Map();
+
+  while (p2 < s.length) {
+    let curr = s[p2];
+    if (letters.has(curr)) {
+      letters.set(curr, letters.get(curr) + 1);
+    } else {
+      letters.set(curr, 1);
+    }
+    if (letters.get(curr) > longest) longest = letters.get(curr);
+    if (p2 - p1 + 1 - longest > k) {
+      letters.set(s[p1], letters.get(s[p1]) - 1);
+      p1++;
+    }
+    p2++
+  }
+  return p2 - p1;
+};
