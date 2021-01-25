@@ -23,3 +23,37 @@ Example 4:
 Input: s = "abc3[cd]xyz"
 Output: "abccdcdcdxyz"
 */
+
+//stack approach
+const decodeString = s => {
+  let stack = [];
+
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === ']') {
+      //do something to decode
+      let subStr = [];
+      while (stack[stack.length - 1] !== '[') {
+        let next = stack.pop();
+        subStr.push(next);
+      }
+      stack.pop();
+      let k = 0;
+      let base = 1;
+      while (/\d/.test(stack[stack.length - 1])) {
+        let num = stack.pop();
+        k = k + Number(num) * base;
+        base *= 10;
+      }
+      while (k > 0) {
+        for (let j = subStr.length - 1; j >= 0; j--) {
+          stack.push(subStr[j]);
+        }
+        k--;
+      }
+
+    } else {
+      stack.push(s[i]);
+    }
+  }
+  return stack.join('');
+};
