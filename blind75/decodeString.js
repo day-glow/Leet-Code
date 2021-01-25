@@ -59,3 +59,11 @@ const decodeString = s => {
   }
   return stack.join('');
 };
+
+//replace approach (optimized with native methods)
+const decodeString = s => {
+  while (s.includes('[')) {
+      s = s.replace(/(\d+)\[(\w+)\]/g, (_, number, word) => word.repeat(number));
+  }
+  return s;
+};
