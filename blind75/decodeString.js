@@ -25,6 +25,8 @@ Output: "abccdcdcdxyz"
 */
 
 //stack approach
+//TC-O(n*maxK^countK)
+//SC-O(sum(n*maxK^countK))
 const decodeString = s => {
   let stack = [];
 
