@@ -47,3 +47,26 @@ const subdomainVisits = cpdomains => {
   }
   return totalCounts;
 };
+
+//refractored
+const subdomainVisits = cpdomains => {
+  let domainCounts = new Map();
+  let totalCounts = [];
+
+  const helper = (num, dom) => {
+    domainCounts.has(dom) ? domainCounts.set(dom, domainCounts.get(dom) + Number(num)) : domainCounts.set(dom, Number(num));
+  };
+
+  for (let domain of cpdomains) {
+    let [num, dom] = domain.split(' ');
+    helper(num, dom);
+    while (dom.includes('.')) {
+      dom = dom.substring(dom.indexOf('.') + 1, dom.length);
+      helper(num, dom);
+    }
+  }
+  for (let [subDom, count] of domainCounts) {
+    totalCounts.push(`${count} ${subDom}`);
+  }
+  return totalCounts;
+};
