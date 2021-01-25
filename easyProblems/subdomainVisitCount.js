@@ -21,3 +21,29 @@ Output:
 Explanation:
 We will visit "google.mail.com" 900 times, "yahoo.com" 50 times, "intel.mail.com" once and "wiki.org" 5 times. For the subdomains, we will visit "mail.com" 900 + 1 = 901 times, "com" 900 + 50 + 1 = 951 times, and "org" 5 times.
 */
+
+const subdomainVisits = cpdomains => {
+  let domainCounts = new Map();
+  let totalCounts = [];
+
+  const helper = (num, dom) => {
+    if (domainCounts.has(dom)) {
+      domainCounts.set(dom, domainCounts.get(dom) + Number(num));
+    } else {
+      domainCounts.set(dom, Number(num));
+    }
+  };
+
+  for (let domain of cpdomains) {
+    let [num, dom] = domain.split(' ');
+    helper(num, dom);
+    while (dom.includes('.')) {
+      dom = dom.substring(dom.indexOf('.') + 1, dom.length);
+      helper(num, dom);
+    }
+  }
+  for (let [subDom, count] of domainCounts) {
+    totalCounts.push(String(count + ' ' + subDom));
+  }
+  return totalCounts;
+};
