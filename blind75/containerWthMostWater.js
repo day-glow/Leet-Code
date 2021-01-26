@@ -47,3 +47,16 @@ const maxArea = height => {
   }
   return maxWater;
 };
+
+//refactored
+const maxArea = height => {
+  let maxWater = 0;
+  let p1 = 0;
+  let p2 = height.length - 1;
+
+  while (p2 !== p1) {
+    maxWater = Math.max(maxWater, Math.min(height[p1], height[p2]) * (p2 - p1));
+    height[p1] < height[p2] ? p1++ : p2--;
+  }
+  return maxWater;
+};
