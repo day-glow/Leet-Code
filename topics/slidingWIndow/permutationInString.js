@@ -26,3 +26,19 @@ const checkInclusion = (s1, s2) => {
   }
   return false;
 };
+
+//map letter char code with array approach:
+const checkInclusion = (s1, s2) => {
+  let letters = new Array(26).fill(0);
+  let p1 = 0;
+  let p2 = s1.length;
+
+  s1.split('').forEach(letter => letters[letter.charCodeAt(0) - 97]--);
+  s2.substring(p1, p2).split('').forEach(letter => letters[letter.charCodeAt(0) - 97]++);
+
+  while (p2 < s2.length && Number(letters.join('')) !== 0) {
+    letters[s2[p1++].charCodeAt(0) - 97]--;
+    letters[s2[p2++].charCodeAt(0) - 97]++;
+  }
+  return Number(letters.join('')) === 0;
+};
