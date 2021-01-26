@@ -20,3 +20,28 @@ Example 4:
 Input: height = [1,2,1]
 Output: 2
 */
+
+//2pointers
+const maxArea = height => {
+  let maxWater = 0;
+  let p1 = 0;
+  let p2 = height.length - 1;
+  //container water line is the lower val of p1 && p2
+
+
+  while (p2 !== p1) {
+    let waterLine = Math.min(height[p1], height[p2]);
+    let subBucket = waterLine * (p2 - p1);
+
+    if (maxWater < subBucket) {
+      maxWater = subBucket;
+    }
+    if (height[p1] < height[p2]) {
+      p1++;
+    } else {
+      p2--;
+    };
+
+  }
+  return maxWater;
+};
