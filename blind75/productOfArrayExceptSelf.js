@@ -45,3 +45,18 @@ const productExceptSelf = nums => {
 
   return result;
 };
+
+//optional change in first loop (leetcode solution)
+const productExceptSelf = nums => {
+  let result = new Array(nums.length).fill(1);
+  result[0] = 1;
+  for (let i = 1; i < nums.length; i++) {
+    result[i] = nums[i - 1] * result[i - 1];
+  }
+  let r = 1;
+  for (let j = nums.length - 1; j >= 0; j--) {
+    result[j] *= r;
+    r *= nums[j];
+  }
+  return result;
+};
