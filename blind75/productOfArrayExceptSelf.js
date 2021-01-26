@@ -25,3 +25,23 @@ const productExceptSelf = nums => {
   }
   return result;
 };
+
+//OPTIMIZED approach
+//TC-O(2n)
+//SC-O(1) not counting result array
+const productExceptSelf = nums => {
+  let result = new Array(nums.length).fill(1);
+  let mult = 1;
+  for (let i = 0; i < nums.length; i++) {
+    result[i] *= mult;
+    mult *= nums[i];
+  }
+
+  mult = 1;
+  for (let j = nums.length - 1; j >= 0; j--) {
+    result[j] *= mult;
+    mult *= nums[j];
+  }
+
+  return result;
+};
