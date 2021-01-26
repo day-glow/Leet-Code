@@ -10,3 +10,19 @@ Example 2:
 Input:s1= "ab" s2 = "eidboaoo"
 Output: False
 */
+
+//2pointers and native methods (failing quarter of test cases 77/103)
+const checkInclusion = (s1, s2) => {
+  let p1 = 0;
+  let p2 = s1.length;
+  s1 = s1.split('').sort((a, b) => a.localeCompare(b)).join('');
+
+  while (p2 <= s2.length) {
+    let sub = s2.substring(p1, p2).split('').sort((a, b) => a.localeCompare(b)).join('');
+    console.log(sub);
+    if (s1 === sub) return true;
+    p1++;
+    p2++;
+  }
+  return false;
+};
