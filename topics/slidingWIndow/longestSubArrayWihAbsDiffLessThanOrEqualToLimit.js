@@ -26,3 +26,22 @@ Example 3:
 Input: nums = [4,2,2,2,4,4,2,2], limit = 0
 Output: 3
 */
+
+//attempt at 2pointers sliding window
+//time limit exceeded for 56/60 test due to expensive duplicate work from .slice and .reduce
+const longestSubarray = (nums, limit) => {
+  let p1 = 0;
+  let p2 = 0;
+  let min = 10000000;
+  let max = 0;
+  while (p2 < nums.length) {
+    let sub = nums.slice(p1, p2 + 1);
+    max = sub.reduce((a, b) => Math.max(a, b));
+    min = sub.reduce((a, b) => Math.min(a, b));
+    if (Math.abs(max - min) > limit || Math.abs(min - max) > limit) {
+      p1++;
+    }
+    p2++;
+  }
+  return p2 - p1;
+};
