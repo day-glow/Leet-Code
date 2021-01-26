@@ -11,3 +11,20 @@ Input: [-2,0,-1]
 Output: 0
 Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 */
+
+//first attempt was 2-pointers (only passed 110/180 test cases)
+
+//brute force nested for loops
+//TC-O(n^2)
+//SC-O(1)
+const maxProduct = nums => {
+  if (nums.length < 1) return 0;
+  let max = nums[0];
+  for (let i = 0; i < nums.length; i++) {
+    let accumulator = 1;
+    for (let j = i; j < nums.length; j++) {
+      max = Math.max(max, accumulator *= nums[j]);
+    }
+  }
+  return max;
+};
