@@ -22,6 +22,8 @@ Output: 2
 */
 
 //2pointers
+//TC-O(n)
+//SC-O(1)
 const maxArea = height => {
   let maxWater = 0;
   let p1 = 0;
