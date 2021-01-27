@@ -23,3 +23,18 @@ Output: 3
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 */
+
+//DFS - post order (bottom up count k up, left, right, node) or inorder (starts with left, node, right)
+//go left node until find left = null, then count back to node k
+const inorder = (root, arr) => {
+  if (!root) return arr;
+  inorder(root.left, arr);
+  arr.push(root.val);
+  inorder(root.right, arr);
+  return arr;
+};
+
+const kthSmallest = (root, k) => {
+  let nums = inorder(root, []);
+  return nums[k - 1];
+};
