@@ -78,3 +78,23 @@ const kthSmallest = (root, k) => {
   smallest(root);
   return result;
 };
+
+//small refractoring for TC to break once target found
+const kthSmallest = (root, k) => {
+  let result = null;
+
+  const smallest = node => {
+    if (!node) return;
+    smallest(node.left);
+    k--;
+    if (k === 0) {
+      result = node.val;
+      return;
+    }
+    if (k < 0 || result) return;
+    smallest(node.right);
+  }
+
+  smallest(root);
+  return result;
+};
