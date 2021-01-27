@@ -17,6 +17,8 @@ Output: false
 */
 
 //DFS & backtracking
+//TC-O(n*3^l)
+//SC-O(l)
 const checkNeighbors = (board, word, x, y, k) => {
   if (board[x][y] !== word[k]) return false;
   if (k === word.length - 1) return true;
