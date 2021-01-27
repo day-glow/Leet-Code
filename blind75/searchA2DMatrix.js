@@ -13,6 +13,56 @@ Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,
 Output: false
 */
 
+//BinarySearch approach:
+const binarySearch = (matrix, target, start, vertical) => {
+  let l = matrix.length;
+  let h = matrix[0].length;
+
+  let low = start;
+  let high = vertical ? matrix[0].length - 1 : matrix.length - 1;
+
+  while (high >= low) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (vertical) {
+      let curr = matrix[start][mid];
+      if (curr < target) {
+        //go left & up
+        low = mid + 1;
+      } else if (curr > target) {
+        //or go right & down
+        high = mid - 1;
+      } else if (curr === target) {
+        return true;
+      }
+    } else {
+      let curr = matrix[mid][start];
+      if (curr < target) {
+        //go left & up
+        low = mid + 1;
+      } else if (curr > target) {
+        //or go right & down
+        high = mid - 1;
+      } else if (curr === target) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+const searchMatrix = (matrix, target) => {
+  if (!matrix || !matrix.length) return false;
+
+  let shorterSide = Math.min(matrix.length, matrix[0].length);
+  for (let i = 0; i < shorterSide; i++) {
+    verticalFound = binarySearch(matrix, target, i, true);
+    horizontalFound = binarySearch(matrix, target, i, false);
+    if (verticalFound || horizontalFound) return true;
+  }
+  return false;
+};
+
 /*
 FAILED attempt at binary search using 5 pointers
  double binary search func
