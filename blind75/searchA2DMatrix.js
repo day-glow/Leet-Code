@@ -14,6 +14,8 @@ Output: false
 */
 
 //BinarySearch approach:
+//TC-O(logn!)
+//SC-O(1)
 const binarySearch = (matrix, target, start, vertical) => {
   let l = matrix.length;
   let h = matrix[0].length;
