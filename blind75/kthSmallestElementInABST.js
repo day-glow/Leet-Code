@@ -44,6 +44,8 @@ const kthSmallest = (root, k) => {
 
 //OPTIMIZED
 //iterative inorder traversal
+//TC-O(H + k)
+//SC-O(H)
 const kthSmallest = (root, k) => {
   let stack = [];
 
