@@ -26,6 +26,9 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 
 //DFS - post order (bottom up count k up, left, right, node) or inorder (starts with left, node, right)
 //go left node until find left = null, then count back to node k
+//INORDER traversal
+//TC-O(n)
+//SC-O(n)
 const inorder = (root, arr) => {
   if (!root) return arr;
   inorder(root.left, arr);
@@ -37,4 +40,22 @@ const inorder = (root, arr) => {
 const kthSmallest = (root, k) => {
   let nums = inorder(root, []);
   return nums[k - 1];
+};
+
+//OPTIMIZED
+//iterative inorder traversal
+const kthSmallest = (root, k) => {
+  let stack = [];
+
+  while (true) {
+    while (root !== null) {
+      stack.push(root);
+      root = root.left;
+    }
+    console.log(stack);
+    root = stack.pop();
+    //not sure what --k === 0 is measuring
+    if (--k === 0) return root.val;
+    root = root.right;
+  }
 };
