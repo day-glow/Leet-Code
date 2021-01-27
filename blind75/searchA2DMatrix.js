@@ -63,6 +63,46 @@ const searchMatrix = (matrix, target) => {
   return false;
 };
 
+//refactored:
+const binarySearch = (matrix, target, start, vertical) => {
+  let low = start;
+  let high = vertical ? matrix[0].length - 1 : matrix.length - 1;
+
+  while (high >= low) {
+    let mid = Math.floor((low + high) / 2);
+
+    if (vertical) {
+      let curr = matrix[start][mid];
+      if (curr < target) {
+        low = mid + 1;
+      } else if (curr > target) {
+        high = mid - 1;
+      } else {
+        return true;
+      }
+    } else {
+      let curr = matrix[mid][start];
+      if (curr < target) {
+        low = mid + 1;
+      } else if (curr > target) {
+        high = mid - 1;
+      } else {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+
+const searchMatrix = (matrix, target) => {
+  if (!matrix || !matrix.length) return false;
+
+  let shorterSide = Math.min(matrix.length, matrix[0].length);
+  for (let i = 0; i < shorterSide; i++) {
+    if (binarySearch(matrix, target, i, true) || binarySearch(matrix, target, i, false)) return true;
+  }
+  return false;
+};
 /*
 FAILED attempt at binary search using 5 pointers
  double binary search func
