@@ -59,3 +59,20 @@ const kthSmallest = (root, k) => {
     root = root.right;
   }
 };
+
+//OPTIMIZED
+//iterative inorder traversal
+const kthSmallest = (root, k) => {
+  let result = null;
+
+  const smallest = node => {
+    if (!node) return;
+    smallest(node.left);
+    k--;
+    if (k === 0) result = node.val;
+    smallest(node.right);
+  }
+
+  smallest(root);
+  return result;
+};
