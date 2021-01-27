@@ -13,6 +13,26 @@ Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,
 Output: false
 */
 
+//OPTIMIZED SEARCH SPACE REDUCTION (bottom left) APPROACH:
+const searchMatrix = (matrix, target) => {
+  if (!matrix || !matrix.length) return false;
+
+  let row = matrix.length - 1;
+  let col = 0;
+
+  while (row >= 0 && col < matrix[0].length) {
+    if (matrix[row][col] > target) {
+      row--;
+    } else if (matrix[row][col] < target) {
+      col++;
+    } else {
+      return true;
+    }
+  }
+  return false;
+};
+
+
 //BinarySearch approach:
 //TC-O(logn!)
 //SC-O(1)
