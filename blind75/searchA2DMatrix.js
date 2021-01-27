@@ -14,6 +14,8 @@ Output: false
 */
 
 //OPTIMIZED SEARCH SPACE REDUCTION (bottom left) APPROACH:
+//TC-O(n+m)
+//SC-O(1)
 const searchMatrix = (matrix, target) => {
   if (!matrix || !matrix.length) return false;
 
