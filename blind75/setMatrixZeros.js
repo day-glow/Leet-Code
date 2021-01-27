@@ -17,6 +17,8 @@ Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 */
 
 //brute force
+//TC-O(mn)
+//SC-O(m+n)
 const setZeroes = matrix => {
   let row = new Set();
   let col = new Set();
