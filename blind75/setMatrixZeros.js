@@ -15,3 +15,22 @@ Example 2:
 Input: matrix = [[0,1,2,0],[3,4,5,2],[1,3,1,5]]
 Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 */
+
+//brute force
+const setZeroes = matrix => {
+  let row = new Set();
+  let col = new Set();
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (!matrix[i][j]) {
+        if (!row.has(i)) row.add(i);
+        if (!col.has(j)) col.add(j);
+      }
+    }
+  }
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (row.has(i) || col.has(j)) matrix[i][j] = 0;
+    }
+  }
+};
