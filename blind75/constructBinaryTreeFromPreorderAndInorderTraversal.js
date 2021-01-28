@@ -37,3 +37,20 @@ var buildTree = function(preorder, inorder) {
 
   return recur(0, inorder.length - 1);
 };
+
+//BEST: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34543/Simple-O(n)-without-map
+var buildTree = function(preorder, inorder) {
+  let p = 0;
+  let i = 0
+  const build = stop => {
+    if (inorder[i] != stop) {
+        var root = new TreeNode(preorder[p++])
+        root.left = build(root.val)
+        i++
+        root.right = build(stop)
+        return root
+    }
+    return null
+  }
+  return build()
+};
