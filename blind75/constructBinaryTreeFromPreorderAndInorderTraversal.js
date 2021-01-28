@@ -16,3 +16,24 @@ Return the following binary tree:
     /  \
    15   7
 */
+
+//must redo, this one was hard
+//inorder (left, node, right)
+//preorder (node, left, right)
+//preorder dfs, easier
+//probably need both trees to understand when a branch ends (null)
+//must redo, copied solution
+var buildTree = function(preorder, inorder) {
+  let map = new Map();
+  inorder.forEach((e, i)=>map.set(e, i));
+
+  let recur = (start, end) => {
+      if (start > end) return null;
+      let root = new TreeNode(preorder.shift());
+      root.left = recur(start, map.get(root.val) - 1);
+      root.right = recur(map.get(root.val) + 1, end);
+      return root;
+  }
+
+  return recur(0, inorder.length - 1);
+};
