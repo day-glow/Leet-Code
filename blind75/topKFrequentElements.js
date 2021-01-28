@@ -15,3 +15,26 @@ Your algorithm's time complexity must be better than O(n log n), where n is the 
 It's guaranteed that the answer is unique, in other words the set of the top k frequent elements is unique.
 You can return the answer in any order.
 */
+
+//first attempt
+const topKFrequent = (nums, k) => {
+  let map = new Map();
+  let mostFreq = [];
+  for (let num of nums) {
+    if (map.has(num)) {
+      map.set(num, map.get(num) + 1);
+    } else {
+      map.set(num, 1);
+    }
+  }
+
+  const sortedHighestFreq = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+
+  for (let num of sortedHighestFreq.keys()) {
+    if (mostFreq.length < k) {
+      mostFreq.push(num);
+    }
+  }
+
+  return mostFreq;
+};
