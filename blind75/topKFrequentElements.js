@@ -40,6 +40,9 @@ const topKFrequent = (nums, k) => {
 };
 
 //OPTIMIZED retrival and sort
+//TC-O(nlogk) if k < n
+//worse-O(nlogn) if k === n
+//SC-O(n+k)
 const topKFrequent = (nums, k) => {
   let map = new Map();
 
@@ -51,3 +54,42 @@ const topKFrequent = (nums, k) => {
 
   return unsortedNums.sort((a, b) => map.get(b) - map.get(a)).slice(0, k);
 };
+
+//QuickSelect Hoare's selection algo
+//TC-O(n)->O(n^2)
+/*approach similar to quick sort
+steps:
+1.hash map of frequencies
+2.sort unique keys with random pivot, sort by freq
+3.return the higher freq side of arr (if equal to k), otherwise sort that side
+*/
+
+//Learn Implementation of heap in javascript: https://leetcode.com/problems/top-k-frequent-elements/discuss/81685/JS-solution-using-min-heap
+//HEAP if using Java
+//TC-O(nlogk) if k < n
+//worse-O(nlogn) if k === n
+//SC-O(n+k)
+
+class Solution {
+  public int[] topKFrequent(int[] nums, int k) {
+    if (k == nums.length) return nums;
+
+    Map<Integer, Integer> freqMap = new HashMap();
+    for (int n: nums) {
+      freqMap.put(n, freqMap.getOrDefault(n, 0) + 1);
+    }
+
+    Queue<Integer> heap = new PriorityQueue<>((a, b) -> freqMap.get(a) - freqMap.get(b));
+
+    for (int n: freqMap.keySet()) {
+      heap.add(n);
+      if(heap.size() > k) heap.poll();
+    }
+
+    int[] top = new int[k];
+    for (int i = k -1; i >= 0; --i) {
+      top[i] = heap.poll();
+    }
+    return top;
+  }
+}
