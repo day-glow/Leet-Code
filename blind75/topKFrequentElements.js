@@ -38,3 +38,16 @@ const topKFrequent = (nums, k) => {
 
   return mostFreq;
 };
+
+//OPTIMIZED retrival and sort
+const topKFrequent = (nums, k) => {
+  let map = new Map();
+
+  for (let num of nums) {
+    map.has(num) ? map.set(num, map.get(num) + 1) : map.set(num, 1);
+  }
+
+  let unsortedNums = [...map.keys()];
+
+  return unsortedNums.sort((a, b) => map.get(b) - map.get(a)).slice(0, k);
+};
