@@ -19,6 +19,8 @@ Output: 1
 */
 
 //DFS - recursion - backtracking
+//TC-O(n)
+//SC-O(n)
 var lowestCommonAncestor = function(root, p, q) {
   let LCA = new TreeNode(null);
 
