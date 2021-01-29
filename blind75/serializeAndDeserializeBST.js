@@ -14,6 +14,27 @@ Input: root = []
 Output: []
 */
 
+//POSTORDER
+const serialize = root => {
+  if (!root) return '';
+  return `${serialize(root.left)}*${serialize(root.right)}*${root.val}`;
+};
+
+const deserialize = data => {
+  const arr = data.split('*');
+
+  const makeTree = arr => {
+    const val = arr.pop();
+    if (!val) return null;
+    const node = new TreeNode(val);
+    node.right = makeTree(arr);
+    node.left = makeTree(arr);
+    return node;
+  }
+
+  return makeTree(arr);
+};
+
 //PREORDER
 const serialize = root => {
   if (!root) return '';
