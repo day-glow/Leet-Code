@@ -25,7 +25,9 @@ Output: [1]
 //SC-O(1)
 const sortColors = nums => nums.sort((a, b) => a - b);
 
-//2 pointers
+//2 pointers, one pass
+//Tc-O(n)
+//SC-O(1)
 const sortColors = nums => {
   let p1 = 0;
   let curr = 0;
