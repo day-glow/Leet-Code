@@ -15,6 +15,8 @@ Output: []
 */
 
 //POSTORDER
+//TC-O(n)
+//SC-O(n)
 const serialize = root => {
   if (!root) return '';
   return `${serialize(root.left)}*${serialize(root.right)}*${root.val}`;
