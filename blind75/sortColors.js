@@ -21,4 +21,60 @@ Output: [1]
 */
 
 //native built in sort function
+//TC-O(nlogn) ---Chrome uses hybrid of merge sort and insertion sort called Timsort.
+//SC-O(1)
 const sortColors = nums => nums.sort((a, b) => a - b);
+
+//2 pointers
+const sortColors = nums => {
+  let p1 = 0;
+  let curr = 0;
+  let p2 = nums.length - 1;
+
+  while (curr <= p2) {
+    if (nums[curr] === 0) {
+      [nums[p1], nums[curr]] = [nums[curr], nums[p1]];
+      curr++;
+      p1++;
+    } else if (nums[curr] === 2) {
+      [nums[p2], nums[curr]] = [nums[curr], nums[p2]];
+      p2--;
+    } else {
+      curr++;
+    }
+  }
+}
+
+//native built in sort function
+//const sortColors = nums => nums.sort((a, b) => a - b);
+
+//long form
+//pivot or quick sort
+//nested for loops
+//recursive sort
+//two pointers move left to right
+
+const sortColors = nums => {
+  if (nums.length < 2) return nums;
+  let p1 = 0;
+  let curr = 0;
+  let p2 = nums.length - 1;
+
+  let temp;
+  while (curr <= p2) {
+    if (nums[curr] === 0) {
+      temp = nums[p1];
+      nums[p1] = nums[curr];
+      nums[curr] = temp;
+      curr++;
+      p1++;
+    } else if (nums[curr] === 2) {
+      temp = nums[p2];
+      nums[p2] = nums[curr];
+      nums[curr] = temp;
+      p2--;
+    } else {
+      curr++;
+    }
+  }
+}
