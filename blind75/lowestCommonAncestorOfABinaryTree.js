@@ -17,3 +17,22 @@ Example 3:
 Input: root = [1,2], p = 1, q = 2
 Output: 1
 */
+
+//DFS - recursion - backtracking
+var lowestCommonAncestor = function(root, p, q) {
+  let LCA = new TreeNode(null);
+
+  const recurseTree = (node, p, q) => {
+    if (node === null) return false;
+    let left = recurseTree(node.left, p, q) ? 1 : 0;
+    let right = recurseTree(node.right, p, q) ? 1 : 0;
+    let mid = (node === p || node === q) ? 1 : 0;
+
+    if (mid + left + right >= 2) LCA = node;
+    return (mid + left + right > 0);
+  }
+
+  recurseTree(root, p, q);
+
+  return LCA;
+};
