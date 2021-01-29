@@ -19,3 +19,6 @@ Example 4:
 Input: nums = [1]
 Output: [1]
 */
+
+//native built in sort function
+const sortColors = nums => nums.sort((a, b) => a - b);
