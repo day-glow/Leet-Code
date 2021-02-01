@@ -12,6 +12,8 @@ Explanation: You could delete the character 'c'.
 */
 
 //greedy approach (half for loop & valid palindrom helper)
+//TC-O(n)
+//SC-O(1)
 const isPalindrome = (s, start, end) => {
   for (let i = start; i < start + (end - start) / 2; i++) {
     if (s[i] !== s[end - i + start]) return false;
