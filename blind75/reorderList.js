@@ -46,3 +46,45 @@ in-place no return val
 
 //TC-O(n)
 //SC-O(1)
+const reverse = node => {
+  if (!node ||!node.next) return node;
+
+  let n = reverse(node.next);
+  node.next.next = node;
+  node.next = null;
+
+  return n;
+}
+
+const reorderList = head => {
+  if (!head || !head.next) return head;
+  let p1 = head;
+  let p2 = head;
+  let mid;
+
+  //two pointers, fast & slow (find mid)
+  while (p2 && p2.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+  }
+  mid = p1.next;
+  p1.next = null;
+  p1 = head;
+
+  //reverse second half
+  let revHalf = reverse(mid);
+
+  //iterate over both and sew together
+  while (p1 && revHalf) {
+
+    let temp = p1.next;
+    p1.next = revHalf;
+    p1 = temp;
+
+    temp = revHalf.next;
+    revHalf.next = p1;
+    revHalf = temp;
+  }
+
+};
+
