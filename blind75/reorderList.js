@@ -43,3 +43,6 @@ step 3: sew together (alternating)
 
 in-place no return val
 */
+
+//TC-O(n)
+//SC-O(1)
