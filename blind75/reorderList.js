@@ -88,3 +88,43 @@ const reorderList = head => {
 
 };
 
+//refractored
+const reverse = node => {
+  if (!node ||!node.next) return node;
+
+  let n = reverse(node.next);
+  node.next.next = node;
+  node.next = null;
+
+  return n;
+}
+
+const reorderList = head => {
+  if (!head || !head.next) return head;
+  let p1 = head;
+  let p2 = head;
+
+  //two pointers, fast & slow (find mid)
+  while (p2 && p2.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+  }
+  p2 = p1.next;
+  p1.next = null;
+  p1 = head;
+
+  //reverse second half
+  p2 = reverse(p2);
+
+  //iterate over both and sew together
+  while (p1 && p2) {
+    let temp = p1.next;
+    p1.next = p2;
+    p1 = temp;
+
+    temp = p2.next;
+    p2.next = p1;
+    p2 = temp;
+  }
+
+};
