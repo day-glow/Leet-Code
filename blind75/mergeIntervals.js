@@ -59,6 +59,8 @@ const merge = intervals => {
 };
 
 //OPTIMIZED
+//TC-O(nlogn)
+//SC-worst O(n)
 const merge = intervals => {
   if (intervals.length < 2) return intervals;
   intervals.sort((a, b) => a[0] - b[0]);
