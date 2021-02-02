@@ -11,3 +11,49 @@ Input: intervals = [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 */
+
+/**
+ * @param {number[][]} intervals
+ * @return {number[][]}
+ */
+//clarify Q are they in sorted, ascending order? by start of interval?
+//test case [[1,4],[0,0]] shows intervals are not sorted
+
+//should sort by starting values
+//iterate over elems
+//if prevMin & max are within currMin & max, merge
+//if not, update curret min max
+
+const isOverlapping = (prevMin, prevMax, currMin, currMax) => {
+  if (currMin <= prevMax && currMin >= prevMin) return true;
+  if (prevMax >= currMax && currMax >= prevMin) return true;
+  if (currMin <= prevMin && currMax >= prevMax) return true;
+  if (prevMin <= currMin && prevMax >= currMax) return true;
+
+  return false;
+}
+
+const merge = intervals => {
+  let prevMin;
+  let prevMax;
+  let mergedInt = [];
+
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  for (let [currMin, currMax] of intervals) {
+    if (prevMin !== undefined && isOverlapping(prevMin, prevMax, currMin, currMax)) {
+      //merge
+      prevMin = Math.min(prevMin, currMin);
+      prevMax = Math.max(prevMax, currMax);
+    } else if (prevMin !== undefined) {
+      mergedInt.push([prevMin, prevMax]);
+      prevMin = currMin;
+      prevMax = currMax;
+    } else {
+      prevMin = currMin;
+      prevMax = currMax;
+    }
+  }
+  mergedInt.push([prevMin, prevMax]);
+  return mergedInt;
+};
