@@ -18,6 +18,8 @@ Explanation: You don't need to remove any of the intervals since they're already
 */
 
 //greedy approach
+//TC-O(nlogn)
+//SC-O(1)
 const eraseOverlapIntervals = intervals => {
   let removalCount = 0;
   let prev = 0;
