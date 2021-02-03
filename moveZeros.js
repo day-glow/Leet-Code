@@ -33,3 +33,17 @@ var moveZeroes = function(nums) {
   }
 };
 
+//optimized bubble forward
+//bubble forward
+var moveZeroes = function(nums) {
+  if (nums.length < 2) return;
+  let p1 = 0;
+  while (nums[p1] !== 0 && p1 < nums.length) p1++;
+  for (let i = p1; i < nums.length; i++) {
+    if (nums[i] !== 0) {
+      nums[p1] = nums[i];
+      nums[i] = 0;
+      p1++;
+    }
+  }
+};
