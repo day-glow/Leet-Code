@@ -11,6 +11,47 @@ trie.insert("app");
 trie.search("app");     // returns true
 */
 
+//object approach
+var TrieNode = function(val = null) {
+  this.val = val;
+  this.isEnd = false;
+  this.children = {};
+};
+
+var Trie = function() {
+  this.root = new TrieNode();
+};
+
+//TC-O(k)
+//SC-O(k)
+Trie.prototype.insert = function(word) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node.children[c]) node.children[c] = new TrieNode(c);
+    node = node.children[c];
+  }
+  node.isEnd = true;
+};
+
+//TC-O(k)
+//SC-O(1)
+Trie.prototype.search = function(word, isPre = false) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node.children[c]) return false;
+    node = node.children[c];
+  }
+  return isPre ? true : node.isEnd;
+};
+
+//TC-O(k)
+//SC-O(1)
+Trie.prototype.startsWith = function(prefix) {
+  return this.search(prefix, true);
+};
+
+
+
 //constructor class for TrieNode and Trie
 class TrieNode {
   constructor(val = null) {
@@ -86,35 +127,3 @@ Trie.prototype.startsWith = function(prefix) {
   return this.search(prefix, true);
 };
 
-//object approach
-var TrieNode = function(val = null) {
-  this.val = val;
-  this.isEnd = false;
-  this.children = {};
-};
-
-var Trie = function() {
-  this.root = new TrieNode();
-};
-
-Trie.prototype.insert = function(word) {
-  let node = this.root;
-  for (let c of word) {
-    if (!node.children[c]) node.children[c] = new TrieNode(c);
-    node = node.children[c];
-  }
-  node.isEnd = true;
-};
-
-Trie.prototype.search = function(word, isPre = false) {
-  let node = this.root;
-  for (let c of word) {
-    if (!node.children[c]) return false;
-    node = node.children[c];
-  }
-  return isPre ? true : node.isEnd;
-};
-
-Trie.prototype.startsWith = function(prefix) {
-  return this.search(prefix, true);
-};
