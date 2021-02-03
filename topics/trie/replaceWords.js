@@ -26,6 +26,9 @@ Input: dictionary = ["ac","ab"], sentence = "it is abnormal that this solution i
 Output: "it is ab that this solution is ac"
 */
 
+//brute force w/ nested for loops (.split) approach
+//TC-O(n^2)
+//SC-O(1)
 
 //trie approach
 //TC-O(n)
