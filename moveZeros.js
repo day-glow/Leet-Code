@@ -35,6 +35,8 @@ var moveZeroes = function(nums) {
 
 //optimized bubble forward
 //bubble forward
+//TC- O(n)
+//SC-O(1)
 var moveZeroes = function(nums) {
   if (nums.length < 2) return;
   let p1 = 0;
