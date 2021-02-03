@@ -94,37 +94,27 @@ var TrieNode = function(val = null) {
 };
 
 var Trie = function() {
-  //this.root = {};
   this.root = new TrieNode();
 };
 
 Trie.prototype.insert = function(word) {
   let node = this.root;
-  //iterate over word to insert
-  for (let currChar of word) {
-    if (!node.children[currChar]) {
-      let addLetter = new TrieNode(currChar);
-      node.children[currChar] = addLetter;
-    }
-    node = node.children[currChar];
+  for (let c of word) {
+    if (!node.children[c]) node.children[c] = new TrieNode(c);
+    node = node.children[c];
   }
   node.isEnd = true;
 };
 
-Trie.prototype.search = function(word) {
+Trie.prototype.search = function(word, isPre = false) {
   let node = this.root;
   for (let c of word) {
     if (!node.children[c]) return false;
     node = node.children[c];
   }
-  return node.isEnd;
+  return isPre ? true : node.isEnd;
 };
 
 Trie.prototype.startsWith = function(prefix) {
-  let node = this.root;
-  for (let c of prefix) {
-    if (!node.children[c]) return false;
-    node = node.children[c];
-  }
-  return true;
+  return this.search(prefix, true);
 };
