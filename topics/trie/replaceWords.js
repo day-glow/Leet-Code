@@ -26,6 +26,10 @@ Input: dictionary = ["ac","ab"], sentence = "it is abnormal that this solution i
 Output: "it is ab that this solution is ac"
 */
 
+
+//trie approach
+//TC-O(n)
+//SC-O(n)
 var Node = function(val) {
   this.val = val;
   this.children = new Map();
