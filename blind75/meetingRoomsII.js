@@ -15,6 +15,8 @@ Output: 1
 //interval in array is like a sliding window
 
 //no min heap or priority queue, could instantiate one or use sort for each call
+//TC-O(nlogn)
+//SC-O(n)
 const minMeetingRooms = intervals => {
 
   if (!intervals.length) return 0;
