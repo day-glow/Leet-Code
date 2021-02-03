@@ -9,3 +9,27 @@ Note:
 You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 */
+
+//2 pointers, quick sort, bubble back
+var moveZeroes = function(nums) {
+  let p1 = 0;
+  let p2 = 0;
+  let p3 = nums.length - 1;
+
+  while (p1 !== p3) {
+    while (nums[p3] === 0 && p3 !== p1) p3--;
+    if (p3 === p1) break;
+    while (nums[p1] !== 0) {
+      p1++;
+      p2++;
+      if (p1 === p3) break;
+    }
+    while (nums[p2] === 0 && p2 !== p3) {
+      nums[p2] = nums[p2 + 1];
+      nums[p2 + 1] = 0;
+      p2++;
+    }
+    p2 = p1;
+  }
+};
+
