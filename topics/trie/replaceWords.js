@@ -25,3 +25,35 @@ Example 5:
 Input: dictionary = ["ac","ab"], sentence = "it is abnormal that this solution is accepted"
 Output: "it is ab that this solution is ac"
 */
+
+var Node = function(val) {
+  this.val = val;
+  this.children = new Map();
+};
+
+const replaceWords = (dictionary, sentence) => {
+  let trie = new Node();
+  for (let word of dictionary) {
+    let node = trie;
+    for (let c of word) {
+      if (!node.children.has(c)) node.children.set(c, new Node(c));
+      node = node.children.get(c);
+    }
+    node.children.set('*', new Node('*'));
+  }
+  sentence = sentence.split(' ');
+
+  for (let i = 0; i < sentence.length; i++) {
+    let curr = trie;
+    let root = '';
+    for (let c of sentence[i]) {
+      if (!curr.children.has(c)) break;
+      if (curr.children.has('*')) break;
+      root += c;
+      curr = curr.children.get(c);
+    }
+
+    sentence[i] = curr.children.has('*') ? root : sentence[i];
+  }
+  return sentence.join(' ');
+};
