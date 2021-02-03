@@ -66,29 +66,24 @@ var Trie = function() {
 
 Trie.prototype.insert = function(word) {
   let node = this.root;
-  for (let currChar of word) {
-    if (!node.children.has(currChar)) node.children.set(currChar, new TrieNode(currChar));
-    node = node.children.get(currChar);
+  for (let c of word) {
+    if (!node.children.has(c)) node.children.set(c, new TrieNode(c));
+    node = node.children.get(c);
   }
   node.isEnd = true;
 };
 
-Trie.prototype.search = function(word) {
+Trie.prototype.search = function(word, isPre = false) {
   let node = this.root;
   for (let c of word) {
     if (!node.children.has(c)) return false;
     node = node.children.get(c);
   }
-  return node.isEnd;
+  return isPre ? true : node.isEnd;
 };
 
 Trie.prototype.startsWith = function(prefix) {
-  let node = this.root;
-  for (let c of prefix) {
-    if (!node.children.has(c)) return false;
-    node = node.children.get(c);
-  }
-  return true;
+  return this.search(prefix, true);
 };
 
 //object approach
