@@ -22,3 +22,28 @@ Example 3:
 Input: numCourses = 1, prerequisites = []
 Output: [0]
 */
+
+/**
+ * @param {number} numCourses
+ * @param {number[][]} prerequisites
+ * @return {number[]}
+ */
+//clarifying q: are the pairs in sorted order by a?
+//bfs - queue
+//dfs - stack
+//keys&locks Q, map
+/*
+adjList in hash map
+map = {
+0: [],
+1: [0],
+2: [0],
+3: [1,2],
+}
+seen in set
+visiting in set
+look for cycle
+*/
+//iterate over classes and find order to finish all
+//topo sort
+
