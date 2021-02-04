@@ -47,3 +47,47 @@ look for cycle
 //iterate over classes and find order to finish all
 //topo sort
 
+//keeping array and map of prereq count approach
+var findOrder = function(numCourses, prerequisites) {
+  let courseOrder = [];
+  if (!numCourses) return courseOrder;
+  if (prerequisites.length < 1) {
+    for (let i = 0; i < numCourses; i++) courseOrder.push(i);
+    return courseOrder;
+  }
+  let map = new Map();
+  let indegree = new Array(numCourses).fill(0);
+  let seen = new Set();
+  let visiting = new Set();
+
+  //adjList
+  for (let [a, b] of prerequisites) {
+    if (map.has(b)) {
+      map.get(b).push(a);
+    } else {
+      map.set(b, [a]);
+    }
+    indegree[a]++;
+  }
+
+  //create queue of coursesp w/o prereqs
+  let queue = [];
+  for (let i = 0; i < indegree.length; i++) {
+    if (indegree[i] === 0) queue.push(i);
+  }
+
+  //create order - dfs
+  while (queue.length) {
+    let c = queue.shift();
+    if (map.has(c)) {
+      for (let e of map.get(c)) {
+        indegree[e]--;
+        if (indegree[e] === 0) queue.push(e);
+      }
+    }
+    //check for cycle in adjList
+    courseOrder.push(c);
+  }
+
+  return courseOrder.length === numCourses ? courseOrder : [];
+};
