@@ -38,6 +38,8 @@ var WordDictionary = function() {
   this.root = new trieNode();
 };
 
+//TC-O(m)
+//SC-O(m)
 WordDictionary.prototype.addWord = function(word) {
   let node = this.root;
   for (let c of word) {
@@ -47,6 +49,8 @@ WordDictionary.prototype.addWord = function(word) {
   node.children.set('*', new trieNode('*'));
 };
 
+//TC-O(m)
+//SC-O(1)
 WordDictionary.prototype.search = function(word) {
   function searchSub(node, i) {
     if (word.length === i && node.children.has('*')) return true;
