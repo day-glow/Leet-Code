@@ -48,6 +48,8 @@ look for cycle
 //topo sort
 
 //keeping array and map of prereq count approach
+//TC-O(n+m)
+//SC-O(n+m)
 var findOrder = function(numCourses, prerequisites) {
   let courseOrder = [];
   if (!numCourses) return courseOrder;
