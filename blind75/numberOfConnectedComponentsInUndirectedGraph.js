@@ -41,6 +41,8 @@ count = 0
 */
 
 //UNION FIND Approach:
+//TC-O(logn*m)
+//SC-O(n)
 var countComponents = function(n, edges) {
   if (!n || !edges) return n;
   let components = new Map();
