@@ -28,3 +28,42 @@ myQueue.peek(); // return 1
 myQueue.pop(); // return 1, queue is [2]
 myQueue.empty(); // return false
 */
+
+var MyQueue = function() {
+  this.stack1 = [];
+  this.stack2 = [];
+
+};
+
+/**
+ * Push element x to the back of queue.
+ * @param {number} x
+ * @return {void}
+ */
+MyQueue.prototype.push = function(x) {
+  if (this.stack1.length === 0) {
+    this.stack1.push(x);
+
+  } else {
+    while (this.stack1.length !== 0) {
+      this.stack2.push(this.stack1.pop());
+    }
+    this.stack1.push(x);
+    while (this.stack2.length !== 0) {
+      this.stack1.push(this.stack2.pop());
+    }
+  }
+  return this;
+};
+
+MyQueue.prototype.pop = function() {
+  return this.stack1.pop();
+};
+
+MyQueue.prototype.peek = function() {
+  return this.stack1[this.stack1.length - 1];
+};
+
+MyQueue.prototype.empty = function() {
+  return this.stack1.length === 0 && this.stack2.length === 0;
+};
