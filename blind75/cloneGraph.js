@@ -49,3 +49,20 @@ var cloneGraph = function(node) {
   }
   return clones.get(node);
 };
+
+//recursive approach
+var cloneGraph = function(node) {
+  if (!node) return null;
+
+  let clonesGraph = new Map();
+
+  const clone = currNode => {
+    if (!clonesGraph.has(currNode.val)) {
+      clonesGraph.set(currNode.val, new Node(currNode.val));
+      clonesGraph.get(currNode.val).neighbors = currNode.neighbors.map(clone);
+    }
+    return clonesGraph.get(currNode.val);
+  };
+
+  return clone(node);
+};
