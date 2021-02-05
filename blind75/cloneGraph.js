@@ -27,3 +27,23 @@ Explanation: There are 4 nodes in the graph.
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 */
+
+//queue approach
+var cloneGraph = function(node) {
+  if (!node) return null;
+  let clones = new Map();
+  clones.set(node, new Node(node.val));
+
+  let queue = [node];
+  while (queue.length) {
+    let curr = queue.shift();
+    for (let nei of curr.neighbors) {
+      if (!clones.has(nei)) {
+        clones.set(nei, new Node(nei.val));
+        queue.push(nei);
+      }
+      clones.get(curr).neighbors.push(clones.get(nei));
+    }
+  }
+  return clones.get(node);
+};
