@@ -64,3 +64,29 @@ var countComponents = function(n, edges) {
   }
   return count;
 };
+
+//for loop v while loop
+var countComponents = function(n, edges) {
+  if (!n || !edges) return n;
+  let components = new Map();
+
+  for (let i = 0; i < n; i++) {
+    components.set(i, -1);
+  }
+
+  let n1;
+  let n2;
+  for (let [a, b] of edges) {
+    n1 = a;
+    n2 = b;
+    while (components.get(n1) !== -1) n1 = components.get(n1);
+    while (components.get(n2) !== -1) n2 = components.get(n2);
+    if (n1 !== n2) components.set(n2, n1);
+  }
+
+  let count = 0;
+  for (let [nodes, head] of components) {
+    if (head === -1) count++;
+  }
+  return count;
+};
