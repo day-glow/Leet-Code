@@ -29,6 +29,8 @@ Explanation: There are 4 nodes in the graph.
 */
 
 //queue approach
+//TC-O(n+m)
+//SC-O(n)
 var cloneGraph = function(node) {
   if (!node) return null;
   let clones = new Map();
