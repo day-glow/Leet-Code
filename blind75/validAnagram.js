@@ -56,7 +56,17 @@ hash map - obj
 TC- O(n)
 SC- O(n)
 */
+var isAnagram = function(s, t) {
+  if (s.length !== t.length) return false;
+  let letters = new Array(26).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    letters[s[i].charCodeAt(0) - 97]++;
+    letters[t[i].charCodeAt(0) - 97]--;
+  }
+  return letters.every(count => count === 0);
+};
 
+//object approach
 const isAnagram = (s, t) => {
   if (s.length !== t.length) return false;
   const map = {};
