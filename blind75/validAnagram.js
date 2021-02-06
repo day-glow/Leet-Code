@@ -56,6 +56,33 @@ hash map - obj
 TC- O(n)
 SC- O(n)
 */
+//hash map approach
+var isAnagram = function(s, t) {
+  if (s.length !== t.length) return false;
+  let letters = new Map();
+  for (let i = 0; i < s.length; i++) {
+    if (letters.has(s[i])) {
+      letters.set(s[i], letters.get(s[i]) + 1);
+    } else {
+      letters.set(s[i], 1);
+    }
+  }
+  for (let i = 0; i < t.length; i++) {
+    if (letters.has(t[i])) {
+      if (letters.get(t[i]) === 1) {
+        letters.delete(t[i]);
+      } else if (letters.get(t[i]) > 1) {
+        letters.set(t[i], letters.get(t[i]) - 1);
+      }
+    } else {
+      return false;
+    }
+  }
+
+  return letters.size === 0;
+};
+
+//fixed array approach
 var isAnagram = function(s, t) {
   if (s.length !== t.length) return false;
   let letters = new Array(26).fill(0);
