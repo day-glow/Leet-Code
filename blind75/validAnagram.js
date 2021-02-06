@@ -82,7 +82,9 @@ var isAnagram = function(s, t) {
   return letters.size === 0;
 };
 
-//fixed array approach
+//fixed array (hash table) approach
+//TC-O(n)
+//SC-O(1)
 var isAnagram = function(s, t) {
   if (s.length !== t.length) return false;
   let letters = new Array(26).fill(0);
