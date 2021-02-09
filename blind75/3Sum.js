@@ -51,3 +51,29 @@ const twoSum = (nums, i, triplets) => {
     seenNums.set(nums[j]);
   }
 }
+
+//NO SORT APPROACH:
+const threeSum = nums => {
+  let seenTriplets = new Set();
+  let seenNums = new Map();
+  let duplicates = new Set();
+  let triplets = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (duplicates.add(nums[i])) {
+      for (let j = i + 1; j < nums.length; j++) {
+        let complement = -nums[i] - nums[j];
+        if (seenNums.has(complement) && seenNums.get(complement) === i) {
+          let triplet = [nums[i], nums[j], complement].sort((a, b) => a - b);
+
+          if (!seenTriplets.has(String(triplet))) {
+            triplets.push(triplet);
+            seenTriplets.add(String(triplet));
+          }
+        }
+        seenNums.set(nums[j], i);
+      }
+    }
+  }
+
+  return triplets;
+};
