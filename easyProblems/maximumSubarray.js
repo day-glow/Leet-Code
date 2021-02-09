@@ -30,6 +30,20 @@ Output: -1
  e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
 
+//Refactored:
+var maxSubArray = function(nums) {
+  if (nums.length <= 1) return nums[0];
+
+  let largestSum = nums[0];
+  let runSum = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    runSum = Math.max(nums[i], runSum + nums[i]);
+    largestSum = Math.max(runSum, largestSum);
+  }
+  return largestSum;
+};
+
+
 //OPTIMIZED APPROACH (GREEDY):
 const maxSubArray = nums => {
   //declare sum variable
