@@ -27,3 +27,15 @@ const canAttendMeetings = intervals => {
 //TC-O(n^2)
 //SC-O(1)
 //solve with nested loops and overlap conditions for each pair's vals
+
+//optional for each loop
+var canAttendMeetings = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let prevEndTime = 0;
+  let canAttendAll = true;
+  intervals.forEach(meeting => {
+    if (meeting[0] < prevEndTime) canAttendAll = false;
+    prevEndTime = meeting[1];
+  })
+  return canAttendAll;
+};
