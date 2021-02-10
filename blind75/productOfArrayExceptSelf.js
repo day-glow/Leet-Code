@@ -67,10 +67,10 @@ const productExceptSelf = nums => {
   for (let i = 1; i < nums.length; i++) {
     product[i] = nums[i - 1] * product[i - 1];
   }
-  let rProd = nums[nums.length - 1];
+  let runningRightProd = nums[nums.length - 1];
   for (let i = nums.length - 2; i >= 0; i--) {
-    product[i] = product[i] * rProd;
-    rProd *= nums[i];
+    product[i] = product[i] * runningRightProd;
+    runningRightProd *= nums[i];
   }
   return product;
 };
