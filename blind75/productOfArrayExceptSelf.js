@@ -60,3 +60,24 @@ const productExceptSelf = nums => {
   }
   return result;
 };
+
+//second pass:
+const productExceptSelf = nums => {
+  let product = new Array(nums.length).fill(1);
+  for (let i = 1; i < nums.length; i++) {
+    product[i] = nums[i - 1] * product[i - 1];
+  }
+  let runningRightProd = nums[nums.length - 1];
+  for (let i = nums.length - 2; i >= 0; i--) {
+    product[i] = product[i] * runningRightProd;
+    runningRightProd *= nums[i];
+  }
+  return product;
+};
+
+//one pass O(n), constant space - not counting output
+//no division
+//nums =   [ 1, 2, 3, 4]
+//left =   [ 1, 1, 2, 6]
+//right =  [24, 12, 4, 1]
+//product= [24, 12, 8, 6]
