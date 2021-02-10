@@ -92,3 +92,20 @@ var countComponents = function(n, edges) {
   }
   return count;
 };
+
+//second pass (same approach)
+var countComponents = function(n, edges) {
+  const connections = new Map();
+  for (let i = 0; i < n; i++) connections.set(i, -1);
+
+  for (let [n1, n2] of edges) {
+    while (connections.get(n1) !== -1) n1 = connections.get(n1);
+    while (connections.get(n2) !== -1) n2 = connections.get(n2);
+    if (n1 !== n2) connections.set(n2, n1);
+  }
+  let components = 0;
+  for (let [node, head] of connections) {
+    if (head === -1) components++;
+  }
+  return components;
+};
