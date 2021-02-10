@@ -41,3 +41,48 @@ var decode = function(s) {
   if (!s || !s.length || !s[0].length) return s;
   return s.split('**-1');
 };
+
+//second pass:
+const encode = strs => (!strs || !strs.length || !strs[0].length) ? strs : strs.join('9*12th^4562a');
+const decode = s => (!s || !s.length || !s[0].length) ? s : s.split('9*12th^4562a');
+
+//second pass (chunk transfer encoding approach):
+const encode = strs => {
+  if (!strs || !strs.length || !strs[0].length) return strs;
+  let stringBuilder = '';
+  for (let i = 0; i < strs.length; i++) {
+    let curr = strs[i];
+    let currLen = String(curr.length);
+    if (currLen.length < 4) {
+      let numZeros = 4 - currLen.length;
+      while (numZeros) {
+        currLen = '0' + currLen;
+        numZeros--;
+      }
+    }
+    stringBuilder += `*983&${currLen}${strs[i]}`;
+  }
+
+  return stringBuilder;
+};
+
+const decode = s => {
+  if (!s || !s.length || !s[0].length) return s;
+
+  let p = 0;
+  let decodedStrs = [];
+  let curr = '';
+  let count = 0;
+
+  while (p < s.length) {
+    curr += s[p++];
+    if (curr === '*983&') {
+      curr = '';
+      count = Number(s.substring(p, p + 4));
+      p += 4;
+      decodedStrs.push(s.substring(p, p + count));
+      p += count;
+    }
+  }
+  return decodedStrs;
+};
