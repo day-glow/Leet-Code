@@ -41,3 +41,7 @@ var decode = function(s) {
   if (!s || !s.length || !s[0].length) return s;
   return s.split('**-1');
 };
+
+//second pass:
+const encode = strs => (!strs || !strs.length || !strs[0].length) ? strs : strs.join('9*12th^4562a');
+const decode = s => (!s || !s.length || !s[0].length) ? s : s.split('9*12th^4562a');
