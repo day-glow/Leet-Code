@@ -103,3 +103,55 @@ var rotate = function(matrix) {
     }
   }
 };
+
+//second pass (transpose & reflect approach):
+/*
+elegant helper functions
+//transpose
+//reflect
+ */
+const rotate = matrix => {
+  let n = matrix.length;
+
+  const transpose = m => {
+    for (let i = 0; i < n; i++) {
+      for (let j = i; j < n; j++) {
+        let temp = m[i][j];
+        m[i][j] = m[j][i];
+        m[j][i] = temp;
+      }
+    }
+  };
+
+  const reflect = m => {
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n / 2; j++) {
+        let temp = m[i][j];
+        m[i][j] = m[i][n - j - 1];
+        m[i][n - j - 1] = temp;
+      }
+    }
+  };
+
+  transpose(matrix);
+  reflect(matrix);
+};
+
+//refactored:
+const rotate = m => {
+  let n = m.length;
+  for (let i = 0; i < n; i++) {
+    for (let j = i; j < n; j++) {
+      let temp = m[i][j];
+      m[i][j] = m[j][i];
+      m[j][i] = temp;
+    }
+  }
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n / 2; j++) {
+      let temp = m[i][j];
+      m[i][j] = m[i][n - j - 1];
+      m[i][n - j - 1] = temp;
+    }
+  }
+};
