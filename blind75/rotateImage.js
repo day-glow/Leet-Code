@@ -71,8 +71,22 @@ r,c
 1,2
 2,1
 1,0
+------------------
+Notes for next time:
+Remember math.floor for limiting for loop dist
+start with temp = lower left work backwards/shifting each clockwise
+end with 0,0 = temp
 
-etc
+rotation order:
+2,0
+2,2
+0,2
+0,0
+
+matrix[n - c][r]
+matrix[n - r][n - c]
+matrix[c][n - r]
+matrix[r][c]
  */
 var rotate = function(matrix) {
   //rotate 4 positions at a time
