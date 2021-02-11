@@ -48,3 +48,39 @@ const search = (nums, target) => {
 
   return -1;
 };
+
+//second pass (still confusing with conditionals)
+//2-3 pointer (left, mid, right)
+var search = function(nums, target) {
+  if (!nums.length) return -1;
+
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l <= r) {
+    let m = Math.floor((r - l) / 2 + l);
+    if (target === nums[m]) return m;
+    if (target === nums[r]) return r;
+    if (target === nums[l]) return l;
+
+    if (nums[m] >= nums[l]) {
+      //normal
+      if (target >= nums[l] && target < nums[m]) {
+        //target is within l - m range
+        r = m - 1;
+      } else {
+        l = m + 1;
+      }
+    } else {
+      //abnormal
+      if (target <= nums[r] && target > nums[m]) {
+        //target is within m - r range
+        l = m + 1;
+      } else {
+        r = m - 1;
+      }
+    }
+  }
+
+  return -1;
+};
