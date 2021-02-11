@@ -16,6 +16,9 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
 
+//optimized solution:
+const containsDuplicate = nums => new Set(nums).size < nums.length;
+
 //second pass (same approach):
 var containsDuplicate = function(nums) {
   let seenNums = new Set();
