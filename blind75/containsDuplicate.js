@@ -16,6 +16,23 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
 
+//second pass (same approach):
+var containsDuplicate = function(nums) {
+  let seenNums = new Set();
+  let hasDups = false;
+  nums.forEach(num => seenNums.has(num) ? hasDups = true : seenNums.add(num));
+  return hasDups;
+};
+//second pass (for of loop)
+var containsDuplicate = function(nums) {
+  let seenNums = new Set();
+  for (let num of nums) {
+    if (seenNums.has(num)) return true;
+    seenNums.add(num);
+  }
+  return false;
+};
+
 //Hash Map Approach
 //TC- O(n)
 //SC- O(n)
