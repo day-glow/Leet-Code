@@ -50,3 +50,56 @@ const rotate = matrix => {
   }
 };
 
+//second pass (same approach)
+/*
+[ c0 c1  c2
+r0[1, 2, 3],
+r1[4, 5, 6],
+r2[7, 8, 9]
+]
+
+4 corners: max and min of each row&col
+r,c
+0,0
+0,2
+2,2
+2,0
+
+next set:
+r,c
+0,1
+1,2
+2,1
+1,0
+------------------
+Notes for next time:
+Remember math.floor for limiting for loop dist
+start with temp = lower left work backwards/shifting each clockwise
+end with 0,0 = temp
+
+rotation order:
+2,0
+2,2
+0,2
+0,0
+
+matrix[n - c][r]
+matrix[n - r][n - c]
+matrix[c][n - r]
+matrix[r][c]
+ */
+var rotate = function(matrix) {
+  //rotate 4 positions at a time
+  let n = matrix.length - 1;
+  //iterate over matrix w/ rows and cols, limited to center of each
+  for (let r = 0; r < Math.floor((matrix.length + 1) / 2); r++) {
+    for (let c = 0; c < Math.floor(matrix.length / 2); c++) {
+      //find sets of 4 corners, hold temp value as rotate in place
+      let temp = matrix[n - c][r];
+      matrix[n - c][r] = matrix[n - r][n - c];
+      matrix[n - r][n - c] = matrix[c][n - r];
+      matrix[c][n - r] = matrix[r][c];
+      matrix[r][c] = temp;
+    }
+  }
+};
