@@ -50,3 +50,27 @@ const rotate = matrix => {
   }
 };
 
+//second pass (same approach)
+/*
+[ c0 c1  c2
+r0[1, 2, 3],
+r1[4, 5, 6],
+r2[7, 8, 9]
+]
+
+4 corners: max and min of each row&col
+r,c
+0,0
+0,2
+2,2
+2,0
+
+next set:
+r,c
+0,1
+1,2
+2,1
+1,0
+
+etc
+ */
