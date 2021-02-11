@@ -84,3 +84,25 @@ var search = function(nums, target) {
 
   return -1;
 };
+
+//second pass (same approach):
+var search = function(nums, target) {
+  if (!nums.length) return -1;
+
+  let l = 0;
+  let r = nums.length - 1;
+
+  while (l <= r) {
+    let m = Math.floor((r - l) / 2 + l);
+    if (target === nums[m]) return m;
+    if (target === nums[r]) return r;
+    if (target === nums[l]) return l;
+
+    if (nums[m] >= nums[l]) {
+      target >= nums[l] && target < nums[m] ? r = m - 1 : l = m + 1;
+    } else {
+      target <= nums[r] && target > nums[m] ? l = m + 1 : r = m - 1;
+    }
+  }
+  return -1;
+};
