@@ -67,7 +67,20 @@ var mergeKLists = function(lists) {
   return lists.shift();
 };
 
-//refactored:
+//refactored (divide&conquer + recursive merge func):
+const mergeTwoLists = (l1, l2) => {
+  if (l1 === null) return l2;
+  if (l2 === null) return l1;
+
+  if (l1.val < l2.val) {
+    l1.next = mergeTwoLists(l1.next, l2);
+    return l1;
+  } else {
+    l2.next = mergeTwoLists(l1, l2.next);
+    return l2;
+  }
+};
+
 var mergeKLists = function(lists) {
   if (!lists.length) return null;
 
@@ -77,3 +90,4 @@ var mergeKLists = function(lists) {
 
   return lists.shift();
 };
+
