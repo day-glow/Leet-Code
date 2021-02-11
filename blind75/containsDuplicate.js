@@ -23,6 +23,15 @@ var containsDuplicate = function(nums) {
   nums.forEach(num => seenNums.has(num) ? hasDups = true : seenNums.add(num));
   return hasDups;
 };
+//second pass (for of loop)
+var containsDuplicate = function(nums) {
+  let seenNums = new Set();
+  for (let num of nums) {
+    if (seenNums.has(num)) return true;
+    seenNums.add(num);
+  }
+  return false;
+};
 
 //Hash Map Approach
 //TC- O(n)
