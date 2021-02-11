@@ -30,3 +30,5 @@ Output: []
 //divide & conquer, in pairs merge and repeat
 //merge 2 lists helper function
 //create queue of lists, merging 2 at a time, only one remains
+//TC-O(nlogk)
+//SC-O(1)
