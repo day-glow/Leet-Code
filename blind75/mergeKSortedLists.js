@@ -67,3 +67,13 @@ var mergeKLists = function(lists) {
   return lists.shift();
 };
 
+//refactored:
+var mergeKLists = function(lists) {
+  if (!lists.length) return null;
+
+  while (lists.length > 1) {
+    lists.push(mergeTwoLists(lists.shift(), lists.shift()));
+  };
+
+  return lists.shift();
+};
