@@ -74,3 +74,18 @@ r,c
 
 etc
  */
+var rotate = function(matrix) {
+  //rotate 4 positions at a time
+  let n = matrix.length - 1;
+  //iterate over matrix w/ rows and cols, limited to center of each
+  for (let r = 0; r < Math.floor((matrix.length + 1) / 2); r++) {
+    for (let c = 0; c < Math.floor(matrix.length / 2); c++) {
+      //find sets of 4 corners, hold temp value as rotate in place
+      let temp = matrix[n - c][r];
+      matrix[n - c][r] = matrix[n - r][n - c];
+      matrix[n - r][n - c] = matrix[c][n - r];
+      matrix[c][n - r] = matrix[r][c];
+      matrix[r][c] = temp;
+    }
+  }
+};
