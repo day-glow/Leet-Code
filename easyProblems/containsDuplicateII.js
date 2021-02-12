@@ -15,5 +15,22 @@ Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
 */
 
+//HASHMAP
 //TC-O(n)
 //SC-O(k)
+var containsNearbyDuplicate = function(nums, k) {
+  let seenNums = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (!seenNums.has(nums[i])) {
+      seenNums.set(nums[i], i);
+    } else {
+      if (i - seenNums.get(nums[i]) <= k) {
+        return true;
+      } else {
+        seenNums.set(nums[i], i);
+      }
+    }
+  }
+
+  return false;
+};
