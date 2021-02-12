@@ -34,3 +34,7 @@ var containsNearbyDuplicate = function(nums, k) {
 
   return false;
 };
+
+//Optimized HASH SET approach (removing nums as you go)
+//TC-O(n)
+//SC-O(min(n,k))
