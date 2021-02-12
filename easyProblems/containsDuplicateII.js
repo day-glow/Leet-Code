@@ -14,3 +14,6 @@ Example 3:
 Input: nums = [1,2,3,1,2,3], k = 2
 Output: false
 */
+
+//TC-O(n)
+//SC-O(k)
