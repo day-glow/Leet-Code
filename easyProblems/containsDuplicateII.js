@@ -38,3 +38,13 @@ var containsNearbyDuplicate = function(nums, k) {
 //Optimized HASH SET approach (removing nums as you go)
 //TC-O(n)
 //SC-O(min(n,k))
+var containsNearbyDuplicate = function(nums, k) {
+  let seenNums = new Set();
+  for (let i = 0; i < nums.length; i++) {
+    if (seenNums.has(nums[i])) return true;
+    seenNums.add(nums[i]);
+    if (seenNums.size > k) seenNums.delete(nums[i - k]);
+  }
+
+  return false;
+};
