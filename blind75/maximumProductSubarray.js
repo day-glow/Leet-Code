@@ -30,7 +30,9 @@ const maxProduct = nums => {
 };
 
 //optimized approach (Max and min to account for negs)
-const maxProduct = (nums) => {
+//TC-O(n)
+//SC-O(1)
+const maxProduct = nums => {
   let currMax = nums[0];
   let currMin = nums[0];
   let result = nums[0];
