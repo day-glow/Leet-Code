@@ -16,6 +16,14 @@ Output: true
 TC-O(n)
 SC-O(n)
 */
+//second pass:
+var isSameTree = function(p, q) {
+  if (p === null && q === null) return true;
+  if (p === null || q === null || p.val !== q.val) return false;
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
+//second pass (JSON one liner):
+const isSameTree = (p, q) => JSON.stringify(p) === JSON.stringify(q);
 
 //RECURSION, DFS:
 const isSameTree = (p, q) => {
