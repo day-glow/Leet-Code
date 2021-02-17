@@ -25,7 +25,16 @@ const hasCycle = head => {
   };
   return false;
 };
-
+//second pass hash set
+const hasCycle = head => {
+  let seenNodes = new Set();
+  while (head && head.next) {
+    if (seenNodes.has(head)) return true;
+    seenNodes.add(head);
+    head = head.next;
+  }
+  return false;
+};
 
 //TWO POINTERS APPROACH:
 //TC-O(n) --> O(n + k)
