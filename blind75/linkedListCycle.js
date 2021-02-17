@@ -11,6 +11,31 @@ Output: true
 Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
 */
 
+//second pass
+//TWO POINTERS APPROACH:
+//TC-O(n) --> O(n + k)
+//SC-O(1)
+const hasCycle = head => {
+  let slow = head;
+  let fast = head;
+  while (fast && fast.next && fast.next.next) {
+    fast = fast.next.next;
+    slow = slow.next;
+    if (fast === slow) return true;
+  };
+  return false;
+};
+//second pass hash set
+const hasCycle = head => {
+  let seenNodes = new Set();
+  while (head && head.next) {
+    if (seenNodes.has(head)) return true;
+    seenNodes.add(head);
+    head = head.next;
+  }
+  return false;
+};
+
 //TWO POINTERS APPROACH:
 //TC-O(n) --> O(n + k)
 //SC-O(1)
@@ -44,3 +69,4 @@ const hasCycle = head => {
   }
   return false;
 }
+
