@@ -93,3 +93,19 @@ class Solution {
     return top;
   }
 }
+
+//second pass:
+var topKFrequent = function(nums, k) {
+  let seen = new Map();
+  let top = new Array();
+  for (let num of nums) {
+    !seen.has(num) ? seen.set(num, 1) : seen.set(num, seen.get(num) + 1);
+  }
+  let unsorted = Array.from(seen);
+  unsorted.sort((a, b) => a[1] - b[1]);
+  while (top.length < k) {
+    let currMost = unsorted.pop();
+    top.push(currMost[0]);
+  }
+  return top;
+};
