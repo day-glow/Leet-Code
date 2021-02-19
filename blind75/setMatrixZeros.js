@@ -36,3 +36,7 @@ const setZeroes = matrix => {
     }
   }
 };
+
+//optimized in-place approach
+//TC-O(mn)
+//SC-O(1)
