@@ -113,3 +113,45 @@ const canFinish = (numCourses, prerequisites) => {
   return true;
 };
 
+//second pass same approach
+//bfs, shortest path, numcourses with fewer prereqs
+var canFinish = function(numCourses, prerequisites) {
+  let courses = new Map();
+  let seen = new Set();
+  let visiting = new Set();
+
+  //iterate over prereq build(adj list)
+  for (let [c, p] of prerequisites) {
+    if (courses.has(c)) {
+      let prev = courses.get(c);
+      prev.push(p);
+      courses.set(c, prev);
+    } else {
+      courses.set(c, [p]);
+    }
+  }
+
+  //helpfer function hasCycle
+  const hasCycle = c => {
+    visiting.add(c);
+    let prereqs = courses.get(c);
+    if (prereqs) {
+      for (let p of prereqs) {
+        if (seen.has(p)) continue;
+        if (visiting.has(p)) return true;
+        if (hasCycle(p)) return true;
+      }
+    }
+    visiting.delete(c);
+    seen.add(c);
+    return false;
+  };
+
+  //check for cycles in each course
+  for (let [c, p] of courses) {
+    if (hasCycle(c)) return false;
+  }
+
+  //if no cycles, then you can complete all
+  return true;
+};
