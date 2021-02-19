@@ -43,3 +43,17 @@ const reverseList = head => {
   }
   return prev;
 };
+
+//second pass
+var reverseList = function(head) {
+  let curr = head;
+  let prev = null;
+
+  while (curr !== null) {
+    let temp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = temp;
+  }
+  return prev;
+};
