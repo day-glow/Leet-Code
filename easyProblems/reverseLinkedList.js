@@ -57,3 +57,11 @@ var reverseList = function(head) {
   }
   return prev;
 };
+//second pass need practice with recursive solution
+var reverseList = function(head) {
+  if (head === null || head.next === null) return head;
+  let prev = reverseList(head.next);
+  head.next.next = head;
+  head.next = null;
+  return prev;
+};
