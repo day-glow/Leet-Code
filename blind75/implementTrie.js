@@ -11,6 +11,35 @@ trie.insert("app");
 trie.search("app");     // returns true
 */
 
+//SECOND PASS OBJECT APPROACH (with out Trie Node constructor):
+var Trie = function() {
+  this.root = {};
+};
+
+Trie.prototype.insert = function(word) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node[c]) node[c] = {};
+    node = node[c];
+  }
+  node.end = true;
+};
+
+Trie.prototype.search = function(word, isPre = false) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node[c]) return false;
+    node = node[c];
+  }
+  return isPre || !!node.end;
+};
+
+Trie.prototype.startsWith = function(prefix) {
+  return this.search(prefix, true);
+};
+
+
+
 //object approach
 var TrieNode = function(val = null) {
   this.val = val;
@@ -127,3 +156,35 @@ Trie.prototype.startsWith = function(prefix) {
   return this.search(prefix, true);
 };
 
+//SECOND PASS (hash Map approach)
+var Node = function(val) {
+  this.val = new Map();
+  this.end = false;
+  this.children = new Map();
+};
+
+var Trie = function() {
+  this.root = new Node();
+};
+
+Trie.prototype.insert = function(word) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node.children.has(c)) node.children.set(c, new Node(c));
+    node = node.children.get(c);
+  }
+  node.end = true;
+};
+
+Trie.prototype.search = function(word, prefix = false) {
+  let node = this.root;
+  for (let c of word) {
+    if (!node.children.has(c)) return false;
+    node = node.children.get(c);
+  }
+  return prefix ? true : node.end;
+};
+
+Trie.prototype.startsWith = function(prefix) {
+  return this.search(prefix, true);
+};
