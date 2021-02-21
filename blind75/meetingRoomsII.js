@@ -10,6 +10,19 @@ Input: intervals = [[7,10],[2,4]]
 Output: 1
 */
 
+//SECOND PASS same approach:
+var minMeetingRooms = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = [];
+  for (let meet of intervals) {
+    let firstOpening = rooms[rooms.length - 1] || null;
+    if (firstOpening && firstOpening <= meet[0]) rooms.pop();
+    rooms.push(meet[1]);
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
+
 //clarifying question, do you need the entire meeting to occur in the same meeting room?
 //are the same "borders" overlaping or ok to share?
 //interval in array is like a sliding window
