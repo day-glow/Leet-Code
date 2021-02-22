@@ -28,18 +28,14 @@ What if the BST is modified (insert/delete operations) often and you need to fin
 //inorder traversal (left, root, right)
 const getInorder = (root, arr) => {
   if (root === null) return arr;
-
   getInorder(root.left, arr);
   arr.push(root.val);
   getInorder(root.right, arr);
-
   return arr;
 };
 
-//bst root starts with pre-order traversal (top down)
 var kthSmallest = function(root, k) {
-  let inorder = getInorder(root, []);
-  return inorder[k - 1];
+  return getInorder(root, [])[k - 1];
 };
 
 //DFS - post order (bottom up count k up, left, right, node) or inorder (starts with left, node, right)
