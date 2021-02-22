@@ -10,6 +10,18 @@ Input: intervals = [[7,10],[2,4]]
 Output: 1
 */
 
+//second pass refactored:
+var minMeetingRooms = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = [];
+  for (let [start, end] of intervals) {
+    if (rooms[rooms.length - 1] && rooms[rooms.length - 1] <= start) rooms.pop();
+    rooms.push(end);
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
+
 //SECOND PASS same approach:
 var minMeetingRooms = function(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
