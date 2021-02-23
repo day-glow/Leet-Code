@@ -27,3 +27,10 @@ Example 5:
 Input: intervals = [[1,5]], newInterval = [2,7]
 Output: [[1,7]]
 */
+
+//one pass
+//start where end time is greater than new start time
+//expand intervals that overlap with conditionals
+//alter in place?
+
+//OR add, sort, merge intervals
