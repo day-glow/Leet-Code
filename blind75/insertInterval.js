@@ -34,3 +34,21 @@ Output: [[1,7]]
 //alter in place?
 
 //OR add, sort, merge intervals
+var insert = function(intervals, newInterval) {
+  intervals.push(newInterval);
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  let prev = intervals[0];
+  let result = [prev];
+
+  for (let [start, end] of intervals) {
+    let curr = result.pop();
+    if (curr[1] >= start) {
+      curr[1] = Math.max(curr[1], end);
+      result.push(curr);
+    } else {
+      result.push(curr, [start, end]);
+    }
+  }
+  return result;
+};
