@@ -23,6 +23,9 @@ TC-O(n) or worse case O(n*m) must traverse both trees fully
 SC-O(n)
 */
 
+//SECOND PASS:
+const isSubtree = (s, t) => JSON.stringify(s).indexOf(JSON.stringify(t)) !== -1;
+
 //helper function to check the current node
 const isTheSame = (s, t) => {
   if (!s || !t) return !s && !t;
