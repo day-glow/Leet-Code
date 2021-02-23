@@ -78,3 +78,43 @@ const countSubstrings = s => {
 
   return count;
 };
+
+//second pass, iterative middle out (expand aroun the centers) approach:
+//TC-O(n2)
+//SC-O(1)
+var countSubstrings = function(s) {
+  let count = 0;
+
+  const isPalindrome = (p1, p2) => {
+    while (p1 >= 0 && p2 <= s.length && s[p1--] === s[p2++]) {
+      count++;
+    }
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    isPalindrome(i, i);
+    isPalindrome(i, i + 1);
+  }
+  return count;
+};
+
+
+//second pass, brute force nested for loops
+//TC-O(n3)
+//SC-O(1)
+const isPalindrome = (s, p1, p2) => {
+while (p1 <= p2) {
+  if (s[p1++] !== s[p2--]) return false;
+}
+return true;
+};
+
+var countSubstrings = function(s) {
+let count = 0;
+for (let i = 0; i < s.length; i++) {
+  for (let j = i; j < s.length; j++) {
+    if (isPalindrome(s, i, j)) count++;
+  }
+}
+return count;
+};
