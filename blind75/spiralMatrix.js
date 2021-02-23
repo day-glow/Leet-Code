@@ -10,6 +10,30 @@ Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 */
 
+//refactored
+const spiralOrder = matrix => {
+  if (matrix.length < 2) return matrix[0];
+  let order = [];
+  let rowsStart = 0;
+  let colsStart = 0;
+  let rowsEnd = matrix.length - 1;
+  let colsEnd = matrix[0].length - 1;
+
+  while (rowsStart <= rowsEnd && colsStart <= colsEnd) {
+    for (let c = colsStart; c <= colsEnd; c++) order.push(matrix[rowsStart][c]);
+    for (let r = rowsStart + 1; r <= rowsEnd; r++) order.push(matrix[r][colsEnd]);
+    if (rowsStart < rowsEnd && colsStart < colsEnd) {
+      for (let c = colsEnd - 1; c > colsStart; c--) order.push(matrix[rowsEnd][c]);
+      for (let r = rowsEnd; r > rowsStart; r--) order.push(matrix[r][colsStart]);
+    }
+    rowsStart++;
+    rowsEnd--;
+    colsStart++;
+    colsEnd--;
+  }
+  return order;
+};
+
 /*
 Multiple loops for each directional flow
 TC-O(n)
@@ -97,4 +121,58 @@ const spiralOrder = matrix => {
   }
   return result;
 };
+*/
+
+/*Attempted second pass with multiple pointers, but still had 2 failed test cases.
+
+var spiralOrder = function(matrix) {
+  if (matrix.length < 2) return matrix[0];
+
+  let rMin = 0;
+  let cMin = 0;
+  let rMax = matrix.length - 1;
+  let cMax = matrix[0].length - 1;
+  let order = [];
+
+  let i = 0;
+  let j = 0;
+  while (order.length < (matrix.length * matrix[0].length)) {
+    for (j = j; j < cMax; j++) {
+      if (i < rMin) i = rMin;
+      if (j < cMin) j = cMin;
+      order.push(matrix[i][j]);
+      if (order.length === (matrix.length * matrix[0].length)) return order;
+    }
+
+    for (i = i; i < rMax; i++) {
+      if (j > cMax) j = cMax;
+      order.push(matrix[i][j]);
+      if (order.length === (matrix.length * matrix[0].length)) return order;
+    }
+
+    for (j = j; j > cMin; j--) {
+      order.push(matrix[i][j]);
+      if (order.length === (matrix.length * matrix[0].length)) return order;
+    }
+
+    for (i = i; i > rMin; i--) {
+      order.push(matrix[i][j]);
+      if (order.length === (matrix.length * matrix[0].length)) return order;
+    }
+    rMin++;
+    cMax--;
+    cMin++;
+    rMax--;
+  }
+  return order;
+};
+
+[
+[2, 3, 4],
+[5, 6, 7],
+[8, 9, 10],
+[11,12,13]
+]
+console.log(order)
+console.log("i", i, "j", j, "cMax", cMax)
 */
