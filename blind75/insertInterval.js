@@ -34,6 +34,8 @@ Output: [[1,7]]
 //alter in place?
 
 //OR add, sort, merge intervals
+//TC-O(nlogn)
+//SC-O(n+1)
 var insert = function(intervals, newInterval) {
   intervals.push(newInterval);
   intervals.sort((a, b) => a[0] - b[0]);
