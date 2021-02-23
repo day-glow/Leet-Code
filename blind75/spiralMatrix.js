@@ -10,6 +10,30 @@ Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 */
 
+//refactored
+const spiralOrder = matrix => {
+  if (matrix.length < 2) return matrix[0];
+  let order = [];
+  let rowsStart = 0;
+  let colsStart = 0;
+  let rowsEnd = matrix.length - 1;
+  let colsEnd = matrix[0].length - 1;
+
+  while (rowsStart <= rowsEnd && colsStart <= colsEnd) {
+    for (let c = colsStart; c <= colsEnd; c++) order.push(matrix[rowsStart][c]);
+    for (let r = rowsStart + 1; r <= rowsEnd; r++) order.push(matrix[r][colsEnd]);
+    if (rowsStart < rowsEnd && colsStart < colsEnd) {
+      for (let c = colsEnd - 1; c > colsStart; c--) order.push(matrix[rowsEnd][c]);
+      for (let r = rowsEnd; r > rowsStart; r--) order.push(matrix[r][colsStart]);
+    }
+    rowsStart++;
+    rowsEnd--;
+    colsStart++;
+    colsEnd--;
+  }
+  return order;
+};
+
 /*
 Multiple loops for each directional flow
 TC-O(n)
