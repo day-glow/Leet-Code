@@ -27,6 +27,26 @@ Explanation: There are 4 nodes in the graph.
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 */
+//second pass (bfs approach):
+//create a new adj List while iterating over given adj List
+var cloneGraph = function(node) {
+  if (node === null) return null;
+  let clonedList = new Map();
+  clonedList.set(node, new Node(node.val));
+  let queueOfNeighbors = [node];
+
+  while (queueOfNeighbors.length) {
+    let currNode = queueOfNeighbors.shift();
+    for (let nei of currNode.neighbors) {
+      if (!clonedList.has(nei)) {
+        clonedList.set(nei, new Node(nei.val));
+        queueOfNeighbors.push(nei);
+      }
+      clonedList.get(currNode).neighbors.push(clonedList.get(nei));
+    }
+  }
+  return clonedList.get(node);
+};
 
 //queue approach
 //TC-O(n+m)
