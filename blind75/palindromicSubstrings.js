@@ -78,3 +78,7 @@ const countSubstrings = s => {
 
   return count;
 };
+
+//second pass, brute force nested for loops
+//TC-O(n2)
+//SC-O(1)
