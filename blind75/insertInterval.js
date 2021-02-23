@@ -28,6 +28,10 @@ Input: intervals = [[1,5]], newInterval = [2,7]
 Output: [[1,7]]
 */
 
+//OPTIMIZED APPROACH - one pass
+//TC-O(n)
+//SC-O(1)-O(n)
+
 //one pass
 //start where end time is greater than new start time
 //expand intervals that overlap with conditionals
