@@ -44,15 +44,15 @@ const maxProfit = (prices) => {
 
 //second pass 2 pointers approach:
 var maxProfit = function(prices) {
-  let p1 = 0;
-  let p2 = 0;
-  let max = 0;
-  while (p2 < prices.length && p1 < prices.length) {
-    max = Math.max(max, prices[p2] - prices[p1]);
-    p2++;
-    if (prices[p2] <= prices[p1]) p1 = p2;
+  if (prices.length < 2) return 0;
+  let buy = 0;
+  let sell = 0;
+  let maxProfit = 0;
+  while (sell < prices.length) {
+    maxProfit = Math.max(maxProfit, prices[sell++] - prices[buy]);
+    if (prices[sell] <= prices[buy]) buy = sell;
   }
-  return max;
+  return maxProfit;
 };
 
 //OPTIMIZED
