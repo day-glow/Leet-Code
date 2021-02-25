@@ -42,6 +42,21 @@ const maxProfit = (prices) => {
 };
 */
 
+//second pass 2 pointers approach:
+//TC-O(n)
+//SC-O(1)
+var maxProfit = function(prices) {
+  if (prices.length < 2) return 0;
+  let buy = 0;
+  let sell = 0;
+  let maxProfit = 0;
+  while (sell < prices.length) {
+    maxProfit = Math.max(maxProfit, prices[sell++] - prices[buy]);
+    if (prices[sell] <= prices[buy]) buy = sell;
+  }
+  return maxProfit;
+};
+
 //OPTIMIZED
 const maxProfit = prices => {
   if (prices.length < 1) {
