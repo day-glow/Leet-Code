@@ -22,3 +22,12 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 //brute force for loop approach
 //TC-O(n)
 //SC-O(1)
+var canJump = function(nums) {
+  let jumpMax = 0;
+  for (let i = 0; i < nums.length; i++) {
+    jumpMax = Math.max(jumpMax, nums[i]);
+    if (i + jumpMax >= nums.length - 1) return true;
+    if (jumpMax-- <= 0) break;
+  }
+  return false;
+};
