@@ -19,7 +19,7 @@ Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 */
 
-//brute force for loop approach
+//brute force for loop approach, kinda Greedy approach
 //TC-O(n)
 //SC-O(1)
 var canJump = function(nums) {
