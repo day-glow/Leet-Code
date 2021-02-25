@@ -43,14 +43,11 @@ use bfs (by level), iterative, queue
 use recursion?
 */
 var invertTree = function(root) {
-  let node = root;
-
-  if (node !== null) {
-    let temp = node.left;
-    node.left = invertTree(node.right);
-    node.right = invertTree(temp);
+  if (root !== null) {
+    let temp = root.left;
+    root.left = invertTree(root.right);
+    root.right = invertTree(temp);
   }
-
   return root;
 };
 
