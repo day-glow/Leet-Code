@@ -42,7 +42,7 @@ new tree?
 use bfs (by level), iterative, queue
 use recursion?
 */
-var invertTree = function(root) {
+const invertTree = root => {
   if (root !== null) {
     let temp = root.left;
     root.left = invertTree(root.right);
