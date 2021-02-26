@@ -34,6 +34,13 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * @return {boolean}
  */
 
+ //second pass (binary tree) recursion:
+ var isValidBST = function(root, min = -Infinity, max = Infinity) {
+  if (root === null) return true;
+  if (root.val <= min || root.val >= max) return false;
+  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
+};
+
  //inorder iterative tree traversal
  //TC-O(n)
  //SC-O(n)
