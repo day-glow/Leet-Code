@@ -45,9 +45,8 @@ var validTree = function(n, edges) {
     adjList[edge[0]] ? adjList[edge[0]].push(edge[1]) : adjList[edge[0]] = [edge[1]];
     adjList[edge[1]] ? adjList[edge[1]].push(edge[0]) : adjList[edge[1]] = [edge[0]];
   }
-  let stack = [];
+  let stack = [0];
   let seen = new Set();
-  stack.push(0);
   seen.add(0);
   while (stack.length) {
     let node = stack.pop();
