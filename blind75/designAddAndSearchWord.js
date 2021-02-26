@@ -26,7 +26,7 @@ wordDictionary.search("bad"); // return True
 wordDictionary.search(".ad"); // return True
 wordDictionary.search("b.."); // return True
 */
-
+//second pass tried to condense trie node into just one this.root = new Map(), for some reason kept running into issue
 
 //map approachZZ
 var trieNode = function(val = null) {
