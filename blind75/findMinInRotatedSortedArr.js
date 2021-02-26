@@ -39,6 +39,13 @@ SC-
   worst-O(1)
 */
 
+//binary search - logn
+//sort - nlogn
+//iterative - n
+
+//second pass, binary search
+
+
 //3 pointers
 const findMin = nums => {
   //edge cases
