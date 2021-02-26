@@ -44,7 +44,22 @@ SC-
 //iterative - n
 
 //second pass, binary search
-
+var findMin = function(nums) {
+  let p1 = 0;
+  let p2 = nums.length - 1;
+  let min = nums[0];
+  while (p1 < p2) {
+    let mid = Math.floor((p1 + p2) / 2);
+    min = Math.min(min, nums[p1], nums[mid], nums[p2]);
+    if (nums[p2] < nums[mid]) {
+      p1 = mid + 1;
+    } else {
+      p2 = mid;
+    }
+    mid = p1 + Math.floor((p2 - p1) / 2);
+  }
+  return min;
+};
 
 //3 pointers
 const findMin = nums => {
