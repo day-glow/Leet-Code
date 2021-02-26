@@ -36,6 +36,32 @@ ex2: false, cycle detected
 
 */
 
+//second pass:
+var validTree = function(n, edges) {
+  //this is the main cycle/island catch all logic
+  if (edges.length !== n - 1) return false;
+  let adjList = new Array(n);
+  for (let edge of edges) {
+    adjList[edge[0]] ? adjList[edge[0]].push(edge[1]) : adjList[edge[0]] = [edge[1]];
+    adjList[edge[1]] ? adjList[edge[1]].push(edge[0]) : adjList[edge[1]] = [edge[0]];
+  }
+  let stack = [];
+  let seen = new Set();
+  stack.push(0);
+  seen.add(0);
+  while (stack.length) {
+    let node = stack.pop();
+    if (adjList[node]) {
+     for (let neighbor of adjList[node]) {
+        if (seen.has(neighbor)) continue;
+        seen.add(neighbor);
+        stack.push(neighbor);
+      }
+    }
+  }
+  return seen.size === n;
+};
+
 //stack
 //goal is to determine if seen group contains all n nodes (no dups&no islands)
 const validTree = (n, edges) => {
