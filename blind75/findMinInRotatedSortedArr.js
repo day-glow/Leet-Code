@@ -61,6 +61,17 @@ var findMin = function(nums) {
   return min;
 };
 
+//second pass, refactored:
+const findMin = nums => {
+  let left = 0;
+  let right = nums.length - 1;
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    nums[mid] > nums[right] ? left = mid + 1 : right = mid;
+  }
+  return nums[left];
+};
+
 //3 pointers
 const findMin = nums => {
   //edge cases
@@ -96,7 +107,7 @@ const findMin = nums => {
   }
 };
 
-//brute force, binary search (same approach but simplified)
+//OPTIMIZED, binary search (same approach but simplified)
 const findMin = nums => {
   let left = 0;
   let right = nums.length - 1;
