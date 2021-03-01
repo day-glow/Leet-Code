@@ -44,6 +44,15 @@ step 3: sew together (alternating)
 in-place no return val
 */
 
+//second pass (no helper functions):
+//find end and midpoint with fast/slow
+//cut second half LL off and reverse
+//zipper LL's together in place
+  //1->2
+  //3->4->5
+  //3->null
+
+
 //TC-O(n)
 //SC-O(1)
 const reverse = node => {
