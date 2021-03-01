@@ -51,6 +51,41 @@ in-place no return val
   //1->2
   //3->4->5
   //3->null
+var reorderList = function(head) {
+  if (!head || !head.next) return head;
+  let l1 = head;
+  let l2 = null;
+
+  //find end and midpoint with fast/slow
+  let p1 = head;
+  let p2 = head;
+  while (p2 && p2.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+  }
+  p2 = p1.next;
+  p1.next = null;
+  p1 = head;
+
+  //cut second half LL off and reverse
+  while (p2) {
+    let prev = l2;//null
+    let temp = p2.next;//4->5
+    l2 = p2;//p1 = 3
+    l2.next = prev;
+    p2 = temp;
+  }
+  p2 = l2;
+  //zipper LL's together in place
+  while (p1 && p2) {
+    let l1Next = p1.next;
+    let l2Next = p2.next;
+    p1.next = p2;
+    p2.next = l1Next;
+    p1 = l1Next;
+    p2 = l2Next;
+  }
+};
 
 
 //TC-O(n)
