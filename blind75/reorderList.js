@@ -44,6 +44,40 @@ step 3: sew together (alternating)
 in-place no return val
 */
 
+//second pass refactored:
+var reorderList = function(head) {
+  if (!head || !head.next) return head;
+  let l2 = null;
+
+  let p1 = head;
+  let p2 = head;
+  while (p2 && p2.next) {
+    p1 = p1.next;
+    p2 = p2.next.next;
+  }
+  p2 = p1.next;
+  p1.next = null;
+  p1 = head;
+
+  while (p2) {
+    let prev = l2;
+    let temp = p2.next;
+    l2 = p2;
+    l2.next = prev;
+    p2 = temp;
+  }
+  p2 = l2;
+
+  while (p1 && p2) {
+    let l1Next = p1.next;
+    let l2Next = p2.next;
+    p1.next = p2;
+    p2.next = l1Next;
+    p1 = l1Next;
+    p2 = l2Next;
+  }
+};
+
 //second pass (no helper functions):
 //find end and midpoint with fast/slow
 //cut second half LL off and reverse
