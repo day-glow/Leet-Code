@@ -30,6 +30,16 @@ rotate 3 steps to the right: [5,6,7,1,2,3,4]
 };
  */
 
+//second pass:
+const rotate = (nums, k) => {
+  k %= nums.length;
+  while (k-- > 0) nums.unshift(nums.pop());
+};
+//second pass (concat failed, use unshift&spread operator):
+const rotate = (nums, k) => {
+  k %= nums.length;
+  nums.unshift(...nums.splice(nums.length - k));
+};
 
 //OPTIMIZED:
 const rotate = (nums, k) => {
@@ -40,13 +50,13 @@ const rotate = (nums, k) => {
   }
  };
 
-//optional long slice approach, if expecting a return array
+//optional long slice approach, if expecting a return array (failed)
 const rotate = (nums, k) => {
   let endToFront = nums.slice(nums.length - k);
   let front = nums.slice(0, nums.length - k);
   nums = endToFront.concat(front);
 };
-
+//failed
 const rotate = (nums, k) => {
   return nums.slice(nums.length - k).concat(nums.slice(0, nums.length - k));
 };
