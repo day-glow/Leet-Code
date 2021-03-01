@@ -35,6 +35,11 @@ const rotate = (nums, k) => {
   k %= nums.length;
   while (k-- > 0) nums.unshift(nums.pop());
 };
+//second pass (concat failed, use unshift&spread operator):
+const rotate = (nums, k) => {
+  k %= nums.length;
+  nums.unshift(...nums.splice(nums.length - k));
+};
 
 //OPTIMIZED:
 const rotate = (nums, k) => {
