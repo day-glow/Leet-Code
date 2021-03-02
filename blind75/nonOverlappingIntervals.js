@@ -17,6 +17,43 @@ Output: 0
 Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
 */
 
+//second pass, optimized, Greedy based on end times:
+var eraseOverlapIntervals = function(intervals) {
+  let count = 1;
+  let prev = intervals[0][1];
+  intervals.sort((a, b) => a[1] - b[1]);
+  console.log(intervals)
+  for (let i = 1; i < intervals.length; i++) {
+    if (intervals[i][0] >= prev) {
+      prev = intervals[i][1];
+      count++;
+    }
+  }
+  return intervals.length - count;
+};
+
+//second pass:
+var eraseOverlapIntervals = function(intervals) {
+  let count = 0;
+  //sort by start
+  intervals.sort((a, b) => a[0] - b[0]);
+
+  //greedy, check for overlap (remove longer time)
+  for (let i = 1; i < intervals.length; i++) {
+    console.log(count, intervals)
+    if (intervals[i][0] < intervals[i - 1][1]) {
+      if (intervals[i][1] > intervals[i - 1][1]) {
+        intervals.splice(i, 1);
+      } else {
+        intervals.splice(i - 1, 1);
+      }
+      count++;
+      i--;
+    }
+  }
+  return count;
+};
+
 //greedy approach
 //TC-O(nlogn)
 //SC-O(1)
