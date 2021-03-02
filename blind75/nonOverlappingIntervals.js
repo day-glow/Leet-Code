@@ -19,10 +19,10 @@ Explanation: You don't need to remove any of the intervals since they're already
 
 //second pass, optimized, Greedy based on end times:
 var eraseOverlapIntervals = function(intervals) {
+  if (intervals.length < 2) return 0;
+  intervals.sort((a, b) => a[1] - b[1]);
   let count = 1;
   let prev = intervals[0][1];
-  intervals.sort((a, b) => a[1] - b[1]);
-  console.log(intervals)
   for (let i = 1; i < intervals.length; i++) {
     if (intervals[i][0] >= prev) {
       prev = intervals[i][1];
