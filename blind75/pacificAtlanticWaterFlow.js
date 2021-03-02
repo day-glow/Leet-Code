@@ -21,3 +21,12 @@ Given the following 5x5 matrix:
 Return:
 [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]] (positions with parentheses in above matrix).
 */
+
+//brainstorm:
+//brute force, check each start point at every square (nested for loop)
+//brute force is too slow
+
+//use space for time, create matrix with booleans of each square reaching edge
+//helper function (check square, check neighbors, recursively/iteratively change position)
+//check each inbounds neighbor to reach both edges
+//if possible to reach both sides, add to results,
