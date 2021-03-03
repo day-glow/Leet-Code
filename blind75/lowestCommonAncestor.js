@@ -33,3 +33,16 @@ const lowestCommonAncestor = (root, p, q) => {
   }
   return node;
 };
+
+//second pass:
+var lowestCommonAncestor = function(root, p, q) {
+  if (!root) return root;
+  if (root.val === p.val) return p;
+  if (root.val === q.val) return q;
+
+  let left = lowestCommonAncestor(root.left, p, q);
+  let right = lowestCommonAncestor(root.right, p, q);
+  if (!left) return right;
+  if (!right) return left;
+  return root;
+};
