@@ -16,6 +16,11 @@ Input: strs = ["a"]
 Output: [["a"]]
 */
 
+//second pass, same approach (hash map):
+//iterate over words
+//store each word in map (key: sorted by the letters, values: words)
+//iterate over map and push into results
+
 //sorted hashmap approach
 //TC-O(nKlogK) -sorting algo KlogK
 //SC-O(nK)
