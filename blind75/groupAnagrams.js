@@ -20,6 +20,21 @@ Output: [["a"]]
 //iterate over words
 //store each word in map (key: sorted by the letters, values: words)
 //iterate over map and push into results
+const groupAnagrams = strs => {
+  let letters = new Map();
+  for (let word of strs) {
+    let sorted = word.split('').sort((a, b) => a.localeCompare(b)).join('');
+
+    if (letters.has(sorted)) {
+      let prev = letters.get(sorted);
+      prev.push(word);
+      letters.set(sorted, prev);
+    } else {
+      letters.set(sorted, [word]);
+    }
+  }
+  return Array.from(letters.values());
+};
 
 //sorted hashmap approach
 //TC-O(nKlogK) -sorting algo KlogK
