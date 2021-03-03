@@ -49,5 +49,12 @@ var lowestCommonAncestor = function(root, p, q) {
   if (root.val === q.val) return q;
   if ((root.val > p.val && root.val < q.val) || (root.val > q.val && root.val < p.val)) return root;
   if (root.val > p.val && root.val > q.val) return lowestCommonAncestor(root.left, p, q);
-  if (root.val < p.val & root.val < q.val) return lowestCommonAncestor(root.right, p, q);=
+  if (root.val < p.val && root.val < q.val) return lowestCommonAncestor(root.right, p, q);
+};
+
+//second pass refactored:
+var lowestCommonAncestor = function(r, p, q) {
+  if (r.val > p.val && r.val > q.val) return lowestCommonAncestor(r.left, p, q);
+  if (r.val < p.val && r.val < q.val) return lowestCommonAncestor(r.right, p, q);
+  return r;
 };
