@@ -24,16 +24,6 @@ const lowestCommonAncestor = (root, p, q) => {
   return root;
 };
 
-//iterative (TC-O(n)/SC-O(1))
-const lowestCommonAncestor = (root, p, q) => {
-  let node = root;
-
-  while (node !== null) {
-
-  }
-  return node;
-};
-
 //second pass:
 var lowestCommonAncestor = function(root, p, q) {
   if (!root) return root;
