@@ -36,6 +36,18 @@ const groupAnagrams = strs => {
   return Array.from(letters.values());
 };
 
+//refactored:
+const groupAnagrams = strs => {
+  let letters = new Map();
+  for (let word of strs) {
+    let sorted = word.split('').sort((a, b) => a.localeCompare(b)).join('');
+    let grouping = [word];
+    if (letters.has(sorted)) letters.get(sorted).forEach(w => grouping.push(w));
+    letters.set(sorted, grouping);
+  }
+  return Array.from(letters.values());
+};
+
 //sorted hashmap approach
 //TC-O(nKlogK) -sorting algo KlogK
 //SC-O(nK)
