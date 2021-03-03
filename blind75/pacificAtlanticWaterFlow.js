@@ -30,3 +30,56 @@ Return:
 //helper function (check square, check neighbors, recursively/iteratively change position)
 //check each inbounds neighbor to reach both edges
 //if possible to reach both sides, add to results,
+
+var dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+
+var getUphillNeighbors = function(matrix, ocean, x, y) {
+  let neighbors = [];
+  for (let [dx, dy] of dirs) {
+    let nX = x + dx;
+    let nY = y + dy;
+    if (nX >= 0 && nX < matrix.length && nY >= 0 && nY < matrix[0].length && matrix[nX][nY] >= matrix[x][y] && !ocean[nX][nY]) {
+        neighbors.push([nX, nY]);
+    }
+  }
+  return neighbors;
+};
+
+var getFlow = function(matrix, ocean, row = 0, col = 0) {
+  let queue = [];
+  for (let i = 0; i < matrix[0].length; i++) {
+    ocean[row][i] = true;
+    queue.push([row, i]);
+  }
+  for (let i = 0; i < matrix.length; i++) {
+    ocean[i][col] = true;
+    queue.push([i, col]);
+  }
+  while (queue.length) {
+    let [x, y] = queue.shift();
+    let neighbors = getUphillNeighbors(matrix, ocean, x, y);
+    for (let [nX, nY] of neighbors) {
+      if (!ocean[nX][nY]) queue.push([nX, nY]);
+      ocean[nX][nY] = true;
+    }
+  }
+  return ocean;
+};
+
+var pacificAtlantic = function(matrix) {
+  if (!matrix.length) return [];
+  let canReachPacific = [...new Array(matrix.length)].map(() =>
+			new Array(matrix[0].length).fill(false));
+  let canReachAtlantic = [...new Array(matrix.length)].map(() =>
+			new Array(matrix[0].length).fill(false));
+
+  canReachPacific = getFlow(matrix, canReachPacific);
+  canReachAtlantic = getFlow(matrix, canReachAtlantic, matrix.length - 1, matrix[0].length - 1);
+  let verifiedStartPoints = [];
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[0].length; j++) {
+      if (canReachPacific[i][j] && canReachAtlantic[i][j]) verifiedStartPoints.push([i, j]);
+    }
+  }
+  return verifiedStartPoints;
+};
