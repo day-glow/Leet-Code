@@ -66,3 +66,8 @@ const characterReplacement = (s, k) => {
   }
   return p2 - p1;
 };
+
+//second pass:
+//2ptrs, sliding window
+//utilize map to count chars? or utilize Array(26 and increase the numeric val)
+//compare the highest count in map values
