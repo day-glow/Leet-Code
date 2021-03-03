@@ -36,3 +36,59 @@ const setZeroes = matrix => {
     }
   }
 };
+
+//optimized in-place approach
+//TC-O(mn)
+//SC-O(1)
+var setZeroes = function(matrix) {
+  let isCol = false;
+  //flag rows and columns with 0's
+  for (let i = 0; i < matrix.length; i++) {
+    if (matrix[i][0] === 0) isCol = true;
+
+    for (let j = 1; j < matrix[0].length; j++) {
+      if (matrix[i][j] === 0) {
+        matrix[0][j] = 0;
+        matrix[i][0] = 0;
+      }
+    }
+  }
+
+  //iterate over columns then rows to swap 0's
+  for (let i = matrix.length - 1; i > 0; i--) {
+    for (let j = matrix[0].length - 1; j > 0; j--) {
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) matrix[i][j] = 0;
+    }
+  }
+  if (matrix[0][0] === 0) {
+    for (let i = 0; i < matrix[0].length; i++) {
+      matrix[0][i] = 0;
+    }
+  }
+  if (isCol) {
+    for (let i = 0; i < matrix.length; i++) {
+      matrix[i][0] = 0;
+    }
+  }
+};
+
+//OPTIMIZED O(1) SPACE saving approach refractored
+var setZeroes = function(matrix) {
+  let isCol = false;
+  for (let i = 0; i < matrix.length; i++) {
+    if (matrix[i][0] === 0) isCol = true;
+    for (let j = 1; j < matrix[0].length; j++) {
+      if (matrix[i][j] === 0) {
+        matrix[0][j] = 0;
+        matrix[i][0] = 0;
+      }
+    }
+  }
+
+  for (let i = matrix.length - 1; i >= 0; i--) {
+    for (let j = matrix[0].length - 1; j > 0; j--) {
+      if (matrix[i][0] === 0 || matrix[0][j] === 0) matrix[i][j] = 0;
+    }
+    if (isCol) matrix[i][0] = 0;
+  }
+};

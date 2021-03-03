@@ -17,6 +17,18 @@ Return the following binary tree:
    15   7
 */
 
+//SECOND PASS
+var buildTree = function(preorder, inorder) {
+  const recur = (p1, p2) => {
+    if (p1 > p2) return null;
+    let root = new TreeNode(preorder.shift());
+    root.left = recur(p1, inorder.indexOf(root.val) - 1);
+    root.right = recur(inorder.indexOf(root.val) + 1, p2);
+    return root;
+  };
+  return recur(0, inorder.length - 1);
+};
+
 //must redo, this one was hard
 //inorder (left, node, right)
 //preorder (node, left, right)

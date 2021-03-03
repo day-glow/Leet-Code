@@ -66,3 +66,24 @@ const characterReplacement = (s, k) => {
   }
   return p2 - p1;
 };
+
+//second pass:
+//2ptrs, sliding window
+//utilize map to count chars? or utilize Array(26 and increase the numeric val)
+//compare the highest count in map values
+const characterReplacement = (s, k) => {
+  let p1;
+  let p2;
+  let longest = 0;
+  let letters = new Map();
+  for (p1 = 0, p2 = 0; p2 < s.length; p2++) {
+    let curr = s[p2];
+    letters.has(curr) ? letters.set(curr, letters.get(curr) + 1) : letters.set(curr, 1);
+    if (letters.get(curr) > longest) longest = letters.get(curr);
+    if (p2 - p1 + 1 - longest > k) {
+      letters.set(s[p1], letters.get(s[p1]) - 1);
+      p1++;
+    }
+  }
+  return p2 - p1;
+};

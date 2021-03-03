@@ -28,3 +28,19 @@ const maxProduct = nums => {
   }
   return max;
 };
+
+//optimized approach (Max and min to account for negs)
+//TC-O(n)
+//SC-O(1)
+const maxProduct = nums => {
+  let currMax = nums[0];
+  let currMin = nums[0];
+  let result = nums[0];
+  for (let i = 1; i < nums.length; i++) {
+    let tempMax = currMax;
+    currMax = Math.max(nums[i], currMax * nums[i], currMin * nums[i]);
+    currMin = Math.min(nums[i], currMin * nums[i], tempMax * nums[i]);
+    result = Math.max(currMax, currMin, result);
+  };
+  return result;
+};

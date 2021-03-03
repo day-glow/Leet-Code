@@ -12,6 +12,9 @@ Output: 3
  SC- O(n)
 */
 
+//REFACTORED - one liner:
+const maxDepth = root => !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+
 //RECURSION, DFS:
 const maxDepth = (root) => {
   if (root === null) {

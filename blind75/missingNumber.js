@@ -10,6 +10,18 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 
 */
 
+//SECOND RUN THRU:
+//5min to optimized solution
+//O(n) & O(1)
+const missingNumber = nums => {
+  let total = 0;
+  for (let i = nums.length; i > 0; i--) {
+    total += i - nums[i - 1];
+  }
+  return total;
+};
+
+
 /*
  //return missing number in the range
  //sort, take last num (highest), and find missing
@@ -91,3 +103,4 @@ const missingNumber = nums => {
   //return expected minus the actual
   return expectedSum - actualSum;
 }
+

@@ -29,6 +29,28 @@ Output:
  SC-O(n)
 */
 
+//second pass recursive approach
+/**
+left -> right
+right -> left
+is it balanced
+
+in place?
+swap at each level starting with root
+new tree?
+
+use bfs (by level), iterative, queue
+use recursion?
+*/
+const invertTree = root => {
+  if (root !== null) {
+    let temp = root.left;
+    root.left = invertTree(root.right);
+    root.right = invertTree(temp);
+  }
+  return root;
+};
+
 //RECURSION:
 var invertTree = function(root) {
   if (!root) {
