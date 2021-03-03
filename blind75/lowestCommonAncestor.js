@@ -40,3 +40,7 @@ const lowestCommonAncestor = (root, p, q) => {
   }
   return null
 };
+
+//second pass (tried iterative then switched to recursive):
+//iterate over tree pre-order
+//start with root, use BST characteristics to compare values to the p & q
