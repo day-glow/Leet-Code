@@ -44,3 +44,10 @@ const lowestCommonAncestor = (root, p, q) => {
 //second pass (tried iterative then switched to recursive):
 //iterate over tree pre-order
 //start with root, use BST characteristics to compare values to the p & q
+var lowestCommonAncestor = function(root, p, q) {
+  if (root.val === p.val) return p;
+  if (root.val === q.val) return q;
+  if ((root.val > p.val && root.val < q.val) || (root.val > q.val && root.val < p.val)) return root;
+  if (root.val > p.val && root.val > q.val) return lowestCommonAncestor(root.left, p, q);
+  if (root.val < p.val & root.val < q.val) return lowestCommonAncestor(root.right, p, q);=
+};
