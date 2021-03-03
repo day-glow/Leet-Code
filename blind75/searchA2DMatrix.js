@@ -13,6 +13,25 @@ Input: matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,
 Output: false
 */
 
+//second pass:
+var searchMatrix = function(matrix, target) {
+  let h = matrix.length - 1;
+  let w = matrix[0].length - 1;
+  let r = h;
+  let c = 0;
+
+  while (r >= 0 && c <= w) {
+    if (matrix[r][c] === target) {
+      return true;
+    } else if (matrix[r][c] < target) {
+      c++;
+    } else if (matrix[r][c] > target) {
+      r--;
+    }
+  }
+  return false;
+};
+
 //OPTIMIZED SEARCH SPACE REDUCTION (bottom left) APPROACH:
 //TC-O(n+m)
 //SC-O(1)
