@@ -90,3 +90,40 @@ const numIslands = grid => {
 //O(i*n*m)?
 //O(1)
 //use queue, check neighbors, flip to "*" or "9"
+var numIslands = function(grid) {
+  if (!grid || !grid.length) return 0;
+
+  var dirs = [[0, 1], [0, -1], [1, 0], [-1, 0]];
+
+  var isInbounds = function(a, b) {
+    return (a >= 0 && b >= 0 && a < grid.length && b < grid[0].length);
+  }
+
+  var checkNeighbors = function(x, y) {
+    grid[x][y] = "0";
+    let queue = [[x, y]];
+    while (queue.length) {
+      let curr = queue.shift();
+      for (let [dx, dy] of dirs) {
+        let nx = curr[0] + dx;
+        let ny = curr[1] + dy;
+        if (isInbounds(nx, ny) && grid[nx][ny] === "1") {
+          queue.push([nx, ny]);
+          grid[nx][ny] = "0";
+        }
+      }
+    }
+  };
+
+  var islandCount = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j] === "1") {
+        islandCount++;
+        checkNeighbors(i, j);
+      }
+    }
+  }
+
+  return islandCount;
+};
