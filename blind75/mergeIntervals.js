@@ -19,6 +19,12 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 //clarify Q are they in sorted, ascending order? by start of interval?
 //test case [[1,4],[0,0]] shows intervals are not sorted
 
+//SECOND PASS:
+  //are these sorted?
+  //iterate over intervals
+  //if overlapping, merge
+
+
 //should sort by starting values
 //iterate over elems
 //if prevMin & max are within currMin & max, merge
