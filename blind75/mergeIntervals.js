@@ -23,7 +23,26 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
   //are these sorted?
   //iterate over intervals
   //if overlapping, merge
+const isOverlapping = (prev, next) => prev[0] <= next[1];
 
+const merge = intervals => {
+  if (intervals.length < 2) return intervals;
+  let mergedIntervals = [];
+  intervals.sort((a, b) => a[1] - b[1])
+  let end = intervals.pop();
+  while (intervals.length) {
+    let curr = intervals.pop();
+    if (isOverlapping(end, curr)) {
+      let newInterval = [Math.min(end[0], curr[0]), Math.max(end[1], curr[1])];
+      end = newInterval;
+    } else {
+      mergedIntervals.push(end);
+      end = curr;
+    }
+  }
+  mergedIntervals.push(end);
+  return mergedIntervals;
+};
 
 //should sort by starting values
 //iterate over elems
