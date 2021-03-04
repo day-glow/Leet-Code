@@ -53,3 +53,21 @@ const longestOnes = (A, K) => {
 
   return p2 - p1;
 };
+
+//SECOND PASS:
+var longestOnes = function(A, K) {
+  let p1 = 0;
+  let p2 = 0;
+
+  while (p2 < A.length) {
+    if (A[p2] === 0) {
+      K--;
+    }
+    if (K < 0) {
+      if (A[p1] === 0) K++;
+      p1++;
+    }
+    p2++;
+  }
+  return p2 - p1;
+};
