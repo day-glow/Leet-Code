@@ -85,3 +85,8 @@ const numIslands = grid => {
   return islands;
 };
 
+//SECOND PASS:
+//iterate over grid
+//O(i*n*m)?
+//O(1)
+//use queue, check neighbors, flip to "*" or "9"
