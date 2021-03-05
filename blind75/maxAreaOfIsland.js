@@ -19,6 +19,16 @@ Example 2:
 Given the above grid, return 0.
 */
 
+//SECOND PASS:
+  //iterate
+  //helper function
+    //queue
+    //while loop, getNeighbors
+      //dirs
+      //isInbounds
+    //return count
+  //if higher, update max
+
 /**
 //search for islands, if current island is greer than max, then replace
 //alter seen land to water to mark (or make a copy)
