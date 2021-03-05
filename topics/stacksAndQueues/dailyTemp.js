@@ -6,6 +6,26 @@ For example, given the list of temperatures T = [73, 74, 75, 71, 69, 72, 76, 73]
 Note: The length of temperatures will be in the range [1, 30000]. Each temperature will be an integer in the range [30, 100].
 */
 
+//second pass, same approach:
+var dailyTemperatures = function(T) {
+  if (!T.length) return [];
+  if (!T.length === 1) return [0];
+
+  let daysWait = new Array(T.length).fill(0);
+  let lastDay = T.length - 1;
+  let prevHotDay = [lastDay];
+  for (let i = lastDay - 1; i >= 0; i--) {
+    let top = prevHotDay[prevHotDay.length - 1];
+    while (prevHotDay.length && T[top] <= T[i]) {
+      prevHotDay.pop();
+      top = prevHotDay[prevHotDay.length - 1];
+    }
+    prevHotDay.length ? daysWait[i] = top - i : daysWait[i] = 0;
+    prevHotDay.push(i);
+  }
+  return daysWait;
+};
+
 //LIFO - stack
 //previous stack just holds index (can easily look up val in T array)
 //TC-O(n)
