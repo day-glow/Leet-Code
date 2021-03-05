@@ -44,6 +44,100 @@ seen in set
 visiting in set
 look for cycle
 */
+
+//SECOND PASS WITHOUT COMMENTS
+var findOrder = function(numCourses, prerequisites) {
+  let order = [];
+  if (!numCourses) return order;
+  if (!prerequisites.length) {
+    for (let i = 0; i < numCourses; i++) order.push(i);
+    return order;
+  }
+
+  let preReq = new Map();
+  let hasAccessToCourse = new Array(numCourses).fill(0);
+
+  for (let [c, p] of prerequisites) {
+    preReq.has(p) ? preReq.get(p).push(c) : preReq.set(p, [c]);
+    hasAccessToCourse[c]++;
+  }
+
+  let queue = [];
+  hasAccessToCourse.forEach((e, i) => {
+    if (e === 0) queue.push(i);
+  })
+
+  while (queue.length) {
+    let takeCourse = queue.shift();
+    if (preReq.has(takeCourse)) {
+      let takeNext = preReq.get(takeCourse);
+      takeNext.forEach(next => {
+        hasAccessToCourse[next]--;
+        if (hasAccessToCourse[next] === 0) queue.push(next);
+      })
+    }
+    order.push(takeCourse);
+  }
+
+  return order.length === numCourses ? order : [];
+};
+
+//SECOND PASS:
+//iterate over prereqs
+//create map, adjList & prereqCount Array
+//bfs, queue, push courses w/o prereqs
+//push in courses that can be completed as each course is taken
+//measure length of order to ensure same as numCourses
+var findOrder = function(numCourses, prerequisites) {
+  let order = [];
+
+  //handle edge cases
+  if (!numCourses) return order;
+  if (!prerequisites.length) {
+    for (let i = 0; i < numCourses; i++) order.push(i);
+    return order;
+  }
+
+  //create adjList
+  let preReq = new Map();
+  let hasAccessToCourse = new Array(numCourses).fill(0);
+
+  for (let [c, p] of prerequisites) {
+    if (preReq.has(p)) {
+      //let prev = preReq.get(c);
+      //prev.push(p);
+      preReq.get(p).push(c);
+    } else {
+      preReq.set(p, [c]);
+    }
+    hasAccessToCourse[c]++; //prerequisite count
+  }
+
+  //create queue of courses without prereqs (take those courses first) if queue is empty, not possible, return
+  let queue = [];
+  hasAccessToCourse.forEach((e, i) => {
+    //console.log("e", e, "i", i)
+    if (e === 0) queue.push(i);
+  })
+  //console.log(hasAccessToCourse)
+  //console.log(queue)
+  //create while loop for queue, adding courses
+  while (queue.length) {
+    let takeCourse = queue.shift();
+    if (preReq.has(takeCourse)) {
+      let takeNext = preReq.get(takeCourse);
+      takeNext.forEach(next => {
+        hasAccessToCourse[next]--;
+        if (hasAccessToCourse[next] === 0) queue.push(next);
+      })
+    }
+    //push into order
+    order.push(takeCourse);
+  }
+
+  return order.length === numCourses ? order : [];
+};
+
 //iterate over classes and find order to finish all
 //topo sort
 
