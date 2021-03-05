@@ -19,6 +19,47 @@ Example 2:
 Given the above grid, return 0.
 */
 
+//SECOND PASS:
+  //iterate
+  //helper function
+    //queue
+    //while loop, getNeighbors
+      //dirs
+      //isInbounds
+    //return count
+  //if higher, update max
+var dirs = [[0, 1], [0, -1], [-1, 0], [1, 0]];
+
+const isInbounds = (grid, x, y) => x >= 0 && y >= 0 && x < grid.length && y < grid[0].length;
+
+var checkNeighbors = function(grid, x, y) {
+  let islandSize = 1;
+  grid[x][y] = 0;
+  let queue = [[x, y]];
+  while (queue.length) {
+    let curr = queue.shift();
+    for (let [dx, dy] of dirs) {
+      let nx = curr[0] + dx;
+      let ny = curr[1] + dy;
+      if (isInbounds(grid, nx, ny) && grid[nx][ny] === 1) {
+        islandSize++;
+        queue.push([nx, ny]);
+        grid[nx][ny] = 0;
+      }
+    }
+  }
+  return islandSize;
+};
+
+var maxAreaOfIsland = function(grid) {
+  let currentMax = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j]) currentMax = Math.max(currentMax, checkNeighbors(grid, i, j));
+    }
+  }
+  return currentMax;
+};
 /**
 //search for islands, if current island is greer than max, then replace
 //alter seen land to water to mark (or make a copy)
