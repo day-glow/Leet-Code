@@ -44,6 +44,14 @@ seen in set
 visiting in set
 look for cycle
 */
+
+//SECOND PASS:
+//iterate over prereqs
+//create map, adjList & prereqCount Array
+//bfs, queue, push courses w/o prereqs
+//push in courses that can be completed as each course is taken
+//measure length of order to ensure same as numCourses
+
 //iterate over classes and find order to finish all
 //topo sort
 
