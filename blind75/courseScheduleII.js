@@ -45,6 +45,43 @@ visiting in set
 look for cycle
 */
 
+//SECOND PASS WITHOUT COMMENTS
+var findOrder = function(numCourses, prerequisites) {
+  let order = [];
+  if (!numCourses) return order;
+  if (!prerequisites.length) {
+    for (let i = 0; i < numCourses; i++) order.push(i);
+    return order;
+  }
+
+  let preReq = new Map();
+  let hasAccessToCourse = new Array(numCourses).fill(0);
+
+  for (let [c, p] of prerequisites) {
+    preReq.has(p) ? preReq.get(p).push(c) : preReq.set(p, [c]);
+    hasAccessToCourse[c]++;
+  }
+
+  let queue = [];
+  hasAccessToCourse.forEach((e, i) => {
+    if (e === 0) queue.push(i);
+  })
+
+  while (queue.length) {
+    let takeCourse = queue.shift();
+    if (preReq.has(takeCourse)) {
+      let takeNext = preReq.get(takeCourse);
+      takeNext.forEach(next => {
+        hasAccessToCourse[next]--;
+        if (hasAccessToCourse[next] === 0) queue.push(next);
+      })
+    }
+    order.push(takeCourse);
+  }
+
+  return order.length === numCourses ? order : [];
+};
+
 //SECOND PASS:
 //iterate over prereqs
 //create map, adjList & prereqCount Array
