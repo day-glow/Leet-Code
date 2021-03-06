@@ -36,3 +36,25 @@ var generateParenthesis = function(n) {
   makeCombo('', 0, 0, n);
   return allPairs;
 };
+
+//second pass:
+ //stack?
+ //dfs? tree of options, each level, makes a choice "(" or ")"
+ //recursion
+
+ //debrief:
+ //recursion (needs helper function, add to string and keep counts)
+ var generateParenthesis = function(n) {
+  let parens = [];
+  if (!n) return parens;
+  var makeParenCombo = function(s, openCount, closedCount) {
+    if (s.length === 2 * n) {
+      parens.push(s);
+      return;
+    }
+    if (openCount < n) makeParenCombo(s + "(", openCount + 1, closedCount);
+    if (closedCount < openCount) makeParenCombo(s + ")", openCount, closedCount + 1);
+  }
+  makeParenCombo("(", 1, 0);
+  return parens;
+};
