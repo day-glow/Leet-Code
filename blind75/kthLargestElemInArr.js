@@ -60,3 +60,9 @@ var findKthLargest = function(nums, k) {
       [nums[i], nums[j]] = [nums[j], nums[i]];
   }
 };
+
+//second pass:
+naive sort approach:
+var findKthLargest = function(nums, k) {
+  return nums.sort((a, b) => b - a)[k - 1];
+};
