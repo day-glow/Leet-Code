@@ -83,3 +83,22 @@ var findKthLargest = function(nums, k) {
     }
     return stack[stack.length - k];
   };
+
+//stacks refactored:
+var findKthLargest = function(nums, k) {
+    let stack = new Array();
+    let stack2 = new Array();
+    stack.push(nums.pop());
+    for (let num of nums) {
+      if (stack[stack.length - 1] <= num) {
+        stack.push(num);
+      } else {
+        if (stack.length >= k && stack[0] >= num) continue;
+        while (stack[stack.length - 1] > num) stack2.push(stack.pop());
+        stack.push(num);
+        while (stack2.length) stack.push(stack2.pop());
+      }
+      while (stack.length > k) stack.shift();
+    }
+    return stack[0];
+  };
