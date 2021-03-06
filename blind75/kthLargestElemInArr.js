@@ -62,7 +62,24 @@ var findKthLargest = function(nums, k) {
 };
 
 //second pass:
-naive sort approach:
+//naive sort approach:
 var findKthLargest = function(nums, k) {
   return nums.sort((a, b) => b - a)[k - 1];
 };
+
+//stacks & queues approach:
+var findKthLargest = function(nums, k) {
+    let stack = new Array();
+    let stack2 = new Array();
+    stack.push(nums.pop());
+    for (let num of nums) {
+      if (stack[stack.length - 1] <= num) {
+        stack.push(num);
+      } else {
+        while (stack[stack.length - 1] > num) stack2.push(stack.pop());
+        stack.push(num);
+        while (stack2.length) stack.push(stack2.pop());
+      }
+    }
+    return stack[stack.length - k];
+  };
