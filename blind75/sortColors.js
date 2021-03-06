@@ -80,3 +80,25 @@ const sortColors = nums => {
     }
   }
 }
+
+//second pass same approach:
+var sortColors = function(nums) {
+  if (nums.length < 2) return nums;
+  let p1 = 0;
+  let pivot = 0;
+  let p2 = nums.length - 1;
+  while (pivot <= p2) {
+    if (nums[pivot] === 0) {
+      //swap with p1
+      [nums[p1], nums[pivot]] = [nums[pivot], nums[p1]];
+      pivot++;
+      p1++;
+    } else if (nums[pivot] === 2) {
+      //swap with p2
+      [nums[p2], nums[pivot]] = [nums[pivot], nums[p2]];
+      p2--;
+    } else {
+      pivot++;
+    }
+  }
+};
