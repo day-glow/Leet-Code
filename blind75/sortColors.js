@@ -82,6 +82,9 @@ const sortColors = nums => {
 }
 
 //second pass same approach:
+//know that there are a set number of vals
+//use 2 pointers to place the curr val into it's spots on ends
+//curr++ & swap with pointers
 var sortColors = function(nums) {
   if (nums.length < 2) return nums;
   let p1 = 0;
