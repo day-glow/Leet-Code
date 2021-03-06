@@ -36,3 +36,8 @@ var generateParenthesis = function(n) {
   makeCombo('', 0, 0, n);
   return allPairs;
 };
+
+//second pass:
+ //stack?
+ //dfs? tree of options, each level, makes a choice "(" or ")"
+ //recursion
