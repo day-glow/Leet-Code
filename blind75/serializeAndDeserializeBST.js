@@ -130,3 +130,21 @@ var deserialize = function(data) {
 //replace "nulls" with return emptry string (reverse this on reconstruction)
 //utilize backticks &string concatenation
 //.split on the str
+var serialize = function(root) {
+  if (!root) return 'null';
+  return `${root.val}*${serialize(root.left)}*${serialize(root.right)}`;
+};
+
+var deserialize = function(data) {
+  //console.log(data)
+  let splitData = data.split('*')
+  var constructTree = function(nodes) {
+    let val = nodes.shift();
+    if (val === 'null') return null;
+    let root = new TreeNode(val);
+    root.left = constructTree(nodes);
+    root.right = constructTree(nodes);
+    return root;
+  };
+  return constructTree(splitData);
+};
