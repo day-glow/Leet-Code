@@ -30,6 +30,34 @@ Output: [8,9,9,9,0,0,0,1
  * @return {ListNode}
  */
 
+//refactored:
+var addTwoNumbers = function(l1, l2) {
+  let carry = 0;
+  let sum = new ListNode();
+  let head = sum;
+
+  while (l1 || l2) {
+    if (l1) {
+      carry += l1.val;
+      l1 = l1.next;
+    }
+    if (l2) {
+      carry += l2.val;
+      l2 = l2.next;
+    }
+    if (carry <= 9) {
+      sum.next = new ListNode(carry);
+      carry = 0;
+    } else {
+      sum.next = new ListNode(carry % 10);
+      carry = Math.floor(carry / 10);
+    }
+    sum = sum.next;
+  }
+  if (carry) sum.next = new ListNode(carry);
+  return head.next;
+};
+
 //TC-O(n)
 //SC-O(n+1)
 var addTwoNumbers = function(l1, l2) {
@@ -39,7 +67,7 @@ var addTwoNumbers = function(l1, l2) {
   //iterate over both LL, while loop
   while (l1 && l2) {
     carry += l1.val + l2.val;
-    if (carry < 9) {
+    if (carry <= 9) {
       sum.next = new ListNode(carry);
       carry = 0;
     } else {
