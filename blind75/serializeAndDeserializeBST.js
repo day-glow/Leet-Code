@@ -124,3 +124,9 @@ var deserialize = function(data) {
   return recur(-Infinity, Infinity);
 };
 
+//SECOND PASS
+//serialize & deserialize, just asking to flatten tree and reconstruct
+//use recursion to pre-order or postorder, flatten and reconstruct
+//replace "nulls" with return emptry string (reverse this on reconstruction)
+//utilize backticks &string concatenation
+//.split on the str
