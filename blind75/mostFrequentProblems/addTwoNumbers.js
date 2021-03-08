@@ -30,6 +30,27 @@ Output: [8,9,9,9,0,0,0,1
  * @return {ListNode}
  */
 
+//refactored (reduced if conditionals):
+var addTwoNumbers = function(l1, l2) {
+  let subSum = 0;
+  let carry = 0;
+  let head = new ListNode();
+  let currNode = head;
+
+  while (l1 !== null || l2 !== null) {
+    let x = (l1 !== null) ? l1.val : 0;
+    let y = (l2 !== null) ? l2.val : 0;
+    subSum = carry + x + y;
+    carry = Math.floor(subSum / 10);
+    currNode.next = new ListNode(subSum % 10);
+    currNode = currNode.next;
+    if (l1 !== null) l1 = l1.next;
+    if (l2 !== null) l2 = l2.next;
+  }
+  if (carry > 0) currNode.next = new ListNode(carry);
+  return head.next;
+};
+
 //refactored:
 var addTwoNumbers = function(l1, l2) {
   let carry = 0;
