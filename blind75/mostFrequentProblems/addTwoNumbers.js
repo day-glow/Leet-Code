@@ -29,6 +29,9 @@ Output: [8,9,9,9,0,0,0,1
  * @param {ListNode} l2
  * @return {ListNode}
  */
+
+//TC-O(n)
+//SC-O(n+1)
 var addTwoNumbers = function(l1, l2) {
   let carry = 0;
   let sum = new ListNode();
