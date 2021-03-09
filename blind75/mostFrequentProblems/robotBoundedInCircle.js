@@ -35,3 +35,22 @@ Explanation: The robot moves from (0, 0) -> (0, 1) -> (-1, 1) -> (-1, 0) -> (0, 
 //cases when false:
   //no L's or R's
   //if L's and R's do not cancel each other out
+
+/*
+var isRobotBounded = function(instructions) {
+  let l = 0;
+  let r = 0;
+  let g = 0;
+  for (let i = 0; i < instructions.length; i++) {
+    if (instructions[i] === "L") l++;
+    if (instructions[i] === "R") r++;
+    if (instructions[i] === "G") g++;
+  }
+  console.log(l, r)
+  l *= 4;
+  r *= 4;
+  if (!g) return true;
+  if (l - r === 0 || l === 16) return false;
+  return true;
+};
+*/
