@@ -58,7 +58,7 @@ undergroundSystem.checkOut(2, "Paradise", 30);
 undergroundSystem.getAverageTime("Leyton", "Paradise"); // return 6.66667
 */
 
-
+/*
 var UndergroundSystem = function() {
   this.riders = new Map();
   this.stations = new Map();
@@ -77,7 +77,7 @@ var UndergroundSystem = function() {
  * @param {string} stationName
  * @param {number} t
  * @return {void}
- */
+
 UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
   if (this.riders.has(id)) {
     let userRides = this.riders.get(id);
@@ -102,7 +102,7 @@ UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
  * @param {string} stationName
  * @param {number} t
  * @return {void}
- */
+
 UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
   if (!this.riders.has(id)) return console.log(`ID #${id} was not checked in and therefore cannot be checkout.`);
   let userRides = this.riders.get(id);
@@ -137,7 +137,7 @@ UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
  * @param {string} startStation
  * @param {string} endStation
  * @return {number}
- */
+
 UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) {
   if (!this.stations.has(startStation)) return 0;
   let dest = this.stations.get(startStation);
@@ -153,4 +153,56 @@ UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) 
  * obj.checkIn(id,stationName,t)
  * obj.checkOut(id,stationName,t)
  * var param_3 = obj.getAverageTime(startStation,endStation)
- */
+*/
+
+//refactored:
+var UndergroundSystem = function() {
+  this.riders = new Map();
+  this.stations = new Map();
+};
+
+UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
+  if (this.riders.has(id)) {
+    let userRides = this.riders.get(id);
+    if (userRides[userRides.length - 1][2] === "in") {
+      return;
+    } else {
+      userRides.push([t, stationName, "in"])
+      this.riders.set(id, userRides);
+    }
+  } else {
+    this.riders.set(id, [[t, stationName, "in"]]);
+  }
+};
+
+UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
+  if (!this.riders.has(id)) return console.log(`ID #${id} was not checked in and therefore cannot be checkout.`);
+  let userRides = this.riders.get(id);
+  let userLastCheckIn = userRides[userRides.length - 1];
+  userRides.push([t, stationName, "out"]);
+  this.riders.set(id, userRides);
+  if (this.stations.has(userLastCheckIn[1])) {
+    let dest = this.stations.get(userLastCheckIn[1]);
+    if (dest.has(stationName)) {
+      let travelTimes = dest.get(stationName);
+      travelTimes.push(t - userLastCheckIn[0]);
+      dest.set(stationName, travelTimes);
+    } else {
+      dest.set(stationName, [t - userLastCheckIn[0]]);
+      this.stations.set(userLastCheckIn[1], dest);
+    }
+  } else {
+    let dest = new Map();
+    dest.set(stationName, [t - userLastCheckIn[0]]);
+    this.stations.set(userLastCheckIn[1], dest);
+  }
+};
+
+UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) {
+  if (!this.stations.has(startStation)) return 0;
+  let dest = this.stations.get(startStation);
+  let end = dest.get(endStation);
+  let numCompletedRides = end.length;
+  let allRidesTotalTime = end.reduce((acc, curr) => acc += curr);
+  return allRidesTotalTime / numCompletedRides;
+};
