@@ -56,6 +56,8 @@ var isRobotBounded = function(instructions) {
 */
 
 //solution via discussion board
+//TC-O(n)
+//SC-O(1)
 var isRobotBounded = function(instructions) {
   let [x, y, dx, dy] = [0, 0, 0, 1];
   for(let i of instructions) {
