@@ -57,3 +57,100 @@ undergroundSystem.checkIn(2, "Leyton", 21);
 undergroundSystem.checkOut(2, "Paradise", 30);
 undergroundSystem.getAverageTime("Leyton", "Paradise"); // return 6.66667
 */
+
+
+var UndergroundSystem = function() {
+  this.riders = new Map();
+  this.stations = new Map();
+};
+  //"Leyton": ...logs
+  //"Waterloo": ...logs
+  //"Paradise": ...logs
+
+  //this.station.get(Waterloo, ins or outs, time)
+  //this.station.set("Leyton", [Waterloo, totalTime])
+
+/**
+//A customer with a card id equal to id, gets in the station stationName at time t.
+//A customer can only be checked into one place at a time.
+ * @param {number} id
+ * @param {string} stationName
+ * @param {number} t
+ * @return {void}
+ */
+UndergroundSystem.prototype.checkIn = function(id, stationName, t) {
+  if (this.riders.has(id)) {
+    let userRides = this.riders.get(id);
+    if (userRides[userRides.length - 1][2] === "in") {
+      console.log(`ID #${id} already checked in at ${userRides[userRides.length - 1][1]}.`);
+      return;
+    } else {
+      userRides.push([t, stationName, "in"])
+      this.riders.set(id, userRides);
+      console.log(`${t} check in at ${stationName} added to ID #${id} travel log.`);
+    }
+  } else {
+    this.riders.set(id, [[t, stationName, "in"]]);
+    console.log(`ID #${id} successfully checked in at ${t} in ${stationName}.`);
+  }
+};
+
+
+/**
+//A customer with a card id equal to id, gets out from the station stationName at time t.
+ * @param {number} id
+ * @param {string} stationName
+ * @param {number} t
+ * @return {void}
+ */
+UndergroundSystem.prototype.checkOut = function(id, stationName, t) {
+  if (!this.riders.has(id)) return console.log(`ID #${id} was not checked in and therefore cannot be checkout.`);
+  let userRides = this.riders.get(id);
+  let userLastCheckIn = userRides[userRides.length - 1];
+  userRides.push([t, stationName, "out"]);
+  this.riders.set(id, userRides);
+  console.log("last check in", userLastCheckIn)
+
+  //log stations
+  if (this.stations.has(userLastCheckIn[1])) {
+    let dest = this.stations.get(userLastCheckIn[1]);
+    if (dest.has(stationName)) {
+      let travelTimes = dest.get(stationName);
+      travelTimes.push(t - userLastCheckIn[0]);
+      dest.set(stationName, travelTimes);
+    } else {
+      dest.set(stationName, [t - userLastCheckIn[0]]);
+      this.stations.set(userLastCheckIn[1], dest);
+    }
+  } else {
+    let dest = new Map();
+    dest.set(stationName, [t - userLastCheckIn[0]]);
+    this.stations.set(userLastCheckIn[1], dest);
+  }
+  //console.log("stations log", this.stations)
+};
+
+/**
+//Returns the average time to travel between the startStation and endStation.
+//The average time is computed from all the previous traveling from startStation to endStation that happened directly.
+//Call to getAverageTime is always valid.
+ * @param {string} startStation
+ * @param {string} endStation
+ * @return {number}
+ */
+UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) {
+  if (!this.stations.has(startStation)) return 0;
+  let dest = this.stations.get(startStation);
+  let end = dest.get(endStation);
+  let numCompletedRides = end.length;
+  let allRidesTotalTime = end.reduce((acc, curr) => acc += curr);
+  return allRidesTotalTime / numCompletedRides;
+};
+
+/**
+ * Your UndergroundSystem object will be instantiated and called as such:
+ * var obj = new UndergroundSystem()
+ * obj.checkIn(id,stationName,t)
+ * obj.checkOut(id,stationName,t)
+ * var param_3 = obj.getAverageTime(startStation,endStation)
+ */
