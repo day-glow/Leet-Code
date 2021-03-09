@@ -156,6 +156,9 @@ UndergroundSystem.prototype.getAverageTime = function(startStation, endStation) 
 */
 
 //refactored:
+//TC-O(1)
+//SC-O(P + S2)
+//P=passengerCount, S=stations, S2 = stations*stations for all possible routes (max)
 var UndergroundSystem = function() {
   this.riders = new Map();
   this.stations = new Map();
