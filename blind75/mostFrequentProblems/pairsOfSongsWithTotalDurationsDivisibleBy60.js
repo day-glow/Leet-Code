@@ -17,6 +17,17 @@ Output: 3
 Explanation: All three pairs have a total duration of 120, which is divisible by 60.
 */
 
+//refactored:
+var numPairsDivisibleBy60 = function(time) {
+  let count = 0;
+  let remainders = new Array(60).fill(0);
+  for (let t of time) {
+    count += t % 60 === 0 ? remainders[0] : remainders[60 - t % 60];
+    remainders[t % 60]++;
+  }
+  return count;
+};
+
 //brute force, nest loops compare each
 //math/logic, if num < 60 delta must be the remainder
 var numPairsDivisibleBy60 = function(time) {
