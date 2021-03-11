@@ -19,3 +19,16 @@ Explanation: All three pairs have a total duration of 120, which is divisible by
 
 //brute force, nest loops compare each
 //math/logic, if num < 60 delta must be the remainder
+var numPairsDivisibleBy60 = function(time) {
+  let count = 0;
+  let remainders = new Array(60).fill(0);
+  for (let i = 0; i < time.length; i++) {
+    if (time[i] % 60 === 0) {
+      count += remainders[0];
+    } else {
+      count += remainders[60 - time[i] % 60];
+    }
+    remainders[time[i] % 60]++;
+  }
+  return count;
+};
