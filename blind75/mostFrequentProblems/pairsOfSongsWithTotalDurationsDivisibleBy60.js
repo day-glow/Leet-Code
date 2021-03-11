@@ -18,6 +18,8 @@ Explanation: All three pairs have a total duration of 120, which is divisible by
 */
 
 //refactored:
+//TC-O(n)
+//SC-O(1)
 var numPairsDivisibleBy60 = function(time) {
   let count = 0;
   let remainders = new Array(60).fill(0);
