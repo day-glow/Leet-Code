@@ -17,3 +17,5 @@ Output: 3
 Explanation: All three pairs have a total duration of 120, which is divisible by 60.
 */
 
+//brute force, nest loops compare each
+//math/logic, if num < 60 delta must be the remainder
