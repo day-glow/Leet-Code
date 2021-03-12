@@ -22,3 +22,5 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 
 //calc dist, save with index
 //sort, return k points
+//TC-O(n) or sorting O(nlogn)
+//SC-O(n)
