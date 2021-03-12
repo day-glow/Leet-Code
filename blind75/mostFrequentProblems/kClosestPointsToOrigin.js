@@ -24,3 +24,21 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 //sort, return k points
 //TC-O(n) or sorting O(nlogn)
 //SC-O(n)
+
+var kClosest = function(points, k) {
+  let distances = new Map();
+  let closestPoints = [];
+  points.forEach((p, i) => {
+    let d = Math.sqrt(Math.pow(p[0], 2) + Math.pow(p[1], 2));
+    distances.has(d) ? distances.get(d).push(i): distances.set(d, [i]);
+  })
+console.log(distances)
+  let sorted = Array.from(distances).sort((a, b) => a[0] - b[0]);
+  for (let i = 0; i < k; i++) {
+    let pts = sorted[i][1];
+    console.log(pts)
+    for (let p of pts) closestPoints.push(points[p]);
+    if (closestPoints.length >= k) break;
+  }
+  return closestPoints.length === k ? closestPoints : closestPoints.slice(0, k);
+};
