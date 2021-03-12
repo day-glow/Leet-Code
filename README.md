@@ -1,9 +1,4 @@
-# Hi, I'm Jacki
-
-<img align='right' src='https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif' width='200"'>
-I love coding, spreading positivity and hearing feedback! Feel free to connect, send feedback or submit a PR with really cool ideas :)
-
-## Leet-Code
+# Leet-Code
 Solving leetcode problems one line at a time. This repo offers insights on javascript naive to optimized solutions (some in progress).
 
 Here is an example of the toy problems that are highlighted in this repo:
@@ -26,3 +21,8 @@ If you find my solutions helpful, please upvote some of my discussion board solu
 [277. Find the Celebrity](https://leetcode.com/problems/find-the-celebrity/discuss/1005437/Javascript-Better-variable-names-easier-to-follow)
 
 [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms/discuss/1058624/sort-and-forEach-loop)
+
+## Hi, I'm Jacki
+
+<img align='right' src='https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif' width='200"'>
+I love coding, spreading positivity and hearing feedback! Feel free to connect, send feedback or submit a PR with really cool ideas :)
