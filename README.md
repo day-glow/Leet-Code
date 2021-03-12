@@ -6,7 +6,7 @@ I love coding, spreading positivity and hearing feedback! Feel free to connect, 
 ## Leet-Code
 Solving leetcode problems one line at a time. This repo offers insights on javascript naive to optimized solutions (some in progress).
 
-<img align='right' src='https://imgur.com/a/BtI4tz0'>
+![](/Users/jacki/Downloads/git_tutorial/work/Leet-Code/images/Leetcode_2Sum.png)
 
 Main focus for now is the Blind75: (https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
 
