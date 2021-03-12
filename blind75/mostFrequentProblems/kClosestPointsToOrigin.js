@@ -22,9 +22,8 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 
 //calc dist, save with index
 //sort, return k points
-//TC-O(n) or sorting O(nlogn)
+//TC-sorting O(nlogn)
 //SC-O(n)
-
 var kClosest = function(points, k) {
   let distances = new Map();
   let closestPoints = [];
@@ -42,3 +41,7 @@ console.log(distances)
   }
   return closestPoints.length === k ? closestPoints : closestPoints.slice(0, k);
 };
+
+//Divide&Conquer Approach
+//TC-O(n)
+//SC-O(n)
