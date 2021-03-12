@@ -9,6 +9,7 @@ Solving leetcode problems one line at a time. This repo offers insights on javas
 <img align='right' src='https://imgur.com/a/BtI4tz0'>
 
 Main focus for now is the Blind75: (https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
+
 -Check it out and clone the Blind75 list to your account to start tackling them today!
 
 
