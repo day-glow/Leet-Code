@@ -31,7 +31,6 @@ Output: [null,null,null,"","high","high","low","low"]
 var TimeMap = function() {
   this.map = new Map();
 };
-
 TimeMap.prototype.set = function(key, value, timestamp) {
   if (this.map.has(key)) {
     let prev = this.map.get(key);
@@ -40,17 +39,13 @@ TimeMap.prototype.set = function(key, value, timestamp) {
   } else {
     this.map.set(key, [[timestamp, value]])
   }
-
 };
-
 TimeMap.prototype.get = function(key, timestamp) {
   if (!this.map.has(key)) return "";
   let prevTimes = this.map.get(key).slice(0);
   if (!prevTimes.length || prevTimes[0][0] > timestamp) return "";
-
   let p1 = 0;
   let p2 = prevTimes.length - 1;
-
   while (p1 < p2) {
     let m = Math.floor((p2 + p1) / 2);
     if (prevTimes[m][0] < timestamp) {
@@ -64,18 +59,36 @@ TimeMap.prototype.get = function(key, timestamp) {
   return '';
 };
 
+//HashMap w/Array using index as timestamp
+var TimeMap = function() {
+  this.map = new Map();
+};
+TimeMap.prototype.set = function(key, value, timestamp) {
+  if (!this.map.has(key)) this.map.set(key, []);
+  let item = this.map.get(key);
+  item[timestamp] = value;
+};
+TimeMap.prototype.get = function(key, timestamp) {
+  if (!this.map.has(key)) return "";
+  let item = this.map.get(key);
+  for (let i = timestamp;i>=0;i--) {
+      if(item[i] != null) {
+          return item[i];
+      }
+  }
+  return "";
+};
+
 //Hash Map w/ Array
 var TimeMap = function() {
   this.map = new Map();
 };
-
 TimeMap.prototype.set = function(key, value, timestamp) {
   if (!this.map.has(key)) this.map.set(key, []);
   let prev = this.map.get(key);
   prev.push([timestamp, value])
   this.map.set(key, prev);
 };
-
 TimeMap.prototype.get = function(key, timestamp) {
   if (!this.map.has(key)) return "";
   let prevTimes = this.map.get(key);
