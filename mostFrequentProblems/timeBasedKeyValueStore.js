@@ -31,6 +31,8 @@ Output: [null,null,null,"","high","high","low","low"]
  * Initialize your data structure here.
   //key: value (Set)
   //timestamp,
+  //TC-O(1)
+  //SC-O(1)
  */
   var TimeMap = function() {
     this.map = new Map();
@@ -41,6 +43,8 @@ Output: [null,null,null,"","high","high","low","low"]
    * @param {string} value
    * @param {number} timestamp
    * @return {void}
+   * //TC-O(1)
+     //SC-O(1)
    */
   TimeMap.prototype.set = function(key, value, timestamp) {
     if (this.map.has(key)) {
@@ -60,6 +64,8 @@ Output: [null,null,null,"","high","high","low","low"]
       //<= timestamp
       //if none are < ts, return ''
       //timelimit exceeded (binary search, add pivot optimization)
+    //TC-O(nlogn)
+    //SC-O(1)
    */
   TimeMap.prototype.get = function(key, timestamp) {
     if (!this.map.has(key)) return "";
