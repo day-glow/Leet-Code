@@ -26,3 +26,65 @@ Example 2:
 Input: inputs = ["TimeMap","set","set","get","get","get","get","get"], inputs = [[],["love","high",10],["love","low",20],["love",5],["love",10],["love",15],["love",20],["love",25]]
 Output: [null,null,null,"","high","high","low","low"]
 */
+
+/**
+ * Initialize your data structure here.
+  //key: value (Set)
+  //timestamp,
+ */
+  var TimeMap = function() {
+    this.map = new Map();
+  };
+
+  /**
+   * @param {string} key
+   * @param {string} value
+   * @param {number} timestamp
+   * @return {void}
+   */
+  TimeMap.prototype.set = function(key, value, timestamp) {
+    if (this.map.has(key)) {
+      let prev = this.map.get(key);
+      prev.push([timestamp, value])
+      this.map.set(key, prev)
+    } else {
+      this.map.set(key, [[timestamp, value]])
+    }
+
+  };
+
+  /**
+   * @param {string} key
+   * @param {number} timestamp
+   * @return {string}
+      //<= timestamp
+      //if none are < ts, return ''
+      //timelimit exceeded (binary search, add pivot optimization)
+   */
+  TimeMap.prototype.get = function(key, timestamp) {
+    if (!this.map.has(key)) return "";
+    let prevTimes = this.map.get(key).slice(0);
+    console.log(prevTimes)
+    if (!prevTimes.length || prevTimes[0][0] > timestamp) return "";
+
+    let p1 = 0;
+    let p2 = prevTimes.length - 1;
+    let p = Math.floor(p2 - p1 / 2);
+
+    while (prevTimes[p][0] > timestamp) {
+      p = Math.floor(p2 - p1 / 2);
+      if (prevTimes[p][0] === timestamp) {
+        return prevTimes[p][1];
+      } else if (prevTimes[p][0] <) {
+
+      }
+    }
+    return next[1];
+  };
+
+  /**
+   * Your TimeMap object will be instantiated and called as such:
+   * var obj = new TimeMap()
+   * obj.set(key,value,timestamp)
+   * var param_2 = obj.get(key,timestamp)
+   */
