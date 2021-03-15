@@ -21,3 +21,19 @@ Input words contain only lowercase letters.
 Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 */
+
+//map approach
+var topKFrequent = function(words, k) {
+  let topK = [];
+  let frequencies = new Map();
+  for (let w of words) {
+    let prev = frequencies.has(w) ? frequencies.get(w) : 0;
+    frequencies.set(w, prev + 1);
+  }
+  let sortedFreq = Array.from(frequencies).sort((a, b) => {
+    if (b[1] === a[1]) return a[0].localeCompare(b[0])
+    return b[1] - a[1];
+  }).slice(0, k);
+  for (let [w, c] of sortedFreq) topK.push(w);
+  return topK;
+};
