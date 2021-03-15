@@ -22,6 +22,16 @@ Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 */
 
+//refactored:
+var topKFrequent = function(words, k) {
+  let frequencies = new Map();
+  words.forEach(w => frequencies.set(w, frequencies.get(w) + 1 || 1));
+  let topK = Array.from(frequencies.entries()).sort((a, b) => {
+    return b[1] === a[1] ? a[0].localeCompare(b[0]) : b[1] - a[1];
+  }).slice(0, k).map(word => word[0]);
+  return topK;
+};
+
 //map approach
 var topKFrequent = function(words, k) {
   let topK = [];
