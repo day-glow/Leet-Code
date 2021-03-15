@@ -27,6 +27,45 @@ Input: inputs = ["TimeMap","set","set","get","get","get","get","get"], inputs = 
 Output: [null,null,null,"","high","high","low","low"]
 */
 
+//Hash Map w/ Arry w/ Binary Search
+var TimeMap = function() {
+  this.map = new Map();
+};
+
+TimeMap.prototype.set = function(key, value, timestamp) {
+  if (this.map.has(key)) {
+    let prev = this.map.get(key);
+    prev.push([timestamp, value])
+    this.map.set(key, prev)
+  } else {
+    this.map.set(key, [[timestamp, value]])
+  }
+
+};
+
+TimeMap.prototype.get = function(key, timestamp) {
+  if (!this.map.has(key)) return "";
+  let prevTimes = this.map.get(key).slice(0);
+  if (!prevTimes.length || prevTimes[0][0] > timestamp) return "";
+
+  let p1 = 0;
+  let p2 = prevTimes.length - 1;
+
+  while (p1 < p2) {
+    let m = Math.floor((p2 + p1) / 2);
+    if (prevTimes[m][0] < timestamp) {
+      p1 = m + 1;
+    } else {
+      p2 = m;
+    }
+  }
+  if (prevTimes[p1][0] <= timestamp) return prevTimes[p1][1];
+  if (prevTimes[p1 - 1][0] || prevTimes[p1 - 1][0] <= timestamp) return prevTimes[p1 - 1][1];
+  return '';
+};
+
+
+
 /**
  * Initialize your data structure here.
   //key: value (Set)
