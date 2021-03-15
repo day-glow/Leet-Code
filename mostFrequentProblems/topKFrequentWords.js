@@ -22,7 +22,11 @@ Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 */
 
+//java = heap = O(nlogk)
+
 //refactored:
+//TC-O(nlogn)
+//SC-O(n)
 var topKFrequent = function(words, k) {
   let frequencies = new Map();
   words.forEach(w => frequencies.set(w, frequencies.get(w) + 1 || 1));
