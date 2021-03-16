@@ -27,23 +27,34 @@ randomizedSet.insert(2); // 2 was already in the set, so return false.
 randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
 */
 
+//Set approach refactored:
+var RandomizedSet = function() {
+  this.randomizedSet = new Set();
+};
+RandomizedSet.prototype.insert = function(val) {
+  return this.randomizedSet.size !== this.randomizedSet.add(val).size;
+};
+RandomizedSet.prototype.remove = function(val) {
+  return this.randomizedSet.delete(val);
+};
+RandomizedSet.prototype.getRandom = function() {
+  return [...this.randomizedSet][Math.floor(Math.random() * this.randomizedSet.size)];
+};
+
 //refactored:
 var RandomizedSet = function() {
   this.randomizedSet = new Set();
 };
-
 RandomizedSet.prototype.insert = function(val) {
   if (this.randomizedSet.has(val)) return false;
   this.randomizedSet.add(val);
   return true;
 };
-
 RandomizedSet.prototype.remove = function(val) {
   if (!this.randomizedSet.has(val)) return false;
   this.randomizedSet.delete(val);
   return true;
 };
-
 RandomizedSet.prototype.getRandom = function() {
   return Array.from(this.randomizedSet)[Math.floor(Math.random() * this.randomizedSet.size)];
 };
