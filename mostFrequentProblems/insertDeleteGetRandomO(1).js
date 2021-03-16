@@ -30,6 +30,8 @@ randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom()
 /**
  * Initialize your data structure here.
  */
+//TC-O(1)
+//SC-O(1)
  var RandomizedSet = function() {
   this.randomizedSet = new Set();
 };
@@ -39,6 +41,8 @@ randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom()
  * @param {number} val
  * @return {boolean}
  */
+//TC-O(1)
+//SC-O(1)
 RandomizedSet.prototype.insert = function(val) {
   let valNotInSetPriorToInsert = true;
   this.randomizedSet.has(val) ? valNotInSetPriorToInsert = false : this.randomizedSet.add(val);
@@ -50,6 +54,8 @@ RandomizedSet.prototype.insert = function(val) {
  * @param {number} val
  * @return {boolean}
  */
+//TC-O(1)
+//SC-O(1)
 RandomizedSet.prototype.remove = function(val) {
   if (this.randomizedSet.has(val)) {
     this.randomizedSet.delete(val);
@@ -62,6 +68,8 @@ RandomizedSet.prototype.remove = function(val) {
  * Get a random element from the set.
  * @return {number}
  */
+//TC-O(n)
+//SC-O(1)
 RandomizedSet.prototype.getRandom = function() {
   let currentSet = Array.from(this.randomizedSet);
   return currentSet[Math.floor(Math.random() * currentSet.length)];
