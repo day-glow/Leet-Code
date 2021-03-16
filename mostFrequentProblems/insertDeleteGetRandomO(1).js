@@ -27,6 +27,29 @@ randomizedSet.insert(2); // 2 was already in the set, so return false.
 randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
 */
 
+//refactored:
+var RandomizedSet = function() {
+  this.randomizedSet = new Set();
+};
+
+RandomizedSet.prototype.insert = function(val) {
+  if (this.randomizedSet.has(val)) return false;
+  this.randomizedSet.add(val);
+  return true;
+};
+
+RandomizedSet.prototype.remove = function(val) {
+  if (!this.randomizedSet.has(val)) return false;
+  this.randomizedSet.delete(val);
+  return true;
+};
+
+RandomizedSet.prototype.getRandom = function() {
+  let currentSet = Array.from(this.randomizedSet);
+  return currentSet[Math.floor(Math.random() * currentSet.length)];
+};
+
+
 /**
  * Initialize your data structure here.
  */
