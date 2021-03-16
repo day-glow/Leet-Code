@@ -45,8 +45,7 @@ RandomizedSet.prototype.remove = function(val) {
 };
 
 RandomizedSet.prototype.getRandom = function() {
-  let currentSet = Array.from(this.randomizedSet);
-  return currentSet[Math.floor(Math.random() * currentSet.length)];
+  return Array.from(this.randomizedSet)[Math.floor(Math.random() * this.randomizedSet.size)];
 };
 
 
