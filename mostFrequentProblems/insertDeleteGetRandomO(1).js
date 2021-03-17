@@ -55,7 +55,7 @@ RandomizedSet.prototype.remove = function(val) {
   return true;
 };
 RandomizedSet.prototype.getRandom = function() {
-  return [...this.list][Math.floor(Math.random() * this.list.length)];
+  return this.list[Math.floor(Math.random() * this.list.length)];
 };
 
 //Set approach refactored:
