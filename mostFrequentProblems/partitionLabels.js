@@ -13,6 +13,8 @@ A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits 
 */
 
 //greedy approach:
+//TC-O(n)
+//SC-O(1)
 var partitionLabels = function(S) {
   let lastIdx = new Array(26);
 
