@@ -27,6 +27,16 @@ randomizedSet.insert(2); // 2 was already in the set, so return false.
 randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
 */
 
+//HashMap + Array approach O(1):
+  //save idx of val and last val in array list
+  //save last val in array list
+  //swap spots
+  //pop to remove
+  //reset new idx of swapped val
+  //delete val removed
+
+
+
 //Set approach refactored:
 var RandomizedSet = function() {
   this.randomizedSet = new Set();
