@@ -32,3 +32,28 @@ find the breaking points where the intervals do not overlap (similar to meeting 
 9 -> 7 -> 8
 9 -> 16 ->
 */
+var partitionLabels = function(S) {
+  let charMap = new Map();
+  let parts = [];
+  for (let i = 0; i < S.length; i++) {
+    let prev = [i];
+    if (charMap.has(S[i])) {
+      prev = charMap.get(S[i]);
+      if (prev.length <= 1) prev.push(i);
+      if (prev.length > 1) prev[1] = i;
+    }
+    charMap.set(S[i], prev);
+  }
+  let prev = [0, 0];
+  for (let [start, end] of charMap.values()) {
+    if (end === undefined) end = start;
+    if (prev[1] < start) {
+      parts.push(prev[1] - prev[0] + 1);
+      prev = [start, end];
+    } else {
+      if (end > prev[1]) prev[1] = end;
+    }
+  }
+  parts.push(prev[1] - prev[0] + 1);
+  return parts;
+};
