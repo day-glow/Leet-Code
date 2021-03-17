@@ -11,3 +11,24 @@ The partition is "ababcbaca", "defegde", "hijhklij".
 This is a partition so that each letter appears in at most one part.
 A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
 */
+
+//brainstorm:
+//map of chars & idx's
+//iterate
+//goal is to reduce chars in part, aka (each letter in it's own cubby)
+  //if duplicate letter, must grow cubby to include
+
+//goal find sliding window of dups
+
+//"ababcbacadefegdehijhklij"
+/*
+map = {
+  a: [0, 2, 6, 8], etc
+}
+
+map is now an interval list
+find the breaking points where the intervals do not overlap (similar to meeting room problem)
+
+9 -> 7 -> 8
+9 -> 16 ->
+*/
