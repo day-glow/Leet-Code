@@ -48,11 +48,9 @@ RandomizedSet.prototype.remove = function(val) {
   if (!this.dict.has(val)) return false;
   let valIdx = this.dict.get(val);
   let endIdx = this.list.length - 1;
-  let lastNum = this.list[endIdx];
-
   [this.list[valIdx], this.list[endIdx]] = [this.list[endIdx], this.list[valIdx]]
   this.list.pop();
-  this.dict.set(lastNum, valIdx);
+  this.dict.set(this.list[valIdx], valIdx);
   this.dict.delete(val);
   return true;
 };
