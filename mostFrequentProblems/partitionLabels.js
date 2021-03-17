@@ -12,6 +12,24 @@ This is a partition so that each letter appears in at most one part.
 A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
 */
 
+//greedy approach:
+var partitionLabels = function(S) {
+  let lastIdx = new Array(26);
+
+  for (let i = 0; i < S.length; i++) lastIdx[S.charCodeAt(i) - 97] = i;
+  let j = 0;
+  let anchor = 0;
+  let parts = [];
+  for (let i = 0; i < S.length; i++) {
+    j = Math.max(j, lastIdx[S.charCodeAt(i) - 97]);
+    if (i === j) {
+      parts.push(i - anchor + 1);
+      anchor = i + 1;
+    }
+  }
+  return parts;
+};
+
 //brainstorm:
 //map of chars & idx's
 //iterate
@@ -32,6 +50,7 @@ find the breaking points where the intervals do not overlap (similar to meeting 
 9 -> 7 -> 8
 9 -> 16 ->
 */
+//hashMap & intervals approach
 //TC-O(n)
 //SC-O(n)
 var partitionLabels = function(S) {
