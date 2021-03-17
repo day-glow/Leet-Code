@@ -39,8 +39,7 @@ var partitionLabels = function(S) {
     let prev = [i];
     if (charMap.has(S[i])) {
       prev = charMap.get(S[i]);
-      if (prev.length <= 1) prev.push(i);
-      if (prev.length > 1) prev[1] = i;
+      prev.length === 0 ? prev[0] = i : prev[1] = i;
     }
     charMap.set(S[i], prev);
   }
@@ -50,9 +49,8 @@ var partitionLabels = function(S) {
     if (prev[1] < start) {
       parts.push(prev[1] - prev[0] + 1);
       prev = [start, end];
-    } else {
-      if (end > prev[1]) prev[1] = end;
     }
+    if (end > prev[1]) prev[1] = end;
   }
   parts.push(prev[1] - prev[0] + 1);
   return parts;
