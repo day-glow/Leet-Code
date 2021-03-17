@@ -32,6 +32,8 @@ find the breaking points where the intervals do not overlap (similar to meeting 
 9 -> 7 -> 8
 9 -> 16 ->
 */
+//TC-O(n)
+//SC-O(n)
 var partitionLabels = function(S) {
   let charMap = new Map();
   let parts = [];
