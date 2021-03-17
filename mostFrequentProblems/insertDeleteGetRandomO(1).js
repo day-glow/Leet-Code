@@ -34,8 +34,31 @@ randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom()
   //pop to remove
   //reset new idx of swapped val
   //delete val removed
+var RandomizedSet = function() {
+  this.dict = new Map();
+  this.list = new Array();
+};
+RandomizedSet.prototype.insert = function(val) {
+  if (this.dict.has(val)) return false;
+  this.dict.set(val, this.list.length);
+  this.list.push(val);
+  return true;
+};
+RandomizedSet.prototype.remove = function(val) {
+  if (!this.dict.has(val)) return false;
+  let valIdx = this.dict.get(val);
+  let endIdx = this.list.length - 1;
+  let lastNum = this.list[endIdx];
 
-
+  [this.list[valIdx], this.list[endIdx]] = [this.list[endIdx], this.list[valIdx]]
+  this.list.pop();
+  this.dict.set(lastNum, valIdx);
+  this.dict.delete(val);
+  return true;
+};
+RandomizedSet.prototype.getRandom = function() {
+  return [...this.list][Math.floor(Math.random() * this.list.length)];
+};
 
 //Set approach refactored:
 var RandomizedSet = function() {
