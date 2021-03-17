@@ -17,16 +17,15 @@ A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits 
 //SC-O(1)
 var partitionLabels = function(S) {
   let lastIdx = new Array(26);
-
   for (let i = 0; i < S.length; i++) lastIdx[S.charCodeAt(i) - 97] = i;
   let j = 0;
-  let anchor = 0;
+  let lastCount = 0;
   let parts = [];
   for (let i = 0; i < S.length; i++) {
     j = Math.max(j, lastIdx[S.charCodeAt(i) - 97]);
     if (i === j) {
-      parts.push(i - anchor + 1);
-      anchor = i + 1;
+      parts.push(i - lastCount + 1);
+      lastCount = i + 1;
     }
   }
   return parts;
