@@ -22,6 +22,8 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 //graph q
 //starting point, bfs
 //check neighbors, if found return count
+//TC-O(n2)
+//SC-O(n2)
 var minKnightMoves = function(tx, ty) {
   var dirs = [[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2]];
   let steps = 0;
