@@ -17,3 +17,9 @@ Input: x = 5, y = 5
 Output: 4
 Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 */
+
+//brainstorm:
+//graph q
+//starting point, bfs
+//check neighbors, if found return count
+
