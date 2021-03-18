@@ -22,6 +22,8 @@ If you find my solutions helpful, please upvote some of my discussion board solu
 
 [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms/discuss/1058624/sort-and-forEach-loop)
 
+[1197. Minimumum Knight Moves](https://leetcode.com/problems/minimum-knight-moves/discuss/1116030/JavaScript-classic-BFS-solution-vs-Math-approach-TCSC)
+
 ## Feedback Welcome
 
 <img align='right' src='https://media.giphy.com/media/bcKmIWkUMCjVm/giphy.gif' width='200"'>
