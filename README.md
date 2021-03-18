@@ -16,12 +16,10 @@ Here is an example of the toy problems that are highlighted in this repo:
 If you find my solutions helpful, please upvote some of my discussion board solutions on Leetcode.
 
 [142. Linked List Cycle II Solution](https://leetcode.com/problems/linked-list-cycle-ii/discuss/994424/javascript-Two-Pointers-faster-than-99.89%3A-if-you-know-141.LinkedListCycle-you'll-like-this)
-
-[277. Find the Celebrity Solution](https://leetcode.com/problems/find-the-celebrity/discuss/1005437/Javascript-Better-variable-names-easier-to-follow)
-
-[252. Meeting Rooms Solution](https://leetcode.com/problems/meeting-rooms/discuss/1058624/sort-and-forEach-loop)
-
 [1197. Minimumum Knight Moves Solution](https://leetcode.com/problems/minimum-knight-moves/discuss/1116030/JavaScript-classic-BFS-solution-vs-Math-approach-TCSC)
+[277. Find the Celebrity Solution](https://leetcode.com/problems/find-the-celebrity/discuss/1005437/Javascript-Better-variable-names-easier-to-follow)
+[252. Meeting Rooms Solution](https://leetcode.com/problems/meeting-rooms/discuss/1058624/sort-and-forEach-loop)
+[1004. Max Consecutive Ones III Solution](https://leetcode.com/problems/max-consecutive-ones-iii/discuss/1029876/Concise-Never-Shrinking-Sliding-Window-Approach)
 
 ![](./images/Leetcode_LLCycle2_DiscussionBoardSolution.png)
 
