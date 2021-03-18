@@ -24,6 +24,8 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 //check neighbors, if found return count
 
 //optimized math approach:
+//TC-O(1)
+//SC-O(1)
 var minKnightMoves = function(x, y) {
   [x, y] = [Math.abs(x), Math.abs(y)];
   if (x < y) [x, y] = [y, x];
