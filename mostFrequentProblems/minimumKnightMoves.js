@@ -22,4 +22,26 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 //graph q
 //starting point, bfs
 //check neighbors, if found return count
-
+var minKnightMoves = function(tx, ty) {
+  var dirs = [[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2]];
+  let steps = 0;
+  let seen = new Set();
+  let queue = [[0, 0]];
+  while (queue.length) {
+    let nextLevel = [];
+    while (queue.length) {
+      let [x, y] = queue.pop();
+      if (x === tx && y === ty) return steps;
+      for (let [dx, dy] of dirs) {
+        let nx = x + dx;
+        let ny = y + dy;
+        if (!seen.has(nx + ',' + ny)) {
+          nextLevel.push([nx, ny]);
+          seen.add(nx + ',' + ny);
+        }
+      }
+    }
+    steps++;
+    queue = nextLevel;
+  }
+};
