@@ -22,6 +22,8 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 //graph q
 //starting point, bfs
 //check neighbors, if found return count
+
+//2 while loops (next queue swapped for for loop):
 //TC-O(n2)
 //SC-O(n2)
 var minKnightMoves = function(tx, ty) {
@@ -45,5 +47,29 @@ var minKnightMoves = function(tx, ty) {
     }
     steps++;
     queue = nextLevel;
+  }
+};
+
+//classic bfs:
+var minKnightMoves = function(tx, ty) {
+  var dirs = [[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2]];
+  let steps = 0;
+  let seen = new Set();
+  let queue = [[0, 0]];
+
+  while (queue.length) {
+    let len = queue.length;
+    for (let i = 0; i < len; i++) {
+      let [x, y] = queue.shift();
+      if (x === tx && y === ty) return steps;
+      for (let [dx, dy] of dirs) {
+        let [nx, ny] = [x + dx, y + dy];
+        if (!seen.has(nx + ',' + ny)) {
+          queue.push([nx, ny]);
+          seen.add(nx + ',' + ny);
+        }
+      }
+    }
+    steps++;
   }
 };
