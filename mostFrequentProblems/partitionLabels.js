@@ -12,16 +12,19 @@ This is a partition so that each letter appears in at most one part.
 A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
 */
 
-//greedy approach:
+//greedy approach (Array or Map work):
 //TC-O(n)
 //SC-O(1)
 var partitionLabels = function(S) {
+  //new Map();
   let lastIdx = new Array(26);
+  //forloop() lastIdx.set(S[i], i);
   for (let i = 0; i < S.length; i++) lastIdx[S.charCodeAt(i) - 97] = i;
   let j = 0;
   let lastCount = 0;
   let parts = [];
   for (let i = 0; i < S.length; i++) {
+    //j = Math.max(j, lastIdx.get(S[i]));
     j = Math.max(j, lastIdx[S.charCodeAt(i) - 97]);
     if (i === j) {
       parts.push(i - lastCount + 1);
