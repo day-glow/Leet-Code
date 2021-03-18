@@ -23,6 +23,18 @@ Explanation: [0, 0] → [2, 1] → [4, 2] → [3, 4] → [5, 5]
 //starting point, bfs
 //check neighbors, if found return count
 
+//optimized math approach:
+var minKnightMoves = function(x, y) {
+  [x, y] = [Math.abs(x), Math.abs(y)];
+  if (x < y) [x, y] = [y, x];
+
+  if (x == 1 && y == 0) return 3
+  if (x == 2 && y == 2) return 4
+
+  let m = Math.round( Math.max(x/2,(x+y)/3) )
+  return m + ( (m + x + y) % 2 )
+};
+
 //2 while loops (next queue swapped for for loop):
 //TC-O(n2)
 //SC-O(n2)
