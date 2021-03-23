@@ -26,6 +26,7 @@ Output: [2,2,2,3,2,2,2]
     //add to k index
 //left, -1
 //right, +1
+//test cases are wonky, something is not correct in the logic
 
 //first pass passing only 20/37 test cases
 var pourWater = function(heights, V, K) {
