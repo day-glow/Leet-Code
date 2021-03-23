@@ -17,7 +17,7 @@ If you find my solutions helpful, please upvote some of my discussion board solu
 
 [142. Linked List Cycle II Solution](https://leetcode.com/problems/linked-list-cycle-ii/discuss/994424/javascript-Two-Pointers-faster-than-99.89%3A-if-you-know-141.LinkedListCycle-you'll-like-this)
 
-[1197. Minimumum Knight Moves Solution](https://leetcode.com/problems/minimum-knight-moves/discuss/1116030/JavaScript-classic-BFS-solution-vs-Math-approach-TCSC)
+[1197. Minimum Knight Moves Solution](https://leetcode.com/problems/minimum-knight-moves/discuss/1116030/JavaScript-classic-BFS-solution-vs-Math-approach-TCSC)
 
 [277. Find the Celebrity Solution](https://leetcode.com/problems/find-the-celebrity/discuss/1005437/Javascript-Better-variable-names-easier-to-follow)
 
