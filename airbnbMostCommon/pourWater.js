@@ -27,10 +27,10 @@ Output: [2,2,2,3,2,2,2]
 //left, -1
 //right, +1
 
-//first pass still failing
+//first pass passing only 19/37 test cases
 var pourWater = function(heights, V, K) {
   let waterPosition;
-  while (V >= 0) {
+  while (V > 0) {
     waterPosition = getLowPoint(heights, K, -1);
     if (waterPosition === K) waterPosition = getLowPoint(heights, K, +1);
     heights[waterPosition]++;
@@ -42,6 +42,6 @@ var pourWater = function(heights, V, K) {
 var getLowPoint = function(heights, start, increment) {
   let p = start + increment;
   if (heights[p] < heights[start]) return p;
-  while (heights[p + increment] && heights[p] === heights[start]) p + increment;
+  while (heights[p + increment] && heights[p] === heights[start]) p += increment;
   return heights[p] >= heights[start] ? start : p;
 };
