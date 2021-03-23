@@ -25,5 +25,39 @@ vector2D.hasNext(); // return True
 vector2D.hasNext(); // return True
 vector2D.next();    // return 4
 vector2D.hasNext(); // return False
-
 */
+
+//brute force, first pass:
+/**
+ * @param {number[][]} vec
+ */
+ var Vector2D = function(vec) {
+  this.vector = [null];
+  //iterate and flatten input vec to array
+  vec.forEach((v) => {
+    if (v.length === 1) this.vector.push(v);
+    if (v.length > 1) v.forEach((subV) => this.vector.push(subV));
+  })
+  this.pointer = 0;
+};
+
+/**
+ * @return {number}
+ */
+Vector2D.prototype.next = function() {
+  return this.vector[++this.pointer];
+};
+
+/**
+ * @return {boolean}
+ */
+Vector2D.prototype.hasNext = function() {
+  return this.vector.length > this.pointer + 1;
+};
+
+/**
+ * Your Vector2D object will be instantiated and called as such:
+ * var obj = new Vector2D(vec)
+ * var param_1 = obj.next()
+ * var param_2 = obj.hasNext()
+ */
