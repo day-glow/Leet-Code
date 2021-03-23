@@ -28,22 +28,23 @@ vector2D.hasNext(); // return False
 */
 
 //two pointers optimized approach:
-
+//TC-O(1) //storing a reference to vec, not creating new
+//SC-O(1) //storing reference
 var Vector2D = function(vec) {
   this.vector = vec;
   this.innerPointer = 0;
   this.outerPointer = 0;
 };
-
+//TC-O(v/n) or O(1)
 Vector2D.prototype.next = function() {
   if (this.hasNext()) return this.vector[this.outerPointer][this.innerPointer++];
 };
-
+//TC-O(v/n) or O(1)
 Vector2D.prototype.hasNext = function() {
   this.advToNext();
   return this.outerPointer < this.vector.length;
 };
-
+//TC-O(v/n)
 Vector2D.prototype.advToNext = function() {
   while (this.outerPointer < this.vector.length && this.innerPointer === this.vector[this.outerPointer].length) {
     this.outerPointer++;
