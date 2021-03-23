@@ -27,6 +27,29 @@ vector2D.next();    // return 4
 vector2D.hasNext(); // return False
 */
 
+//two pointers optimized approach:
+var Vector2D = function(vec) {
+  this.vector = vec;
+  this.innerPointer = 0;
+  this.outerPointer = 0;
+};
+
+Vector2D.prototype.next = function() {
+  if (this.hasNext()) return this.vector[this.outerPointer][this.innerPointer++];
+};
+
+Vector2D.prototype.hasNext = function() {
+  this.advToNext();
+  return this.outerPointer < this.vector.length;
+};
+
+Vector2D.prototype.advToNext = function() {
+  while (this.outerPointer < this.vector.length && this.innerPointer === this.vector[this.outerPointer].length) {
+    this.outerPointer++;
+    this.innerPointer = 0;
+  }
+};
+
 //brute force, first pass:
 /**
  * @param {number[][]} vec
