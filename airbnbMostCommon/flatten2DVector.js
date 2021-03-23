@@ -28,6 +28,7 @@ vector2D.hasNext(); // return False
 */
 
 //two pointers optimized approach:
+
 var Vector2D = function(vec) {
   this.vector = vec;
   this.innerPointer = 0;
@@ -51,9 +52,11 @@ Vector2D.prototype.advToNext = function() {
 };
 
 //brute force, first pass:
+//SC-O(n) //making a new data structure of the vector
 /**
  * @param {number[][]} vec
  */
+//TC-O(n+v)
  var Vector2D = function(vec) {
   this.vector = [null];
   //iterate and flatten input vec to array
@@ -67,6 +70,7 @@ Vector2D.prototype.advToNext = function() {
 /**
  * @return {number}
  */
+//TC-O(1)
 Vector2D.prototype.next = function() {
   return this.vector[++this.pointer];
 };
@@ -74,6 +78,7 @@ Vector2D.prototype.next = function() {
 /**
  * @return {boolean}
  */
+//TC-O(1)
 Vector2D.prototype.hasNext = function() {
   return this.vector.length > this.pointer + 1;
 };
