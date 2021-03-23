@@ -15,3 +15,14 @@ Example 1:
 Input: heights = [2,1,1,2,1,2,2], V = 4, K = 3
 Output: [2,2,2,3,2,2,2]
 */
+
+//brainstorm:
+//recursion, dfs
+//iterative, bfs, while
+//2 pointers
+  //helper functions
+    //check left
+    //check right
+    //add to k index
+//left, -1
+//right, +1
