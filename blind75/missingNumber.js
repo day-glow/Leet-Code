@@ -16,6 +16,12 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 //find sum of nums
 //include indecies nums.len + 1
 //(sum ^= nums.length + 1) - (sum ^= nums.forEach) = missing number
+var missingNumber = function(nums) {
+  let sum = 0;
+  for (let n of nums) sum ^= n;
+  for (let i = 1; i < nums.length + 1; i++) sum ^= i;
+  return sum;
+};
 
 //SECOND RUN THRU:
 //5min to optimized solution
