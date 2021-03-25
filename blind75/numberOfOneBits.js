@@ -43,10 +43,11 @@ var hammingWeight = function(n) {
 //TC-O(1) //32-bit int
 //SC-O(1)
 var hammingWeight = function(n) {
-  let bits = 0;
+  let setBits = 0;
   while (n !== 0) {
-    bits++;
-    n &= (n - 1);
+    setBits++;
+    n &= (n - 1); // clear the least significant bit set
   }
-  return bits;
+  return setBits;
 };
+//if setBits returns 1, then n is also a power of 2!
