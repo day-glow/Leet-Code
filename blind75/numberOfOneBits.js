@@ -23,3 +23,15 @@ Input: n = 11111111111111111111111111111101
 Output: 31
 Explanation: The input binary string 11111111111111111111111111111101 has a total of thirty one '1' bits.
 */
+
+//Loop & Flip
+var hammingWeight = function(n) {
+  let bits = 0;
+  let mask = 1;
+  for (let i = 0; i < 32; i++) {
+    console.log("n", n, "mask", mask);
+    if ((n & mask) !== 0) bits++;
+    mask <<= 1; //mask *= 2, shift left one
+  }
+  return bits;
+};
