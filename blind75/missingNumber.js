@@ -22,6 +22,16 @@ var missingNumber = function(nums) {
   for (let i = 1; i < nums.length + 1; i++) sum ^= i;
   return sum;
 };
+//refactored:
+var missingNumber = function(nums) {
+  let sum = 0;
+  for (let i = 1; i < nums.length + 1; i++) {
+    sum ^= nums[i - 1];
+    sum ^= i;
+  }
+  return sum;
+};
+
 
 //SECOND RUN THRU:
 //5min to optimized solution
