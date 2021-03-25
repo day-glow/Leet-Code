@@ -11,6 +11,9 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 */
 
 //THIRDS:
+//one-liner:
+const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
+
 //bit manipulation:
 //logic: sum of length of nums + 1 = all numbers, including missing one
 //find sum of nums
