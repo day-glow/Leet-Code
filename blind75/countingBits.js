@@ -29,3 +29,14 @@ Explanation:
 //create bit, count 1 bits
 //get binary num
     //count ones
+
+//helper func to count 1 bits
+const countOneBits = n => (n === 0) ? 0 : 1 + countOneBits(n &= n - 1);
+
+var countBits = function(num) {
+  let numSetBits = [];
+  for (let i = 0; i <= num; i++) {
+    numSetBits.push(countOneBits(i));
+  }
+  return numSetBits;
+};
