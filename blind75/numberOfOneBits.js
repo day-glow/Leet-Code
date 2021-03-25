@@ -25,6 +25,8 @@ Explanation: The input binary string 11111111111111111111111111111101 has a tota
 */
 
 //Loop & Flip
+//TC-O(1) //32-bit int
+//SC-O(1)
 var hammingWeight = function(n) {
   let bits = 0;
   let mask = 1;
