@@ -39,6 +39,8 @@ var hammingWeight = function(n) {
 };
 
 //Bit Manipulation
+//TC-O(1) //32-bit int
+//SC-O(1)
 var hammingWeight = function(n) {
   console.log("n", n);
   let bits = 0;
