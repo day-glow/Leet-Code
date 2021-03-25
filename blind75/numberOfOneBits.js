@@ -38,15 +38,14 @@ var hammingWeight = function(n) {
   return bits;
 };
 
-//Bit Manipulation
+//Bit Manipulation using the Brian Kernighan's Algo
+//logic: unset right most set bit until num === 0;
 //TC-O(1) //32-bit int
 //SC-O(1)
 var hammingWeight = function(n) {
-  console.log("n", n);
   let bits = 0;
   while (n !== 0) {
     bits++;
-    console.log("n", n, "n-1", n-1);
     n &= (n - 1);
   }
   return bits;
