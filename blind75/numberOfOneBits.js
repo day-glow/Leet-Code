@@ -58,4 +58,4 @@ var hammingWeight = function(n) {
   return 1 + hammingWeight(n &= (n - 1));
 };
 //refactored, one liner:
-var hammingWeight = n => n === 0 ? 0: 1 + hammingWeight(n &= (n - 1));
+const hammingWeight = n => n === 0 ? 0 : 1 + hammingWeight(n &= n - 1);
