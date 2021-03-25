@@ -10,6 +10,30 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 
 */
 
+//THIRDS:
+//one-liner:
+const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
+
+//bit manipulation:
+//logic: sum of length of nums + 1 = all numbers, including missing one
+//find sum of nums
+//include indecies nums.len + 1
+//(sum ^= nums.length + 1) - (sum ^= nums.forEach) = missing number
+var missingNumber = function(nums) {
+  let sum = 0;
+  for (let n of nums) sum ^= n;
+  for (let i = 1; i < nums.length + 1; i++) sum ^= i;
+  return sum;
+};
+//refactored:
+var missingNumber = function(nums) {
+  let missingNum = nums.length;
+  for (let i = 0; i < nums.length; i++) missingNum ^= nums[i] ^ i;
+  return missingNum;
+};
+//one-liner:
+const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
+
 //SECOND RUN THRU:
 //5min to optimized solution
 //O(n) & O(1)
