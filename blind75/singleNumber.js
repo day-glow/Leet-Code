@@ -18,10 +18,14 @@ Input: nums = [1]
 Output: 1
 */
 //oneliner:
+//TC-O(n)
+//SC-O(1)
 const singleNumber = nums => nums.reduce((acc, curr) => acc ^ curr);
 //XOR the same 2 numbers returns 0 (cancels out), so XOR all nums, the remaining output is the missing number
 
 //Bit Manipulation Approach:
+//TC-O(n)
+//SC-O(n / 2 + 1)
 //logic: hash set * 2
 //sum of nums
 //XOR
