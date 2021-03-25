@@ -56,3 +56,6 @@ var countBits = function(num) {
   numSetBits.forEach((e, i) => numSetBits[i] = countOneBits(i));
   return numSetBits;
 };
+//one-liner:
+const countOneBits = n => n === 0 ? 0 : 1 + countOneBits(n &= n - 1);
+const countBits = num => new Array(num + 1).fill().map((_, i) => i === 0 ? 0 : countOneBits(i));
