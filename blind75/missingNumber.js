@@ -21,7 +21,9 @@ const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.len
 //(sum ^= nums.length + 1) - (sum ^= nums.forEach) = missing number
 var missingNumber = function(nums) {
   let sum = 0;
+  //XOR of nums
   for (let n of nums) sum ^= n;
+  //XOR of consecutive nums if missing num was included
   for (let i = 1; i < nums.length + 1; i++) sum ^= i;
   return sum;
 };
