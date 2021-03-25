@@ -25,10 +25,7 @@ var missingNumber = function(nums) {
 //refactored:
 var missingNumber = function(nums) {
   let sum = 0;
-  for (let i = 1; i < nums.length + 1; i++) {
-    sum ^= nums[i - 1];
-    sum ^= i;
-  }
+  for (let i = 1; i < nums.length + 1; i++) sum ^= nums[i - 1] ^ i;
   return sum;
 };
 
