@@ -1,6 +1,8 @@
 /*
 https://leetcode.com/problems/number-of-1-bits/
 
+Day-Glow Solution: https://leetcode.com/problems/number-of-1-bits/discuss/1127507/Recursive-One-Liner-with-Bits
+
 Write a function that takes an unsigned integer and returns the number of '1' bits it has (also known as the Hamming weight).
 
 Note:
