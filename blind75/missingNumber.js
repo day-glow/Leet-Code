@@ -10,6 +10,13 @@ Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0
 
 */
 
+//THIRDS:
+//bit manipulation:
+//logic: sum of length of nums + 1 = all numbers, including missing one
+//find sum of nums
+//include indecies nums.len + 1
+//(sum ^= nums.length + 1) - (sum ^= nums.forEach) = missing number
+
 //SECOND RUN THRU:
 //5min to optimized solution
 //O(n) & O(1)
