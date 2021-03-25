@@ -51,3 +51,9 @@ var hammingWeight = function(n) {
   return setBits;
 };
 //if setBits returns 1, then n is also a power of 2!
+
+//recursive bits:
+var hammingWeight = function(n) {
+  if (n === 0) return 0;
+  return 1 + hammingWeight(n &= (n - 1));
+};
