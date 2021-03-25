@@ -24,8 +24,8 @@ var missingNumber = function(nums) {
 };
 //refactored:
 var missingNumber = function(nums) {
-  let missingNum = 0;
-  for (let i = 1; i < nums.length + 1; i++) missingNum ^= nums[i - 1] ^ i;
+  let missingNum = nums.length;
+  for (let i = 0; i < nums.length; i++) missingNum ^= nums[i] ^ i;
   return missingNum;
 };
 //one-liner:
