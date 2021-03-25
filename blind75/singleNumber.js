@@ -48,6 +48,11 @@ const singleNumber = nums => {
   for (let n of nums) missingNum ^= set.has(n) ? n : n ^ n ^ n;
   return missingNum;
 };
+//refactored: const singleNumber = nums => {
+  let missingNum = 0;
+  for (let n of nums) missingNum ^= n;
+  return missingNum;
+};
 //oneliner:
 const singleNumber = nums => nums.reduce((acc, curr) => acc ^ curr);
 
