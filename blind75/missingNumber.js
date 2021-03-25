@@ -24,11 +24,12 @@ var missingNumber = function(nums) {
 };
 //refactored:
 var missingNumber = function(nums) {
-  let sum = 0;
-  for (let i = 1; i < nums.length + 1; i++) sum ^= nums[i - 1] ^ i;
-  return sum;
+  let missingNum = 0;
+  for (let i = 1; i < nums.length + 1; i++) missingNum ^= nums[i - 1] ^ i;
+  return missingNum;
 };
-
+//one-liner:
+const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
 
 //SECOND RUN THRU:
 //5min to optimized solution
