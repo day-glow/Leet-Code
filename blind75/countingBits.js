@@ -22,3 +22,10 @@ Explanation:
 4 --> 100
 5 --> 101
 */
+
+//single pass TC/SC-O(n)
+//no built in function
+//for loop, push into array
+//create bit, count 1 bits
+//get binary num
+    //count ones
