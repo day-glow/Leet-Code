@@ -17,3 +17,30 @@ Example 3:
 Input: nums = [1]
 Output: 1
 */
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+
+ Hash table/math
+
+ TC-O(n)
+ SC-O(n)
+
+const singleNumber = arr => {
+  let numbers = {};
+  arr.forEach(num => {
+    if(numbers[num]) {
+      numbers[num] += 1;
+    } else {
+      numbers[num] = 1;
+    }
+  })
+
+  for (let n in numbers) {
+    if (numbers[n] === 1) {
+      return n;
+    }
+  }
+}
+*/
