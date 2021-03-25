@@ -22,6 +22,17 @@ Output: 1
 //logic: hash set * 2
 //sum of nums
 //XOR
+const singleNumber = nums => {
+  let missingNum = 0;
+  let set = new Set(nums);
+  for (let n of nums) {
+    missingNum ^= n;
+  }
+  for (let n of set) {
+    missingNum ^= n ^ n;
+  }
+  return missingNum;
+};
 
 
 /**
