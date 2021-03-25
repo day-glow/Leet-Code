@@ -18,6 +18,12 @@ Input: nums = [1]
 Output: 1
 */
 
+//Bit Manipulation Approach:
+//logic: hash set * 2
+//sum of nums
+//XOR
+
+
 /**
  * @param {number[]} nums
  * @return {number}
