@@ -1,6 +1,8 @@
 /*
 https://leetcode.com/problems/counting-bits/
 
+My solution: https://leetcode.com/problems/counting-bits/discuss/1127579/Bits-One-liner-w-Recursive-helper-func
+
 Given an integer num, return an array of the number of 1's in the binary representation of every number in the range [0, num].
 
 Example 1:
@@ -40,7 +42,6 @@ var countBits = function(num) {
   }
   return numSetBits;
 };
-
 //refactored:
 const countOneBits = n => n === 0 ? 0 : 1 + countOneBits(n &= n - 1);
 var countBits = function(num) {
