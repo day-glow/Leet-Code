@@ -25,7 +25,9 @@ If you find my solutions helpful, please upvote some of my discussion board solu
 
 [1004. Max Consecutive Ones III Solution](https://leetcode.com/problems/max-consecutive-ones-iii/discuss/1029876/Concise-Never-Shrinking-Sliding-Window-Approach)
 
-[191. Number of 1 Bits, Hamming Weight & Brian Kernighan Algo](https://leetcode.com/problems/number-of-1-bits/discuss/1127507/recursive-one-liner-with-bits) One liner Solution
+[191. Number of 1 Bits, Hamming Weight & Brian Kernighan Algo](https://leetcode.com/problems/number-of-1-bits/discuss/1127507/recursive-one-liner-with-bits) One liner Recursive Bits Solution
+
+[338. Counting Bits](https://leetcode.com/problems/counting-bits/discuss/1127579/Bits-One-liner-w-Recursive-helper-func) One liner Bits Solution
 
 ![](./images/Leetcode_LLCycle2_DiscussionBoardSolution.png)
 
