@@ -21,6 +21,7 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+
 //brainstorm
 //num of paths => optimization problem
 //recursion => memoization
@@ -29,6 +30,8 @@ Explanation: There are three ways to climb to the top.
 //return memo array of saved vals
 
 //recursion with memoization
+//TC-O(n)
+//SC-O(n)
 var climbStairs = function(n, memo = []) {
   if (n === 0 || n === 1 || n === 2) return n;
   if (memo[n] !== undefined) return memo[n];
