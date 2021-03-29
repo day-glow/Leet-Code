@@ -45,6 +45,14 @@ var climbStairs = function(n) {
   return dp2;
 };
 
+//math approach:
+var climbStairs = function(n) {
+  if (n === 0 || n === 1 || n === 2) return n;
+  let sqrt5 = Math.sqrt(5);
+  let fibNum = Math.pow((1 + sqrt5) / 2, n + 1) - Math.pow((1 - sqrt5) / 2, n + 1);
+  return fibNum / sqrt5;
+};
+
 //dynamic programming iteratively
 //TC-O(n)
 //SC-O(n)
