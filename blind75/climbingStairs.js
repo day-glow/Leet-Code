@@ -45,7 +45,9 @@ var climbStairs = function(n) {
   return dp2;
 };
 
-//math approach:
+//OPTIMAL - math approach:
+//TC-O(log n)
+//SC-O(1)
 var climbStairs = function(n) {
   if (n === 0 || n === 1 || n === 2) return n;
   let sqrt5 = Math.sqrt(5);
