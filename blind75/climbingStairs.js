@@ -22,6 +22,8 @@ Explanation: There are three ways to climb to the top.
 */
 
 //fibonacci number, iteratively
+//TC-O(n)
+//SC-O(1)
 var climbStairs = function(n) {
   if (n === 1) return n;
   let dp1 = 1;
