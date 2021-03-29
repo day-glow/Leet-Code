@@ -27,3 +27,13 @@ Explanation: There are three ways to climb to the top.
 //base case
 //set memo of vals with for loop
 //return memo array of saved vals
+
+//recursion with memoization
+var climbStairs = function(n, memo = []) {
+  if (n === 0 || n === 1 || n === 2) return n;
+  if (memo[n] !== undefined) return memo[n];
+  for (let i = 3; i <= n; i++) {
+    memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo);
+  }
+  return memo[n];
+};
