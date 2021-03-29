@@ -22,6 +22,8 @@ Explanation: There are three ways to climb to the top.
 */
 
 //dynamic programming iteratively
+//TC-O(n)
+//SC-O(n)
 var climbStairs = function(n) {
   if (n === 1) return n;
   let dp = new Array(n + 1);
