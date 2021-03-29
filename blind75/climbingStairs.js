@@ -21,6 +21,15 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+//refactored fib num approach:
+var climbStairs = function(n) {
+  if (n === 0 || n === 1 || n === 2) return n;
+  let dp1 = 1;
+  let dp2 = 2;
+  for (let i = 3; i <= n; i++) [dp1, dp2] = [dp2, dp1 + dp2];
+  return dp2;
+};
+
 //fibonacci number, iteratively
 //TC-O(n)
 //SC-O(1)
