@@ -21,6 +21,19 @@ Explanation: There are three ways to climb to the top.
 3. 2 steps + 1 step
 */
 
+//fibonacci number, iteratively
+var climbStairs = function(n) {
+  if (n === 1) return n;
+  let dp1 = 1;
+  let dp2 = 2;
+  for (let i = 3; i <= n; i++) {
+    let dp3 = dp1 + dp2;
+    dp1 = dp2;
+    dp2 = dp3;
+  }
+  return dp2;
+};
+
 //dynamic programming iteratively
 //TC-O(n)
 //SC-O(n)
