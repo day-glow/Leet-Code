@@ -19,6 +19,8 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 */
 
 //recursion & memoization approach:
+//TC-O(n)
+//SC-O(n)
 var rob = function(nums) {
   let memo = new Array(nums.length + 1);
 
