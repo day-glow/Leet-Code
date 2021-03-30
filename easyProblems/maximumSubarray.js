@@ -31,6 +31,8 @@ Output: -1
 */
 
 //DP Approach (looks just like Greedy):
+//TC-O(n)
+//SC-O(1)
 var maxSubArray = function(nums) {
   let currSubArr = -Infinity;
   let max = -Infinity;
