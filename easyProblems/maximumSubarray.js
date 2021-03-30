@@ -30,6 +30,10 @@ Output: -1
  e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
 
+// Divide & Conquer Approach:
+//TC-O(nlogn)
+//SC-O(logn)
+
 //DP Approach (looks just like Greedy):
 //TC-O(n)
 //SC-O(1)
