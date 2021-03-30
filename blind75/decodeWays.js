@@ -43,6 +43,8 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 //brainstorm:
 //count the number (optimization)
 //recursion + memo
+  //TC-O(n)
+  //SC-O(n)
 //dp iteratively (2 ways, array one pass, 2 swapping variables)
 
 //pull string apart 1-2 valid digits, we don't even need to know the letter, just if it is valid
@@ -53,7 +55,7 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 //check solo and double - 1 position
 //length
 
-//dynampic programming:
+//dynampic programming Iterative:
 //TC-O(n)
 //SC-O(n)
 var numDecodings = function(s) {
