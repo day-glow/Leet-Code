@@ -39,3 +39,16 @@ Input: s = "06"
 Output: 0
 Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is different from "06").
 */
+
+//brainstorm:
+//count the number (optimization)
+//recursion + memo
+//dp iteratively (2 ways, array one pass, 2 swapping variables)
+
+//pull string apart 1-2 valid digits, we don't even need to know the letter, just if it is valid
+//count increases,
+//no leading zeros, no solo zeros
+//1-26 nums only
+//solos 1-9, doubles 10-26 only
+//check solo and double - 1 position
+//length
