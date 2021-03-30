@@ -40,6 +40,25 @@ Output: 0
 Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is different from "06").
 */
 
+//OPTIMIZED DP Iterative Constant Space:
+var numDecodings = function(s) {
+  if (s.length === 0 || s[0] === '0') return 0;
+  let dp1 = 1;
+  let dp2 = 1;
+  for (let i = 1; i < s.length; i++) {
+    let curr = 0;
+    if (s[i] !== '0') {
+      curr = dp1;
+    }
+    let double = Number(s.substring(i - 1, i + 1));
+    if (double >= 10 && double <= 26) {
+      curr += dp2;
+    }
+    [dp2, dp1] = [dp1, curr];
+  }
+  return dp1;
+};
+
 //brainstorm:
 //count the number (optimization)
 //recursion + memo
