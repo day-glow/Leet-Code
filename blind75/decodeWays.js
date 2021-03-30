@@ -54,6 +54,8 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 //length
 
 //dynampic programming:
+//TC-O(n)
+//SC-O(n)
 var numDecodings = function(s) {
   if (s.length === 0) return 0;
   let dp = new Array(s.length + 1).fill(0);
