@@ -52,3 +52,22 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 //solos 1-9, doubles 10-26 only
 //check solo and double - 1 position
 //length
+
+//dynampic programming:
+var numDecodings = function(s) {
+  if (s.length === 0) return 0;
+  let dp = new Array(s.length + 1).fill(0);
+  dp[0] = 1;
+  dp[1] = s[0] === '0' ? 0 : 1;
+  for (let i = 2; i <= s.length; i++) {
+    //check solo
+    if (s[i - 1] !== '0') dp[i] = dp[i - 1];
+
+    //check double
+    let double = Number(s.substring(i - 2, i));
+    if (double >= 10 && double <= 26) {
+      dp[i] += dp[i - 2];
+    }
+  }
+  return dp[s.length];
+};
