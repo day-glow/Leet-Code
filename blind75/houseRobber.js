@@ -18,7 +18,24 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 Total amount you can rob = 2 + 9 + 1 = 12.
 */
 
-//Dynamic Programming Approach:
+//Optimized Dynamic Programming Approach:
+var rob = function(nums) {
+  let len = nums.length;
+  if (len === 0) return 0;
+
+  let robNextPlusOne = 0;
+  let robNext = nums[len - 1];
+
+  for (let i = len - 2; i >= 0; --i) {
+    let curr = Math.max(robNext, robNextPlusOne + nums[i]);
+    robNextPlusOne = robNext;
+    robNext = curr;
+  }
+
+  return robNext;
+};
+
+//Dynamic Programming Approach w/store:
 var rob = function(nums) {
   let len = nums.length;
   if (len === 0) return 0;
