@@ -41,6 +41,8 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 */
 
 //OPTIMIZED DP Iterative Constant Space:
+//TC-O(n)
+//SC-O(1)
 var numDecodings = function(s) {
   if (s.length === 0 || s[0] === '0') return 0;
   let dp1 = 1;
