@@ -18,6 +18,22 @@ Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (m
 Total amount you can rob = 2 + 9 + 1 = 12.
 */
 
+//Dynamic Programming Approach:
+var rob = function(nums) {
+  let len = nums.length;
+  if (len === 0) return 0;
+  let maxRobbedAmount = new Array(len + 1);
+
+  maxRobbedAmount[len] = 0; //non-existent house place holder
+  maxRobbedAmount[len - 1] = nums[len - 1]; //last house
+
+  for (let i = len - 2; i >= 0; --i) {
+    maxRobbedAmount[i] = Math.max(maxRobbedAmount[i + 1], maxRobbedAmount[i + 2] + nums[i]);
+  }
+
+  return maxRobbedAmount[0];
+};
+
 //recursion & memoization approach:
 //TC-O(n)
 //SC-O(n)
