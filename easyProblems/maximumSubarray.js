@@ -30,6 +30,17 @@ Output: -1
  e-arr length is 0, nums are constrained to normal numbers, neg&pos nums
 */
 
+//DP Approach (looks just like Greedy):
+var maxSubArray = function(nums) {
+  let currSubArr = -Infinity;
+  let max = -Infinity;
+  for (let num of nums) {
+    currSubArr = Math.max(num, currSubArr + num);
+    max = Math.max(max, currSubArr);
+  }
+  return max;
+};
+
 //Refactored:
 var maxSubArray = function(nums) {
   if (nums.length <= 1) return nums[0];
