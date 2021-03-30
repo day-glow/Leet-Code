@@ -19,6 +19,8 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 */
 
 //Optimized Dynamic Programming Approach:
+//TC-O(n)
+//SC-O(1)
 var rob = function(nums) {
   let len = nums.length;
   if (len === 0) return 0;
@@ -36,6 +38,8 @@ var rob = function(nums) {
 };
 
 //Dynamic Programming Approach w/store:
+//TC-O(n)
+//SC-O(n)
 var rob = function(nums) {
   let len = nums.length;
   if (len === 0) return 0;
