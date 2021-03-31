@@ -28,3 +28,18 @@ Example 4:
 Input: m = 3, n = 3
 Output: 6
 */
+
+//brainstorm:
+//optimization - enumeration
+//matrix, use rows & cols
+//work backwards from finish
+//count each squares options by directional options
+//last row and last column only have one option per square
+/*
+m = 3, n = 7
+[
+[28,21,15,10,6,3,1],
+[7, 6, 5, 4, 3,2,1],
+[1, 1, 1, 1, 1,1,1],
+]
+*/
