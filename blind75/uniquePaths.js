@@ -49,7 +49,6 @@ m = 3, n = 7
 //SC-O(n)
 const uniquePaths = (m, n) => {
   const dp = new Array(n).fill(1);
-
   for(let row = m - 1; row > 0; row--){
       for(let col = n - 2; col >= 0; col--){
           dp[col] = dp[col] + dp[col + 1];
@@ -78,4 +77,4 @@ var uniquePaths = function(m, n) {
   }
 };
 
-//could do top down and/or full matrix as well
+//could do top down and/or full matrix as well SC-O(n*m)
