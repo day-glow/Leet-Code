@@ -86,3 +86,13 @@ var rob = function(nums) {
 //tabular approach
 //maximize between houses val
   //maximize choice: numns[i + 1] >= nums[i] + nums[i + 2]
+  var rob = function(nums) {
+    if (!nums.length) return 0;
+
+    let robNextPlusOne = 0;
+    let robNextHouse = nums[nums.length - 1];
+    for (let i = nums.length - 2; i >= 0; --i) {
+      [robNextPlusOne, robNextHouse] = [robNextHouse, Math.max(robNextHouse, nums[i] + robNextPlusOne)];
+    }
+    return Math.max(robNextHouse, robNextPlusOne);
+  };
