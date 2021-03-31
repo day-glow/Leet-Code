@@ -60,6 +60,8 @@ var coinChange = function(coins, amount) {
 };
 
 //DP-top down:
+//TC-O(n*s)
+//SC-O(s)
 var coinChangeDP = function(coins, rem, count) {
   if (rem < 0) return -1;
   if (rem === 0) return 0;
