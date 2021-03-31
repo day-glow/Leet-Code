@@ -41,7 +41,10 @@ Output: 2
 //similar to greedy?
 //bfs
 
-//DP iterative, with array storage & nested loops
+//DP-bottom up
+//iterative, with array storage & nested loops
+//TC-O(n*s)
+//SC-O(s)
 var coinChange = function(coins, amount) {
   if (amount === 0 || !coins.length) return 0;
   let max = amount + 1;
