@@ -40,3 +40,18 @@ Output: 2
 //logic, must end on 0, or one of the coin vals, work backwards?
 //similar to greedy?
 //bfs
+
+//DP iterative, with array storage & nested loops
+var coinChange = function(coins, amount) {
+  if (amount === 0 || !coins.length) return 0;
+  let max = amount + 1;
+  let dp = new Array(max).fill(max);
+  dp[0] = 0;
+
+  for (let i = 1; i < max; i++) {
+    for (let j = 0; j < coins.length; j++) {
+      if (coins[j] <= i) dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+    }
+  }
+  return dp[amount] > amount ? -1 : dp[amount];
+};
