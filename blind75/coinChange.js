@@ -58,3 +58,25 @@ var coinChange = function(coins, amount) {
   }
   return dp[amount] > amount ? -1 : dp[amount];
 };
+
+//DP-top down:
+var coinChangeDP = function(coins, rem, count) {
+  if (rem < 0) return -1;
+  if (rem === 0) return 0;
+  if (count[rem - 1] !== 0) return count[rem - 1];
+  let min = Number.MAX_SAFE_INTEGER;
+
+  for (let coin of coins) {
+    let result = coinChangeDP(coins, rem - coin, count);
+    if (result >= 0 && result < min) {
+      min = 1 + result;
+    }
+  }
+  count[rem - 1] = (min === Number.MAX_SAFE_INTEGER) ? -1 : min;
+  return count[rem - 1];
+};
+
+var coinChange = function(coins, amount) {
+  if (amount < 1) return 0;
+  return coinChangeDP(coins, amount, new Array(amount).fill(0));
+};
