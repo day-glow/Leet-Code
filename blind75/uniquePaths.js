@@ -44,6 +44,24 @@ m = 3, n = 7
 ]
 */
 
+//OPTIMIZED DP approach:
+//TC-O(n*m)
+//SC-O(n)
+const uniquePaths = (m, n) => {
+  const dp = new Array(n).fill(1);
+
+  for(let row = m - 1; row > 0; row--){
+      for(let col = n - 2; col >= 0; col--){
+          dp[col] = dp[col] + dp[col + 1];
+      }
+  }
+  return dp[0];
+};
+
+//dynampic programming approach - nested loops bottom up:
+//TC-O(n*m)
+//SC-O(n)
+//note: space savings by only keeping one row, instead of a complete matrix
 var uniquePaths = function(m, n) {
   if (m === 1 || n === 1) return 1;
   if (m === 0 || n === 0) return 0;
@@ -59,3 +77,5 @@ var uniquePaths = function(m, n) {
     }
   }
 };
+
+//could do top down and/or full matrix as well
