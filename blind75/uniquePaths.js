@@ -43,3 +43,19 @@ m = 3, n = 7
 [1, 1, 1, 1, 1,1,1],
 ]
 */
+
+var uniquePaths = function(m, n) {
+  if (m === 1 || n === 1) return 1;
+  if (m === 0 || n === 0) return 0;
+  let rowBelow = new Array(n - 1).fill(1);
+
+  for (let r = m - 2; r >= 0; r--) {
+    let rightSquare = 1;
+    for (let c = n - 2; c >= 0; c--) {
+      let currSquarePaths = rightSquare + rowBelow[c];
+      rowBelow[c] = currSquarePaths;
+      rightSquare = currSquarePaths;
+      if (r === 0 && c === 0) return rightSquare;
+    }
+  }
+};
