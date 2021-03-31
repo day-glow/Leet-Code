@@ -70,9 +70,7 @@ var coinChangeDP = function(coins, rem, count) {
 
   for (let coin of coins) {
     let result = coinChangeDP(coins, rem - coin, count);
-    if (result >= 0 && result < min) {
-      min = 1 + result;
-    }
+    if (result >= 0 && result < min) min = 1 + result;
   }
   count[rem - 1] = (min === Number.MAX_SAFE_INTEGER) ? -1 : min;
   return count[rem - 1];
