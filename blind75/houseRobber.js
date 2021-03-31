@@ -79,3 +79,10 @@ var rob = function(nums) {
 
   return robFrom(0);
 };
+
+//seconds:
+//DP optimization - maximizing
+//DP work backwards, greedy
+//tabular approach
+//maximize between houses val
+  //maximize choice: numns[i + 1] >= nums[i] + nums[i + 2]
