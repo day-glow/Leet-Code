@@ -28,3 +28,15 @@ Example 5:
 Input: coins = [1], amount = 2
 Output: 2
 */
+
+//brainstorm:
+//are the coins sorted?
+
+//optimization - minimization
+//hashmap & 2sum approach
+//recursion + memoization O(n) & O(n)
+//DP - with variables SC-O(1), nested loops (bottom up)
+
+//logic, must end on 0, or one of the coin vals, work backwards?
+//similar to greedy?
+//bfs
