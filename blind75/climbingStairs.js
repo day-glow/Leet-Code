@@ -87,3 +87,25 @@ var climbStairs = function(n, memo = []) {
   }
   return memo[n];
 };
+
+//seconds:
+//optimization - enumeration
+//DP constant time
+var climbStairs = function(n) {
+  if (n >= 0 & n <= 2) return n;
+  let dp1 = 1;
+  let dp2 = 1;
+  for (let i = 2; i <= n; i++) {
+    [dp2, dp1] = [dp1, dp1 + dp2];
+  }
+  return dp1;
+};
+var climbStairs = function(n) {
+  if (n >= 0 & n <= 2) return n;
+  let dp1 = 1;
+  let dp2 = 2;
+  for (let i = 3; i <= n; i++) {
+    [dp2, dp1] = [dp1 + dp2, dp2];
+  }
+  return dp2;
+};
