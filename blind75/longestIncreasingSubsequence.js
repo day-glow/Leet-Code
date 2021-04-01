@@ -40,22 +40,22 @@ count= [1, 1,4,1,3,2, 1, 1]
 
 //binary search (pick pivot, count left, count right, check middle)
 */
-//DP
+//DP, refactored
 //TC-O(n2)
 //SC-O(n)
 var lengthOfLIS = function(nums) {
   if (!nums.length) return 0;
   let dp = new Array(nums.length).fill(1);
-  let maxAns = 1;
+  let longest = 1;
   for (let i = 1; i < dp.length; i++) {
-    let maxVal = 0;
     for (let j = 0; j < i; j++) {
-      if (nums[i] > nums[j]) maxVal = Math.max(maxVal, dp[j]);
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+        longest = Math.max(longest, dp[i]);
+      }
     }
-    dp[i] = maxVal + 1;
-    maxAns = Math.max(maxAns, dp[i]);
   }
-  return maxAns;
+  return longest;
 };
 
 //optimized DP w/ helper function:
