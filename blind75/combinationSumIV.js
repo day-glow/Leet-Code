@@ -23,3 +23,14 @@ Example 2:
 Input: nums = [9], target = 3
 Output: 0
 */
+
+//brainstorm:
+//optimization - enumeration
+//are nums sorted?
+//edge cases, nums too large, target = 0 etc
+//recursion + memoization
+//DP iterative, bottom up
+//array each index, with nested loops
+
+//coin change goal is find fewest number coins to target
+//this goal is find the total combos
