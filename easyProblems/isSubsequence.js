@@ -22,6 +22,16 @@ Follow up: If there are lots of incoming s, say s1, s2, ..., sk where k >= 109, 
 */
 
 //optimization - boolean
-//2 pointers - O(n) target string, O(1)
 //DP iterative, like 2 pointers (just point at different)
+//2 pointers - O(n) target string, O(1)
 //check lengths
+var isSubsequence = function(s, t) {
+  if (s.length > t.length || s.length && !t.length) return false;
+  let p1 = 0;
+  let p2 = 0;
+  while (p1 < s.length && p2 <= t.length) {
+    if (s[p1] === t[p2]) p1++;
+    p2++;
+  }
+  return p1 === s.length;
+};
