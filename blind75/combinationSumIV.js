@@ -36,6 +36,8 @@ Output: 0
 //this goal is find the total combos
 
 //DP iterative, bottom up
+//TC-O(t*n)
+//SC-O(t)
 var combinationSum4 = function(nums, target) {
   let max = target + 1;
   let count = new Array(max).fill(0);
