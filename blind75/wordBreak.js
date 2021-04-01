@@ -20,3 +20,18 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
 Output: false
 */
+
+//brainstorm:
+//optimization - yes/no
+//recursion & memoization O(n)
+//DP iteratively
+//index pointers,
+//edge cases
+
+//similar to coin change (let's you use the dictionary word multiple times)
+//recursion & memoization O(n)
+//DP with nested loop <--
+
+//hash set with word dictionary
+//index increases, if word matches curr, then move one
+//dp array with boolean & substrings <--
