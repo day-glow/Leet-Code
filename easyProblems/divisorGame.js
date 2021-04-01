@@ -21,3 +21,6 @@ Input: n = 3
 Output: false
 Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 */
+
+//optimization - yes/no
+//end number 0 or 1 for Bob loses
