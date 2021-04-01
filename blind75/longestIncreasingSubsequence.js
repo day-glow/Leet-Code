@@ -18,3 +18,25 @@ Example 3:
 Input: nums = [7,7,7,7,7,7,7]
 Output: 1
 */
+
+//optimize - enumeration
+//iterate over, changing the # count for each position for those less than
+/*
+nums = [10,9,2,5,3,7,101,18]
+count= [1, 1,1,2,2,3, 4, 4]
+
+//how to know which val previously is less than current to add one to
+//curr num, if there is a less than num at any point, take max of their counts
+//greedy
+//dp
+
+//work backward?
+prevMax = [101, 7] stack
+currMaxIdx = 3
+currHigh = 4
+nums = [10,9,2,5,3,7,101,18]
+count= [1, 1,4,1,3,2, 1, 1]
+//nums = [4,5,6,7,8,9,2,5,3,7,101,18]
+
+//binary search (pick pivot, count left, count right, check middle)
+*/
