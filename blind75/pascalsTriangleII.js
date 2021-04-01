@@ -27,3 +27,17 @@ Output: [1,1]
 
 //change inner with one level? nested loop or while loop
 //[1,1,1,1,1]
+var getRowDP = function(targetRowIdx, currRowIdx, row) {
+  if (targetRowIdx === currRowIdx) return row;
+  let nextRow = row.slice(0);
+  for (let i = 1; i < row.length; i++) nextRow[i] = row[i] + row[i - 1];
+  nextRow.push(1);
+  return getRowDP(targetRowIdx, currRowIdx + 1, nextRow);
+};
+
+var getRow = function(rowIndex) {
+  if (rowIndex === 0) return [1];
+  if (rowIndex === 1) return [1,1];
+  let row2 = [1,2,1];
+  return getRowDP(rowIndex, 2, row2);
+};
