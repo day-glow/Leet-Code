@@ -19,3 +19,26 @@ Example 2:
 Input: triangle = [[-10]]
 Output: -10
 */
+
+//brainstorm:
+//optimization - minimize sum
+//greedy (minimum choice)
+//multiple paths recursion/backtracking/memo
+/*
+     2
+    3 4
+   6 5 1
+  4 7 8 1
+ 1 8 9 2 2
+Top down options:
+2,3,5,7,8 --> 25 output if always taking the minimum per option
+2,4,1,1,2 --> 10 optimized output for minimum sum
+
+Bottom up:
+2,1,1,4,2 --> 10
+1,4,5,3,2 --> 15
+
+Slightly better with bottom up approach, however, still multiple options
+Depends on each row
+*/
+//iterate bottom up, adding each value to each index
