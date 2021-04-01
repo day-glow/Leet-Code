@@ -19,6 +19,8 @@ Output: [1,1]
 */
 
 //DP iterate backwards approach:
+//TC-O(r*r)
+//SC-O(r)
 var getRow = function(rowIndex) {
   let row = new Array(1).fill(1);
   if (rowIndex === 0) return row;
