@@ -34,3 +34,16 @@ Output: 0
 
 //coin change goal is find fewest number coins to target
 //this goal is find the total combos
+
+//DP iterative, bottom up
+var combinationSum4 = function(nums, target) {
+  let max = target + 1;
+  let count = new Array(max).fill(0);
+  count[0] = 1;
+  for (let i = 1; i < max; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (nums[j] <= i) count[i] += count[i - nums[j]];
+    }
+  }
+  return count[target];
+};
