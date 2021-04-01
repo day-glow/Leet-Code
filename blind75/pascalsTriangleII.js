@@ -18,6 +18,20 @@ Input: rowIndex = 1
 Output: [1,1]
 */
 
+//DP iterate backwards approach:
+var getRow = function(rowIndex) {
+  let row = new Array(1).fill(1);
+  if (rowIndex === 0) return row;
+  while (rowIndex > 0) {
+    row.push(1);
+    for (let i = row.length - 2; i > 0; i--) {
+      row[i] = row[i] + row[i - 1];
+    }
+    rowIndex--;
+  }
+  return row;
+};
+
 //brainstorm:
 //already calculated rows prior, memoization look back
 //length of row is rowIndex + 1
@@ -25,6 +39,7 @@ Output: [1,1]
 //DP iteratively, nested loops (bottom up)
 //DP, build and expand top down
 
+//Recusion & memoization:
 //change inner with one level? nested loop or while loop
 //[1,1,1,1,1]
 var getRowDP = function(targetRowIdx, currRowIdx, row) {
