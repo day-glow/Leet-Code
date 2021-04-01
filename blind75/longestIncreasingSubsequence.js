@@ -40,6 +40,9 @@ count= [1, 1,4,1,3,2, 1, 1]
 
 //binary search (pick pivot, count left, count right, check middle)
 */
+//DP
+//TC-O(n2)
+//SC-O(n)
 var lengthOfLIS = function(nums) {
   if (!nums.length) return 0;
   let dp = new Array(nums.length).fill(1);
@@ -56,6 +59,9 @@ var lengthOfLIS = function(nums) {
 };
 
 //optimized DP w/ helper function:
+//need helper function to do binary search
+//TC-O(nlogn)
+//SC-O(n)
 var lengthOfLIS = function(nums) {
   if (!nums.length) return 0;
   let dp = new Array(nums.length);
@@ -71,4 +77,3 @@ var lengthOfLIS = function(nums) {
   return len;
 };
 
-//need helper function to do binary search
