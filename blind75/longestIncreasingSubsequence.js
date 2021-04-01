@@ -54,3 +54,21 @@ var lengthOfLIS = function(nums) {
   }
   return maxAns;
 };
+
+//optimized DP w/ helper function:
+var lengthOfLIS = function(nums) {
+  if (!nums.length) return 0;
+  let dp = new Array(nums.length);
+  let len = 0;
+  for (let num of nums) {
+    console.log(dp)
+    let i = binarySearch(dp, 0, len, num);
+    if (i < 0) i = -(i + 1);
+    dp[i] = num;
+    if (i === len) len++;
+  }
+
+  return len;
+};
+
+//need helper function to do binary search
