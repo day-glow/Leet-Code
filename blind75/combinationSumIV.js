@@ -28,7 +28,7 @@ Output: 0
 //optimization - enumeration
 //are nums sorted?
 //edge cases, nums too large, target = 0 etc
-//recursion + memoization
+//recursion + memoization, top down same TC/SC
 //DP iterative, bottom up
 //array each index, with nested loops
 
