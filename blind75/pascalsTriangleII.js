@@ -17,3 +17,13 @@ Example 3:
 Input: rowIndex = 1
 Output: [1,1]
 */
+
+//brainstorm:
+//already calculated rows prior, memoization look back
+//length of row is rowIndex + 1
+//first and last always starts with 1's
+//DP iteratively, nested loops (bottom up)
+//DP, build and expand top down
+
+//change inner with one level? nested loop or while loop
+//[1,1,1,1,1]
