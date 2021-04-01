@@ -42,3 +42,26 @@ Slightly better with bottom up approach, however, still multiple options
 Depends on each row
 */
 //iterate bottom up, adding each value to each index
+var minimumTotal = function(triangle) {
+  let lastRow = triangle.length - 1;
+  let prevRow = triangle[lastRow];
+  let nextRow;
+  for (let r = lastRow; r > 0; r--) {
+    nextRow = triangle[r - 1];
+    for (let idx = nextRow.length - 1; idx >= 0; idx--) {
+      nextRow[idx] += Math.min(prevRow[idx], prevRow[idx + 1]);
+    }
+    prevRow = nextRow;
+  }
+  return prevRow[0];
+};
+
+//refactored to save space, removed variables:
+var minimumTotal = function(triangle) {
+  for (let r = triangle.length - 1; r > 0; r--) {
+    for (let idx = triangle[r].length - 1; idx >= 0; idx--) {
+      triangle[r - 1][idx] += Math.min(triangle[r][idx], triangle[r][idx + 1]);
+    }
+  }
+  return triangle[0][0];
+};
