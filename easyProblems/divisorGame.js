@@ -24,3 +24,4 @@ Explanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.
 
 //optimization - yes/no
 //end number 0 or 1 for Bob loses
+const divisorGame = n => n % 2 === 0;
