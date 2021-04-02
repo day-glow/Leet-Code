@@ -28,6 +28,8 @@ Output: 0
 //dp   = [1,2,4,4,0,0,0,0,0,0,0]
 
 //DP:
+//TC-O(2n)
+//SC-O(1)
 var rob = function(nums) {
   if (!nums.length) return 0;
   if (nums.length <= 3) return Math.max(...nums);
