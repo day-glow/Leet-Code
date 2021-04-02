@@ -35,3 +35,30 @@ Output: false
 //hash set with word dictionary
 //index increases, if word matches curr, then move one
 //dp array with boolean & substrings <--
+
+/*
+s        = "applepenapple"
+wordDict = ["apple","pen", "app"]
+
+dp       = [t,f,f,t,f,t,f,f,f,f,f,f,f]
+//iterate over string with first loop (isolate each char)
+//iterate over dp to use "cache" to determine if prev + curr is t/f
+//checking if previously combo was true or false
+*/
+
+//dp, nested loops
+var wordBreak = function(s, wordDict) {
+  let set = new Set(wordDict);
+  let dp = new Array(s.length + 1).fill(false);
+  dp[0] = true;
+  for (let i = 1; i <= s.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (dp[j] && set.has(s.substring(j, i))) {
+        dp[i] = true;
+        break;
+      }
+    }
+  }
+  return dp[s.length];
+};
+
