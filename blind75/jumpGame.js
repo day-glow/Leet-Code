@@ -51,3 +51,16 @@ var canJump = function(nums) {
   }
   return dp[0];
 };
+
+//refactored:
+var canJump = function(nums) {
+  let dp = new Array(nums.length).fill(false);
+  dp[nums.length - 1] = true;
+  let jump = 0;
+  for (let i = nums.length - 2; i >= 0; i--) {
+    for (let p = i; p <= i + nums[i]; p++) {
+      if (dp[p]) dp[i] = true;
+    }
+  }
+  return dp[0];
+};
