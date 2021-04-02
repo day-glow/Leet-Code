@@ -19,6 +19,18 @@ Output: false
 Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 */
 
+//OPTIMIZED GREEDY APPROACH:
+//can ignore array altogether, just need to get to the next GOOD position
+//TC-O(n)
+//SC-O(1)
+var canJump = function(nums) {
+  let lastPos = nums.length - 1;
+  for (let i = nums.length - 1; i >= 0; i--) {
+    if (i + nums[i] >= lastPos) lastPos = i;
+  }
+  return lastPos === 0;
+};
+
 //brute force for loop approach, kinda Greedy approach
 //TC-O(n)
 //SC-O(1)
