@@ -34,7 +34,16 @@ var canJump = function(nums) {
 
 //DP:
 //optimization - maximization
-//greedy
+//greedy - O(n), O(1)
+var canJump = function(nums) {
+  let p = 0;
+  let jump = nums[0];
+  for (let i = 0; i <= p + jump; i++) {
+    jump = Math.max(nums[i], jump - 1);
+    p = i;
+  }
+  return p >= nums.length - 1;
+};
 //TC-O(n2)
 //SC-O(n)
 var withinJumpRange = function(position, nums, dp) {
