@@ -31,3 +31,23 @@ var canJump = function(nums) {
   }
   return false;
 };
+
+//DP:
+//optimization - maximization
+//greedy
+var withinJumpRange = function(position, nums, dp) {
+  for (let i = position; i <= position + nums[position]; i++) {
+    if (dp[i]) return true;
+  }
+  return false;
+}
+
+var canJump = function(nums) {
+  let dp = new Array(nums.length).fill(false);
+  dp[nums.length - 1] = true;
+  let jump = 0;
+  for (let i = nums.length - 2; i >= 0; i--) {
+    if (withinJumpRange(i, nums, dp)) dp[i] = true;
+  }
+  return dp[0];
+};
