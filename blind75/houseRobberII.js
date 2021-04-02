@@ -26,3 +26,18 @@ Output: 0
 //n2   = [2,3,1,4,5,2,1,6,3,4]
 //take max of two options
 //dp   = [1,2,4,4,0,0,0,0,0,0,0]
+
+//DP:
+var rob = function(nums) {
+  if (!nums.length) return 0;
+  if (nums.length <= 3) return Math.max(...nums);
+
+  var choiceRobSum = function(n) {
+    let robNextPlusOne = 0;
+    let robNext = n[n.length - 1];
+    for (let i = n.length - 2; i >= 0; --i) [robNextPlusOne, robNext] = [robNext, Math.max(robNext, robNextPlusOne + n[i])];
+    return robNext;
+  }
+  return Math.max(choiceRobSum(nums.slice(0, nums.length - 1)), choiceRobSum(nums.slice(1)));
+};
+
