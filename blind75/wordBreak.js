@@ -47,6 +47,8 @@ dp       = [t,f,f,t,f,t,f,f,f,f,f,f,f]
 */
 
 //dp, nested loops
+//TC-O(n3) nested loops & string computation each time
+//SC-O(n)
 var wordBreak = function(s, wordDict) {
   let set = new Set(wordDict);
   let dp = new Array(s.length + 1).fill(false);
