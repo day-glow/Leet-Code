@@ -69,3 +69,21 @@ const longestPalindrome = s => {
 };
 
 //thirds:
+var longestPalindrome = function(s) {
+  if (s.length <= 1) return s;
+  let longest = '';
+
+  var isPalindrome = function(p1, p2) {
+    while (s[p1] === s[p2] && p1 >= 0 && p2 <= s.length) {
+      if (p2 - p1 >= longest.length) longest = s.substring(p1, p2 + 1);
+      p2++;
+      p1--;
+    };
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    isPalindrome(i, i);
+    isPalindrome(i, i + 1);
+  }
+  return longest;
+};
