@@ -19,7 +19,7 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 */
 //brute force O(n^3)/O(min(n, m)), Check all the substring one by one to see if it has no duplicate character, with nested loops
 //sliding window,O(n)/O(min(n, m)) or O(k) if using Set
-//optimized sliding window & set window,O(n)/O(min(n, m))
+//optimized sliding window & hash map,O(n)/O(min(n, m))
 
 //Hash Set (save letters and indices)
 //TC-O(n)
