@@ -83,10 +83,10 @@ const twoSum = (nums, target) => {
 OPTIMIZED APPROACH:
 Refractored
 TC - O(n) - Hash Table, key look up
-SC -
+SC - O(n)
 */
 
-//brute force = O(n^2) nested loops looking for a pair nums[i] + nums[j] = target
+//brute force = O(n^2)/O(1) nested loops looking for a pair nums[i] + nums[j] = target
 
 //optimized
 //add to hash map
