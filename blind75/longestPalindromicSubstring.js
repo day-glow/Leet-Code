@@ -18,6 +18,9 @@ Example 4:
 Input: s = "ac"
 Output: "a"
 */
+//brute force, nest loops O(n^2)
+//helper function isPalindrome & work out to in O(n^2)
+
 //REFRACTORED:
 const longestPalindrome = s => {
   if (s.length <= 1) return s;
@@ -64,3 +67,5 @@ const longestPalindrome = s => {
 
   return longestSubstring;
 };
+
+//thirds:
