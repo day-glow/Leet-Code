@@ -84,11 +84,6 @@ OPTIMIZED APPROACH:
 Refractored
 TC - O(n) - Hash Table, key look up
 SC -
-
-Result -
-Runtime: 116 ms, faster than 51.38% of JavaScript online submissions for Two Sum.
-Memory Usage: 48.2 MB, less than 6.71% of JavaScript online submissions for Two Sum.
-
 */
 
 //brute force = O(n^2) nested loops looking for a pair nums[i] + nums[j] = target
