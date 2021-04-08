@@ -104,6 +104,18 @@ var twoSum = function(nums, target) {
   throw "No two sum solution";
 };
 
+//seconds:
+const twoSum = (nums, target) => {
+  let seen = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (seen.has(target - nums[i])) {
+      return [seen.get(target - nums[i]), i];
+    }
+    seen.set(nums[i], i);
+  }
+};
+
 //object not hash map/set
 const twoSum = (nums, target) => {
   // declare hash table
