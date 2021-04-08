@@ -87,6 +87,8 @@ SC - O(n)
 */
 
 //brute force = O(n^2)/O(1) nested loops looking for a pair nums[i] + nums[j] = target
+//two pass hash table O(n)/O(n)
+//one pass hash table O(n)/O(n)
 
 //optimized
 //add to hash map
