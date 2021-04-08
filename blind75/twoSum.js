@@ -91,6 +91,17 @@ Memory Usage: 48.2 MB, less than 6.71% of JavaScript online submissions for Two 
 
 */
 
+//brute force = O(n^2) nested loops looking for a pair nums[i] + nums[j] = target
+
+//optimized
+//add to hash map
+//loop, look for a match
+//TC - O(n)
+//SC - O(n)
+
+//thirds:
+
+
 //object not hash map/set
 const twoSum = (nums, target) => {
   // declare hash table
