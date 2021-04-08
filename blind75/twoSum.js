@@ -105,6 +105,8 @@ var twoSum = function(nums, target) {
 };
 
 //seconds:
+//TC - O(n)
+//SC - O(n)
 const twoSum = (nums, target) => {
   let seen = new Map();
   for (let i = 0; i < nums.length; i++) {
