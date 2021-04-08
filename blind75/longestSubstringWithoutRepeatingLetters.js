@@ -22,6 +22,16 @@ Notice that the answer must be a substring, "pwke" is a subsequence and not a su
 //2 pointers & set O(n)/O(n)
 //hash map
 //sliding window & set O(n)/O(k) --> upper bound is O(n)
+var lengthOfLongestSubstring = function(s) {
+  let currStr = new Set();
+  let longestRun = 0;
+  for (let p1 = 0, p2 = 0; p2 < s.length; p2++) {
+    while (currStr.has(s[p2])) currStr.delete(s[p1++]);
+    currStr.add(s[p2]);
+    longestRun = Math.max(longestRun, p2 - p1 + 1);
+  }
+  return longestRun;
+};
 
 //Hash Set
 //TC-O(n)
