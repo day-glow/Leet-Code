@@ -107,12 +107,19 @@ var twoSum = function(nums, target) {
 //seconds:
 const twoSum = (nums, target) => {
   let seen = new Map();
-
   for (let i = 0; i < nums.length; i++) {
     if (seen.has(target - nums[i])) {
       return [seen.get(target - nums[i]), i];
     }
     seen.set(nums[i], i);
+  }
+};
+
+const twoSum = (nums, target) => {
+  const numMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (numMap.has(target - nums[i])) return [numMap.get(target - nums[i]), i];
+    numMap.set(nums[i], i);
   }
 };
 
