@@ -20,6 +20,24 @@ Example 4:
 Input: height = [1,2,1]
 Output: 2
 */
+//brute force, O(n^2)/O(1), nested loops for every start/end combination
+//2pointer/greedy, O(n)/O(1)
+  //start outside, move inward, maximizing
+//dp/greedy??? (optimizing - mazimizing), O(n)/O(n)
+
+//optimized two pointers:
+const maxArea = height => {
+  let maxWater = 0;
+  let p1 = 0;
+  let p2 = height.length - 1;
+
+  while (p2 !== p1) {
+    maxWater = Math.max(maxWater, Math.min(height[p1], height[p2]) * (p2 - p1));
+    height[p1] < height[p2] ? p1++ : p2--;
+  }
+  return maxWater;
+};
+
 
 //2pointers
 //TC-O(n)
@@ -62,15 +80,19 @@ const maxArea = height => {
   return maxWater;
 };
 
-//refactored
-const maxArea = height => {
-  let maxWater = 0;
+//thirds:
+const maxArea = heights => {
   let p1 = 0;
-  let p2 = height.length - 1;
-
-  while (p2 !== p1) {
-    maxWater = Math.max(maxWater, Math.min(height[p1], height[p2]) * (p2 - p1));
-    height[p1] < height[p2] ? p1++ : p2--;
+  let p2 = heights.length - 1;
+  let max = 0;
+  while (p1 < p2) {
+    let currWater = Math.min(heights[p1], heights[p2]) * (p2 - p1);
+    max = Math.max(max, currWater);
+    if (heights[p2] > heights[p1]) {
+      p1++;
+    } else {
+      p2--;
+    }
   }
-  return maxWater;
+  return max;
 };
