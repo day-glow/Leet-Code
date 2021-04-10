@@ -20,6 +20,10 @@ Example 4:
 Input: height = [1,2,1]
 Output: 2
 */
+//brute force, O(n^2)/O(1), nested loops for every start/end combination
+//2pointer/greedy, O(n)/O(1)
+  //start outside, move inward, maximizing
+//dp/greedy??? (optimizing - mazimizing), O(n)/O(n)
 
 //optimized two pointers:
 const maxArea = height => {
