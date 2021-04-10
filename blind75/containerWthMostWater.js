@@ -21,6 +21,20 @@ Input: height = [1,2,1]
 Output: 2
 */
 
+//optimized two pointers:
+const maxArea = height => {
+  let maxWater = 0;
+  let p1 = 0;
+  let p2 = height.length - 1;
+
+  while (p2 !== p1) {
+    maxWater = Math.max(maxWater, Math.min(height[p1], height[p2]) * (p2 - p1));
+    height[p1] < height[p2] ? p1++ : p2--;
+  }
+  return maxWater;
+};
+
+
 //2pointers
 //TC-O(n)
 //SC-O(1)
@@ -57,19 +71,6 @@ const maxArea = height => {
     let h = Math.min(height[p1], height[p2]);
     let currContainer = (p2 - p1) * h;
     maxWater = currContainer > maxWater ? currContainer : maxWater;
-    height[p1] < height[p2] ? p1++ : p2--;
-  }
-  return maxWater;
-};
-
-//refactored
-const maxArea = height => {
-  let maxWater = 0;
-  let p1 = 0;
-  let p2 = height.length - 1;
-
-  while (p2 !== p1) {
-    maxWater = Math.max(maxWater, Math.min(height[p1], height[p2]) * (p2 - p1));
     height[p1] < height[p2] ? p1++ : p2--;
   }
   return maxWater;
