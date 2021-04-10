@@ -74,3 +74,20 @@ const maxArea = height => {
   }
   return maxWater;
 };
+
+//thirds:
+const maxArea = heights => {
+  let p1 = 0;
+  let p2 = heights.length - 1;
+  let max = 0;
+  while (p1 < p2) {
+    let currWater = Math.min(heights[p1], heights[p2]) * (p2 - p1);
+    max = Math.max(max, currWater);
+    if (heights[p2] > heights[p1]) {
+      p1++;
+    } else {
+      p2--;
+    }
+  }
+  return max;
+};
