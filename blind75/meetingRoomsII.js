@@ -43,11 +43,8 @@ var minMeetingRooms = function(intervals) {
 //TC-O(nlogn)
 //SC-O(n)
 const minMeetingRooms = intervals => {
-
-  if (!intervals.length) return 0;
-  if (intervals.length === 1) return 1;
+  if (intervals.length <= 1) return intervals.length;
   intervals.sort((a, b) => a[0] - b[0]);
-
   let takenRooms = [intervals[0]];
 
   const checkForOpenRoom = () => {
@@ -56,19 +53,12 @@ const minMeetingRooms = intervals => {
   };
 
   for (let i = 1; i < intervals.length; i++) {
-    //check if room is free, otherwise add room
     let room = checkForOpenRoom();
-    if (intervals[i][0] >= room[1]) {
-      takenRooms.pop();
-      takenRooms.push(intervals[i]);
-    } else {
-      takenRooms.push(intervals[i]);
-    }
+    if (intervals[i][0] >= room[1]) takenRooms.pop();
+    takenRooms.push(intervals[i]);
   }
-
   return takenRooms.length;
 };
-
 
 //third pass:
 //brute force O(n^2)/O(1), compare each interval to each other time
