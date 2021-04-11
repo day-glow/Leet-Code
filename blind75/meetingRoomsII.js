@@ -9,6 +9,25 @@ Example 2:
 Input: intervals = [[7,10],[2,4]]
 Output: 1
 */
+//priority Queues (Min heaps), O(nlogn)/O(n)
+//Chronological Ordering w/ Arrays & sorting, O(nlogn)/O(n)
+
+//OPTIMIZED approach:
+//TC-O(nlogn)
+//SC-O(n)
+var minMeetingRooms = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = new Array();
+  for (let [start, end] of intervals) {
+    if (rooms[rooms.length - 1] <= start) {
+      rooms[rooms.length - 1] = end;
+    } else {
+      rooms.push(end);
+    }
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
 
 //second pass refactored:
 var minMeetingRooms = function(intervals) {
@@ -43,11 +62,8 @@ var minMeetingRooms = function(intervals) {
 //TC-O(nlogn)
 //SC-O(n)
 const minMeetingRooms = intervals => {
-
-  if (!intervals.length) return 0;
-  if (intervals.length === 1) return 1;
+  if (intervals.length <= 1) return intervals.length;
   intervals.sort((a, b) => a[0] - b[0]);
-
   let takenRooms = [intervals[0]];
 
   const checkForOpenRoom = () => {
@@ -56,16 +72,42 @@ const minMeetingRooms = intervals => {
   };
 
   for (let i = 1; i < intervals.length; i++) {
-    //check if room is free, otherwise add room
     let room = checkForOpenRoom();
-    if (intervals[i][0] >= room[1]) {
-      takenRooms.pop();
-      takenRooms.push(intervals[i]);
-    } else {
-      takenRooms.push(intervals[i]);
-    }
+    if (intervals[i][0] >= room[1]) takenRooms.pop();
+    takenRooms.push(intervals[i]);
   }
-
   return takenRooms.length;
 };
 
+//third pass:
+//Array approach O(nlogn)/O(n)
+//sort start times
+//compare next start to prev end
+//store curr rooms in map
+//can we do it in one pass without sort?
+//array?
+var minMeetingRooms = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = new Array();
+  for (let [start, end] of intervals) {
+    if (rooms[rooms.length - 1] <= start) {
+      rooms[rooms.length - 1] = end;
+    } else {
+      rooms.push(end);
+    }
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
+
+//refactored:
+var minMeetingRooms = function(intervals) {
+  if (intervals.length <= 1) return intervals.length;
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = new Array();
+  for (let [start, end] of intervals) {
+    rooms[rooms.length - 1] <= start ? rooms[rooms.length - 1] = end : rooms.push(end);
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
