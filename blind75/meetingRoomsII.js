@@ -69,3 +69,14 @@ const minMeetingRooms = intervals => {
   return takenRooms.length;
 };
 
+
+//third pass:
+//brute force O(n^2)/O(1), compare each interval to each other time
+//hashMap approach O(nlogn)/O(n)
+//sort start times
+//compare next start to prev end
+//store curr rooms in map
+
+//can we do it in one pass without sort? hashMap w/ LL?
+
+//array?
