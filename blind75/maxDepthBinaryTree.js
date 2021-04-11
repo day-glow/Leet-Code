@@ -63,3 +63,20 @@ const maxDepth = root => {
 //dfs, find depth
 //bfs, find levels
 //iterative > recursive sc, but might take more tc
+var maxDepth = function(root) {
+  if (!root) return 0;
+  let level = 0;
+  let currLevel = [root];
+
+  while (currLevel.length) {
+    let nextLevel = [];
+    while (currLevel.length) {
+      let node = currLevel.pop();
+      if (node.left) nextLevel.push(node.left);
+      if (node.right) nextLevel.push(node.right);
+    }
+    currLevel = nextLevel;
+    level++;
+  }
+  return level;
+};
