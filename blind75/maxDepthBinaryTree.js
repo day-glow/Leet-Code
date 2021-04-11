@@ -15,9 +15,37 @@ Output: 3
 //Iterative O(n)/ O(n)if unbalanced tree/O(logn)if balanced
 //can do in recursive oneliner
 
-
 //REFACTORED - one liner:
 const maxDepth = root => !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+
+//RECURSION Reduced:
+const maxDepth = root => {
+  if (!root) return 0;
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+};
+
+//dfs, find depth
+//bfs, find levels
+//iterative > recursive sc, but might take more tc
+//TC-O(n) visit each node
+//SC-O(n) unbalanced tree OR O(logn) completely balanced tree
+var maxDepth = function(root) {
+  if (!root) return 0;
+  let level = 0;
+  let currLevel = [root];
+
+  while (currLevel.length) {
+    let nextLevel = [];
+    while (currLevel.length) {
+      let node = currLevel.pop();
+      if (node.left) nextLevel.push(node.left);
+      if (node.right) nextLevel.push(node.right);
+    }
+    currLevel = nextLevel;
+    level++;
+  }
+  return level;
+};
 
 //RECURSION, DFS:
 const maxDepth = (root) => {
@@ -28,12 +56,6 @@ const maxDepth = (root) => {
     let rightDepth = maxDepth(root.right);
     return 1 + Math.max(leftDepth, rightDepth);
   }
-};
-
-//RECURSION Reduced:
-const maxDepth = root => {
-  if (!root) return 0;
-  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 };
 
 //ITERATIVE, BFS:
@@ -62,29 +84,7 @@ const maxDepth = root => {
   return depth;
 };
 
-//thirds:
-//dfs, find depth
-//bfs, find levels
-//iterative > recursive sc, but might take more tc
-//TC-O(n) visit each node
-//SC-O(n) unbalanced tree OR O(logn) completely balanced tree
-var maxDepth = function(root) {
-  if (!root) return 0;
-  let level = 0;
-  let currLevel = [root];
 
-  while (currLevel.length) {
-    let nextLevel = [];
-    while (currLevel.length) {
-      let node = currLevel.pop();
-      if (node.left) nextLevel.push(node.left);
-      if (node.right) nextLevel.push(node.right);
-    }
-    currLevel = nextLevel;
-    level++;
-  }
-  return level;
-};
 
 //recursive approach:
 //TC-O(n) visit each node
