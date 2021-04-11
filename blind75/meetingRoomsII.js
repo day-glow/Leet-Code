@@ -9,6 +9,25 @@ Example 2:
 Input: intervals = [[7,10],[2,4]]
 Output: 1
 */
+//priority Queues (Min heaps), O(nlogn)/O(n)
+//Chronological Ordering w/ Arrays & sorting, O(nlogn)/O(n)
+
+//OPTIMIZED approach:
+//TC-O(nlogn)
+//SC-O(n)
+var minMeetingRooms = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let rooms = new Array();
+  for (let [start, end] of intervals) {
+    if (rooms[rooms.length - 1] <= start) {
+      rooms[rooms.length - 1] = end;
+    } else {
+      rooms.push(end);
+    }
+    rooms.sort((a, b) => b - a);
+  }
+  return rooms.length;
+};
 
 //second pass refactored:
 var minMeetingRooms = function(intervals) {
@@ -61,7 +80,6 @@ const minMeetingRooms = intervals => {
 };
 
 //third pass:
-//brute force O(n^2)/O(1), compare each interval to each other time
 //Array approach O(nlogn)/O(n)
 //sort start times
 //compare next start to prev end
