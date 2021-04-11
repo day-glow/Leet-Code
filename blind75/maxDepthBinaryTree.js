@@ -11,6 +11,10 @@ Output: 3
  TC- O(n)
  SC- O(n)
 */
+//Recursive O(n)/ O(n)if unbalanced tree/O(logn)if balanced
+//Iterative O(n)/ O(n)if unbalanced tree/O(logn)if balanced
+//can do in recursive oneliner
+
 
 //REFACTORED - one liner:
 const maxDepth = root => !root ? 0 : 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
@@ -59,10 +63,11 @@ const maxDepth = root => {
 };
 
 //thirds:
-//traverse tree and keep max O(n)/O(1)
 //dfs, find depth
 //bfs, find levels
 //iterative > recursive sc, but might take more tc
+//TC-O(n) visit each node
+//SC-O(n) unbalanced tree OR O(logn) completely balanced tree
 var maxDepth = function(root) {
   if (!root) return 0;
   let level = 0;
@@ -82,6 +87,8 @@ var maxDepth = function(root) {
 };
 
 //recursive approach:
+//TC-O(n) visit each node
+//SC-O(n) unbalanced tree OR O(logn) completely balanced tree
 var maxDepth = function(root) {
   if (!root) return 0;
   return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
