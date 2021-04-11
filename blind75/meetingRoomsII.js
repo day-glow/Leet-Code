@@ -94,6 +94,7 @@ var minMeetingRooms = function(intervals) {
 
 //refactored:
 var minMeetingRooms = function(intervals) {
+  if (intervals.length <= 1) return intervals.length;
   intervals.sort((a, b) => a[0] - b[0]);
   let rooms = new Array();
   for (let [start, end] of intervals) {
