@@ -57,3 +57,9 @@ const maxDepth = root => {
 
   return depth;
 };
+
+//thirds:
+//traverse tree and keep max O(n)/O(1)
+//dfs, find depth
+//bfs, find levels
+//iterative > recursive sc, but might take more tc
