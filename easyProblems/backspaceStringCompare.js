@@ -33,10 +33,7 @@ S and T only contain lowercase letters and '#' characters.
 //Build String O(M+N)/O(M+N)
 //Two Pointers O(M+N)/O(1)
 
-//brainstorm:
-//pop off
-//delete next letter (edge case backspaces in a row)
-//compare remaining strings
+//Build Strings Approach:
 var removeBackspacesInStr = function(str) {
   let s = str.split('');
   let backspaces = 0;
@@ -50,9 +47,11 @@ var removeBackspacesInStr = function(str) {
   }
   return finalS;
 }
-
 var backspaceCompare = function(S, T) {
   return removeBackspacesInStr(S) === removeBackspacesInStr(T);
 };
 
-
+//brainstorm:
+//pop off
+//delete next letter (edge case backspaces in a row)
+//compare remaining strings
