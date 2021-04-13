@@ -22,6 +22,8 @@ Output: [1,2]
 //two pointers O(n)/O(1), take advantage of sorted array (logic)
 
 //two pointers approach:
+//O(n)
+//O(1)
 var twoSum = function(numbers, target) {
   let p1 = 0;
   let p2 = numbers.length - 1;
