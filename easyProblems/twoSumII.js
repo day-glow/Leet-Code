@@ -20,3 +20,13 @@ Output: [1,2]
 */
 
 //hashMap approach:
+var twoSum = function(numbers, target) {
+  let seenNums = new Map();
+  for (let i = 0; i < numbers.length; i++) {
+    if (seenNums.has(target - numbers[i])) {
+      return [seenNums.get(target - numbers[i]), i + 1];
+    } else {
+      seenNums.set(numbers[i], i + 1);
+    }
+  }
+};
