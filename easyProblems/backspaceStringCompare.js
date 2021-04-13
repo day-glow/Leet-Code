@@ -30,6 +30,8 @@ Note:
 1 <= T.length <= 200
 S and T only contain lowercase letters and '#' characters.
 */
+//Build String O(M+N)/O(M+N)
+//Two Pointers O(M+N)/O(1)
 
 //brainstorm:
 //pop off
