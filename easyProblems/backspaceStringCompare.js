@@ -35,3 +35,22 @@ S and T only contain lowercase letters and '#' characters.
 //pop off
 //delete next letter (edge case backspaces in a row)
 //compare remaining strings
+var removeBackspacesInStr = function(str) {
+  let s = str.split('');
+  let backspaces = 0;
+  let finalS = '';
+  while (s.length) {
+    let char = s.pop();
+    char === '#' ? backspaces++ : finalS = char + finalS;
+    while (s.length && backspaces > 0) {
+      s.pop() === '#' ? backspaces++ : backspaces--;
+    }
+  }
+  return finalS;
+}
+
+var backspaceCompare = function(S, T) {
+  return removeBackspacesInStr(S) === removeBackspacesInStr(T);
+};
+
+
