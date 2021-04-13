@@ -18,6 +18,8 @@ Example 3:
 Input: numbers = [-1,0], target = -1
 Output: [1,2]
 */
+//hashmap approach O(n)/O(n), uses space
+//two pointers O(n)/O(1), take advantage of sorted array (logic)
 
 //two pointers approach:
 var twoSum = function(numbers, target) {
