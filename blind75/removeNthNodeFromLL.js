@@ -51,3 +51,29 @@ const removeNthFromEnd = (head, n) => {
 
   return tempNode.next;
 };
+
+//thirds:
+var Node = function(val) {
+  this.val = val;
+  this.next = null;
+};
+var removeNthFromEnd = function(head, n) {
+  let tempHead = new Node();
+  tempHead.next = head;
+  let p1 = tempHead;
+  let p2 = tempHead;
+  if (p1.next === null && n > 0) return null;
+  while (p2 !== null && n >= 0) {
+    p2 = p2.next;
+    n--;
+  }
+  while (p2 !== null) {
+    p1 = p1.next;
+    p2 = p2.next;
+  }
+  if (p2 === null) {
+    p1.next = p1.next.next;
+  }
+
+  return tempHead.next;
+};
