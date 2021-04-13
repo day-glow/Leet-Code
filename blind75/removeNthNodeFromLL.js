@@ -15,6 +15,7 @@ Example 3:
 Input: head = [1,2], n = 1
 Output: [1]
 */
+//Create temp Head node (if given helper or write)
 //Two Pass O(2L)/O(1), traverse LL counting length, repeat and remove
 //One Pass w/ 2 Pointers O(L)/O(1), used spaced out pointers to remove once p2 === null.
 
@@ -23,11 +24,26 @@ Two Pointers, one pass approach
 TC-O(L)
 SC-O(1)
 */
+var removeNthFromEnd = function(head, n) {
+  let tempHead = new ListNode();
+  tempHead.next = head;
+  let p1 = tempHead;
+  let p2 = tempHead;
+  if (!p1.next && n > 0) return null;
+  while (p2 && n-- >= 0) p2 = p2.next;
+  while (p2) {
+    p1 = p1.next;
+    p2 = p2.next;
+  }
+  if (!p2) p1.next = p1.next.next;
+  return tempHead.next;
+};
+
+//seconds:
 var Node = function(val) {
   this.val = val;
   this.next = null;
 };
-
 const removeNthFromEnd = (head, n) => {
   if (!head.next && n > 0) return null;
   let tempNode = new Node();
