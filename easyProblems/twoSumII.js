@@ -20,6 +20,8 @@ Output: [1,2]
 */
 
 //hashMap approach:
+//O(n)
+//O(n)
 var twoSum = function(numbers, target) {
   let seenNums = new Map();
   for (let i = 0; i < numbers.length; i++) {
