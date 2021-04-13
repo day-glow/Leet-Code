@@ -18,6 +18,9 @@ Example 3:
 Input: nums = [0]
 Output: []
 */
+//two pointers O(n^2)/ O(logn)to O(n), nums[i] + nums[p1] + nums[p2]
+//HashSet O(n^2)/O(n), call two sum and find complements with hast set "seen"
+//No sort O(n^2)/O(n), 2xsets and map to save seen, seenTriplets, dups; use nested for loops
 
 //hash Map()
 //TC-O(n2)
