@@ -55,3 +55,35 @@ var backspaceCompare = function(S, T) {
 //pop off
 //delete next letter (edge case backspaces in a row)
 //compare remaining strings
+
+//Two Pointers (long):
+const backspaceCompare = (s,t) => {
+  let pS = s.length - 1;
+  let pT = t.length - 1;
+  let sCount = 0;
+  let tCount = 0;
+
+  while (pS >= 0 || pT >= 0) {
+    let sItem = s[pS];
+    let tItem = t[pT];
+    if (sItem === '#') {
+      pS--;
+      sCount++;
+    } else if (tItem === '#') {
+      pT--;
+      tCount++;
+    } else if (sCount > 0) {
+      sCount--;
+      pS--;
+    } else if (tCount > 0) {
+      tCount--;
+      pT--;
+    } else if (pS >= 0 && pT >= 0 && sItem !== tItem || pS >= 0 !== pT >= 0) {
+      return false;
+    } else {
+      pS--;
+      pT--;
+    }
+  }
+  return true;
+}
