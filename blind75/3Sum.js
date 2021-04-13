@@ -18,6 +18,9 @@ Example 3:
 Input: nums = [0]
 Output: []
 */
+//two pointers O(n^2)/ O(logn)to O(n), nums[i] + nums[p1] + nums[p2]
+//HashSet O(n^2)/O(n), call two sum and find complements with hast set "seen"
+//No sort O(n^2)/O(n), 2xsets and map to save seen, seenTriplets, dups; use nested for loops
 
 //hash Map()
 //TC-O(n2)
@@ -75,5 +78,29 @@ const threeSum = nums => {
     }
   }
 
+  return triplets;
+};
+
+//thirds:
+var twoSum = function(nums, i, triplets) {
+  let seen = new Set();
+  for (let j = i + 1; j < nums.length; j++) {
+    let complement = -nums[i] - nums[j];
+    if (seen.has(complement)) {
+      triplets.push([nums[i], nums[j], complement]);
+      while (j + 1 < nums.length && nums[j] === nums[j + 1]) j++;
+    }
+    seen.add(nums[j]);
+  }
+};
+var threeSum = function(nums) {
+  let triplets = [];
+  nums.sort((a, b) => a - b);
+  if (nums[0] > 0 || nums.length < 3) return triplets;
+  for (let i = 0; i < nums.length && nums[i] <= 0; i++) {
+    if (i === 0 || nums[i - 1] !== nums[i]) {
+      twoSum(nums, i, triplets);
+    }
+  }
   return triplets;
 };
