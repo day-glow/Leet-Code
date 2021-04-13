@@ -30,3 +30,8 @@ Note:
 1 <= T.length <= 200
 S and T only contain lowercase letters and '#' characters.
 */
+
+//brainstorm:
+//pop off
+//delete next letter (edge case backspaces in a row)
+//compare remaining strings
