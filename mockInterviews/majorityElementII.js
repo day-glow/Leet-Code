@@ -59,6 +59,8 @@ Array.prototype.count = function(num) {
 }
 
 //hash map approach:
+//O(n)
+//O(n)
 var majorityElement = function(nums) {
     let countNums = new Map();
     let result = new Array();
