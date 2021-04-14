@@ -18,7 +18,7 @@ Input: nums = [1,2]
 Output: [1,2]
 */
 
-//Optimized solution (Boyer-Moore Voting Algorithm, find majority):
+//Optimized solution (Boyer-Moore Voting Algorithm, find majority candidate):
 //O(n)
 //O(1)
 var majorityElement = function(nums) {
