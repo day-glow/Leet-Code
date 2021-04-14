@@ -21,3 +21,8 @@ var rotateString = function(A, B) {
   for (let i = 0; i < A.length; i++) if (A.slice(i) + A.slice(0, i) === B) return true;
   return B.length ? false : true;
 };
+
+//oneliner (Simple check):
+//O(n^2)
+//O(n)
+const rotateString = (A, B) => A.length === B.length && (A + A).includes(B);
