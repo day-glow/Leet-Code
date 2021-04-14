@@ -19,6 +19,8 @@ Output: [1,2]
 */
 
 //Optimized solution (Boyer-Moore Voting Algorithm, find majority):
+//O(n)
+//O(1)
 var majorityElement = function(nums) {
     const n = nums.length
     if (n < 1) return []
