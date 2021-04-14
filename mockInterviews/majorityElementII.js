@@ -57,3 +57,16 @@ Array.prototype.count = function(num) {
 
     return count
 }
+
+//hash map approach:
+var majorityElement = function(nums) {
+    let countNums = new Map();
+    let result = new Array();
+    for (let num of nums) {
+      countNums.has(num) ? countNums.set(num, countNums.get(num) + 1) : countNums.set(num, 1);
+    }
+    for (let [num, count] of countNums) {
+      if (count > nums.length / 3) result.push(num);
+    }
+    return result;
+  };
