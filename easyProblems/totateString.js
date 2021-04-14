@@ -15,6 +15,8 @@ Output: false
 */
 
 //check every rotation
+//O(n)
+//O(1)
 var rotateString = function(A, B) {
   for (let i = 0; i < A.length; i++) if (A.slice(i) + A.slice(0, i) === B) return true;
   return B.length ? false : true;
