@@ -123,3 +123,20 @@ var isValid = function(s) {
   }
   return stack.length === 0;
 };
+
+//optimized on space and time to retrieve... not as great if problem included more pairs
+const isValid = s => {
+  if (s.length === 0) return true;
+  if (s.length % 2 !== 0) return false;
+
+  let stack = new Array();
+  for (let paren of s) {
+    if (paren == '(') stack.push(')');
+    else if (paren == '{') stack.push('}');
+    else if (paren == '[') stack.push(']');
+    else {
+      if (stack.pop() !== paren) return false;
+    }
+  }
+  return !stack.length;
+};
