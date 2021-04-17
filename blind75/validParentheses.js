@@ -105,3 +105,21 @@ const isValid = s => {
   }
   return !stack.length;
 };
+
+//thirds:
+var isValid = function(s) {
+  let validPairs = new Map();
+  validPairs.set('(', ')');
+  validPairs.set('[', ']');
+  validPairs.set('{', '}');
+
+  let stack = new Array();
+  for (let paren of s) {
+    if (validPairs.has(paren)) {
+      stack.push(paren);
+    } else {
+      if (validPairs.get(stack.pop()) !== paren) return false;
+    }
+  }
+  return stack.length === 0;
+};
