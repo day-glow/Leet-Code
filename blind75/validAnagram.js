@@ -132,8 +132,6 @@ var isAnagram = function(s, t) {
     letters[s[i].charCodeAt(0) - 97]++;
     letters[t[i].charCodeAt(0) - 97]--;
   }
-  for (let charCount of letters) {
-    if (charCount !== 0) return false;
-  }
+  for (let charCount of letters) if (charCount !== 0) return false;
   return true;
 };
