@@ -43,15 +43,28 @@ const isAnagram = (s, t) => {
   return sortedS === sortedT;
 };
 */
+//naive, sorting (.split,.sort,.join, compare) O(nlogn)/O(1)
+//fixed array, O(n)/O(1)
 
-//Consolidated:
-// const isAnagram = (s, t) => {
-//   if (s.length !== t.length) return false;
-//   return (s.split('').sort().join() === t.split('').sort().join());
-// };
+//OPTIMIZED SOLUTION: fixed array (hash table) approach
+//TC-O(n)
+//SC-O(1)
+var isAnagram = function(s, t) {
+  if (s.length !== t.length) return false;
+  let letters = new Array(26).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    letters[s[i].charCodeAt(0) - 97]++;
+    letters[t[i].charCodeAt(0) - 97]--;
+  }
+  return letters.every(count => count === 0);
+};
+//naive Sorting approach:
+const isAnagram = (s, t) => {
+  if (s.length !== t.length) return false;
+  return (s.split('').sort().join() === t.split('').sort().join());
+};
 
 /*
-OPTIMIZED SOLUTION:
 hash map - obj
 TC- O(n)
 SC- O(n)
@@ -80,19 +93,6 @@ var isAnagram = function(s, t) {
   }
 
   return letters.size === 0;
-};
-
-//fixed array (hash table) approach
-//TC-O(n)
-//SC-O(1)
-var isAnagram = function(s, t) {
-  if (s.length !== t.length) return false;
-  let letters = new Array(26).fill(0);
-  for (let i = 0; i < s.length; i++) {
-    letters[s[i].charCodeAt(0) - 97]++;
-    letters[t[i].charCodeAt(0) - 97]--;
-  }
-  return letters.every(count => count === 0);
 };
 
 //object approach
