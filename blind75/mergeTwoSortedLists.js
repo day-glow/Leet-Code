@@ -12,26 +12,30 @@ Example 3:
 Input: l1 = [], l2 = [0]
 Output: [0]
 */
+//recursion O(n+m)/O(n+m)
+//iterative O(n+m)/O(1), remember to create new ListNode & move prev pointer each time a node is addded
+
 //thirds:
+//O(n + m)
+//O(1)
 var mergeTwoLists = function(l1, l2) {
-  let sorted = new ListNode();
-  let head = sorted;
+  let prehead = new ListNode(-1);
+  let prev = prehead;
   while (l1 && l2) {
     if (l1.val < l2.val) {
-      sorted.next = new ListNode(l1.val);
+      prev.next = new ListNode(l1.val);
       l1 = l1.next;
     } else {
-      sorted.next = new ListNode(l2.val);
+      prev.next = new ListNode(l2.val);
       l2 = l2.next;
     }
-    sorted = sorted.next;
+    prev = prev.next;
   }
-  if (l1) sorted.next = l1;
-  if (l2) sorted.next = l2;
-  return head.next;
+  prev.next = l1 ? l1: l2;
+  return prehead.next;
 };
 
-
+//recursion
 const mergeTwoLists = (l1, l2) => {
   if (l1 === null) return l2;
   if (l2 === null) return l1;
@@ -45,7 +49,7 @@ const mergeTwoLists = (l1, l2) => {
   }
 };
 
-//straight forward approach
+//iterative approach
 var mergeTwoLists = function(l1, l2) {
   let list = new ListNode()
   let head = list
