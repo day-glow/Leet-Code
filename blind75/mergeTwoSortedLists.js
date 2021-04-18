@@ -12,6 +12,25 @@ Example 3:
 Input: l1 = [], l2 = [0]
 Output: [0]
 */
+//thirds:
+var mergeTwoLists = function(l1, l2) {
+  let sorted = new ListNode();
+  let head = sorted;
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      sorted.next = new ListNode(l1.val);
+      l1 = l1.next;
+    } else {
+      sorted.next = new ListNode(l2.val);
+      l2 = l2.next;
+    }
+    sorted = sorted.next;
+  }
+  if (l1) sorted.next = l1;
+  if (l2) sorted.next = l2;
+  return head.next;
+};
+
 
 const mergeTwoLists = (l1, l2) => {
   if (l1 === null) return l2;
