@@ -11,6 +11,7 @@ You must not use any built-in BigInteger library or convert the inputs to intege
 TC-O(max(n,m)
 SC-O(max(n,m))
 */
+//elementary math, O(max(n,m)/O(max(n,m)), addition & carry remainder
 
 //iterate last to front, add each num plus the remainder carry num
 const addStrings = (num1, num2) => {
@@ -20,7 +21,7 @@ const addStrings = (num1, num2) => {
   let carry = 0;
   let result = '';
 
-  for (;i >= 0 || j >= 0 || carry > 0; i--, j--) {
+  for (i >= 0 || j >= 0 || carry > 0; i--, j--) {
     const digit1 = i < 0 ? 0 : Number(num1[i]);
     const digit2 = j < 0 ? 0 : Number(num2[j]);
     const digitSum = digit1 + digit2 + carry;
@@ -30,4 +31,27 @@ const addStrings = (num1, num2) => {
   return result;
 };
 
-
+//mock:
+const addStrings = (num1, num2) => {
+  let sum = '';
+  let carry = 0;
+  let p1 = num1.length - 1;
+  let p2 = num2.length - 1;
+  while (p1 >= 0 || p2 >= 0) {
+    let curr = 0;
+    if (p1 >= 0) curr += Number(num1[p1]);
+    if (p2 >= 0) curr += Number(num2[p2]);
+    if (carry > 0) {
+      curr += carry;
+      carry = 0;
+    }
+    if (curr >= 10) {
+      carry = Math.floor(curr / 10);
+      curr = curr % 10;
+    }
+    sum = curr + sum;
+    p1--;
+    p2--;
+  }
+  return carry > 0 ? carry + sum : sum;
+}
