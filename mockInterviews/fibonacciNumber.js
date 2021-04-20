@@ -25,8 +25,7 @@ Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 
 //dp
 var fib = function(n) {
-  let total = 0;
-  let count = 0;
+  if (n < 2) return n;
   let dp = new Array(n);
   dp[0] = 0;
   dp[1] = 1;
@@ -34,6 +33,19 @@ var fib = function(n) {
     dp[i] = dp[i - 1] + dp[i - 2];
   }
   return dp[n];
+};
+
+//dp, constant space
+var fib = function(n) {
+  if (n < 2) return n;
+  let prev1 = 0;
+  let prev2 = 1;
+  let curr;
+  for (let i = 2; i <= n; i++) {
+    [curr, prev1] = [prev1 + prev2, prev2]
+    prev2 = curr;
+  }
+  return curr;
 };
 
 //brute force, loop O(n)/O(n^2)
