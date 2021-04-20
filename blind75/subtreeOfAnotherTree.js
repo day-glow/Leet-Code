@@ -24,11 +24,14 @@ Given tree t:
 TC-O(n) or worse case O(n*m) must traverse both trees fully
 SC-O(n)
 */
+//postorder traversal, O(m^2 + n^2 + m * n)/ O(max(m,n))
+//By comparison of nodes, O(m * n)/O(n)
+//Oneliner JSON.stringify &.indexOf, O(m * n)/O(n)
 
-//SECOND PASS:
+//Oneliner JSON.stringify &.indexOf:
 const isSubtree = (s, t) => JSON.stringify(s).indexOf(JSON.stringify(t)) !== -1;
 
-//second pass:
+//By comparison of nodes:
 const isSubtree = (s, t) => {
   if (!s) return !t;
 
