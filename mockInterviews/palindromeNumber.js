@@ -23,8 +23,18 @@ Example 4:
 Input: x = -101
 Output: false
 */
+//revert half of number, O(log base10 (n))/O(1)
+//two pointers O(n)/O(1)
 
-//mock:
+//math solution/reversal & compare:
+var isPalindrome = function(x) {
+  if (x < 0) return false;
+  let rev = 0;
+  for(let i = x; i >= 1; i = Math.floor(i/10)) rev = rev * 10 + i % 10;
+  return rev === x;
+};
+
+//2pointers:
 var isPalindrome = function(x) {
   if (x < 0) return false;
   let s = "" + x;
@@ -36,4 +46,3 @@ var isPalindrome = function(x) {
   return true;
 };
 
-//O(n)/O(n)
