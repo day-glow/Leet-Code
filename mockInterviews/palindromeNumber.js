@@ -23,3 +23,17 @@ Example 4:
 Input: x = -101
 Output: false
 */
+
+//mock:
+var isPalindrome = function(x) {
+  if (x < 0) return false;
+  let s = "" + x;
+  let p1 = 0;
+  let p2 = s.length - 1;
+  while (p1 <= p2) {
+    if (s[p1++] !== s[p2--]) return false;
+  }
+  return true;
+};
+
+//O(n)/O(n)
