@@ -22,3 +22,7 @@ Input: candyType = [6,6,6,6]
 Output: 1
 Explanation: Alice can only eat 4 / 2 = 2 candies. Even though she can eat 2 candies, she only has 1 type.
 */
+
+//brute force O(n^2)/O(1)
+//sorting O(nlogn)/O(n)to O(1) depending on lang
+//hash Set O(n)/O(n)
