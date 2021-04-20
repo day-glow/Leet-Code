@@ -26,3 +26,14 @@ Explanation: Alice can only eat 4 / 2 = 2 candies. Even though she can eat 2 can
 //brute force O(n^2)/O(1)
 //sorting O(nlogn)/O(n)to O(1) depending on lang
 //hash Set O(n)/O(n)
+
+var distributeCandies = function(candyType) {
+  let typesOfCandy = new Set(candyType);
+  return Math.min(candyType.length / 2, typesOfCandy.size);
+};
+
+// n/2, n % 2 === 0
+//max types
+//could use hashmap/set/reduce
+//calculate num candies, then iterate until those are filled
+//are these always sorted?
