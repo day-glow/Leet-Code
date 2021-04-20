@@ -30,4 +30,27 @@ const addStrings = (num1, num2) => {
   return result;
 };
 
-
+//mock:
+const addStrings = (num1, num2) => {
+  let sum = '';
+  let carry = 0;
+  let p1 = num1.length - 1;
+  let p2 = num2.length - 1;
+  while (p1 >= 0 || p2 >= 0) {
+    let curr = 0;
+    if (p1 >= 0) curr += Number(num1[p1]);
+    if (p2 >= 0) curr += Number(num2[p2]);
+    if (carry > 0) {
+      curr += carry;
+      carry = 0;
+    }
+    if (curr >= 10) {
+      carry = Math.floor(curr / 10);
+      curr = curr % 10;
+    }
+    sum = curr + sum;
+    p1--;
+    p2--;
+  }
+  return carry > 0 ? carry + sum : sum;
+}
