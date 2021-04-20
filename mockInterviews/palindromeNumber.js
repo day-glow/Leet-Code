@@ -24,7 +24,7 @@ Input: x = -101
 Output: false
 */
 //revert half of number, O(log base10 (n))/O(1)
-//two pointers O(n)/O(1)
+//string convert & two pointers O(n)/O(n)
 
 //math solution/reversal & compare:
 var isPalindrome = function(x) {
@@ -34,15 +34,12 @@ var isPalindrome = function(x) {
   return rev === x;
 };
 
-//2pointers:
+//convert to string & 2pointers:
 var isPalindrome = function(x) {
   if (x < 0) return false;
   let s = "" + x;
   let p1 = 0;
   let p2 = s.length - 1;
-  while (p1 <= p2) {
-    if (s[p1++] !== s[p2--]) return false;
-  }
+  while (p1 <= p2) if (s[p1++] !== s[p2--]) return false;
   return true;
 };
-
