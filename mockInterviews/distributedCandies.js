@@ -27,6 +27,10 @@ Explanation: Alice can only eat 4 / 2 = 2 candies. Even though she can eat 2 can
 //sorting O(nlogn)/O(n)to O(1) depending on lang
 //hash Set O(n)/O(n)
 
+//oneliner:
+const distributeCandies = candyType => Math.min(candyType.length / 2, new Set(candyType).size);
+
+//hashset approach
 var distributeCandies = function(candyType) {
   let typesOfCandy = new Set(candyType);
   return Math.min(candyType.length / 2, typesOfCandy.size);
