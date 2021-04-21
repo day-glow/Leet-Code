@@ -22,6 +22,7 @@ Input: n = 4
 Output: 3
 Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 */
+
 //recursion, O(2^n)/O(n)
 //dp with memoization O(n)/O(n)
 //dp with 2 variables O(n)/O(1)
@@ -50,3 +51,4 @@ var fib = function(n) {
   }
   return dp[n];
 };
+
