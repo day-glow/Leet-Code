@@ -22,9 +22,11 @@ Input: n = 4
 Output: 3
 Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 */
+//brute force/logical, sort, O(nlogn)/O(1)
+//hashSet O(n)/O(n)
 //recursion, O(2^n)/O(n)
-//dp with memoization O(n)/O(n)
-//dp with 2 variables O(n)/O(1)
+//bits O(n)/O(1)
+//dp with 2 variables O(n)/O(1), sum vs expected sum
 
 //dp, constant space
 var fib = function(n) {
@@ -61,5 +63,3 @@ var missingNumber = function(nums) {
   return missingNum;
 };
 
-//brute force/logical, sort, O(nlogn)/O(1)
-//sum vs expected sum, O(n)/O(1)
