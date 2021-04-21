@@ -26,7 +26,18 @@ Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
 //hashSet O(n)/O(n)
 //recursion, O(2^n)/O(n)
 //bits O(n)/O(1)
-//dp with 2 variables O(n)/O(1), sum vs expected sum
+//dp with 2 variables O(n)/O(1), Guass' sum vs expected sum
+
+//Guass' Formula:
+var missingNumber = function(nums) {
+  let missingNum = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    missingNum += i;
+    if (nums[i]) missingNum -= nums[i];
+  }
+  return missingNum;
+};
+
 
 //dp, constant space
 var fib = function(n) {
@@ -53,13 +64,4 @@ var fib = function(n) {
   return dp[n];
 };
 
-//mock:
-var missingNumber = function(nums) {
-  let missingNum = 0;
-  for (let i = 0; i <= nums.length; i++) {
-    missingNum += i;
-    if (nums[i]) missingNum -= nums[i];
-  }
-  return missingNum;
-};
 
