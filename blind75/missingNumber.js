@@ -9,9 +9,23 @@ Output: 2
 Explanation: n = 3 since there are 3 numbers, so all numbers are in the range [0,3]. 2 is the missing number in the range since it does not appear in nums.
 
 */
+//brute force/logical, sort, O(nlogn)/O(1)
+//hashSet O(n)/O(n)
+//recursion, O(2^n)/O(n)
+//bits O(n)/O(1)
+//dp with 2 variables O(n)/O(1), Guass' sum vs expected sum
 
-//THIRDS:
-//one-liner:
+//Guass' Formula:
+var missingNumber = function(nums) {
+  let missingNum = 0;
+  for (let i = 0; i <= nums.length; i++) {
+    missingNum += i;
+    if (nums[i]) missingNum -= nums[i];
+  }
+  return missingNum;
+};
+
+//bits/onliner:
 const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
 
 //bit manipulation:
