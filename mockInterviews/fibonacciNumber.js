@@ -38,6 +38,8 @@ var missingNumber = function(nums) {
   return missingNum;
 };
 
+//bits:
+const missingNumber = nums => nums.reduce((acc, n, i) => acc ^ n ^ i) ^ nums.length;
 
 //dp, constant space
 var fib = function(n) {
