@@ -25,7 +25,10 @@ countAndSay(2) = say "1" = one 1 = "11"
 countAndSay(3) = say "11" = two 1's = "21"
 countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
 */
+//sliding window O(2^n)/O(2^n-1)
+//Regular Expression/Regex O(2^n)/O(2^n-1)
 
+//mock:
 var countAndSay = function(n) {
   let result = "1";
 
