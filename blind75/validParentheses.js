@@ -43,11 +43,46 @@ console.log(assert(outputA === true));
 const outputB = isValid(stringB);
 console.log(assert(outputB === false));
 */
+//no-hash map, save space, not great for more complex Q's
+//hashmap, O(n)/O(n)
 
 /*
 TC- O(n) linear to taverse string, .push and .pop O(1)
 SC- O(n) stack may end up with all left parens in stack
 */
+
+//thirds:
+var isValid = function(s) {
+  let validPairs = new Map();
+  validPairs.set('(', ')');
+  validPairs.set('[', ']');
+  validPairs.set('{', '}');
+
+  let stack = new Array();
+  for (let paren of s) {
+    (stack.length && validPairs.get(stack[stack.length - 1]) === paren) ? stack.pop() : stack.push(paren);
+  }
+  return stack.length === 0;
+};
+
+//optimized on space and time to retrieve... not as great if problem included more pairs
+const isValid = s => {
+  if (s.length === 0) return true;
+  if (s.length % 2 !== 0) return false;
+
+  let stack = new Array();
+  for (let paren of s) {
+    if (paren == '(') stack.push(')');
+    else if (paren == '{') stack.push('}');
+    else if (paren == '[') stack.push(']');
+    else {
+      if (stack.pop() !== paren) return false;
+    }
+  }
+  return !stack.length;
+};
+
+//firsts
 const validParens = {
   "(": ")",
   "[": "]",

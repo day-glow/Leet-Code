@@ -83,13 +83,49 @@ const twoSum = (nums, target) => {
 OPTIMIZED APPROACH:
 Refractored
 TC - O(n) - Hash Table, key look up
-SC -
-
-Result -
-Runtime: 116 ms, faster than 51.38% of JavaScript online submissions for Two Sum.
-Memory Usage: 48.2 MB, less than 6.71% of JavaScript online submissions for Two Sum.
-
+SC - O(n)
 */
+
+//brute force = O(n^2)/O(1) nested loops looking for a pair nums[i] + nums[j] = target
+//two pass hash table O(n)/O(n)
+//one pass hash table O(n)/O(n)
+
+//optimized
+//add to hash map
+//loop, look for a match
+//TC - O(n)
+//SC - O(n)
+
+//thirds:
+var twoSum = function(nums, target) {
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (map.has(target - nums[i])) return [i, map.get(target - nums[i])];
+    map.set(nums[i], i);
+  }
+  throw "No two sum solution";
+};
+
+//seconds:
+//TC - O(n)
+//SC - O(n)
+const twoSum = (nums, target) => {
+  let seen = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (seen.has(target - nums[i])) {
+      return [seen.get(target - nums[i]), i];
+    }
+    seen.set(nums[i], i);
+  }
+};
+
+const twoSum = (nums, target) => {
+  const numMap = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    if (numMap.has(target - nums[i])) return [numMap.get(target - nums[i]), i];
+    numMap.set(nums[i], i);
+  }
+};
 
 //object not hash map/set
 const twoSum = (nums, target) => {

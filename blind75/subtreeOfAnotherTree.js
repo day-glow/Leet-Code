@@ -1,4 +1,6 @@
 /*
+https://leetcode.com/problems/subtree-of-another-tree/submissions/
+
 Given two non-empty binary trees s and t, check whether tree t has exactly the same structure and node values with a subtree of s. A subtree of s is a tree consists of a node in s and all of this node's descendants. The tree s could also be considered as a subtree of itself.
 
 Example 1:
@@ -22,11 +24,14 @@ Given tree t:
 TC-O(n) or worse case O(n*m) must traverse both trees fully
 SC-O(n)
 */
+//postorder traversal, O(m^2 + n^2 + m * n)/ O(max(m,n))
+//By comparison of nodes, O(m * n)/O(n)
+//Oneliner JSON.stringify &.indexOf, O(m * n)/O(n)
 
-//SECOND PASS:
+//Oneliner JSON.stringify &.indexOf:
 const isSubtree = (s, t) => JSON.stringify(s).indexOf(JSON.stringify(t)) !== -1;
 
-//second pass:
+//By comparison of nodes:
 const isSubtree = (s, t) => {
   if (!s) return !t;
 
@@ -50,4 +55,17 @@ const isTheSame = (s, t) => {
 const isSubtree = (s, t) => {
   if (!s) return !t;
   return isTheSame(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+};
+
+//thirds:
+var isSubtree = function(s, t) {
+  if (!s) return !t;
+
+  var isSame = function(s, t) {
+    if (!s || !t) return !s && !t;
+    if (s.val !== t.val) return false;
+    return isSame(s.left, t.left) && isSame(s.right, t.right);
+  };
+
+  return isSame(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
 };
