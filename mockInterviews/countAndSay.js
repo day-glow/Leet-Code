@@ -25,3 +25,49 @@ countAndSay(2) = say "1" = one 1 = "11"
 countAndSay(3) = say "11" = two 1's = "21"
 countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
 */
+
+var countAndSay = function(n) {
+  let result = "1";
+
+  var sayThis = function(num) {
+    let say = "";
+    let prev;
+    let count = 0;
+    let stack = num.split("");
+    while (stack.length) {
+      let curr = stack.pop();
+      if (prev && curr === prev) {
+        count++;
+      } else if (prev === undefined) {
+        prev = curr;
+        count = 1;
+      } else {
+        say = count + prev + say;
+        prev = curr;
+        count = 1;
+      }
+    }
+    if (count > 0) say = count + prev + say;
+    return say;
+  };
+
+  while (n > 1) {
+    result = sayThis(result);
+    n--;
+  }
+  return result;
+};
+
+//recursion, O(n^2)/O(n^2)
+//dp/memoization/iterative
+//stack
+
+//1
+//11
+//21
+//1211
+//111221
+//312211
+//132221
+//11133211
+//31231221
