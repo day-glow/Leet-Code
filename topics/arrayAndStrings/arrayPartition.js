@@ -17,11 +17,12 @@ Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5
 */
 //brute force O(n!)/O(n), all possibilities
 //sort, O(nlogn)/O(n)
-//extra array O(n)/O(n)
+//extra array O(n)/O(n), didn't understand solution
 
 //sort oneliner:
 const arrayPairSum = nums => nums.sort((a, b) => a - b).reduce((acc, v, i) => acc += i % 2 === 0 ? v : 0);
-sort
+
+//sort
 const arrayPairSum = nums => {
   nums = nums.sort((a, b) => a - b);
   let maxSum = 0;
