@@ -30,3 +30,14 @@ const arrayPairSum = nums => {
 
   return maxSum;
 };
+
+//mock:
+//all possibilities O(n^2)/O(m/2)
+//sort, O(nlogn)/O(1)
+const arrayPairSum = nums => nums.sort((a, b) => a - b).reduce((acc, v, i) => acc += i % 2 === 0 ? v : 0);
+var arrayPairSum = function(nums) {
+  let maxSum = 0;
+  nums.sort((a, b) => a - b);
+  for (let i = 0; i < nums.length; i += 2) maxSum += nums[i];
+  return maxSum;
+};
