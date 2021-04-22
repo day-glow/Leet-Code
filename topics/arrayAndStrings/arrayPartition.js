@@ -15,26 +15,23 @@ Input: nums = [6,2,6,5,1,2]
 Output: 9
 Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5) + min(6, 6) = 1 + 2 + 6 = 9.
 */
+//brute force O(n!)/O(n), all possibilities
+//sort, O(nlogn)/O(n)
+//extra array O(n)/O(n)
 
-/*
-TC- O(nlogn)
-SC- O(logn)
-*/
+//sort oneliner:
+const arrayPairSum = nums => nums.sort((a, b) => a - b).reduce((acc, v, i) => acc += i % 2 === 0 ? v : 0);
+sort
 const arrayPairSum = nums => {
   nums = nums.sort((a, b) => a - b);
   let maxSum = 0;
-
   for (let i = 0; i < nums.length; i += 2) {
     maxSum += nums[i];
   }
-
   return maxSum;
 };
 
 //mock:
-//all possibilities O(n^2)/O(m/2)
-//sort, O(nlogn)/O(1)
-const arrayPairSum = nums => nums.sort((a, b) => a - b).reduce((acc, v, i) => acc += i % 2 === 0 ? v : 0);
 var arrayPairSum = function(nums) {
   let maxSum = 0;
   nums.sort((a, b) => a - b);
