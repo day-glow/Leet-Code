@@ -21,3 +21,15 @@ numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
 numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1))
 numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 */
+
+//mock:
+var NumArray = function(nums) {
+  this.numsArr = nums;
+};
+
+NumArray.prototype.sumRange = function(left, right) {
+  let nums = this.numsArr;
+  let sum = 0;
+  for (let i = left; i <= right; i++) sum += nums[i];
+  return sum;
+};
