@@ -20,6 +20,8 @@ Example 3:
 Input: nums = [0]
 Output: 0
 */
+//dp O(n)/O(1), simpleRob funtion, params start/end, prevSum or nextSum compare, compare max of options
+
 
 //nums = [1,2,3,1,4,5,2,1,6,3,4]
 //n1   = [1,2,3,1,4,5,2,1,6,3]
@@ -59,6 +61,5 @@ var rob = function(nums) {
   };
   let max1 = sumOfOptions(0, nums.length - 2);
   let max2 = sumOfOptions(1, nums.length - 1);
-
   return Math.max(max1, max2);
 };
