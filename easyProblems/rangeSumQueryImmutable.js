@@ -27,12 +27,11 @@ numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 
 //optimized SC, caching O(1)/O(n)
 var NumArray = function(nums) {
-  let sum = new Array(nums.length + 1);
-  for (let i = 0; i < nums.length; i++) sum[i + 1] = sum[i] + nums[i];
+  this.sum = new Array(nums.length + 1).fill(0);
+  for (let i = 0; i < nums.length; i++) this.sum[i + 1] = this.sum[i] + nums[i];
 };
-
 NumArray.prototype.sumRange = function(left, right) {
-  return sum[j + 1] - sum[i];
+  return this.sum[right + 1] - this.sum[left];
 };
 
 //mock:
