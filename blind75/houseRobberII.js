@@ -43,3 +43,22 @@ var rob = function(nums) {
   return Math.max(choiceRobSum(nums.slice(0, nums.length - 1)), choiceRobSum(nums.slice(1)));
 };
 
+//thirds:
+var rob = function(nums) {
+  if (nums.length < 4) return Math.max(...nums);
+  var sumOfOptions = function(start, end) {
+    let t1 = 0;
+    let t2 = 0;
+    for (let i = start; i <= end; i++) {
+      let curr = nums[i];
+      let temp = t1;
+      t1 = Math.max(curr + t2, t1);
+      t2 = temp;
+    }
+    return t1;
+  };
+  let max1 = sumOfOptions(0, nums.length - 2);
+  let max2 = sumOfOptions(1, nums.length - 1);
+
+  return Math.max(max1, max2);
+};
