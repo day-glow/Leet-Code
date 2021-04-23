@@ -22,6 +22,20 @@ Output: 0
 */
 //dp O(n)/O(1), simpleRob funtion, params start/end, prevSum or nextSum compare, compare max of options
 
+//thirds:
+var rob = function(nums) {
+  if (nums.length < 4) return Math.max(...nums);
+  var sumOfOptions = function(start, end) {
+    let t1 = 0;
+    let t2 = 0;
+    for (let i = start; i <= end; i++) {
+      let temp = t1;
+      [t1, t2] = [Math.max(nums[i] + t2, t1), temp];
+    }
+    return t1;
+  };
+  return Math.max(sumOfOptions(0, nums.length - 2), sumOfOptions(1, nums.length - 1));
+};
 
 //nums = [1,2,3,1,4,5,2,1,6,3,4]
 //n1   = [1,2,3,1,4,5,2,1,6,3]
@@ -30,7 +44,7 @@ Output: 0
 //dp   = [1,2,4,4,0,0,0,0,0,0,0]
 
 //DP:
-//TC-O(2n)
+//TC-O(n)
 //SC-O(1)
 var rob = function(nums) {
   if (!nums.length) return 0;
@@ -45,21 +59,3 @@ var rob = function(nums) {
   return Math.max(choiceRobSum(nums.slice(0, nums.length - 1)), choiceRobSum(nums.slice(1)));
 };
 
-//thirds:
-var rob = function(nums) {
-  if (nums.length < 4) return Math.max(...nums);
-  var sumOfOptions = function(start, end) {
-    let t1 = 0;
-    let t2 = 0;
-    for (let i = start; i <= end; i++) {
-      let curr = nums[i];
-      let temp = t1;
-      t1 = Math.max(curr + t2, t1);
-      t2 = temp;
-    }
-    return t1;
-  };
-  let max1 = sumOfOptions(0, nums.length - 2);
-  let max2 = sumOfOptions(1, nums.length - 1);
-  return Math.max(max1, max2);
-};
