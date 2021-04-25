@@ -50,7 +50,7 @@ var cloneGraph = function(node) {
 
 //queue approach
 //TC-O(n+m)
-//SC-O(n)
+//SC-O(n) - DFS SC is O(Height)
 var cloneGraph = function(node) {
   if (!node) return null;
   let clones = new Map();
@@ -88,7 +88,7 @@ var cloneGraph = function(node) {
 };
 
 //thirds (pay attention to node instantiation):
-//O(n+m)/O(n)
+//O(n+m)/O(n) - BFS SC is O(Width)
 var cloneGraph = function(node) {
   if (node === null) return node;
   let seen = new Map();
