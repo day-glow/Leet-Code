@@ -78,6 +78,7 @@ var lengthOfLIS = function(nums) {
 };
 
 //thirds:
+//O(n^2)/O(n)
 var lengthOfLIS = function(nums) {
   let dp = new Array(nums.length).fill(1);
   let longest = 1;
