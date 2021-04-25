@@ -40,6 +40,12 @@ count= [1, 1,4,1,3,2, 1, 1]
 
 //binary search (pick pivot, count left, count right, check middle)
 */
+
+//brute force, O(2^n)/O(n^2)
+//recursion & memoization, O(n^2)/O(n^2)
+//DP O(n^2)/O(n)
+//DP & binary search, O(nlogn)/O(n)
+
 //DP, refactored
 //TC-O(n2)
 //SC-O(n)
