@@ -27,7 +27,9 @@ Explanation: There are 4 nodes in the graph.
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 */
-//second pass (bfs approach):
+//DFS O(n + m)/ O(h) or O(n), worried about recurion stack
+//BFS O(n + m)/ O(w) or O(n), ioterative is safer
+
 //create a new adj List while iterating over given adj List
 var cloneGraph = function(node) {
   if (node === null) return null;
