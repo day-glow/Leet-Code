@@ -94,7 +94,8 @@ var lengthOfLIS = function(nums) {
   return longest;
 };
 
-//optimized solution:
+//optimized solution, dp w/ binary search:
+//O(nlogn)/O(n)
 var lengthOfLIS = function(nums) {
   var n = nums.length;
   if (!n) return 0;
