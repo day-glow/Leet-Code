@@ -17,8 +17,9 @@ Example 3:
 Input: nums = [1], target = 0
 Output: -1
 */
+//binary search w/helper function find rotation pivot, O(log n)/O(1)
+//ONE_PASS BINARY SEARCH, O(log n)/O(1)
 
-//ONE_PASS BINARY SEARCH
 //binary search with checks for left < target < right values
 //TC-O(log n)
 //SC-O(1)
@@ -102,6 +103,38 @@ var search = function(nums, target) {
       target >= nums[l] && target < nums[m] ? r = m - 1 : l = m + 1;
     } else {
       target <= nums[r] && target > nums[m] ? l = m + 1 : r = m - 1;
+    }
+  }
+  return -1;
+};
+
+//thirds:
+const search = (nums, target) => nums.indexOf(target);
+
+//brute force, iterate O(n)/O(1)
+//.sort native, O(nlogn)/O(1)
+//.indexOf native method O(n)/O(1), traverses whole list
+//binarySearch/D&C with knowledge of rotation O(log n)/O(1)
+
+var search = function(nums, target) {
+  let lo = 0;
+  let hi = nums.length - 1;
+  while (lo <= hi) {
+    let p = lo + Math.floor((hi - lo) / 2);
+    if (nums[p] === target) {
+      return p;
+    } else if (nums[lo] <= nums[p]) {
+      if (target >= nums[lo] && target < nums[p]) {
+        hi = p - 1;
+      } else {
+        lo = p + 1;
+      }
+    } else {
+      if (target <= nums[hi] && target > nums[p]) {
+        lo = p + 1;
+      } else {
+        hi = p - 1;
+      }
     }
   }
   return -1;
