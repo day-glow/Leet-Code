@@ -27,7 +27,9 @@ Explanation: There are 4 nodes in the graph.
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 */
-//second pass (bfs approach):
+//DFS O(n + m)/ O(h) or O(n), worried about recurion stack
+//BFS O(n + m)/ O(w) or O(n), ioterative is safer
+
 //create a new adj List while iterating over given adj List
 var cloneGraph = function(node) {
   if (node === null) return null;
@@ -50,7 +52,7 @@ var cloneGraph = function(node) {
 
 //queue approach
 //TC-O(n+m)
-//SC-O(n)
+//SC-O(n) - DFS SC is O(Height)
 var cloneGraph = function(node) {
   if (!node) return null;
   let clones = new Map();
@@ -85,4 +87,24 @@ var cloneGraph = function(node) {
   };
 
   return clone(node);
+};
+
+//thirds (pay attention to node instantiation):
+//O(n+m)/O(n) - BFS SC is O(Width)
+var cloneGraph = function(node) {
+  if (node === null) return node;
+  let seen = new Map();
+  let queue = [node];
+  seen.set(node, new Node(node.val, new Array()));
+  while (queue.length) {
+    let curr = queue.pop();
+    for (let n of curr.neighbors) {
+      if (!seen.has(n)) {
+        seen.set(n, new Node(n.val, new Array()));
+        queue.push(n);
+      }
+      seen.get(curr).neighbors.push(seen.get(n));
+    }
+  }
+  return seen.get(node);
 };
