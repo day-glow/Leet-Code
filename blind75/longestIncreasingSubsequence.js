@@ -40,6 +40,12 @@ count= [1, 1,4,1,3,2, 1, 1]
 
 //binary search (pick pivot, count left, count right, check middle)
 */
+
+//brute force, O(2^n)/O(n^2)
+//recursion & memoization, O(n^2)/O(n^2)
+//DP O(n^2)/O(n)
+//DP & binary search, O(nlogn)/O(n)
+
 //DP, refactored
 //TC-O(n2)
 //SC-O(n)
@@ -77,3 +83,42 @@ var lengthOfLIS = function(nums) {
   return len;
 };
 
+//thirds:
+//O(n^2)/O(n)
+var lengthOfLIS = function(nums) {
+  let dp = new Array(nums.length).fill(1);
+  let longest = 1;
+  dp[0] = 1;
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = i - 1; j >= 0; j--) {
+      if (nums[i] > nums[j]) {
+        dp[i] = Math.max(dp[i], dp[j] + 1);
+        longest = Math.max(longest, dp[i]);
+      }
+    }
+  }
+  return longest;
+};
+
+//optimized solution, dp w/ binary search:
+//O(nlogn)/O(n)
+var lengthOfLIS = function(nums) {
+  const dp = Array(nums.length).fill(Infinity);
+
+  function binarySearch(target) {
+      let low = 0, high = dp.length-1;
+      while(low < high) {
+          const mid = Math.floor((low + high) / 2);
+          if(dp[mid] >= target) high = mid;
+          else low = mid + 1;
+      }
+      return low;
+  }
+
+  for(let n of nums) {
+      const idx = binarySearch(n);
+      dp[idx] = n;
+  }
+  const res = dp.indexOf(Infinity);
+  return res === -1 ? nums.length : res;
+};
