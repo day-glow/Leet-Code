@@ -106,3 +106,11 @@ var search = function(nums, target) {
   }
   return -1;
 };
+
+//thirds:
+const search = (nums, target) => nums.indexOf(target);
+
+//brute force, iterate O(n)/O(1)
+//.sort native, O(nlogn)/O(1)
+//.indexOf native method O(n)/O(1), traverses whole list
+//binarySearch/D&C with knowledge of rotation O(log n)/O(1)
