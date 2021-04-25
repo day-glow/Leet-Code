@@ -17,8 +17,9 @@ Example 3:
 Input: nums = [1], target = 0
 Output: -1
 */
+//binary search w/helper function find rotation pivot, O(log n)/O(1)
+//ONE_PASS BINARY SEARCH, O(log n)/O(1)
 
-//ONE_PASS BINARY SEARCH
 //binary search with checks for left < target < right values
 //TC-O(log n)
 //SC-O(1)
