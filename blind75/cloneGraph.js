@@ -86,3 +86,23 @@ var cloneGraph = function(node) {
 
   return clone(node);
 };
+
+//thirds (pay attention to node instantiation):
+//O(n+m)/O(n)
+var cloneGraph = function(node) {
+  if (node === null) return node;
+  let seen = new Map();
+  let queue = [node];
+  seen.set(node, new Node(node.val, new Array()));
+  while (queue.length) {
+    let curr = queue.pop();
+    for (let n of curr.neighbors) {
+      if (!seen.has(n)) {
+        seen.set(n, new Node(n.val, new Array()));
+        queue.push(n);
+      }
+      seen.get(curr).neighbors.push(seen.get(n));
+    }
+  }
+  return seen.get(node);
+};
