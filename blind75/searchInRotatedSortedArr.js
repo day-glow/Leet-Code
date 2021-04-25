@@ -114,3 +114,27 @@ const search = (nums, target) => nums.indexOf(target);
 //.sort native, O(nlogn)/O(1)
 //.indexOf native method O(n)/O(1), traverses whole list
 //binarySearch/D&C with knowledge of rotation O(log n)/O(1)
+
+var search = function(nums, target) {
+  let lo = 0;
+  let hi = nums.length - 1;
+  while (lo <= hi) {
+    let p = lo + Math.floor((hi - lo) / 2);
+    if (nums[p] === target) {
+      return p;
+    } else if (nums[lo] <= nums[p]) {
+      if (target >= nums[lo] && target < nums[p]) {
+        hi = p - 1;
+      } else {
+        lo = p + 1;
+      }
+    } else {
+      if (target <= nums[hi] && target > nums[p]) {
+        lo = p + 1;
+      } else {
+        hi = p - 1;
+      }
+    }
+  }
+  return -1;
+};
