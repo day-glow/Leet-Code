@@ -103,22 +103,22 @@ var lengthOfLIS = function(nums) {
 //optimized solution, dp w/ binary search:
 //O(nlogn)/O(n)
 var lengthOfLIS = function(nums) {
-  var n = nums.length;
-  if (!n) return 0;
-  var len = 1;
-  var dp = [nums[0]];
-  for (var i = 1; i < n; i++) {
-      if (dp[len - 1] < nums[i]) {
-          dp[len++] = nums[i];
-      } else {
-          var left = 0, right = len - 1, num = nums[i];
-          while (left < right) {
-              var mid = left + Math.floor((right - left) / 2);
-              if (dp[mid] < num) left = mid + 1;
-              else right = mid;
-          }
-          dp[right] = num;
+  const dp = Array(nums.length).fill(Infinity);
+
+  function binarySearch(target) {
+      let low = 0, high = dp.length-1;
+      while(low < high) {
+          const mid = Math.floor((low + high) / 2);
+          if(dp[mid] >= target) high = mid;
+          else low = mid + 1;
       }
+      return low;
   }
-  return len;
+
+  for(let n of nums) {
+      const idx = binarySearch(n);
+      dp[idx] = n;
+  }
+  const res = dp.indexOf(Infinity);
+  return res === -1 ? nums.length : res;
 };
