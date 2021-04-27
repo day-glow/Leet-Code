@@ -22,3 +22,16 @@ var isPalindrome = function(s) {
   }
   return true;
 };
+
+//thirds
+//split in two (make a copy of half, reverse, string compare) O(n)/O(n)
+//two pointers O(n)/O(1)
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/gi,"");
+  let p1 = 0;
+  let p2 = onlyLetters.length - 1;
+  while (p1 <= p2) {
+    if (onlyLetters[p1++] !== onlyLetters[p2--]) return false;
+  }
+  return true;
+};
