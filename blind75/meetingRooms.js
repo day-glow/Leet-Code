@@ -13,6 +13,15 @@ Output: true
 //.sort, O(nlogn)/O(1)
 //if already sorted, O(n)/O(1)
 
+//optimized:
+var canAttendMeetings = function(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  for (let i = 1; i < intervals.length; i++) {
+    if (intervals[i][0] < intervals[i - 1][1]) return false;
+  }
+  return true;
+};
+
 //TC-O(nlogn)
 //SC-O(1)
 //sort by start time, ascending
@@ -26,11 +35,6 @@ const canAttendMeetings = intervals => {
   return true;
 };
 
-//BRUTE FORCE:
-//TC-O(n^2)
-//SC-O(1)
-//solve with nested loops and overlap conditions for each pair's vals
-
 //optional for each loop
 var canAttendMeetings = function(intervals) {
   intervals.sort((a, b) => a[0] - b[0]);
@@ -39,3 +43,8 @@ var canAttendMeetings = function(intervals) {
   intervals.forEach(meeting => meeting[0] < prevEndTime ? canAttendAll = false : prevEndTime = meeting[1]);
   return canAttendAll;
 };
+
+//BRUTE FORCE:
+//TC-O(n^2)
+//SC-O(1)
+//solve with nested loops and overlap conditions for each pair's vals
