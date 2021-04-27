@@ -12,13 +12,46 @@ Output: false
 Explanation: "raceacar" is not a palindrome.
 */
 
+//compare with reverse O(n)/O(n)
+//two pointers O(n)/O(1)
+
 var isPalindrome = function(s) {
   if (!s.length) return true;
-  const alphanum = s.toUpperCase().replace(/[^A-Z0-9]/gi, "");
+  const alphanum = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
   let p1 = 0;
   let p2 = alphanum.length - 1;
   while (p1 <= p2) {
     if (alphanum[p1++] !== alphanum[p2--]) return false;
   }
   return true;
+};
+
+//thirds
+//split in two (make a copy of half, reverse, string compare) O(n)/O(n)
+//two pointers O(n)/O(1)
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/g,"");
+  let p1 = 0;
+  let p2 = onlyLetters.length - 1;
+  while (p1 <= p2) {
+    if (onlyLetters[p1++] !== onlyLetters[p2--]) return false;
+  }
+  return true;
+};
+
+//reverse, compare whole string:
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  let reversed = onlyLetters.slice(0).split("").reverse().join("");
+  return onlyLetters === reversed;
+};
+
+//native methods:
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/g, "");
+  let midpoint = Math.floor(onlyLetters.length / 2);
+  let firstHalf = onlyLetters.slice(0, midpoint);
+  if (onlyLetters.length % 2 === 1) midpoint += 1;
+  let secondHalf = onlyLetters.slice(midpoint).split("").reverse().join("");
+  return firstHalf === secondHalf;
 };
