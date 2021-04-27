@@ -9,6 +9,9 @@ Example 2:
 Input: intervals = [[7,10],[2,4]]
 Output: true
 */
+//brute force O(n^2)/O(1) nested loops checking overlap condition
+//.sort, O(nlogn)/O(1)
+//if already sorted, O(n)/O(1)
 
 //TC-O(nlogn)
 //SC-O(1)
