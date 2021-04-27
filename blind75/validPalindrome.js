@@ -12,6 +12,9 @@ Output: false
 Explanation: "raceacar" is not a palindrome.
 */
 
+//compare with reverse O(n)/O(n)
+//two pointers O(n)/O(1)
+
 var isPalindrome = function(s) {
   if (!s.length) return true;
   const alphanum = s.toUpperCase().replace(/[^A-Z0-9]/gi, "");
@@ -34,6 +37,13 @@ var isPalindrome = function(s) {
     if (onlyLetters[p1++] !== onlyLetters[p2--]) return false;
   }
   return true;
+};
+
+//reverse, compare whole string:
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/gi, "");
+  let reversed = onlyLetters.slice(0).split("").reverse().join("");
+  return onlyLetters === reversed;
 };
 
 //native methods:
