@@ -35,3 +35,13 @@ var isPalindrome = function(s) {
   }
   return true;
 };
+
+//native methods:
+var isPalindrome = function(s) {
+  let onlyLetters = s.toUpperCase().replace(/[^A-Z0-9]/gi, "");
+  let midpoint = Math.floor(onlyLetters.length / 2);
+  let firstHalf = onlyLetters.slice(0, midpoint);
+  if (onlyLetters.length % 2 === 1) midpoint += 1;
+  let secondHalf = onlyLetters.slice(midpoint).split("").reverse().join("");
+  return firstHalf === secondHalf;
+};
