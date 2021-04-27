@@ -29,6 +29,20 @@ Output:
  SC-O(n)
 */
 
+//recursion O(n)/O(h)
+//iterative O(n)/(n)
+var invertTree = function(root) {
+  let queue = [root];
+  while(queue.length) {
+    let node = queue.pop();
+    if (node) {
+      [node.left, node.right] = [node.right, node.left];
+      queue.push(node.left, node.right);
+    }
+  }
+  return root;
+};
+
 //second pass recursive approach
 /**
 left -> right
@@ -101,7 +115,7 @@ const invertTree = root => {
 
 //thirds:
 //recursion dfs
-//iterative, bfs, preorder O(n)/O(1)
+//iterative, bfs, preorder O(n)/O(n) - queue could contain all nodes
 var invertTree = function(root) {
   let queue = [root];
   while(queue.length) {
