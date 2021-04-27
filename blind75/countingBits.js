@@ -29,21 +29,21 @@ Explanation:
 //DP + least significant bit O(n)/O(n), dp[i] = dp[i>>1]+(i&1)
 //DP + last Set Bit O(n)/O(n), dp[i] = dp[i&(i-1)]+1)
 
-//dp + last set bit:
+//dp + last set bit O(n)/O(n):
 const countBits = num => {
   let dp = new Array(num + 1).fill(0);
   for (let i = 1; i <= num; i++) dp[i] = dp[i & (i - 1)] + 1;
   return dp;
 }
 
-//DP + least approach:
+//DP + least approach O(n)/O(n):
 const countBits = num => {
   let dp = new Array(num + 1).fill(0);
   for (let i = 1; i <= num; i++) dp[i] = dp[i >> 1] + (i & 1);
   return dp;
 }
 
-//one-liner, single pass TC/SC-O(n):
+//one-liner, single pass TC-O(kn)/SC-O(n):
 const countOneBits = n => n === 0 ? 0 : 1 + countOneBits(n &= n - 1);
 const countBits = num => new Array(num + 1).fill().map((_, i) => i === 0 ? 0 : countOneBits(i));
 
