@@ -24,6 +24,28 @@ Explanation:
 4 --> 100
 5 --> 101
 */
+//pop count O(nk)/O(n), n&=n-1
+//DP + Most significant bit O(n)/O(n), nested while loop, b<<= 1
+//DP + least significant bit O(n)/O(n), dp[i] = dp[i>>1]+(i&1)
+//DP + last Set Bit O(n)/O(n), dp[i] = dp[i&(i-1)]+1)
+
+//dp + last set bit O(n)/O(n):
+const countBits = num => {
+  let dp = new Array(num + 1).fill(0);
+  for (let i = 1; i <= num; i++) dp[i] = dp[i & (i - 1)] + 1;
+  return dp;
+}
+
+//DP + least approach O(n)/O(n):
+const countBits = num => {
+  let dp = new Array(num + 1).fill(0);
+  for (let i = 1; i <= num; i++) dp[i] = dp[i >> 1] + (i & 1);
+  return dp;
+}
+
+//one-liner, single pass TC-O(kn)/SC-O(n):
+const countOneBits = n => n === 0 ? 0 : 1 + countOneBits(n &= n - 1);
+const countBits = num => new Array(num + 1).fill().map((_, i) => i === 0 ? 0 : countOneBits(i));
 
 //single pass TC/SC-O(n)
 //no built in function
@@ -60,3 +82,17 @@ var countBits = function(num) {
 //one-liner:
 const countOneBits = n => n === 0 ? 0 : 1 + countOneBits(n &= n - 1);
 const countBits = num => new Array(num + 1).fill().map((_, i) => i === 0 ? 0 : countOneBits(i));
+
+//thirds (not sleek):
+var countOneBits = function(n) {
+  if (n === 0) {
+    return 0;
+  } else {
+    return 1 + countOneBits(n &= n - 1);
+  }
+}
+
+var countBits = function(num) {
+  let countOnes = new Array(num + 1).fill().map((_, i) => i === 0 ? 0 : countOneBits(i));
+  return countOnes;
+};
