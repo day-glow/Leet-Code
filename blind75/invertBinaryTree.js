@@ -98,3 +98,18 @@ const invertTree = root => {
   }
   return root;
 };
+
+//thirds:
+//recursion dfs
+//iterative, bfs, preorder O(n)/O(1)
+var invertTree = function(root) {
+  let queue = [root];
+  while(queue.length) {
+    let node = queue.pop();
+    if (node) {
+      [node.left, node.right] = [node.right, node.left];
+      queue.push(node.left, node.right);
+    }
+  }
+  return root;
+};
