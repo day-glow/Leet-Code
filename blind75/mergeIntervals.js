@@ -11,11 +11,73 @@ Input: intervals = [[1,4],[4,5]]
 Output: [[1,5]]
 Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 */
+//connected components, brute force O(n^2)/O(n^2), nested loops
+//sort arr, compare O(nlogn)/O(n)
 
-/**
- * @param {number[][]} intervals
- * @return {number[][]}
- */
+/*
+Given an array of intervals where intervals[i] = [starti, endi],
+Write an algorithm that would return the intervals after being merged so no intervals are overlapping
+
+** test case **
+    example 1:         [[0,2],[2,4],[3,6],[1,2]]
+                        a     b     c     d
+    merge overlapping: [[0,2],[2,6],[1,2]]
+    output:            [[0,2],[2,6]]
+
+    sorted? no
+    overlapping? a.end = 2 & b.start = 2, no
+
+** specs **
+    I - arr of intervals (arr/tuples)
+    O - arr of intervals (arr/tuples); can we modify input array (in-place) OR allocate space for result
+    C - TC / SC
+    E - overlapping definition, if intervals is null, if all are the same intervals
+
+** visualization **
+Approaches
+1. Sort arr, iterate backwards compare start to prev end time, merge if overlapping
+    time - O(nlogn), space - O(logn) for sorting inplace or O(n) for copy
+        step 1: input interval arr               [[0,2],[2,4],[3,6],[1,2]]
+        step 2: sort input arr by start times    [[0,2],[1,2],[2,4],[3,6]]
+        3: check start time to prev end time     [[0,2],[1,2],[2,4],[3,6]] -> [2,4],[3,6] overlaps -> merge [[0,2],[1,2],[2,6]]
+                                                                i
+        ** merge, take min start, max end time for pair [2,4],[3,6] -> min(2,3) & max(4,6) -> [2,6]
+        4: continue merging all                  [[0,2],[1,2],[2,6]] -> [0,2],[1,2] overlaps -> merge [[0,2],[2,6]]
+        output:                                  [[0,2],[2,6]]
+
+** pseudocode **
+function mergeIntervals
+    sort array (native sort) by start times
+    iterate over array
+        check current interval start time with prev interval end time
+            if start less than end, merge
+                min(start times), max(end times)
+                prev interval merges, and curr interval remove
+            if not, continue
+    return array
+*/
+
+var merge = function(arr) {
+  arr.sort((a, b) => a[0] - b[0])
+  const merged = [arr[0]];
+  for (let i = 1; i < arr.length; i++) {
+    const currStart = arr[i][0];
+    const prevEnd = merged[merged.length - 1][1];
+    if (currStart < prevEnd) {
+      // redundant min since, sorted arr
+      merged[merged.length - 1][1] = Math.max(prevEnd,  arr[i][1]);
+    } else {
+      merged.push(arr[i]);
+    }
+  }
+  return merged;
+}
+
+const test = [[0,2],[2,4],[3,6],[1,2]];
+const expectedResult = [[0,2],[2,6]];
+const output = merge(test);
+console.log('actual result: ', output, 'expected result: ', expectedResult, 'result: ', String(output) === String(expectedResult));
+
 //clarify Q are they in sorted, ascending order? by start of interval?
 //test case [[1,4],[0,0]] shows intervals are not sorted
 
