@@ -61,11 +61,23 @@ const isPalindrome = str => {
 */
 
 /*
+approach 1: string builder, time O(n) space O(n)
+
 OPTIMIZED Two-pointer solution:
-Result:
-Runtime: 84 ms, faster than 97.07% of JavaScript online submissions for Valid Palindrome.
-Memory Usage: 40.9 MB, less than 83.90% of JavaScript online submissions for Valid Palindrome.
+time O(n) space O(1)
 */
+
+var isPalindrome = function(s) {
+  if (!s.length) return true;
+  const alphanum = s.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  let head = 0;
+  let tail = alphanum.length - 1;
+  while (head < tail) {
+    if (alphanum[head++] !== alphanum[tail--]) return false;
+  }
+  return true;
+};
+
 
 const isPalindrome = str => {
   if (str === "") { return true; }
