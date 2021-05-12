@@ -17,3 +17,24 @@ Example 2:
 Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
 Output: 3
 */
+
+//bfs with visited
+var findCircleNum = function(isConnected) {
+  const visited = new Array(isConnected.length).fill(false);
+  let numProvs = 0;
+  let queue = [];
+  for (let i = 0; i < isConnected.length; i++) {
+    if (visited[i] === false) {
+      queue.unshift(i);
+      while (queue.length) {
+        const node = queue.pop();
+        visited[node] = true;
+        for (let j = 0; j < isConnected.length; j++) {
+          if (isConnected[node][j] === 1 && visited[j] === false) queue.unshift(j);
+        }
+      }
+      numProvs++;
+    }
+  }
+  return numProvs;
+};
