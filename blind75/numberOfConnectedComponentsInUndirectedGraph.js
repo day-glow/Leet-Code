@@ -40,7 +40,7 @@ right = 3
 count = 0
 */
 //DFS, recursion with visited arraym, O(e+v)/O(e+v)
-//union find with hashMap or Array, O(logn*m)/O(n)
+//union find with hashMap or Array, O(logn*m)/O(n), start all nodes with -1 (separate components)
 
 //optimized:
 var countComponents = function(n, edges) {
