@@ -23,3 +23,24 @@ Input words contain only lowercase letters.
 Follow up:
 Try to solve it in O(n log k) time and O(n) extra space.
 */
+
+/*
+1. brute force, count time O(n^2)/space O(n)
+2. sort words, then count using stack/tuples or map, time O(nlogn) space O(n)
+3. hash Map, count occurrances, time O(nlogn) space O(n)
+
+iterate
+add to hashmap freq
+sort/slice top k
+*/
+
+var topKFrequent = function(words, k) {
+  if (!words.length || !k) return [];
+  let wordFreq = new Map();
+  for (let word of words) {
+    wordFreq.has(word) ? wordFreq.set(word, wordFreq.get(word) + 1) : wordFreq.set(word, 1);
+  }
+  const sorted = [...wordFreq.keys()].sort((a, b) => wordFreq.get(b) !== wordFreq.get(a) ? wordFreq.get(b) - wordFreq.get(a) : a.localeCompare(b));
+  if (sorted.length > k) return sorted.slice(0, k);
+  return sorted;
+};
