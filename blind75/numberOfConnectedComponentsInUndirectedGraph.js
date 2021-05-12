@@ -39,6 +39,26 @@ right = 3
 
 count = 0
 */
+//DFS, recursion with visited arraym, O(e+v)/O(e+v)
+//union find with hashMap or Array, O(logn*m)/O(n)
+
+//optimized:
+var countComponents = function(n, edges) {
+  if (!n || !edges.length) return n;
+  const nodeConnections = new Array(n).fill(-1);
+
+  for (let [edgeFrom, edgeTo] of edges) {
+    while (nodeConnections[edgeFrom] !== -1) edgeFrom = nodeConnections[edgeFrom];
+    while (nodeConnections[edgeTo] !== -1) edgeTo = nodeConnections[edgeTo];
+    if (edgeTo !== edgeFrom) nodeConnections[edgeTo] = edgeFrom;
+  }
+
+  let components = 0;
+  for (let head of nodeConnections) {
+    if (head === -1) components++;
+  }
+  return components;
+};
 
 //UNION FIND Approach:
 //TC-O(logn*m)
