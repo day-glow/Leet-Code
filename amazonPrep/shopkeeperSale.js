@@ -26,10 +26,16 @@ Example 1:
 Input:
 items_prices = [2, 3, 1, 2, 4, 2]
 Output:
-18
+8
 2 5
 Explanation:
 The total cost is 1+2+1+0+2+2 = 8 units. And 2 and 5 indexes has no discount.
+iterate over the array
+[2 - 1, 3 - 1, 1, 2 - 2, 4 - 2, 2]
+variable for total cost
+array for unchanged values, unshift
+
+dp iterate backwards, time O(n ^ 2) space O(1)
 
 Example 2:
 Input:
@@ -45,4 +51,26 @@ Output:
 9
 0 3 4
 */
-public static List<List> shopkeeperSale(int[] items_prices){
+var shopkeeperSale = function( items_prices ){
+  const len = items_prices.length;
+  let total = items_prices[len - 1];
+  const fullPricedItems = [len - 1];
+
+  for (let i = len - 2; i >= 0; i--) {
+    console.log('total: ', total)
+    for (let itemsToTheRight = i + 1; itemsToTheRight < len; itemsToTheRight++) {
+      if (items_prices[itemsToTheRight] <= items_prices[i]) {
+        total += items_prices[i] - items_prices[itemsToTheRight];
+        break;
+      }
+      if (itemsToTheRight === len - 1) {
+        total += items_prices[i];
+        fullPricedItems.unshift(i);
+      }
+    }
+  }
+  console.log(`${total}\n${fullPricedItems.join(' ')}`);
+};
+
+const arr = [2, 3, 1, 2, 4, 2];
+console.log(shopkeeperSale(arr));
