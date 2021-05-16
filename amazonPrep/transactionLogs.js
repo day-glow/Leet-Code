@@ -43,10 +43,12 @@ logData:
 ]
 threshold: 3
 
-Output: [345366 , 38239, 029323]
+Output: [029323, 345366 , 38239]
 Explanation:
 Given the following counts of userids, there are only 3 userids that meet or exceed the threshold of 3.
 
 345366 -4 , 38239 -5, 029323-3, 89921-1
 
 */
+
+Seems like an odd question, output doesnt appear to be sorted
