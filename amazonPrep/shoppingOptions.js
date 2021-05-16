@@ -30,3 +30,55 @@ Constraints
 1 ≤ price of each item ≤ 109
 Note: a, b, c and d are the sizes of the four price arrays
 */
+
+/*
+bfs/dfs
+push options into queue as long as not over budget?
+dp
+
+sort by length, if only 1 then only one option and can skip those by subtracting from budget
+bfs
+queue holds remainder budget per level
+                    10  //budget
+                    |
+                10 - 4 = 6  //shoes
+              /              \
+          6 - 2 = 4           6 - 3 = 3  //jeans
+        /          \          /          \
+  4 - 2 = 2    4 - 3 = 1    3 - 2 = 1      3 - 3 = 0  //skirts
+  1     2        3              4                     //num options after tops
+output: count leaves, 4 options
+*/
+
+var getNumberOfOptions = function(priceOfJeans, priceOfShoes, priceOfSkirts, priceOfTops, dollars) {
+  if (dollars < 1) return 0;
+  let options = [priceOfJeans, priceOfShoes, priceOfSkirts, priceOfTops];
+  let queue = [dollars];
+  let len = queue.length;
+  let currentItem = 0;
+  while (queue.length && currentItem < options.length) {
+    for (let i = 0; i < len; i++) {
+      const budgetAfterPrevItems = queue.shift();
+      for (let itemPrice of options[currentItem]) {
+        const newBudget = budgetAfterPrevItems - itemPrice;
+        if (newBudget >= 0) {
+          queue.push(newBudget);
+        }
+      }
+    }
+    currentItem++;
+    len = queue.length;
+  }
+  return queue.length;
+};
+
+const priceOfJeans = [2, 3];
+const priceOfShoes = [4];
+const priceOfSkirts = [2, 3];
+const priceOfTops = [1, 2];
+const budgeted = 10;
+
+const expectedResult = 4;
+const actualResult = getNumberOfOptions(priceOfJeans, priceOfShoes, priceOfSkirts, priceOfTops, budgeted);
+
+console.log('expected: ', expectedResult, 'actual: ', actualResult, expectedResult === actualResult);
