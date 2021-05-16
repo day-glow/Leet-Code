@@ -37,5 +37,43 @@ Explanation
 */
 
 var TopNumCompetitors = function(numCompetitors, topNCompetitors, competitors, numReviews, reviews) {
-  // Your code here
+  const comp = new Map();
+  competitors.forEach(name => comp.set(name, 0));
+  for (let i = 0; i < numReviews; i++) {
+    const curr = reviews[i].split(' ');
+    for (let word of curr) {
+      if (comp.has(word)) {
+        comp.set(word, comp.get(word) + 1);
+        break;
+      }
+    }
+  }
+
+  let array = Array.from(comp.keys());
+  console.log(array);
+  array.sort((a, b) => comp.get(b) === comp.get(a) ? b.localeCompare(a) : comp.get(b) - comp.get(a));
+  console.log(array);
+  return array.slice(0, topNCompetitors);
 }
+
+const numCompetitors = 6;
+const topNCompetitors = 2;
+const competitors = ['newshop', 'shopnow', 'afashion', 'fashionbeats', 'mymarket', 'tcellular'];
+const numReviews = 6;
+const reviews = [
+"newshop is providing good services in the city; everyone should use newshop",
+"best services by newshop",
+"fashionbeats has great services in the city",
+"I am proud to have fashionbeats",
+"mymarket has awesome services",
+"Thanks Newshop for the quick delivery"];
+
+const expectedResult = ["newshop", "fashionbeats"];
+const actualResult = TopNumCompetitors(numCompetitors, topNCompetitors, competitors, numReviews, reviews);
+console.log('expected: ', expectedResult, 'actual: ', actualResult);
+/*
+iterate over reviews
+count number of reviews that mention comp
+sort counts descending, and alphabetically
+return top
+*/
