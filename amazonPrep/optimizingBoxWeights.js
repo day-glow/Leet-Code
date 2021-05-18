@@ -3,12 +3,14 @@ https://leetcode.com/discuss/interview-question/1183360/Amazon-Online-Assesment-
 https://leetcode.com/discuss/interview-question/1184534/Amazon-OA-SDE2-or-OPTIMIZING-BOX-WEIGHT-or-GIFT-GROUPING
 
 Optimizing box weight: link is broken but here is a description
+
 ArrayList of size N : A[5,6,7,8,1,2,6,9]
 split array in two groups A & B with below constraints (2 groups i.e sets with unique)
 A & B should have unique values
 A Sum >= B
 A should have max values
 A subset elements < B subset
+
 -------------------------------------------------------
 https://www.chegg.com/homework-help/questions-and-answers/01-hour-35-mins-47-seconds-left-1-optimizing-box-weights-amazon-fulfillment-associate-set--q75438758
 
@@ -31,6 +33,29 @@ The 2 subsets in arr to satisfy conditions for A are [5,7] & [6,7]
 */
 
 var minimalHeaviestSetA = function(n, arr) {
-  //your code here
-
+  let sumB = arr.reduce((acc, box) => acc += box);
+  let sumA = 0;
+  let index = arr.length - 1;
+  let sorted = arr.sort((a, b) => a - b);
+  while (sumA < sumB) {
+    const nextHeaviest = sorted[index];
+    sumB -= nextHeaviest;
+    sumA += nextHeaviest;
+    index--;
+  }
+  return sorted.slice(index + 1);
 }
+const n = 5;
+const weights = [3,7,5,6,2];
+const expectedResult = [6,7];
+const actualResult = minimalHeaviestSetA(n, weights);
+console.log('expected: ', expectedResult, ', actual: ', actualResult);
+/*
+sorted?
+find A that its greater than B total
+
+[3,7,5,6,2]
+[2,3,5,6,7]
+sum = 23
+A = 13
+B = 10
