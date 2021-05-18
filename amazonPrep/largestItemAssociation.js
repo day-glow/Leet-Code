@@ -8,7 +8,7 @@ In order to improve customer experience, Amazon has developed a system to provid
 Given a list of item association relationships(i.e. group of items likely to be ordered together), write an algorithm that outputs the largest item association group. If two groups have the same number of items then select the group which contains the item that appears first in lexicographic order.
 
 Input
-The itput to the function/method consists of an argument - itemAssociation, a list containing paris of string representing the items that are ordered together.
+The input to the function/method consists of an argument - itemAssociation, a list containing parts of string representing the items that are ordered together.
 
 Output
 Return a list of strings representing the largest association group sorted lexicographically.
@@ -35,18 +35,94 @@ The following class is used to represent a Pair of strings and is already implem
 
 */
 
-class PairString
-{
-	String first;
-	String second;
-
-	PairString(String first, String second)
-	{
+class PairString(String first, String second) {
 		this.first = first;
 		this.second = second;
-	}
 }
 
 var LargestItemAssociation = function( itemAssociation ) {
-	// your code here
+  const numOfItems = new Map();
+  itemAssociation.forEach((pair) => {
+    numOfItems.set(pair[0], -1);
+    numOfItems.set(pair[1], -1);
+  });
+  console.log(numOfItems)
+	//let headNodeMap = new Array(numOfItems.size).fill(-1);
+  for (let [pairItem, pairSecond] of itemAssociation) {
+    while (numOfItems.get(pairItem) !== -1) pairItem = numOfItems.get(pairItem);
+    while (numOfItems.get(pairSecond) !== -1) pairSecond = numOfItems.get(pairSecond);
+    if (pairItem !== pairSecond) numOfItems.set(pairItem, pairSecond);
+  }
+  console.log(numOfItems)
+
+  let groups = new Map();
+  for (let [item, head] of numOfItems) {
+    if (head === -1) {
+      head = item;
+    } else {
+      while (head !== -1 && numOfItems.get(head) !== -1) head = numOfItems.get(head);
+    }
+
+    if (groups.has(head)) {
+      let prev = groups.get(head);
+      prev.push(item);
+      groups.set(head, prev);
+    } else {
+      groups.set(head, [item]);
+    }
+  }
+  console.log(groups)
+  let maxSize = 0;
+  let maxHead;
+  for (let [head, itemsInGroup] of groups) {
+    if (itemsInGroup.length >= maxSize) {
+      maxSize = itemsInGroup.length;
+      maxHead = head;
+    }
+  }
+  return groups.get(maxHead);
 }
+
+const itemAssociation = [['Item1', 'Item2'],['Item3', 'Item4'],['Item4', 'Item5']];
+
+const expectedResult = ['Item3', 'Item4', 'Item5'];
+const actualResult = LargestItemAssociation(itemAssociation);
+console.log('expected: ', expectedResult, ', actual: ', actualResult);
+
+/*
+iterate over the items and connect the overlapping items
+is the input list sorted?
+if yes, it is similar to an interval problem, merging overlaps (not exactly numbered)
+
+what if it we use hash map to keep groups, adj list to point to head node (like the components)
+
+array = {
+  item1: item1,
+  item2: item1,
+  item3: item3,
+  item4: item4,
+  item5: item4,
+  item6: item4,
+  item7: item3,
+}
+iterate over map, count max nodes
+var countComponents = function(n, edges) {
+  if (!n || !edges.length) return n;
+  const nodeConnections = new Array(n).fill(-1);
+
+  for (let [edgeFrom, edgeTo] of edges) {
+    while (nodeConnections[edgeFrom] !== -1) edgeFrom = nodeConnections[edgeFrom];
+    while (nodeConnections[edgeTo] !== -1) edgeTo = nodeConnections[edgeTo];
+    if (edgeTo !== edgeFrom) nodeConnections[edgeTo] = edgeFrom;
+  }
+
+  let components = 0;
+  for (let head of nodeConnections) {
+    if (head === -1) components++;
+  }
+  return components;
+};
+
+*/
+
+
