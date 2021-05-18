@@ -43,3 +43,53 @@ Output: {
    "Emma":  []
 }
 */
+
+/*
+iterate over usersSongs,
+create a new user with map, create new map with each new user
+map: {
+   "David": {
+     "Rock": 2,
+     "Techno": 2,
+     "Jazz": 1,
+    },
+   "Emma": {
+     "Pop": 2,
+     "Dubstep": 1,
+   }
+}
+
+reduce each user map to favorite
+
+OR just find fav count and reduce before setting
+
+*/
+
+var findUsersFavoriteGenre = function(userSongs, songGenres) {
+  const userFavoriteGenres = new Map();
+  const songToGenre = new Map();
+  for (let [genre, songsInGenre] of songGenres) {
+    for (let song of songsInGenre) {
+      songToGenre.set(song, genre);
+    }
+  }
+  console.log(songToGenre);
+
+  for (let [user, songs] of userSongs) {
+    let favorites = [];
+    const count = new Map();
+    for (let songNum of songs) {
+      const genreOfThisSong = songToGenre.get(songNum);
+      if (count.has(genreOfThisSong)) {
+        count.set(genreOfThisSong, count.get(genreOfThisSong) + 1);
+      } else {
+        count.set(genreOfThisSong, 1);
+      }
+    }
+    const isTop = Array.from(count.keys().sort((a, b) => count.get(b) >= count.get(a)));
+    if (!userSongToGenreCounts.has(user)) {
+      userSongToGenreCounts.set(user, isTop);
+    }
+  }
+  return userFavoriteGenres;
+};

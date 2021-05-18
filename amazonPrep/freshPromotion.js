@@ -49,3 +49,51 @@ Output: 0
 Explanation:
 The customer is not a winner as the first 2 fruits form group 1, all three fruits would form group 2, but can't because it would contain all fruits of group 1.
 */
+/*
+iterate over shoppingCart and fill the groups in order, pointers
+move backwards through the list and check prev sliding windows
+
+[[apple, apple], [banana, anything, banana]]
+
+[banana, orange, banana, apple, apple]
+
+sliding window aft finding first match for grouping
+*/
+var checkItemsInOrder = function(target, current) {
+  if (target.join() === current.join()) return true;
+  for (let i = 0; i < target.length; i++) {
+    if (target[i] !== current[i] && target[i] !== 'anything') {
+      return false;
+    }
+  }
+  return true;
+};
+
+var findShoppingWinners = function(codeList, shoppingCart) {
+  let groupNum = 0;
+  //let itemNum = 0;
+  //codeList[groupNum][itemNum]
+  let currItem = 0;
+  while (currItem < shoppingCart.length) {
+    const curr = shoppingCart[currItem];
+    if (curr === codeList[groupNum][0]) {
+      const end = currItem + codeList[groupNum].length;
+      if (checkItemsInOrder(codeList[groupNum], shoppingCart.slice(currItem, end))) {
+        currItem = end;
+        groupNum++;
+      } else {
+        currItem++;
+      }
+    } else {
+      currItem++;
+    }
+  }
+  return groupNum === codeList.length;
+};
+
+const winningItems = [['apple', 'apple'], ['banana', 'anything', 'banana']];
+//const cart = ['banana', 'orange', 'banana', 'apple', 'apple'];
+const cart = ['orange', 'apple', 'apple', 'banana', 'orange', 'banana'];
+const expectedResult = true;
+const actualResult = findShoppingWinners(winningItems, cart);
+console.log('expected: ', expectedResult, ', actual: ', actualResult, ', results match: ', expectedResult === actualResult);
