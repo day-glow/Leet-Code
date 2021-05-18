@@ -97,3 +97,20 @@ const cart = ['orange', 'apple', 'apple', 'banana', 'orange', 'banana'];
 const expectedResult = true;
 const actualResult = findShoppingWinners(winningItems, cart);
 console.log('expected: ', expectedResult, ', actual: ', actualResult, ', results match: ', expectedResult === actualResult);
+
+/*
+A few approaches to tackle this scenario:
+
+1. Brute force, one by one compare each shopping cart item to the items in the winning list,
+
+    Time O(n* m) where n = length of shoppingCart & m = length of codeList, space O(1) 
+
+2. .slice/sliding window approach, slice a subsection of the shopping cart when the leading item matches the leading codeList item,
+
+    Time O(n* n) possibly higher.  The worse case, each item will match the codeList and will have to check the items with the helper function for O(n) for the sliced arr, therefore we will have to iterate over the same arr items multiple times.
+
+   Space O(n) possibly higher, slice takes a lot of space, should have used start and end indexes and not taken slices to optimize further space 
+
+3. Is there a third option with faster DP so we don't have to keep checking similar items that have already been reviewed?  There likely is, but due to the time test format, went with the option that was clear to get a working solution and would optimize if time allows to explore this.
+*/
+
