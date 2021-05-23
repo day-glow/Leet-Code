@@ -18,33 +18,6 @@ Space O(n) for the words in the library and hold the trie structure
 
 */
 
-var checkGroupItems = function(groupItems, shoppingCart, startIdx) {
-  for (let i = 0; i < groupItems.length; i++) {
-    if (groupItems[i] !== shoppingCart[startIdx + i] && groupItems[i] !== 'anything') return false;
-  }
-  return true;
-}
-
-function foo(codeList, shoppingCart) {
-  //console.log(codeList, shoppingCart)
-  if (!shoppingCart.length) return 0;
-  if (!codeList.length) return 1;
-  let groupIdx = 0;
-  let customerIdx = 0;
-  while (groupIdx < codeList.length && customerIdx < shoppingCart.length) {
-    let group = codeList[groupIdx].split(' ');
-    const end = customerIdx + group.length;
-    if ((group[0] === 'anything' || group[0] === shoppingCart[customerIdx]) && checkGroupItems(group, shoppingCart, customerIdx)) {
-        customerIdx = end;
-        groupIdx++;
-    } else {
-      customerIdx++;
-    }
-  }
-  if (groupIdx === codeList.length) return 1;
-  return 0;
-}
-
 
 var addWordToTrie = function( trieRoot, word ) {
   let node = trieRoot;
