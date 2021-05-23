@@ -38,3 +38,34 @@ b = [[1, 8], [2, 11], [3, 12]]
 target = 20
 Output: [[1, 3], [3, 2]]
 */
+
+var findClosestPairs = function( a, b, target ) {
+  if (!a || !b || !target) return [];
+  let pairs = new Array();
+  let currentMinDelta = target;
+  a = a.sort((elem1, elem2) => a[elem1][1] - a[elem2][1]);
+  b = b.sort((elem1, elem2) => b[elem1][1] - b[elem2][1]);
+  for (let elem1 = 0; elem1 < a.length; elem1++) {
+    const elem1Delta = target - elem1[1];
+    for (let [id2, value2] of b) {
+      if (value2 === elem1Delta) {
+        if (currentMinDelta !== 0) {
+          pairs = [[elem1[0], id2]];
+          currentMinDelta = 0;
+        } else {
+          pairs.push([elem1[0], id2]);
+        }
+      }
+
+      if (value2 >= elem1Delta) break;
+    }
+  }
+
+
+}
+
+/*
+brute force (match each a to b with nested loops), time O(n^2) space O(1)
+sort by values, then walk the pointers inward, time O(nlogn) space O(1)
+2sum approach with set to find perfect pairs, then fall back to iterative
+dp?
