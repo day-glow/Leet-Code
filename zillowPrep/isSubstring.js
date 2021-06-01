@@ -29,3 +29,11 @@ const isSubstring = (s1, s2) => {
   return false;
 };
 */
+
+const isSubstring = (s1, s2) => s1.toLowerCase().includes(s2.toLowerCase());
+
+const s1 = 'Hello I am a stinky cat. And I love to eat cake.';
+const s2 = 'At';
+const expected = true;
+const actual = isSubstring(s1, s2);
+console.log('expected: ', expected, ', actual: ', actual);
