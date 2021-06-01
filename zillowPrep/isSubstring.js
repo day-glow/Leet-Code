@@ -1,5 +1,6 @@
 /*
 https://leetcode.com/playground/WbWTbrje
+Similar LC problem: https://leetcode.com/problems/implement-strstr/
 
 Write a method to determine if string2 is a substring of string1.
 */
